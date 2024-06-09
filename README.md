@@ -22,7 +22,7 @@
 |      #5      |  Noah Hai         |nhai@sfsu.edu      |  Noahhai22      |  noah_h8076        |       Github-master      |
 |      #6      |  William Pan      |wpan1@sfsu.edu     |  WilliamPanTW   |  90561lkk          |       Docs-editor        |
 |      #7      |  Aaron Rayray     |arayray@sfsu.edu   |  yaryarcodes    |  aaronyaryar       |                          |
-|      #8      |  Phillip Ma       |pma1@mail.sfsu.edu |                 |                    |                          |
+|      #8      |  Phillip Ma       |pma1@mail.sfsu.edu |  Byakou         |  .byakou           |                          |
 
 
 4. All the team's members ***MUST*** sign the follwing [team's contract](https://forms.gle/dxATAsa9isXKbcBn7). Missing signatures from students will result in these students being dropped from the course. 
