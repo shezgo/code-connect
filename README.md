@@ -30,7 +30,7 @@
 4. Please when ready, add your application's name and URL or IP to the following table. It is the responsibility of the team lead to keep this up to date during the whole semester because we'll use this URL to test all your prototypes and final version of your project. 
 
 |             Name of the Project               |                            URL of the Project                          | 
-|                    :---:                      |                                 :---:                                  |
+|                  CodeConnect                   |                               52.8.92.61                                 |
 |   Replace this text with your project's name  |              Replace this text with your application's URL or IP       |                                                        
  
 
