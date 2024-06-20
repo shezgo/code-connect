@@ -19,6 +19,15 @@ app.get('/about/:member', (req, res)=>{
     }
     
 })
+app.get('/application/images/:member', (req, res)=>{
+    try{
+	res.sendFile(path.join(__dirname, ('../images/' + req.params.member)))
+    }
+    catch(err)
+    {
+	console.log(err)
+    }
+})
 app.listen(port, ()=>{
     console.log("Server is running on port ", port)
 })
