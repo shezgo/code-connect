@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "The purpose of this folder is to store all the source code and related files for your team's application. You are free \r to organize the contents of the prototypes' folder as you see fit. But remember your team is graded on how you use Git. \r This does include the structure of your application. Points will be deducted from poorly structured application folders.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
