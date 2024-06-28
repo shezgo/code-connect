@@ -1,0 +1,22 @@
+# Current Environment either production or development. This will setup logging and development features
+NODE_ENV=development
+
+# SMTP Server to Send Rest and Verification Emails
+SMTP_HOST="smtp.gmail.com"
+SMTP_PORT=465
+SMTP_USERNAME="email@gmail.com"
+SMTP_PASSWORD="password"
+
+# Server Hostname and port
+HOST_NAME=http://localhost
+PORT=3000
+# Frontend Relative Path to index.js file
+FRONTEND_PATH=../build/
+TOKEN_SECRET="66830e6c70614ab2d8d361fccd0bd6e666d6b9a8e1307499ef59ac2b40914cd1"
+
+# Database Options
+DATABASE_DIALECT=mysql
+DATABASE_NAME=codeconnect
+DATABASE_HOST=localhost
+DATABASE_USER=root
+DATABASE_PASSWORD=123456
