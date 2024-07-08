@@ -12,14 +12,13 @@ const start = async () => {
 
     const app = express();
     app.use(express.json());
-    // app.use(express.urlencoded());
     app.use(routes);
     app.use(express.static(process.env.FRONTEND_PATH));
 
     app.get("/about", (req, res) => {
         res.sendFile(path.join(__dirname, "../about/about_us.html"))
     });
-
+    
     app.get("/about/:member", (req, res) => {
         try {
             res.sendFile(path.join(__dirname, ("../about/" + req.params.member)));
@@ -35,9 +34,13 @@ const start = async () => {
         if (err.isServer) console.log(err)
         return res.status(err.output.statusCode).json(err.output.payload)
     });
+    //This should forward any unknown pages to index once it is implemented
+    app.all('/**', function (req, res) {
+        res.status(301).redirect('/about');
+    });
 
     app.listen(port, () => {
-        console.log("Server is running on port ", port)
+        console.log("Server is running on port ", port);
     });
 }
 start();
