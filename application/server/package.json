@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file=.env index.js",
-    "sync": "node --env-file=.env ./bin/syncDatabase.js"
+    "start": "node index.js",
+    "sync": "node ./bin/syncDatabase.js"
   },
   "author": "",
   "license": "ISC",
