@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -21,10 +22,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 400px;
+            margin-bottom: 20px;
         }
         .signup-container img {
-            width: 100px;
-            height: 100px;
+            width: 250px; 
+            height: 120px; 
             margin-bottom: 20px;
         }
         .signup-container h1 {
@@ -49,7 +51,6 @@
         }
         .signup-container button:hover {
             background-color: transparent;
-        
         }
         .signup-container .links {
             display: flex;
@@ -65,21 +66,59 @@
         .signup-container .links a:hover {
             text-decoration: underline;
         }
+        .error-message {
+            font-size: 12px;
+            display: none;
+            margin-bottom: 15px;
+        }
+        .contact-info {
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+        }
     </style>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var errorMessage = document.getElementById("error-message");
+            var passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+            if (!passwordPattern.test(password)) {
+                errorMessage.textContent = "Password must be more than 8 letters and contain a number and a special character.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match.";
+                errorMessage.style.display = "block";
+                return false;
+            }
+
+            errorMessage.style.display = "none";
+            return true;
+        }
+    </script>
 </head>
 <body>
     <div class="signup-container">
-        <img src="" alt="Logo">
+        <img src="CodeConnect_Logo.jpg" alt="Logo">
         <h1>CodeConnect</h1>
+        <h3>Start Your Tech Journey With Us.</h3>
         <input type="text" placeholder="Username">
         <input type="email" placeholder="Email Address">
-        <input type="password" placeholder="Password">
-        <input type="password" placeholder="Confirm Password">
-        <button>Sign Up</button>
+        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="confirm-password" placeholder="Confirm Password">
+        <div id="error-message" class="error-message"></div>
+        <button onclick="return validatePassword()">Sign Up</button>
         <div class="links">
             <p>Have an account?</p>
             <a href="./login.html">Sign In</a>
         </div>
+    </div>
+    <div class="contact-info">
+        <p>Problems or Questions? Contact us @ <a href="mailto:support@codeconnect.com">support@codeconnect.com</a></p>
     </div>
 </body>
 </html>

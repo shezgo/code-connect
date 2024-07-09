@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -21,10 +22,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 400px;
+            margin-bottom: 20px;
         }
         .login-container img {
-            width: 100px;
-            height: 100px;
+            width: 250px; 
+            height: 120px; 
             margin-bottom: 20px;
         }
         .login-container h1 {
@@ -62,12 +64,18 @@
         .login-container .links a:hover {
             text-decoration: underline;
         }
+        .contact-info {
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <img src="" alt="Logo">
+        <img src="CodeConnect_Logo.jpg" alt="Logo">
         <h1>CodeConnect</h1>
+        <h4>Push your way through!</h4>
         <input type="text" placeholder="Username">
         <input type="password" placeholder="Password">
         <button>Sign In</button>
@@ -75,6 +83,9 @@
             <a href="./forgotpass.html">Forgot Password</a>
             <a href="./signup.html">Sign Up</a>
         </div>
+    </div>
+    <div class="contact-info">
+        <p>Problems or Questions? Contact us @ <a href="mailto:support@codeconnect.com">support@codeconnect.com</a></p>
     </div>
 </body>
 </html>
