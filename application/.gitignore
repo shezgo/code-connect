@@ -5,7 +5,7 @@ build/Release
 node_modules/
 
 # .env files
-.env
+#.env
 
 # .vs files
 .vs/
