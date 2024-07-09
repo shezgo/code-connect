@@ -1,6 +1,6 @@
 const express = require("express");
 const signup_controller = require("../../controllers/signupController");
-const login_controller = require('../controllers/loginController');
+const login_controller = require('../../controllers/loginController');
 const router = express.Router();
 
 router.get("/verify/:token", signup_controller.verify_email_get);
