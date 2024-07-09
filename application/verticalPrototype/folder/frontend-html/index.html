@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0; /* Remove default margin */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Style the header */
+.header {
+  background-color: #62b4c9;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.header .brand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+
+.login-signup {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  font-size: 14px;
+}
+
+.login-signup a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.login-signup a:hover {
+  text-decoration: underline;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex: 1; /* Ensure the row takes up available space */
+}
+
+/* Create three unequal columns that sits next to each other */
+.column {
+  padding: 10px;
+}
+
+/* Left columns stacked */
+.left-columns {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-bottom: 0; /* Remove margin between columns */
+}
+
+.column.side {
+  flex: 1;
+  height: 600px; /* Increase height for demonstration */
+}
+
+/* Right column takes the rest of the space */
+.column.middle {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+/* Forum posts */
+.forum-posts {
+  flex-grow: 1;
+}
+
+.create-post {
+  padding: 10px;
+  background-color: #ddd;
+  border-top: 1px solid #ccc;
+}
+
+/* Style the footer */
+footer {
+  width: 100%;
+  background-color: #62b4c9;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: auto;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.media-icons {
+  margin: 10px 0;
+}
+.media-icons a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+.footer-nav li {
+  margin: 0 15px;
+}
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+}
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+.footer-bott {
+  margin-top: 10px;
+}
+
+/* Style for links in header */
+.header a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.header a:hover {
+  text-decoration: underline;
+}
+
+/* Welcome box and search bar */
+.welcome-box {
+  text-align: center;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.search-container input[type="text"] {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+.search-container button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #62b4c9;
+  color: white;
+  cursor: pointer;
+}
+.search-container button:hover {
+  background-color: #5393a1;
+}
+
+/* Content for left columns */
+.categories {
+  padding: 10px;
+}
+.categories h3 {
+  margin-top: 0;
+}
+.categories a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  margin: 5px 0;
+}
+.categories a:hover {
+  text-decoration: underline;
+}
+
+.favorites {
+  padding: 10px;
+}
+.favorites h3 {
+  margin-top: 0;
+}
+.favorites a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  margin: 5px 0;
+}
+.favorites a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+  .left-columns, .column.middle {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
+  <div class="brand">CodeConnect</div>
+  <div class="login-signup">
+    <a href="login.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+  </div>
+  <h2>Forums</h2>
+  <a href="index.html">Home</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="mentors.html">Mentors</a>
+  <a href="forums.html">Forums</a>
+  <a href="store.html">Store</a>
+  <a href="premium.html">Premium</a>
+  <a href="interview.html">Interview Help</a>
+</div>
+
+<div class="welcome-box">
+  <h2>Welcome to the Forum!</h2>
+  <div class="search-container">
+    <input type="text" placeholder="Search...">
+    <button><i class="fa fa-search"></i></button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="left-columns">
+    <div class="column side" style="background-color:#aaa;">
+      <div class="categories">
+        <h3>Categories</h3>
+        <a href="java.html">Java</a>
+        <a href="python.html">Python</a>
+        <a href="javascript.html">JavaScript</a>
+        <a href="cpp.html">C++</a>
+        <a href="ruby.html">Ruby</a>
+      </div>
+    </div>
+    <div class="column side" style="background-color:#bbb;">
+      <div class="favorites">
+        <h3>Favorite Posts/Watched</h3>
+        <a href="optimize_sql.html">- How to optimize SQL queries</a>
+        <a href="async_javascript.html">- Understanding async in JavaScript</a>
+        <a href="mastering_python.html">- Tips for mastering Python</a>
+        <a href="react_getting_started.html">- Getting started with React</a>
+        <a href="java_best_practices.html">- Best practices in Java</a>
+      </div>
+    </div>
+  </div>
+  <div class="column middle" style="background-color:#ccc;">
+    <div class="forum-posts">
+      <div class="forum-post">
+        <h3>Author: JohnDoe</h3>
+        <p>I need help with a Python script that automates file handling. Can someone provide an example of how to move files based on their extension?</p>
+      </div>
+      <div class="forum-post">
+        <h3>Author: JaneSmith</h3>
+        <p>What's the best way to learn React for a complete beginner? Any recommended resources or tutorials?</p>
+      </div>
+      <div class="forum-post">
+        <h3>Author: CodeMaster</h3>
+        <p>Has anyone worked with the new features in CSS Grid? I'm trying to create a responsive layout but running into some issues.</p>
+      </div>
+    </div>
+    <div class="create-post">
+      <textarea placeholder="Create a new post..." style="width: 100%; height: 100px; margin-top: 20px;"></textarea>
+      <button style="width: 100%; padding: 10px; background-color: #62b4c9; color: white; border: none; cursor: pointer; margin-top: 10px;">Create Post</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-nav">
+      <ul>
+        <li><a href="index.html"><strong>Home</strong></a></li>
+        <li><a href="about.html"><strong>About</strong></a></li>
+        <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
+        <li><a><strong>Phone: 888-888-8888</strong></a></li>
+      </ul>
+    </div>
+    <div class="media-icons">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="footer-bott">
+      <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
