@@ -7,8 +7,14 @@ const sequelize = new Sequelize(
     process.env.DATABASE_NAME,
     process.env.DATABASE_USER,
     process.env.DATABASE_PASSWORD,
-    { host: process.env.DATABASE_HOST, dialect: process.env.DATABASE_DIALECT, logging: process.env.NODE_ENV === "production" ? false : console.log, dialect: 'mysql', },
+    {
+        host: process.env.DATABASE_HOST,
+        dialect: process.env.DATABASE_DIALECT,
+        logging: process.env.NODE_ENV === "production" ? false : console.log,
+        dialect: 'mysql',
 
+    },
+    console.log("Hello from config.js")
   );
 
 module.exports = sequelize 
