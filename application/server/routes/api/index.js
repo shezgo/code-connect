@@ -1,10 +1,10 @@
 const { Router } = require('express')
-const signup = require('./signup')
+const signup = require('./auth')
 const { version } = require('../../package.json')
 
 const router = Router()
 
-router.use('/signup', signup)
+router.use('/auth', signup)
 
 router.get('/', (req, res) => {
   res.end(`API v.${ version }`)
