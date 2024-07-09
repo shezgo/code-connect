@@ -2,10 +2,12 @@ const asyncHandler = require("express-async-handler");
 const boom = require("@hapi/boom");
 const { User } = require("../db/models/index");
 const jwt = require("jsonwebtoken");
+
 const crypto = require("crypto"); // For generating the reset token
 const utils = require("../utils"); // Import utils for email sending
 const bcrypt = require("bcryptjs");// For password hashing
 const { Op } = require("sequelize");
+
 
 exports.login_user_post = asyncHandler(async (req, res, next) => {
     const { emailOrUsername, password } = req.body;
@@ -28,6 +30,7 @@ exports.login_user_post = asyncHandler(async (req, res, next) => {
         throw boom.unauthorized("User not found");
     }
 });
+
 
 // Utility function to send password reset emails
 const sendPasswordResetEmail = (email, token) => {
@@ -88,3 +91,4 @@ exports.reset_password_post = asyncHandler(async (req, res, next) => {
 
     res.send("Password reset successfully");
 });
+
