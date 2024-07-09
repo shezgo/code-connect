@@ -27,11 +27,11 @@ User.init(
             allowNull: false,
             unique: true
         },*/
-        password: {
+        /*password: {
             field: 'password',
             type: DataTypes.STRING,
             allowNull: false
-        },
+        },*/
         salt: {
             field: 'salt',
             type: DataTypes.STRING,
