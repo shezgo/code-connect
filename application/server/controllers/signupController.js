@@ -2,6 +2,8 @@ const asyncHandler = require("express-async-handler");
 const utils = require("../utils")
 const boom = require("@hapi/boom")
 const { User } = require("../db/models/index")
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 //Read more about this library https://www.npmjs.com/package/check-password-strength
 const { passwordStrength } = require('check-password-strength')
@@ -14,15 +16,18 @@ exports.verify_email_get = asyncHandler(async (req, res, next) => {
                 email: email
             }
         });
-        user.set({
-            emailVerified: true
-        })
-        await user.save();
+        if (user) {
+            user.set({
+                emailVerified: true
+            });
+            await user.save();
         // res.send(email);
         // req.url = "/";
-        res.status(301).redirect("/");
-    }
-    catch (err) {
+            res.status(301).redirect("/");
+        } else {
+            throw boom.notFound("User not found");
+        }
+    } catch (err) {
         throw boom.notFound(err.message);
     }
 });
@@ -50,34 +55,37 @@ exports.verify_email_post = asyncHandler(async (req, res, next) => {
 });
 
 exports.signup_user_post = asyncHandler(async (req, res, next) => {
-    const { email, password } = req.body;
-    const existing_user = await User.findOne({
+    const { email, username, password } = req.body;
+    const existingEmailUser = await User.findOne({
         where: {
             email: email
         }
     });
-    if (!existing_user) {
-        if (passwordStrength(password).id>1){
-            const user = User.build({
-                email: email,
-                password: password,
-                emailVerified: false
-            });
-            
-            user.save();
-
-            try {
-                send_verify_email(email)
-                res.send("Email sent successfully");
-            }
-            catch (err) {
-                throw boom.internal(err.message)
-            }}
-        else{
-            throw boom.badData(`Password is ${passwordStrength(password).value}`)
+    const existingUsernameUser = await User.findOne({
+        where: {
+            username: username
         }
-    }
-    else {
-        throw boom.badData("Email already in use")
+    });
+    if (existingEmailUser) {
+        throw boom.badData("Email already in use");
+    } else if (existingUsernameUser) {
+        throw boom.badData("Username already in use");
+    } else if (passwordStrength(password).id <= 1) {
+        throw boom.badData(`Password is ${passwordStrength(password).value}`);
+    } else {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = User.build({
+            email: email,
+            username: username,
+            password: hashedPassword,
+            emailVerified: false
+        });
+        await user.save();
+        try {
+            send_verify_email(email);
+            res.send("Email sent successfully");
+        } catch (err) {
+            throw boom.internal(err.message);
+        }
     }
 });
