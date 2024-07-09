@@ -17,10 +17,5 @@ const sequelize = new Sequelize(
     
 
 );
-console.log("Hello from config.js")
-console.log("Sequelize instance:", sequelize);
-console.log("Database name:", process.env.DATABASE_NAME);
-console.log("Database user:", process.env.DATABASE_USER);
-console.log("Database host:", process.env.DATABASE_HOST);
-console.log("Database dialect:", process.env.DATABASE_DIALECT);
+
 module.exports = sequelize 
