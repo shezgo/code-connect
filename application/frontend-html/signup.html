@@ -8,8 +8,8 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
@@ -21,11 +21,13 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 400px;
+            margin: 20px auto;
         }
         .signup-container img {
             width: 100px;
             height: 100px;
             margin-bottom: 20px;
+            border-radius: 50%; /* Make the image circular */
         }
         .signup-container h1 {
             margin-bottom: 30px;
@@ -49,7 +51,6 @@
         }
         .signup-container button:hover {
             background-color: transparent;
-        
         }
         .signup-container .links {
             display: flex;
@@ -65,11 +66,52 @@
         .signup-container .links a:hover {
             text-decoration: underline;
         }
+        footer {
+            width: 100%;
+            background-color: #62b4c9;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .media-icons {
+            margin: 10px 0;
+        }
+        .media-icons a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        .footer-nav li {
+            margin: 0 15px;
+        }
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer-nav a:hover {
+            text-decoration: underline;
+        }
+        .footer-bott {
+            margin-top: 10px;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="signup-container">
-        <img src="" alt="Logo">
+        <img src="Codeconnect Logo.jpg" alt="Logo">
         <h1>CodeConnect</h1>
         <input type="text" placeholder="Username">
         <input type="email" placeholder="Email Address">
@@ -81,5 +123,26 @@
             <a href="./login.html">Sign In</a>
         </div>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html"><strong>Home</strong></a></li>
+                    <li><a href="about.html"><strong>About</strong></a></li>
+                    <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
+                    <li><a><strong>Phone: 888-888-8888</strong></a></li>
+                </ul>
+            </div>
+            <div class="media-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footer-bott">
+                <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

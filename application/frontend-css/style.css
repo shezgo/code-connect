@@ -1,162 +1,60 @@
-/* Reset default margin and padding */
+/* Reset default margin and padding for all elements */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* Page body style */
-body {
-    font-family: Helvetica, sans-serif;
-    background-color: #f0f0f0; /* Light gray background */
-    margin: 0 auto;
-    max-width: 100%;
-}
-
-/* Header style */
-.nav-header {
-    background-color: #6fa85f; /* Green background */
-    color: white;
-    padding: 1em 2em;
-    display: flex;
-    align-items: center;
-}
-
-
-
-/* Navigation container style */
-nav {
-    background-color: #cdebb5; /* Light green background */
-}
-
-/* Top Navigation bar container style */
-.topnav {
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Top Navigation links style */
-.topnav a {
-    font-weight: bold;
-    color: #333; /* Dark gray color */
-    text-decoration: none;
-    padding: 20px 15px;
-    font-size: 17px;
-}
-
-/* Top Navigation links hover style */
-.topnav a:hover {
-    background-color: #f0f0f0; /* Light gray background */
-    color: #6fa85f; /* Green color */
-}
-
-/* Active link style */
-.topnav a.active {
-    background-color: #6fa85f; /* Green background */
-    color: white;
-}
-
-/* Search container style */
-.topnav .search-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-/* Search input style */
-.topnav input[type="text"] {
-    padding: 6px;
-    font-size: 17px;
-    border: none;
-    margin-right: 25px;
-}
-
-/* Search button style */
-.topnav .search-container button {
-    padding: 6px 10px;
-    font-size: 17px;
-    background: #6fa85f; /* Green background */
-    border: none;
-    cursor: pointer;
-    margin-right: 40px;
-}
-
-/* Search button hover style */
-.topnav .search-container button:hover {
-    background: #4c6e4d; /* Dark green background */
-}
-
-
-/* Change link color when hovered over */
-.dropdown-content a:hover {
-    background-color: #98ba7d; /* Hover background color */
-    color: white;
-}
-
-/*  Footer Styling  */
-
-footer{
-    background-color: #4c6e4d;
-}
-
-.footer-container{
-    width: 100%;
-    padding: 5px 30px 20px;
-}
-
-.media-icons{
-    display: flex;
-    justify-content: center;
-}
-
-.media-icons a{
-    color: darkolivegreen;
-    margin: 10px;
-    border-radius: 30%;
-    background-color: whitesmoke;
+  }
+  
+  /* Set default font for the body */
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style the header */
+  .header {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+  }
+  
+  /* Container for flexboxes */
+  .row {
+    display: flex; /* Use modern flexbox syntax */
+    flex-wrap: wrap; /* Allow wrapping for better responsiveness */
+  }
+  
+  /* Create three equal columns that sit next to each other */
+  .column {
+    flex: 1;
     padding: 10px;
-    text-decoration: none;
-}
-.media-icons a>i{
-    font-size: 25px;
-}
-.media-icons a:hover{
-    background-color: lightgray;
-}
-.footer-nav{
-    margin:25px 0;
-}
-
-.footer-nav ul{
-    display: flex;
-    justify-content: center;
-}
-.footer-nav li{
-    margin:10px;
-    text-decoration: none;
-}
-
-.footer-nav ul li a{
-    color: #1d1f1d;
-    font-size: larger;
-}
-
-.footer-nav ul li a:hover{
-    opacity: .7;
-}
-/* recoloring background for footerbott bc its outside footer so it sits better */
-.footer-bott{
-    background-color: #4c6e4d;
-    padding: 0px;
+    min-height: 300px; /* Minimum height for demonstration purposes */
+  }
+  
+  /* Add background colors to the columns */
+  .column:nth-child(1) {
+    background-color: #aaa;
+  }
+  
+  .column:nth-child(2) {
+    background-color: #bbb;
+  }
+  
+  .column:nth-child(3) {
+    background-color: #ccc;
+  }
+  
+  /* Style the footer */
+  .footer {
+    background-color: #f1f1f1;
+    padding: 10px;
     text-align: center;
-}
-.footer-bott a{
-    text-align: center;
-}
-
-/* CSS for Login */
-.login-footer{
-    margin-top: 38em;
-}
+  }
+  
+  /* Responsive layout - make the three columns stack on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    .row {
+      flex-direction: column;
+    }
+  }
+  
