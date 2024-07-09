@@ -7,9 +7,9 @@ const sequelize = require("../config.js");
 class User extends Model { }
 
 User.init(
-    {
-        id: {
-            field: 'id',
+    {   //This field cannot just be id, will generate errors
+        userID: {
+            field: 'userID',
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
