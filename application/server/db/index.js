@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("./config.js")
 
 //Import models here
-const UserModel = require('./models/user.js'); 
+const UserModel = require('./models/user'); 
 console.log("UserModel:", UserModel);
 const db = {};
 
@@ -13,7 +13,7 @@ const initialize = async () => {
 
         console.log("Here's the sequelize instance 1:", sequelize);
       //Define your models here
-        db.User = await UserModel(sequelize, DataTypes);
+        db.User = await new UserModel(sequelize, DataTypes);
 
         console.log("Here's the sequelize instance 2:", sequelize);
         console.log("Here's the user", db.User);
