@@ -7,7 +7,7 @@ const initialize = require("./db/index.js")
 const boom = require("@hapi/boom")
 const dotenv = require('dotenv');
 
-dotenv..config()
+dotenv.config()
 
 const port = parseInt(process.env.PORT);
 const start = async () => {
