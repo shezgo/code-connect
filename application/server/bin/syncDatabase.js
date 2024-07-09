@@ -1,3 +1,4 @@
+require('dotenv').config();
 const initialize = require("../db/index.js")
 const sync_database = async ()=>{
     const {sequelize} = await initialize();

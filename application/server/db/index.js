@@ -1,10 +1,26 @@
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("./config.js")
+
+//Import models here
+const UserModel = require('./models/user'); 
+console.log("UserModel:", UserModel);
+const db = {};
 
 const initialize = async () => {
     try {
       await sequelize.authenticate();
       console.log("Connection has been established successfully.");
-      return { sequelize };
+
+        console.log("Here's the sequelize instance 1:", sequelize);
+      //Define your models here
+        db.User = await new UserModel(sequelize, DataTypes);
+
+        console.log("Here's the sequelize instance 2:", sequelize);
+        console.log("Here's the user", db.User);
+      //Add any additional models here as needed
+      // IE db.AnotherModel = require('./anothermodel')(sequelize, DataTypes);
+
+      return { sequelize, db };
     } catch (error) {
       console.error("Unable to connect to the database:", error);
       return {};
