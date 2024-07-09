@@ -1,5 +1,6 @@
 const {crypto} = require("../../utils")
-const {DataTypes, Model } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
+const bcrypt = require('bcryptjs'); // Import bcrypt for password hashing
 
 const sequelize = require("../config.js")
 
@@ -40,29 +41,38 @@ User.init(
         field: 'emailVerified',
         type: DataTypes.BOOLEAN,
         allowNull: false
-    }
+        },
+    resetPasswordToken: {
+        field: 'resetPasswordToken',
+        type: DataTypes.STRING,
+        allowNull: true
     },
-  {
-    sequelize,
+    resetPasswordExpires: {
+        field: 'resetPasswordExpires',
+        type: DataTypes.DATE,
+        allowNull: true
+    }
+    }, {
     modelName: 'User',
     tableName: 'user',
     hooks: {
-        beforeCreate: user => {
-            const { hash, salt } = crypto.createPasswordHash(user.password);
-            user.salt = salt;
-            user.password = hash;
+        beforeCreate: async (user) => {
+            if (user.password) {
+                const salt = await bcrypt.genSalt(10);
+                user.password = await bcrypt.hash(user.password, salt);
+            }
         },
-        beforeUpdate: user => {
+        beforeUpdate: async (user) => {
             if (user.changed('password')) {
-                const { hash, salt } = crypto.createPasswordHash(user.password);
-                user.password = hash;
-                user.salt = salt;
+                const salt = await bcrypt.genSalt(10);
+                user.password = await bcrypt.hash(user.password, salt);
             }
         }
     }
-  },
-);
-User.authenticate = async function authenticate(email, password) {
+});
+
+// Custom class methods
+User.authenticate = async function (email, password) {
     const user = await User.findOne({
         where: {
             email: email,
@@ -74,10 +84,12 @@ User.authenticate = async function authenticate(email, password) {
         return null;
     }
 
-    const { hash } = crypto.createPasswordHash(password, user.salt);
-    if (hash === user.password) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (isPasswordValid) {
         return user;
     }
     return null;
 };
-module.exports =  User
+
+return User;
+};
