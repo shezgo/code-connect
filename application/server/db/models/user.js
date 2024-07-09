@@ -20,6 +20,12 @@ User.init(
         type: DataTypes.STRING,
         allowNull: false
     },
+    username: {
+        field: 'username',
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
     password: {
         field: 'password',
         type: DataTypes.STRING,

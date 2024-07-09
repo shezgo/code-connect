@@ -1,10 +1,13 @@
-require("dotenv").config()
+
 
 const express = require("express")
 const path = require("path")
 const routes = require("./routes")
 const initialize = require("./db/index.js")
 const boom = require("@hapi/boom")
+const dotenv = require('dotenv');
+
+dotenv..config()
 
 const port = parseInt(process.env.PORT);
 const start = async () => {
