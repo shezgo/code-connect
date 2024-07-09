@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require("./config.js")
 
 //Import models here
-const UserModel = require('./models/user'); 
+const UserModel = require('./models/user.js'); 
 console.log("UserModel:", UserModel);
 const db = {};
 
