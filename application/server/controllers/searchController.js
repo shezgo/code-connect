@@ -26,7 +26,7 @@ exports.find_user_post = asyncHandler(async (req, res, next) => {
     }
 
     try {
-        app.get('/search', (req, res) => {
+        get('/search', (req, res) => {
             const searchTerm = req.query.term;
             if (!searchTerm) {
                 return res.status(400)
