@@ -3,7 +3,7 @@ const sequelize = require("./config.js")
 
 //Import models here
 const UserModel = require('./models/user'); 
-
+console.log("UserModel:", UserModel);
 const db = {};
 
 const initialize = async () => {
