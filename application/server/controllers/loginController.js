@@ -31,8 +31,14 @@ exports.login_user_post = asyncHandler(async (req, res, next) => {
         req.session.userID = user.userID;
         req.session.email = user.email;
 
-        const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
+        const token = jwt.sign({ id: req.session.userID }, process.env.TOKEN_SECRET, {
             expiresIn: "1h"
+        });
+
+        // Set the token in a cookie
+        res.cookie('token', token, {
+            httpOnly: true,
+            maxAge: 3600000 // 1 hour
         });
 
         // Send back the token as a response
