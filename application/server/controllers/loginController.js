@@ -2,36 +2,42 @@ const asyncHandler = require("express-async-handler");
 const boom = require("@hapi/boom");
 const { User } = require("../db/models/index");
 const jwt = require("jsonwebtoken");
-
-const crypto = require("crypto"); // For generating the reset token
-const utils = require("../utils"); // Import utils for email sending
-const bcrypt = require("bcryptjs");// For password hashing
+const bcrypt = require("bcrypt");
 const { Op } = require("sequelize");
 
-
 exports.login_user_post = asyncHandler(async (req, res, next) => {
-    const { emailOrUsername, password } = req.body;
+    const { email, password } = req.body;
+
+    // Find the user by email
     const user = await User.findOne({
         where: {
-            [Op.or]: [{ email: emailOrUsername }, { username: emailOrUsername }]
+            email: email
         }
     });
-    if (user) {
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (isPasswordValid) {
-            const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
-                expiresIn: "1h"
-            });
-            res.json({ message: "Login successful", token: token });
-        } else {
-            throw boom.unauthorized("Invalid password");
-        }
-    } else {
+
+    // If user not found, throw unauthorized error
+    if (!user) {
         throw boom.unauthorized("User not found");
+    }
+
+    // Check if the provided password matches the hashed password in the database
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    // If passwords match, generate a JWT token for authentication
+    if (isPasswordValid) {
+        const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
+            expiresIn: "1h"
+        });
+
+        // Send back the token as a response
+        res.json({ message: "Login successful", token: token });
+    } else {
+        // If passwords do not match, throw unauthorized error
+        throw boom.unauthorized("Invalid email or password");
     }
 });
 
-
+/*
 // Utility function to send password reset emails
 const sendPasswordResetEmail = (email, token) => {
     const resetLink = `${process.env.HOST_NAME}:${process.env.PORT}/api/auth/reset-password?token=${token}`;
@@ -43,10 +49,10 @@ const sendPasswordResetEmail = (email, token) => {
 };
 
 exports.forgot_password_post = asyncHandler(async (req, res, next) => {
-    const { emailOrUsername } = req.body;
+    const { email } = req.body;
     const user = await User.findOne({
         where: {
-            [Op.or]: [{ email: emailOrUsername }, { username: emailOrUsername }]
+            [Op.or]: [{ email: email }, { email: email }]
         }
     });
 
@@ -67,6 +73,7 @@ exports.forgot_password_post = asyncHandler(async (req, res, next) => {
 
     res.send("Password reset email sent successfully");
 });
+
 
 exports.reset_password_post = asyncHandler(async (req, res, next) => {
     const { token, newPassword } = req.body;
@@ -92,3 +99,4 @@ exports.reset_password_post = asyncHandler(async (req, res, next) => {
     res.send("Password reset successfully");
 });
 
+*/

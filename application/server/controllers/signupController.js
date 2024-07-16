@@ -3,7 +3,7 @@ const utils = require("../utils")
 const boom = require("@hapi/boom")
 const { User } = require("../db/models/index")
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 //Read more about this library https://www.npmjs.com/package/check-password-strength
 const { passwordStrength } = require('check-password-strength')
@@ -76,14 +76,22 @@ exports.signup_user_post = asyncHandler(async (req, res, next) => {
     }*/ else if (passwordStrength(password).id <= 1) {
         throw boom.badData(`Password is ${passwordStrength(password).value}`);
     } else {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = User.build({
-            email: email,
-            //username: username,
-            password: hashedPassword,
-            emailVerified: false
-        });
-        await user.save();
+        try {
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
+            console.log(salt);
+            console.log(hashedPassword);
+            const user = User.build({
+                email: email,
+                //username: username,
+                password: hashedPassword,
+                emailVerified: false
+            });
+            await user.save();
+
+        } catch {
+            throw boom.internal(err.message);
+        }
         try {
             send_verify_email(email);
             res.send("Email sent successfully");
