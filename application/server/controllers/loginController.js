@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { Op } = require("sequelize");
 
+
 exports.login_user_post = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -25,6 +26,11 @@ exports.login_user_post = asyncHandler(async (req, res, next) => {
 
     // If passwords match, generate a JWT token for authentication
     if (isPasswordValid) {
+
+        // Create a session
+        req.session.userID = user.userID;
+        req.session.email = user.email;
+
         const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET, {
             expiresIn: "1h"
         });
