@@ -56,6 +56,21 @@ const authenticateJWT = (req, res, next) => {
     });
 };
 
+//Cookie JWT Authentication
+exports.cookieJWTAuth = (req, res, next) => {
+    const token = req.cookies.token;
+    try {
+        const user = jwt.verify(token, process.env.SESSION_SECRET);
+        req.user = user;
+        next();
+    } catch (err) {
+        res.clearCookie("token");
+        //If there's an error, redirect to the about page for now.
+        //Change this to redirect to login page.
+        return res.redirect("/about");
+    }
+}
+
 // Public routes
 router.get("/verify/:token", signup_controller.verify_email_get);
 router.post("/verify/:email", signup_controller.verify_email_post);
