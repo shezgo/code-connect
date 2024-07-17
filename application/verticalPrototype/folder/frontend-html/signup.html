@@ -158,9 +158,8 @@
           }
     </style>
     <script>
-       async function validatePassword() {
+        function validatePassword() {
             var password = document.getElementById("password").value;
-            var email = document.getElementById("email").value;
             var confirmPassword = document.getElementById("confirm-password").value;
             var errorMessage = document.getElementById("error-message");
             var passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
@@ -176,29 +175,53 @@
                 errorMessage.style.display = "block";
                 return false;
             }
-            try{
-                const requestOptions = {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email: email, password: password })
-                    };
-                    const response = await fetch(`/api/auth/signup`, requestOptions);
-                    if(response.status>=400){
-                        errorMessage.textContent = response.json().error;
-                        errorMessage.style.display = "block";
-                        return false;
-                    }
-                    errorMessage.textContent = "Please check your email inbox and verify it";
-                    errorMessage.style.display = "block";
-                    return true;
-            }
-            catch (error) {
-                 console.error('Failed at signing up user, Error: ', error);
-            }
+            
             errorMessage.style.display = "none";
             return true;
+        }
+        
+        async function signUp(){
+            var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var errorMessage = document.getElementById("error-message");
+
+            // if password is not strong enough or does not match
+            if(!validatePassword()){
+                return false;
+            }
+            try{
+                // Try calling /api/auth/signup with email and password
+                const requestOptions = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email: email, password: password })
+                };
+                
+                // Catch Server Errors
+                const response = await fetch("/api/auth/signup", requestOptions);
+
+                // If fetch response code is not successfull
+                if(!response.ok){
+                    errorMessage.textContent = await response.json().message;
+                    errorMessage.style.display = "block";
+                    return false;
+                }
+                
+                // Show the user that a verification email was sent
+                errorMessage.textContent = "Please check your email inbox and verify it";
+                errorMessage.style.display = "block";
+                return true;
+            }
+            catch (error) {
+                // Catch any unexpected error
+                console.error("Failed at signing up user, Error: ", error);
+                errorMessage.textContent = error;
+                errorMessage.style.display = "block";
+                return false;
+            }
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -222,7 +245,7 @@
         <input type="password" id="password" placeholder="Password">
         <input type="password" id="confirm-password" placeholder="Confirm Password">
         <div id="error-message" class="error-message"></div>
-        <button onclick="return validatePassword()">Sign Up</button>
+        <button onclick="return signUp();">Sign Up</button>
         <div class="links">
             <p>Have an account?</p>
             <a href="./login.html">Sign In</a>
