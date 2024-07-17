@@ -158,8 +158,9 @@
           }
     </style>
     <script>
-        function validatePassword() {
+       async function validatePassword() {
             var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value;
             var confirmPassword = document.getElementById("confirm-password").value;
             var errorMessage = document.getElementById("error-message");
             var passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
@@ -175,7 +176,27 @@
                 errorMessage.style.display = "block";
                 return false;
             }
-
+            try{
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email, password: password })
+                    };
+                    const response = await fetch(`/api/auth/signup`, requestOptions);
+                    if(response.status>=400){
+                        errorMessage.textContent = response.json().error;
+                        errorMessage.style.display = "block";
+                        return false;
+                    }
+                    errorMessage.textContent = "Please check your email inbox and verify it";
+                    errorMessage.style.display = "block";
+                    return true;
+            }
+            catch (error) {
+                 console.error('Failed at signing up user, Error: ', error);
+            }
             errorMessage.style.display = "none";
             return true;
         }
@@ -197,7 +218,7 @@
         <h1>CodeConnect</h1>
         <h3>Start Your Tech Journey With Us.</h3>
         <input type="text" placeholder="Username">
-        <input type="email" placeholder="Email Address">
+        <input type="email" id="email" placeholder="Email Address">
         <input type="password" id="password" placeholder="Password">
         <input type="password" id="confirm-password" placeholder="Confirm Password">
         <div id="error-message" class="error-message"></div>

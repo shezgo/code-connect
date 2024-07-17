@@ -158,6 +158,37 @@
           }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        async function signinUser() {
+             var password = document.getElementById("password").value;
+             var email = document.getElementById("email").value;
+          
+             try{
+                 const requestOptions = {
+                     method: 'POST',
+                     headers: {
+                         'Content-Type': 'application/json'
+                     },
+                     body: JSON.stringify({ email: email, password: password })
+                     };
+                     const response = await fetch(`/api/auth/login`, requestOptions);
+                     if(response.status>=400){
+                         const error = response.json().error;
+                         console.log(response);
+                         return false;
+                     }
+                     console.log("login in successful");
+                     // if login successfull redirect to /about
+                     window.location = "/about";
+                     return true;
+             }
+             catch (error) {
+                  console.error('Failed at signing in user, Error: ', error);
+             }
+             errorMessage.style.display = "none";
+             return true;
+         }
+     </script>
 </head>
 <body>
     <div class="header">
@@ -174,9 +205,9 @@
         <img src="Codeconnect Logo.jpg" alt="Logo">
         <h1>CodeConnect</h1>
         <h4>Push your way through!</h4>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button>Sign In</button>
+        <input type="text" id="email" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="return signinUser();">Sign In</button>
         <div class="links">
             <a href="./forgotpass.html">Forgot Password</a>
             <a href="./signup.html">Sign Up</a>
