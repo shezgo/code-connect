@@ -4,6 +4,9 @@ const { User } = require("../db/models/index");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { Op } = require("sequelize");
+const crypto = require('crypto');
+const utils = require("../utils");
+
 
 
 exports.login_user_post = asyncHandler(async (req, res, next) => {
@@ -49,8 +52,9 @@ exports.login_user_post = asyncHandler(async (req, res, next) => {
     }
 });
 
-/*
-// Utility function to send password reset emails
+
+//Send password reset email containing reset token. Passing this token and new password
+//into reset_password_post successfully changes the password.
 const sendPasswordResetEmail = (email, token) => {
     const resetLink = `${process.env.HOST_NAME}:${process.env.PORT}/api/auth/reset-password?token=${token}`;
     const text = `Hi there,\n\nPlease follow the link below to reset your password:\n\n${resetLink}\n\nThanks!`;
@@ -88,7 +92,7 @@ exports.forgot_password_post = asyncHandler(async (req, res, next) => {
 
 
 exports.reset_password_post = asyncHandler(async (req, res, next) => {
-    const { token, newPassword } = req.body;
+    const { token, password } = req.body;
 
     // Find user by the reset token and ensure it's valid
     const user = await User.findOne({
@@ -103,7 +107,9 @@ exports.reset_password_post = asyncHandler(async (req, res, next) => {
     }
 
     // Update user's password and clear/reset token fields
-    user.password = await bcrypt.hash(newPassword, 10); // Hash new password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    user.password = hashedPassword;
     user.resetPasswordToken = null;
     user.resetPasswordExpires = null;
     await user.save();
@@ -111,4 +117,3 @@ exports.reset_password_post = asyncHandler(async (req, res, next) => {
     res.send("Password reset successfully");
 });
 
-*/

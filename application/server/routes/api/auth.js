@@ -87,7 +87,7 @@ app.get('/protected', authenticateJWT, (req, res) => {
 });
 
 // New routes for password reset
-// router.post('/forgot-password', login_controller.forgot_password_post);
-// router.post('/reset-password', login_controller.reset_password_post);
+ router.post('/forgot-password', login_controller.forgot_password_post);
+ router.post('/reset-password', login_controller.reset_password_post);
 
 module.exports = router;
