@@ -9,6 +9,8 @@ const dotenv = require('dotenv');
 
 dotenv.config()
 
+const frontendPath = "../verticalPrototype/folder/"
+
 const port = parseInt(process.env.PORT);
 const start = async () => {
     await initialize();
@@ -19,12 +21,12 @@ const start = async () => {
     app.use(express.static(process.env.FRONTEND_PATH));
 
     app.get("/index", (req, res) => {
-        res.sendFile(path.join(__dirname, "../frontend-html/index.html"))
+        res.sendFile(path.join(__dirname, frontendPath + "frontend-html/index.html"))
     });
     
     app.get("/frontend-html/:member", (req, res) => {
         try {
-            res.sendFile(path.join(__dirname, ("../frontend-html/" + req.params.member)));
+            res.sendFile(path.join(__dirname, (frontendPath + "frontend-html/" + req.params.member)));
         }
         catch (err) {
             console.log(err);
