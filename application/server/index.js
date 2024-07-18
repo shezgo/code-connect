@@ -34,7 +34,7 @@ const start = async () => {
 
     });
 
-    app.get("searchUser/:searchTerm", (req, res) =>{
+    app.get("/searchUser/:searchTerm", (req, res) =>{
         try {
             res.console("we are here");
         }
