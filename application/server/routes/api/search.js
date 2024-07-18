@@ -1,4 +1,7 @@
-// JavaScript source code
+
+
 async function searchUser(term) {
-    console.log("We are inside search.js");
+    //console.log("inside search.js")
+    //console.log("search term: " + term);
+
 }
