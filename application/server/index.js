@@ -19,12 +19,12 @@ const start = async () => {
     app.use(express.static(process.env.FRONTEND_PATH));
 
     app.get("/index", (req, res) => {
-        res.sendFile(path.join(__dirname, "../about/index.html"))
+        res.sendFile(path.join(__dirname, "../frontend-html/index.html"))
     });
     
-    app.get("/about/:member", (req, res) => {
+    app.get("/frontend-html/:member", (req, res) => {
         try {
-            res.sendFile(path.join(__dirname, ("../about/" + req.params.member)));
+            res.sendFile(path.join(__dirname, ("../frontend-html/" + req.params.member)));
         }
         catch (err) {
             console.log(err);
