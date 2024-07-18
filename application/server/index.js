@@ -48,7 +48,7 @@ const start = async () => {
     });
     //This should forward any unknown pages to index once it is implemented
     app.all('/**', function (req, res) {
-        res.status(301).redirect('/about');
+        res.status(301).redirect('/index');
     });
 
     app.listen(port, () => {
