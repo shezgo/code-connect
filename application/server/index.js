@@ -34,14 +34,14 @@ const start = async () => {
 
     });
 
-//    app.get("searchUser/:searchTerm", (req, res) =>{
-//        try {
-//            res.console("we are here");
-//        }
-//        catch (err) {
-//            console.log(err);
-//        }
-//    });
+    app.get("searchUser/:searchTerm", (req, res) =>{
+        try {
+            res.console("we are here");
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
 
     app.use((err, req, res, next) => {
         if (!err.isBoom) err = boom.badImplementation(err)
