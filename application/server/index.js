@@ -18,8 +18,8 @@ const start = async () => {
     app.use(routes);
     app.use(express.static(process.env.FRONTEND_PATH));
 
-    app.get("/about", (req, res) => {
-        res.sendFile(path.join(__dirname, "../about/about_us.html"))
+    app.get("/index", (req, res) => {
+        res.sendFile(path.join(__dirname, "../about/index.html"))
     });
     
     app.get("/about/:member", (req, res) => {
@@ -32,14 +32,14 @@ const start = async () => {
 
     });
 
-    app.get("searchUser/:searchTerm", (req, res) =>{
-        try {
-            res.console("we are here");
-        }
-        catch (err) {
-            console.log(err);
-        }
-    });
+//    app.get("searchUser/:searchTerm", (req, res) =>{
+//        try {
+//            res.console("we are here");
+//        }
+//        catch (err) {
+//            console.log(err);
+//        }
+//    });
 
     app.use((err, req, res, next) => {
         if (!err.isBoom) err = boom.badImplementation(err)
