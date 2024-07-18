@@ -36,7 +36,8 @@ const start = async () => {
 
     app.get("/searchUser/:searchTerm", (req, res) =>{
         try {
-            res.console("we are here");
+            console.log("we are here");
+            res.send({ "index": { "_index": "movies", "_id": "2" } });
         }
         catch (err) {
             console.log(err);
