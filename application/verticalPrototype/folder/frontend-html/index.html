@@ -1,250 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0; /* Remove default margin */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0; /* Remove default margin */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-/* Style the header */
-.header {
-  background-color: #000000;
-  padding: 5px;
-  text-align: center;
-  font-size: 20px;
-  color: white;
-  position: relative;
-}
+        /* Style the header */
+        .header {
+            background-color: #000000;
+            padding: 5px;
+            text-align: center;
+            font-size: 20px;
+            color: white;
+            position: relative;
+        }
 
-.logo {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
+        .logo {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
 
-.header .brand {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 18px;
-}
+        .header .brand {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+        }
 
-.login-signup {
-  position: absolute;
-  top: 40px;
-  right: 10px;
-  font-size: 14px;
-}
+        .login-signup {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            font-size: 14px;
+        }
 
-.login-signup a {
-  color: white;
-  text-decoration: none;
-  margin: 0 5px;
-}
+            .login-signup a {
+                color: white;
+                text-decoration: none;
+                margin: 0 5px;
+            }
 
-.login-signup a:hover {
-  text-decoration: underline;
-}
+                .login-signup a:hover {
+                    text-decoration: underline;
+                }
 
-.search-container {
-  position: absolute;
-  top: 70px;
-  right: 10px;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
+        .search-container {
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-.search-container input[type="text"] {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 4px 0 0 4px;
-}
+            .search-container input[type="text"] {
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-right: none;
+                border-radius: 4px 0 0 4px;
+            }
 
-.search-container button {
-  padding: 5px;
-  border: 1px solid #ccc;
-  color: white;
-  cursor: pointer;
-  border-radius: 0 4px 4px 0;
-}
+            .search-container button {
+                padding: 5px;
+                border: 1px solid #ccc;
+                color: white;
+                cursor: pointer;
+                border-radius: 0 4px 4px 0;
+            }
 
-.search-container button:hover {
-  background-color: #000000;
-}
+                .search-container button:hover {
+                    background-color: #000000;
+                }
 
-/* Container for flexboxes */
-.row {
-  display: flex;
-  flex: 1; /* Ensure the row takes up available space */
-}
+        /* Container for flexboxes */
+        .row {
+            display: flex;
+            flex: 1; /* Ensure the row takes up available space */
+        }
 
-/* Create three unequal columns that sits next to each other */
-.column {
-  padding: 10px;
-}
+        /* Create three unequal columns that sits next to each other */
+        .column {
+            padding: 10px;
+        }
 
-/* Left columns stacked */
-.left-columns {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  margin-bottom: 0; /* Remove margin between columns */
-}
+        /* Left columns stacked */
+        .left-columns {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            margin-bottom: 0; /* Remove margin between columns */
+        }
 
-.column.side {
-  flex: 1;
-  height: 600px; /* Increase height for demonstration */
-}
+        .column.side {
+            flex: 1;
+            height: 600px; /* Increase height for demonstration */
+        }
 
-/* Right column takes the rest of the space */
-.column.middle {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow-y: auto;
-}
+        /* Right column takes the rest of the space */
+        .column.middle {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
 
-/* Forum posts */
-.forum-posts {
-  flex-grow: 1;
-}
+        /* Forum posts */
+        .forum-posts {
+            flex-grow: 1;
+        }
 
-.create-post {
-  padding: 10px;
-  background-color: #ddd;
-  border-top: 1px solid #ccc;
-}
+        .create-post {
+            padding: 10px;
+            background-color: #ddd;
+            border-top: 1px solid #ccc;
+        }
 
-/* Style the footer */
-footer {
-  width: 100%;
-  background-color: #000000;
-  color: white;
-  padding: 10px 0;
-  text-align: center;
-  margin-top: auto;
-}
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.media-icons {
-  margin: 10px 0;
-}
-.media-icons a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-.footer-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-.footer-nav li {
-  margin: 0 15px;
-}
-.footer-nav a {
-  color: white;
-  text-decoration: none;
-}
-.footer-nav a:hover {
-  text-decoration: underline;
-}
-.footer-bott {
-  margin-top: 10px;
-}
+        /* Style the footer */
+        footer {
+            width: 100%;
+            background-color: #000000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: auto;
+        }
 
-/* Style for links in header */
-.header a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-.header a:hover {
-  text-decoration: underline;
-}
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* Welcome box and search bar */
-.welcome-box {
-  text-align: center;
-  padding: 15px;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
-}
+        .media-icons {
+            margin: 10px 0;
+        }
 
-/* Content for left columns */
-.categories {
-  padding: 10px;
-}
-.categories h3 {
-  margin-top: 0;
-}
-.categories a {
-  display: block;
-  color: black;
-  text-decoration: none;
-  margin: 5px 0;
-}
-.categories a:hover {
-  text-decoration: underline;
-}
+            .media-icons a {
+                color: white;
+                margin: 0 10px;
+                text-decoration: none;
+            }
 
-.favorites {
-  padding: 10px;
-}
-.favorites h3 {
-  margin-top: 0;
-}
-.favorites a {
-  display: block;
-  color: black;
-  text-decoration: none;
-  margin: 5px 0;
-}
-.favorites a:hover {
-  text-decoration: underline;
-}
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .row {
-    flex-direction: column;
-  }
-  .left-columns, .column.middle {
-    width: 100%;
-  }
-  .search-container {
-    top: 100px;
-    right: 10px;
-  }
-}
-</style>
-<script>
-  function showDevelopmentAlert() {
-    alert("Still in development");
-  }
-  </script>
+        .footer-nav li {
+            margin: 0 15px;
+        }
+
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+            .footer-nav a:hover {
+                text-decoration: underline;
+            }
+
+        .footer-bott {
+            margin-top: 10px;
+        }
+
+        /* Style for links in header */
+        .header a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+            .header a:hover {
+                text-decoration: underline;
+            }
+
+        /* Welcome box and search bar */
+        .welcome-box {
+            text-align: center;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Content for left columns */
+        .categories {
+            padding: 10px;
+        }
+
+            .categories h3 {
+                margin-top: 0;
+            }
+
+            .categories a {
+                display: block;
+                color: black;
+                text-decoration: none;
+                margin: 5px 0;
+            }
+
+                .categories a:hover {
+                    text-decoration: underline;
+                }
+
+        .favorites {
+            padding: 10px;
+        }
+
+            .favorites h3 {
+                margin-top: 0;
+            }
+
+            .favorites a {
+                display: block;
+                color: black;
+                text-decoration: none;
+                margin: 5px 0;
+            }
+
+                .favorites a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media (max-width: 600px) {
+            .row {
+                flex-direction: column;
+            }
+
+            .left-columns, .column.middle {
+                width: 100%;
+            }
+
+            .search-container {
+                top: 100px;
+                right: 10px;
+            }
+        }
+    </style>
+    <script>
+        function showDevelopmentAlert() {
+            alert("Still in development");
+        }
+    </script>
+    <script src="search.js"></script>
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -255,11 +274,12 @@ footer {
   <div class="brand">CodeConnect</div>
   <div class="login-signup">
     <a href="login.html">Sign Out</a>
-  
+
   </div>
   <div class="search-container">
-    <input type="text" placeholder="Search...">
-    <button onclick="showDevelopmentAlert()"><i class="fa fa-search"></i></button>
+      <input type="text" placeholder="Search..." id="searchTerm">
+      <!--<button onclick="showDevelopmentAlert()"><i class="fa fa-search"></i></button>-->
+      <button onclick="searchUser(document.getElementById('searchTerm').value)"><i class="fa fa-search"></i></button>
   </div>
   <h2>Forums</h2>
   <a href="index.html">Home</a>
