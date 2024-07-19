@@ -1,59 +1,26 @@
-const asyncHandler = require("express-async-handler");
-const utils = require("../utils")
-const boom = require("@hapi/boom")
-const { User } = require("../db/models/index")
+const asyncHandler = require("express-asyn-handler");
+const { User } = require("../db/models/index");
+const boom = require("@hapi/boom");
+const dbConfig = require("../db/models/config");
+const { Sequelize, QueryTypes } = require('sequelize');
 
-exports.find_user_post = asyncHandler(async (req, res, next) => {
-    try {
-        const db =
-            mysql.createConnection({
-                host: 'ec2-18-144-86-237.us-west-1.compute.amazonaws.com',
-                user: 'admin',
-                password: '1234',
-                database: 'test_db',
-            });
+const sequelize = new Sequelize(
+    dbConfig.DATABASE_NAME,
+    dbConfig.DATABASE_USER,
+    dbConfig.DATABASE_PASSWORD,
+    {
+        host = DATABASE_HOST,
+        dialect = DATABASE_DIALECT,
+    },
 
-        db.connect(err => {
-            if (err) {
-                console.error('Error connecting to MySQL:', err);
-            } else {
-                console.log('Connected to MySQL');
-            }
-        });
-    }
-    catch (err) {
-        throw boom.notFound(err.message);
-    }
+);
 
-    try {
-        get('/search', (req, res) => {
-            const searchTerm = req.query.term;
-            if (!searchTerm) {
-                return res.status(400)
-                    .json(
-                        {
-                            error: 'Search term is required'
-                        }
-                    );
-            }
-
-            const query = `
-    SELECT * FROM items
-    WHERE username LIKE OR email LIKE?
-    `;
-            const searchValue = `%${searchTerm}%`;
-
-            db.query(query, [searchValue, searchValue],
-                (err, results) => {
-                    if (err) {
-                        console
-                            .error('Error executing search query:', err);
-                    }
-                    res.json(results);
-                });
-        });
-    }
-    catch (err) {
-        throw boom.notFound(err.message);
-    }
+sequelize.query('SELECT * FROM user WHERE userID LIKE %' + searchTerm + '%', {
+    type: Sequelize.QueryTypes.SELECT
+}).then(res => {
+    console.log(res);
+    return res.json();
+}).catch(error => {
+    console.error('Error with query: ' + error);
 });
+
