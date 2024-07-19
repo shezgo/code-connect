@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0; /* Remove default margin */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Style the header */
+.header {
+  background-color: #62b4c9;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.header .brand {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  font-size: 20px;
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex: 1; /* Ensure the row takes up available space */
+}
+
+/* Create three unequal columns that sits next to each other */
+.column {
+  padding: 10px;
+}
+
+/* Left columns stacked */
+.column.side {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+/* Right column takes the rest of the space */
+.column.middle {
+  flex: 2;
+  margin-bottom: 10px;
+}
+
+/* Style the footer */
+footer {
+  width: 100%;
+  background-color: #62b4c9;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: auto;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.media-icons {
+  margin: 10px 0;
+}
+.media-icons a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+.footer-nav li {
+  margin: 0 15px;
+}
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+}
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+.footer-bott {
+  margin-top: 10px;
+}
+
+/* Style for links in header */
+.header a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+.header a:hover {
+  text-decoration: underline;
+}
+
+/* Welcome box and search bar */
+.welcome-box {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.search-container input[type="text"] {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+.search-container button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #62b4c9;
+  color: white;
+  cursor: pointer;
+}
+.search-container button:hover {
+  background-color: #5393a1;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
+  <div class="brand">CodeConnect</div>
+  <h2>Header</h2>
+  <a href="page1.html">Page 1</a>
+  <a href="page2.html">Page 2</a>
+  <a href="page3.html">Page 3</a>
+  <a href="page4.html">Page 4</a>
+  <a href="page5.html">Page 5</a>
+</div>
+
+<div class="welcome-box">
+  <h2>Welcome to the Forum!</h2>
+  <div class="search-container">
+    <input type="text" placeholder="Search...">
+    <button><i class="fa fa-search"></i></button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column side" style="background-color:#aaa;">Column 1
+  <br>
+  Hello</div>
+  <div class="column side" style="background-color:#bbb;">Column 2</div>
+  <div class="column middle" style="background-color:#ccc;">Feed</div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-nav">
+      <ul>
+        <li><a href="index.html"><strong>Home</strong></a></li>
+        <li><a href="about.html"><strong>About</strong></a></li>
+        <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
+        <li><a><strong>Phone: 888-888-8888</strong></a></li>
+      </ul>
+    </div>
+    <div class="media-icons">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="footer-bott">
+      <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
