@@ -9,18 +9,20 @@ const sequelize = new Sequelize(
     dbConfig.DATABASE_USER,
     dbConfig.DATABASE_PASSWORD,
     {
-        host = DATABASE_HOST,
-        dialect = DATABASE_DIALECT,
+        host = dbConfig.DATABASE_HOST,
+        dialect = dbConfig.DATABASE_DIALECT,
     },
 
 );
 
-sequelize.query('SELECT * FROM user WHERE userID LIKE %' + searchTerm + '%', {
-    type: Sequelize.QueryTypes.SELECT
-}).then(res => {
-    console.log(res);
-    return res.json();
-}).catch(error => {
-    console.error('Error with query: ' + error);
+exports.search_user_data = asyncHandler(async (req, res) => {
+    const { searchTerm } = req.body;
+    sequelize.query('SELECT * FROM user WHERE userID LIKE %' + searchTerm + '%', {
+        type: Sequelize.QueryTypes.SELECT
+    }).then(res => {
+        console.log(res);
+        return res.json();
+    }).catch(error => {
+        console.error('Error with query: ' + error);
+    });
 });
-
