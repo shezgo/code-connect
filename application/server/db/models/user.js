@@ -27,11 +27,11 @@ User.init(
             allowNull: false,
             unique: true
         },*/
-        /*password: {
+        password: {
             field: 'password',
             type: DataTypes.STRING,
             allowNull: false
-        },*/
+        },
         salt: {
             field: 'salt',
             type: DataTypes.STRING,
@@ -57,6 +57,7 @@ User.init(
         sequelize,
         modelName: 'User',
         tableName: 'user',
+        /*
         hooks: {
             beforeCreate: async (user) => {
                 if (user.password) {
@@ -70,7 +71,7 @@ User.init(
                     user.password = await bcrypt.hash(user.password, salt);
                 }
             }
-        }
+        }*/
     }
 );
 

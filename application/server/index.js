@@ -1,11 +1,15 @@
-
-
 const express = require("express")
 const path = require("path")
 const routes = require("./routes")
-const initialize = require("./db/index.js")
+const { initialize, sequelize } = require("./db/index");
 const boom = require("@hapi/boom")
 const dotenv = require('dotenv');
+
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require("express-session");
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const loginController = require('./controllers/loginController');
 
 dotenv.config()
 
@@ -16,7 +20,29 @@ const start = async () => {
     await initialize();
 
     const app = express();
+
+    // Session store configuration
+    const store = new SequelizeStore({
+        db: sequelize,
+    });
+
+    // Session middleware configuration
+    app.use(session({
+        secret: process.env.SESSION_SECRET, // Use a secure secret
+        store: store,
+        resave: false,
+        saveUninitialized: false,
+        cookie: { maxAge: 3600000 } // 1 hour
+    }));
+
+    // Sync the session store
+    store.sync();
+
     app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+    app.use(cookieParser());
+
+    // Ensure session middleware is applied before the routes
     app.use(routes);
     app.use(express.static(process.env.FRONTEND_PATH));
 

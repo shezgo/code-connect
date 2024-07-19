@@ -1,14 +1,19 @@
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
+    host: "smtp.gmail.com",
+    port: 465,
+    debug: true,
     secure: true, 
     auth: {
-        user: process.env.SMTP_USERNAME,
-        pass: process.env.SMTP_PASSWORD
-    }
+        user: "codeconnectemail@gmail.com",
+        pass: "ivjq csmb advi fnel"
+    },
+
 });
+
+console.log("Transporter Configuration:");
+console.log(transporter.options);
 
 exports.send_email = (to_email, subject, text)=>{
     const mailConfigurations = {
