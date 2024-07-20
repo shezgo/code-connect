@@ -2,7 +2,7 @@ const {DataTypes,Model} = require('sequelize');
 
 const sequelize = require("../config.js");
 
-//import for 
+//import for reference
 const {User}=require('./user.js')
 
 class Post extends Model {}
@@ -15,10 +15,10 @@ Post.init(
             autoIncrement:true,
         },userID: { 
             type: DataTypes.INTEGER, 
-            // references: { 
-            //     model: User, 
-            //     key: 'userID' 
-            // }
+            references: { 
+                model: User, 
+                key: 'userID' 
+            }
         },content:{
             type:DataTypes.STRING(512),
         },codeBlock:{
@@ -38,5 +38,6 @@ Post.init(
         tableName: 'post',
     }
 );
+
 
 module.exports = Post;

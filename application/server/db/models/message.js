@@ -2,7 +2,7 @@ const {DataTypes,Model} = require('sequelize');
 
 const sequelize = require("../config.js");
 
-//import for 
+//import for reference
 const {User}=require('./user.js')
 
 class Message extends Model {}
@@ -16,10 +16,10 @@ Message.init(
             autoIncrement: true
         },userID: { 
             type: DataTypes.INTEGER, 
-            // references: { 
-            //     model: User, 
-            //     key: 'userID' 
-            // }
+            references: { 
+                model: User, 
+                key: 'userID' 
+            }
         },date:{
             type:DataTypes.DATE,
         },title:{
