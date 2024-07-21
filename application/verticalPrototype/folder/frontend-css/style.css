@@ -11,18 +11,46 @@
   
   /* Body Layout */
   body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0; /* Remove default margin */
     display: flex;
     flex-direction: column;
-    background-color: #f0f0f0;
+    min-height: 100vh;
+  }
+
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .header .brand {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 20px;
   }
   
   /* Header Styles */
   .header {
-    background-color: #000000;
-    padding: 20px;
+    background-color: #62b4c9;
+    padding: 10px;
     text-align: center;
-    font-size: 35px;
+    font-size: 25px;
     color: white;
+    position: relative;
+  }
+
+  .header a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  .header a:hover {
+    text-decoration: underline;
   }
   
   /* Flexbox Container */
@@ -48,7 +76,7 @@
     width: 100%;
     background-color: #62b4c9;
     color: white;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
     margin-top: auto;
   }
@@ -111,4 +139,25 @@
     padding: 0; 
     
     cursor: pointer; 
+  }
+
+  .mail-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .icon-button {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .icon-button:hover {
+    color: #007bff;
+  }
+
+  .profile-icon {
+    width: 20px;
+    height: 20px;
   }
