@@ -9,23 +9,33 @@ class Message extends Model {}
 
 Message.init(
     {
-        meetingID : {
-            field: 'meetingID',
+        messageID : {
+            field: 'messageID',
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrementv: true
         },userID: { 
+            field: 'userID',
             type: DataTypes.INTEGER, 
             references: { 
                 model: User, 
                 key: 'userID' 
             }
+        },sendingUser:{
+            field: 'sendingUser',
+            type:DataTypes.STRING,
+        },recivingUser:{
+            field: 'recivingUser',
+            type:DataTypes.STRING,
+        },time:{
+            field: 'time',
+            type:DataTypes.TIME,
         },date:{
+            field: 'date',
             type:DataTypes.DATE,
-        },title:{
-            type:DataTypes.STRING(256),
-        },invitees:{
-            type:DataTypes.JSON,
+        },content:{
+            field:'content',
+            type:DataTypes.STRING,
         }
     },
     {

@@ -2,6 +2,7 @@
 module.exports = {
     User:require("./user.js"),
     Post:require("./post.js"),
-    Message:require("./message.js")
+    Message:require("./message.js"),
+    Inbox:require("./inbox.js"),
 }
 

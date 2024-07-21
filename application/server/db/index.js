@@ -6,19 +6,22 @@ const UserModel = require('./models/user');
 console.log("UserModel:", UserModel);
 
 const PostModel = require('./models/post'); 
+UserModel.hasMany(PostModel, { foreignKey: 'userID' });
+PostModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("PostModel:", PostModel);
 
-//relation 
-const User=require('./models/user.js')
-const Post=require('./models/post.js')
-const Message=require('./models/message.js')
+const MessageModel = require('./models/message'); 
+UserModel.hasMany(MessageModel, { foreignKey: 'userID' });
+MessageModel.belongsTo(UserModel, { foreignKey: 'userID' });
+console.log("MessageModel:", MessageModel);
 
-Post.belongsTo(User, { foreignKey: 'userID' });
-User.hasMany(Post, { foreignKey: 'userID' });
+const InboxModel = require('./models/inbox'); 
+UserModel.hasOne(InboxModel, { foreignKey: 'userID' });
+InboxModel.belongsTo(UserModel, { foreignKey: 'userID' });
+console.log("InboxModel:", InboxModel);
 
-Message.belongsTo(User, { foreignKey: 'userID' });
-User.hasMany(Message, { foreignKey: 'userID' });
-// 
+
+//
 
 const db = {};
 
@@ -32,7 +35,11 @@ const initialize = async () => {
 
         db.Post = await new PostModel(sequelize, DataTypes);
         
-      
+        db.Message = await new MessageModel(sequelize, DataTypes);
+
+        db.Inbox = await new InboxModel(sequelize, DataTypes);
+
+
       //Add any additional models here as needed
       // IE db.AnotherModel = require('./anothermodel')(sequelize, DataTypes);
 

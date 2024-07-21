@@ -10,24 +10,31 @@ class Post extends Model {}
 Post.init(
     {
         postID:{
+            field: 'postID',
             type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement:true,
         },userID: { 
+            field: 'userID',
             type: DataTypes.INTEGER, 
             references: { 
                 model: User, 
                 key: 'userID' 
             }
         },content:{
+            field: 'content',
             type:DataTypes.STRING(512),
         },codeBlock:{
+            field: 'codeBlock',
             type:DataTypes.STRING(512),
         },date:{
+            field: 'date',
             type:DataTypes.DATEONLY,
         },time:{
+            field: 'time',
             type:DataTypes.TIME,
         },likes:{
+            field: 'likes',
             type:DataTypes.BOOLEAN,
         }
     },
