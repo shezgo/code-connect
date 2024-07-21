@@ -23,5 +23,7 @@ module.exports = {
     Rank:require("./rank.js"),
     JobList:require("./jobList.js"),
     Trophy:require("./trophy.js"),
+    UserPayment:require("./userPayment.js"),
+    PaymentInfo:require("./paymentInfo.js"),
 }
 

@@ -89,6 +89,13 @@ UserModel.hasMany(TrophyModel, { foreignKey: 'userID' });
 TrophyModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("TrophyModel:", TrophyModel);
 
+const UserPaymentModel = require('./models/userPayment.js');
+console.log("UserPaymentModel:", UserPaymentModel);
+
+const PaymentInfoModel = require('./models/paymentInfo'); 
+UserModel.belongsToMany(PaymentInfoModel, { through:UserPaymentModel,foreignKey: 'userID' });
+PaymentInfoModel.belongsToMany(UserModel, { through:UserPaymentModel,foreignKey: 'paymentID'});
+console.log("PaymentInfoModel:", PaymentInfoModel);
 //
 
 const db = {};
@@ -136,6 +143,10 @@ const initialize = async () => {
         db.JobList = await new JobListModel(sequelize, DataTypes);
 
         db.Trophy = await new TrophyModel(sequelize, DataTypes);
+
+        db.UserPayment = await new UserPaymentModel(sequelize, DataTypes);
+
+        db.PaymentInfo = await new PaymentInfoModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
