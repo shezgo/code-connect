@@ -20,12 +20,15 @@ UserModel.hasOne(InboxModel, { foreignKey: 'userID' });
 InboxModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("InboxModel:", InboxModel);
 
-
 const MessageThreadModel = require('./models/messageThread'); 
 MessageModel.hasOne(MessageThreadModel, { foreignKey: 'messageID' });
 MessageThreadModel.belongsTo(MessageModel, { foreignKey: 'messageID' });
-console.log("InboxModel:", InboxModel);
+console.log("MessageThreadModel:", MessageThreadModel);
 
+const ProfileModel = require('./models/profile'); 
+UserModel.hasOne(ProfileModel, { foreignKey: 'userID' });
+ProfileModel.belongsTo(UserModel, { foreignKey: 'userID' });
+console.log("ProfileModel:", ProfileModel);
 //
 
 const db = {};
@@ -44,6 +47,9 @@ const initialize = async () => {
 
         db.Inbox = await new InboxModel(sequelize, DataTypes);
 
+        db.MessageThread = await new MessageThreadModel(sequelize, DataTypes);
+
+        db.Profile = await new ProfileModel(sequelize, DataTypes);
 
       //Add any additional models here as needed
       // IE db.AnotherModel = require('./anothermodel')(sequelize, DataTypes);

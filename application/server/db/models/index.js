@@ -5,5 +5,6 @@ module.exports = {
     Message:require("./message.js"),
     Inbox:require("./inbox.js"),
     MessageThread:require("./messageThread.js"),
+    Profile:require("./profile.js"),
 }
 
