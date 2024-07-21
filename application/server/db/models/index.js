@@ -4,5 +4,6 @@ module.exports = {
     Post:require("./post.js"),
     Message:require("./message.js"),
     Inbox:require("./inbox.js"),
+    MessageThread:require("./messageThread.js"),
 }
 

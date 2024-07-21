@@ -9,7 +9,7 @@ class Message extends Model {}
 
 Message.init(
     {
-        messageID : {
+        messageID: {
             field: 'messageID',
             type: DataTypes.INTEGER,
             primaryKey: true,

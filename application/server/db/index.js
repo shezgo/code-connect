@@ -21,6 +21,11 @@ InboxModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("InboxModel:", InboxModel);
 
 
+const MessageThreadModel = require('./models/messageThread'); 
+MessageModel.hasOne(MessageThreadModel, { foreignKey: 'messageID' });
+MessageThreadModel.belongsTo(MessageModel, { foreignKey: 'messageID' });
+console.log("InboxModel:", InboxModel);
+
 //
 
 const db = {};
