@@ -39,6 +39,11 @@ const PortfolioModel = require('./models/portfolio');
 UserModel.hasOne(PortfolioModel, { foreignKey: 'userID' });
 PortfolioModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("PortfolioModel:", PortfolioModel);
+
+const ProjectModel = require('./models/project'); 
+PortfolioModel.hasMany(ProjectModel, { foreignKey: 'portfolioID' });
+ProjectModel.belongsTo(PortfolioModel, { foreignKey: 'portfolioID' });
+console.log("ProjectModel:", ProjectModel);
 //
 
 const db = {};
@@ -65,6 +70,10 @@ const initialize = async () => {
 
         db.Portfolio = await new PortfolioModel(sequelize, DataTypes);
 
+        db.Project= await new ProjectModel(sequelize, DataTypes);
+
+        const modelCount = Object.keys(db).length;
+        console.log(`Number of models added: ${modelCount}`);
       //Add any additional models here as needed
       // IE db.AnotherModel = require('./anothermodel')(sequelize, DataTypes);
 

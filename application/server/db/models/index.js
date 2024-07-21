@@ -8,5 +8,6 @@ module.exports = {
     Profile:require("./profile.js"),
     ExternalLinks:require("./externalLinks.js"),
     Portfolio:require("./portfolio.js"),
+    Project:require("./project.js"),
 }
 
