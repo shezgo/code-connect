@@ -30,11 +30,15 @@ UserModel.hasOne(ProfileModel, { foreignKey: 'userID' });
 ProfileModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("ProfileModel:", ProfileModel);
 
-
 const ExternalLinksModel = require('./models/externalLinks'); 
 ProfileModel.hasOne(ExternalLinksModel, { foreignKey: 'profileID' });
 ExternalLinksModel.belongsTo(ProfileModel, { foreignKey: 'profileID' });
 console.log("ExternalLinksModel:", ExternalLinksModel);
+
+const PortfolioModel = require('./models/portfolio'); 
+UserModel.hasOne(PortfolioModel, { foreignKey: 'userID' });
+PortfolioModel.belongsTo(UserModel, { foreignKey: 'userID' });
+console.log("PortfolioModel:", PortfolioModel);
 //
 
 const db = {};
@@ -57,7 +61,9 @@ const initialize = async () => {
 
         db.Profile = await new ProfileModel(sequelize, DataTypes);
 
-        db.ExternalLinks= await new ExternalLinksModel(sequelize, DataTypes);
+        db.ExternalLinks = await new ExternalLinksModel(sequelize, DataTypes);
+
+        db.Portfolio = await new PortfolioModel(sequelize, DataTypes);
 
       //Add any additional models here as needed
       // IE db.AnotherModel = require('./anothermodel')(sequelize, DataTypes);

@@ -7,5 +7,6 @@ module.exports = {
     MessageThread:require("./messageThread.js"),
     Profile:require("./profile.js"),
     ExternalLinks:require("./externalLinks.js"),
+    Portfolio:require("./portfolio.js"),
 }
 
