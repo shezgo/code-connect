@@ -43,7 +43,6 @@ console.log("ProjectModel:", ProjectModel);
 const PostModel = require('./models/post'); 
 UserModel.hasMany(PostModel, { foreignKey: 'userID' });
 PostModel.belongsTo(UserModel, { foreignKey: 'userID' });
-
 console.log("PostModel:", PostModel);
 
 const ForumThreadModel = require('./models/forumThread'); 
@@ -56,7 +55,8 @@ ForumModel.hasMany(ForumThreadModel, { foreignKey: 'forumID' });
 ForumThreadModel.belongsTo(ForumModel, { foreignKey: 'forumID' });
 console.log("ForumModel:", ForumModel);
 
-
+const CodeChallengeModel = require('./models/codeChallenge'); 
+console.log("ForumModel:", CodeChallengeModel);
 //
 
 const db = {};
@@ -89,6 +89,9 @@ const initialize = async () => {
         
         db.ForumModel = await new ForumModel(sequelize, DataTypes);
 
+        db.CodeChallengeModel = await new ForumModel(sequelize, DataTypes);
+
+        
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
       //Add any additional models here as needed

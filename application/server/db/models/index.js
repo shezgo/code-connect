@@ -1,3 +1,4 @@
+const CodeChallenge = require("./codeChallenge .js");
 const ForumThread = require("./forumThread.js");
 
 //Should we delete this file and keep all models in server/db/index.js?
@@ -13,5 +14,6 @@ module.exports = {
     Post:require("./post.js"),
     ForumThread:require("./forumThread.js"),
     Forum:require("./forum.js"),
+    CodeChallenge:require("./codeChallenge.js"),
 }
 
