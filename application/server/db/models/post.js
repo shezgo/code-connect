@@ -5,6 +5,8 @@ const sequelize = require("../config.js");
 //import for reference
 const {User}=require('./user.js')
 
+const {ForumThread}=require('./forumThread.js')
+
 class Post extends Model {}
 
 Post.init(
@@ -24,6 +26,9 @@ Post.init(
         },content:{
             field: 'content',
             type:DataTypes.STRING(512),
+        },comments:{
+            field: 'comments',
+            type:DataTypes.STRING(512),
         },codeBlock:{
             field: 'codeBlock',
             type:DataTypes.STRING(512),
@@ -36,6 +41,13 @@ Post.init(
         },likes:{
             field: 'likes',
             type:DataTypes.BOOLEAN,
+        },threadID: { 
+            field: 'threadID',
+            type: DataTypes.INTEGER, 
+            references: { 
+                model: ForumThread, 
+                key: 'threadID' 
+            }
         }
     },
     {

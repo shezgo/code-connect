@@ -5,11 +5,6 @@ const sequelize = require("./config.js")
 const UserModel = require('./models/user'); 
 console.log("UserModel:", UserModel);
 
-const PostModel = require('./models/post'); 
-UserModel.hasMany(PostModel, { foreignKey: 'userID' });
-PostModel.belongsTo(UserModel, { foreignKey: 'userID' });
-console.log("PostModel:", PostModel);
-
 const MessageModel = require('./models/message'); 
 UserModel.hasMany(MessageModel, { foreignKey: 'userID' });
 MessageModel.belongsTo(UserModel, { foreignKey: 'userID' });
@@ -44,6 +39,22 @@ const ProjectModel = require('./models/project');
 PortfolioModel.hasMany(ProjectModel, { foreignKey: 'portfolioID' });
 ProjectModel.belongsTo(PortfolioModel, { foreignKey: 'portfolioID' });
 console.log("ProjectModel:", ProjectModel);
+
+const PostModel = require('./models/post'); 
+UserModel.hasMany(PostModel, { foreignKey: 'userID' });
+PostModel.belongsTo(UserModel, { foreignKey: 'userID' });
+
+console.log("PostModel:", PostModel);
+
+const ForumThreadModel = require('./models/forumThread'); 
+ForumThreadModel.hasMany(PostModel, { foreignKey: 'threadID' });
+PostModel.belongsTo(ForumThreadModel, { foreignKey: 'threadID' });
+console.log("ForumThreadModel:", ForumThreadModel);
+
+const ForumModel = require('./models/forum'); 
+console.log("ForumModel:", ForumModel);
+
+
 //
 
 const db = {};
@@ -55,8 +66,6 @@ const initialize = async () => {
 
       //Define your models here
         db.User = await new UserModel(sequelize, DataTypes);
-
-        db.Post = await new PostModel(sequelize, DataTypes);
         
         db.Message = await new MessageModel(sequelize, DataTypes);
 
@@ -70,7 +79,13 @@ const initialize = async () => {
 
         db.Portfolio = await new PortfolioModel(sequelize, DataTypes);
 
-        db.Project= await new ProjectModel(sequelize, DataTypes);
+        db.Project = await new ProjectModel(sequelize, DataTypes);
+        
+        db.Post = await new PostModel(sequelize, DataTypes);
+
+        db.ForumThread = await new ForumThreadModel(sequelize, DataTypes);
+        
+        db.ForumModel = await new ForumModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
