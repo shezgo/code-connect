@@ -14,7 +14,10 @@ module.exports = {
     Post:require("./post.js"),
     ForumThread:require("./forumThread.js"),
     Forum:require("./forum.js"),
-    userChallenge:require("./userChallenge.js"),
+    UserChallenge:require("./userChallenge.js"),
     CodeChallenge:require("./codeChallenge.js"),
+    UserNotification:require("./userNotification.js"),
+    // Rank:require("./rank.js"),
+    Ranks:require("./ranks.js"),
 }
 

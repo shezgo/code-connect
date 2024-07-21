@@ -61,7 +61,23 @@ console.log("UserChallengeModel:", UserChallengeModel);
 const CodeChallengeModel = require('./models/codeChallenge'); 
 UserModel.belongsToMany(CodeChallengeModel, { through:UserChallengeModel,foreignKey: 'userID' });
 CodeChallengeModel.belongsToMany(UserModel, { through:UserChallengeModel,foreignKey: 'challengeID' });
-console.log("ForumModel:", CodeChallengeModel);
+console.log("CodeChallengeModel:", CodeChallengeModel);
+
+const UserNotificationModel = require('./models/userNotification'); 
+console.log("UserNotificationModel:", UserNotificationModel);
+
+const NotificationModel = require('./models/notification'); 
+UserModel.belongsToMany(NotificationModel, { through:UserNotificationModel,foreignKey: 'userID' });
+NotificationModel.belongsToMany(UserModel, { through:UserNotificationModel,foreignKey: 'notificationID' });
+console.log("notificationModel:", NotificationModel);
+
+const RanksModel = require('./models/ranks'); 
+console.log("RanksModel:", RanksModel);
+
+
+
+// const RankModel = require('./models/rank'); 
+// console.log("RankModel:", RankModel);
 
 //
 
@@ -97,7 +113,11 @@ const initialize = async () => {
 
         db.UserChallenge = await new UserChallengeModel(sequelize, DataTypes);
 
-        db.CodeChallengeModel = await new ForumModel(sequelize, DataTypes);
+        db.CodeChallenge = await new CodeChallengeModel(sequelize, DataTypes);
+
+        db.UserNotification = await new UserNotificationModel(sequelize, DataTypes);
+
+        db.Notification = await new NotificationModel(sequelize, DataTypes);
 
         
         const modelCount = Object.keys(db).length;
