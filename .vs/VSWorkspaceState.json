@@ -3,14 +3,13 @@
     "",
     "\\application",
     "\\application\\server",
-    "\\application\\server\\db",
-    "\\application\\server\\db\\High_level_database_architecture",
+    "\\application\\server\\controllers",
     "\\application\\server\\routes",
     "\\application\\server\\routes\\api",
     "\\application\\server\\utils",
     "\\application\\verticalPrototype",
     "\\application\\verticalPrototype\\folder"
   ],
-  "SelectedNode": "\\application\\server\\routes\\api\\index.js",
+  "SelectedNode": "\\application\\server\\controllers\\signupController.js",
   "PreviewInSolutionExplorer": false
 }
