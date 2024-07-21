@@ -12,8 +12,8 @@ Forum.init(
             primaryKey:true,
             autoIncrement:true,
         },threadTitle:{
-            field: 'originalPoster',
-            type:DataTypes.STRING, 
+            field: 'threadTitle',
+            type:DataTypes.STRING,
         },date:{
             field: 'date',
             type:DataTypes.DATEONLY,
@@ -24,8 +24,8 @@ Forum.init(
             field: 'access',
             type:DataTypes.STRING(512),//List of members who have access
         },threads:{
-            field: 'threadTitle',
-            type:DataTypes.STRING,
+            field: 'threads',
+            type:DataTypes.STRING,//Array of ForumThread objects
         }
     },
     {

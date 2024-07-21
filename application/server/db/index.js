@@ -52,6 +52,8 @@ PostModel.belongsTo(ForumThreadModel, { foreignKey: 'threadID' });
 console.log("ForumThreadModel:", ForumThreadModel);
 
 const ForumModel = require('./models/forum'); 
+ForumModel.hasMany(ForumThreadModel, { foreignKey: 'forumID' });
+ForumThreadModel.belongsTo(ForumModel, { foreignKey: 'forumID' });
 console.log("ForumModel:", ForumModel);
 
 

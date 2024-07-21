@@ -2,6 +2,8 @@ const {DataTypes,Model} = require('sequelize');
 
 const sequelize = require("../config.js");
 
+const {Forum}=require('./forum.js')
+
 class ForumThread extends Model {}
 
 ForumThread.init(
@@ -26,6 +28,13 @@ ForumThread.init(
         },time:{
             field: 'time',
             type:DataTypes.TIME,
+        },forumID: { 
+            field: 'forumID',
+            type: DataTypes.INTEGER, 
+            references: { 
+                model: Forum, 
+                key: 'forumID' 
+            }
         }
     },
     {
