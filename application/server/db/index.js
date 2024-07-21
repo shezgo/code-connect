@@ -74,10 +74,10 @@ console.log("notificationModel:", NotificationModel);
 const RanksModel = require('./models/ranks'); 
 console.log("RanksModel:", RanksModel);
 
-
-
-// const RankModel = require('./models/rank'); 
-// console.log("RankModel:", RankModel);
+const RankModel = require('./models/rank'); 
+RanksModel.hasMany(RankModel, { foreignKey: 'ranksID' });
+RankModel.belongsTo(RanksModel, { foreignKey: 'ranksID' });
+console.log("RankModel:", RankModel);
 
 //
 
@@ -118,6 +118,10 @@ const initialize = async () => {
         db.UserNotification = await new UserNotificationModel(sequelize, DataTypes);
 
         db.Notification = await new NotificationModel(sequelize, DataTypes);
+
+        db.Ranks = await new RanksModel(sequelize, DataTypes);
+
+        db.Rank = await new RankModel(sequelize, DataTypes);
 
         
         const modelCount = Object.keys(db).length;

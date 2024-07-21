@@ -17,7 +17,8 @@ module.exports = {
     UserChallenge:require("./userChallenge.js"),
     CodeChallenge:require("./codeChallenge.js"),
     UserNotification:require("./userNotification.js"),
-    // Rank:require("./rank.js"),
     Ranks:require("./ranks.js"),
+    Rank:require("./rank.js"),
+
 }
 

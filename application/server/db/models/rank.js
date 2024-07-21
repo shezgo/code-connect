@@ -2,6 +2,8 @@ const {DataTypes,Model} = require('sequelize');
 
 const sequelize = require("../config.js");
 
+const {Ranks}=require('./ranks.js')
+
 class Rank extends Model {}
 
 Rank.init(

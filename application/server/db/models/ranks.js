@@ -11,8 +11,8 @@ Ranks.init(
             type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement:true,
-        },Collection :{
-            field: 'Collection',
+        },collection :{
+            field: 'collection',
             type:DataTypes.STRING,
         },checkRequirements :{
             field: 'checkRequirements',
