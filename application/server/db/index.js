@@ -83,6 +83,12 @@ const JobListModel = require('./models/jobList');
 UserModel.hasMany(JobListModel, { foreignKey: 'userID' });
 JobListModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("JobListModel:", JobListModel);
+
+const TrophyModel = require('./models/trophy'); 
+UserModel.hasMany(TrophyModel, { foreignKey: 'userID' });
+TrophyModel.belongsTo(UserModel, { foreignKey: 'userID' });
+console.log("TrophyModel:", TrophyModel);
+
 //
 
 const db = {};
@@ -128,6 +134,8 @@ const initialize = async () => {
         db.Rank = await new RankModel(sequelize, DataTypes);
 
         db.JobList = await new JobListModel(sequelize, DataTypes);
+
+        db.Trophy = await new TrophyModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);

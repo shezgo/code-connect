@@ -1,6 +1,7 @@
 const CodeChallenge = require("./codeChallenge .js");
 const ForumThread = require("./forumThread.js");
 const JobList = require("./jobList.js");
+const Trophy = require("./trophy.js");
 
 //Should we delete this file and keep all models in server/db/index.js?
 module.exports = {
@@ -21,6 +22,6 @@ module.exports = {
     Ranks:require("./ranks.js"),
     Rank:require("./rank.js"),
     JobList:require("./jobList.js"),
-
+    Trophy:require("./trophy.js"),
 }
 
