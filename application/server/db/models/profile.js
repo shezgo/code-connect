@@ -37,13 +37,6 @@ Profile.init(
             //     model: User, 
             //     key: 'userID' 
             // }
-        },extLinksID:{
-            field: 'extLinksID',
-            type: DataTypes.INTEGER, 
-            // references: { 
-            //     model: User, 
-            //     key: 'userID' 
-            // }
         }
     },
     {

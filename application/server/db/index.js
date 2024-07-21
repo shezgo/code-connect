@@ -29,6 +29,12 @@ const ProfileModel = require('./models/profile');
 UserModel.hasOne(ProfileModel, { foreignKey: 'userID' });
 ProfileModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("ProfileModel:", ProfileModel);
+
+
+const ExternalLinksModel = require('./models/externalLinks'); 
+ProfileModel.hasOne(ExternalLinksModel, { foreignKey: 'profileID' });
+ExternalLinksModel.belongsTo(ProfileModel, { foreignKey: 'profileID' });
+console.log("ExternalLinksModel:", ExternalLinksModel);
 //
 
 const db = {};
@@ -50,6 +56,8 @@ const initialize = async () => {
         db.MessageThread = await new MessageThreadModel(sequelize, DataTypes);
 
         db.Profile = await new ProfileModel(sequelize, DataTypes);
+
+        db.ExternalLinks= await new ExternalLinksModel(sequelize, DataTypes);
 
       //Add any additional models here as needed
       // IE db.AnotherModel = require('./anothermodel')(sequelize, DataTypes);
