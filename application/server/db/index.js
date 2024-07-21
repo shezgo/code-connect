@@ -55,8 +55,14 @@ ForumModel.hasMany(ForumThreadModel, { foreignKey: 'forumID' });
 ForumThreadModel.belongsTo(ForumModel, { foreignKey: 'forumID' });
 console.log("ForumModel:", ForumModel);
 
+const UserChallengeModel = require('./models/userChallenge'); 
+console.log("UserChallengeModel:", UserChallengeModel);
+
 const CodeChallengeModel = require('./models/codeChallenge'); 
+UserModel.belongsToMany(CodeChallengeModel, { through:UserChallengeModel,foreignKey: 'userID' });
+CodeChallengeModel.belongsToMany(UserModel, { through:UserChallengeModel,foreignKey: 'challengeID' });
 console.log("ForumModel:", CodeChallengeModel);
+
 //
 
 const db = {};
@@ -88,6 +94,8 @@ const initialize = async () => {
         db.ForumThread = await new ForumThreadModel(sequelize, DataTypes);
         
         db.ForumModel = await new ForumModel(sequelize, DataTypes);
+
+        db.UserChallenge = await new UserChallengeModel(sequelize, DataTypes);
 
         db.CodeChallengeModel = await new ForumModel(sequelize, DataTypes);
 

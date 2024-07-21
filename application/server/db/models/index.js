@@ -14,6 +14,7 @@ module.exports = {
     Post:require("./post.js"),
     ForumThread:require("./forumThread.js"),
     Forum:require("./forum.js"),
+    userChallenge:require("./userChallenge.js"),
     CodeChallenge:require("./codeChallenge.js"),
 }
 
