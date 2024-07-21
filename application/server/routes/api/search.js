@@ -3,6 +3,6 @@ const search_controller = require("../../controllers/searchController");
 const router = express.Router();
 const { sequelize } = require("../../db/index");
 
-router.post("/search", search_controller.search_user_data);
+router.get("/:searchTerm", search_controller.search_user_data);
 
 module.exports = router;

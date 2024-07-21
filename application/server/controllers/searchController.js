@@ -4,23 +4,24 @@ const boom = require("@hapi/boom");
 const dbConfig = require("../db/config");
 const { Sequelize, QueryTypes } = require('sequelize');
 
+console.log("LINE 8: ", dbConfig);
 const sequelize = new Sequelize(
-    database = dbConfig.DATABASE_NAME,
-    user = dbConfig.DATABASE_USER,
-    password = dbConfig.DATABASE_PASSWORD,
+    database = dbConfig.config.database,
+    user = dbConfig.config.username,
+    password = dbConfig.config.password,
     {
-        host : dbConfig.DATABASE_HOST,
-       //dialect : dbConfig.DATABASE_DIALECT,
-        dialect: "mysql"
+       host : dbConfig.config.host,
+       //dialect : dbConfig.config.dialect
+       dialect: "mysql"
     },
-
 );
 
+
 exports.search_user_data = asyncHandler(async (req, res) => {
-    const { searchTerm } = req.body;
-    console.log(req);
+    const searchTerm = req.params.searchTerm;
+    console.log(searchTerm);
     try {
-        const results = await sequelize.query('SELECT * FROM user WHERE userID LIKE :searchTerm', {
+        const results = await sequelize.query('SELECT userID FROM user WHERE email LIKE :searchTerm', {
             replacements: { searchTerm: `%${searchTerm}%` },
             type: QueryTypes.SELECT
         });

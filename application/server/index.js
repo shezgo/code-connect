@@ -60,7 +60,7 @@ const start = async () => {
 
     });
 
-    app.get("/searchUser/:searchTerm", (req, res) =>{
+ /*   app.get("/searchUser/:searchTerm", (req, res) =>{
         try {
             console.log("we are here");
             res.send({ "index": { "_index": "movies", "_id": "2" } });
@@ -69,7 +69,7 @@ const start = async () => {
             console.log(err);
         }
     });
-
+*/
     app.use((err, req, res, next) => {
         if (!err.isBoom) err = boom.badImplementation(err)
         if (err.isServer) console.log(err)
