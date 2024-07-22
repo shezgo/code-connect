@@ -89,6 +89,11 @@ UserModel.hasMany(TrophyModel, { foreignKey: 'userID' });
 TrophyModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("TrophyModel:", TrophyModel);
 
+const SpecificTrophyModel = require('./models/specificTrophy'); 
+TrophyModel.hasMany(SpecificTrophyModel, { foreignKey: 'trophyID' ,sourceKey:"trophyID"});
+SpecificTrophyModel.belongsTo(TrophyModel, { foreignKey: 'trophyID',targetKey:"trophyID" });
+console.log("SpecificTrophyModel:", SpecificTrophyModel);
+
 const UserPaymentModel = require('./models/userPayment.js');
 console.log("UserPaymentModel:", UserPaymentModel);
 
@@ -221,6 +226,8 @@ const initialize = async () => {
         db.JobList = await new JobListModel(sequelize, DataTypes);
 
         db.Trophy = await new TrophyModel(sequelize, DataTypes);
+
+        db.SpecificTrophy= await new SpecificTrophyModel(sequelize, DataTypes);
 
         db.UserPayment = await new UserPaymentModel(sequelize, DataTypes);
 

@@ -1,3 +1,4 @@
+const SpecificTrophy = require("./specificTrophy.js");
 const UserChatSession = require("./userChatSession.js");
 
 //Should we delete this file and keep all models in server/db/index.js?
@@ -20,6 +21,7 @@ module.exports = {
     Rank:require("./rank.js"),
     JobList:require("./jobList.js"),
     Trophy:require("./trophy.js"),
+    SpecificTrophy:require("./specificTrophy.js"),
     UserPayment:require("./userPayment.js"),
     PaymentInfo:require("./paymentInfo.js"),
     PremiumUser:require("./premiumUser.js"),
