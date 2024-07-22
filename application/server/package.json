@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "sync": "node ./bin/syncDatabase.js"
+    "sync": "node ./bin/syncDatabase.js",
+    "seed": "node ./bin/seed.js"
   },
   "author": "",
   "license": "ISC",
