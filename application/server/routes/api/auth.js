@@ -76,6 +76,7 @@ router.get("/verify/:token", signup_controller.verify_email_get);
 router.post("/verify/:email", signup_controller.verify_email_post);
 router.post("/signup", signup_controller.signup_user_post);
 router.post('/login', login_controller.login_user_post);
+router.post('/logout', login_controller.logout_user_post);
 
 // Protected routes tests
  router.get('/protected-route', authMiddleware, (req, res) => {

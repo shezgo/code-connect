@@ -53,6 +53,23 @@ exports.login_user_post = asyncHandler(async (req, res, next) => {
     }
 });
 
+// Logout user and clear the session and token
+exports.logout_user_post = asyncHandler(async (req, res, next) => {
+    // Clear the session data
+    req.session.destroy(err => {
+        if (err) {
+            return next(boom.badImplementation("Failed to destroy session"));
+        }
+        console.log("from logout_user_post");
+        // Clear the authentication token cookie
+        res.clearCookie('token');
+
+        // Respond to the client indicating the user has been logged out
+        res.json({ message: "Logout successful" });
+    });
+});
+
+
 
 //Send password reset email containing reset token. Passing this token and new password
 //into reset_password_post successfully changes the password.
