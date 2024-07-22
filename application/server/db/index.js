@@ -96,6 +96,12 @@ const PaymentInfoModel = require('./models/paymentInfo');
 UserModel.belongsToMany(PaymentInfoModel, { through:UserPaymentModel,foreignKey: 'userID' });
 PaymentInfoModel.belongsToMany(UserModel, { through:UserPaymentModel,foreignKey: 'paymentID'});
 console.log("PaymentInfoModel:", PaymentInfoModel);
+
+const PremiumUserModel = require('./models/premiumUser'); 
+UserModel.hasOne(PremiumUserModel, { foreignKey: 'userID' ,sourceKey:"userID"});
+PremiumUserModel.belongsTo(UserModel, { foreignKey: 'userID',targetKey:"userID" });
+console.log("PremiumUserModel:", PremiumUserModel);
+
 //
 
 const db = {};
@@ -148,6 +154,8 @@ const initialize = async () => {
 
         db.PaymentInfo = await new PaymentInfoModel(sequelize, DataTypes);
 
+        db.PremiumUser = await new PremiumUserModel(sequelize, DataTypes);
+        
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
       //Add any additional models here as needed
