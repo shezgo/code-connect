@@ -161,6 +161,12 @@ const ChatSessionModel = require('./models/chatSession.js');
 UserModel.hasOne(ChatSessionModel, { foreignKey: 'userID'});
 ChatSessionModel.belongsTo(UserModel, { foreignKey: 'userID'});
 console.log("ChatSessionModel:", ChatSessionModel);
+
+const LeaderboardModel = require('./models/leaderboard.js'); 
+UserModel.hasMany(LeaderboardModel, { foreignKey: 'userID'});
+LeaderboardModel.belongsTo(UserModel, { foreignKey: 'userID'});
+console.log("LeaderboardModel:", LeaderboardModel);
+
 //
 
 const db = {};
@@ -236,6 +242,8 @@ const initialize = async () => {
         db.ChallengeSub = await new ChallengeSubModel(sequelize, DataTypes);
 
         db.ChatSession = await new ChatSessionModel(sequelize, DataTypes);
+
+        db.leaderboard = await new LeaderboardModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);

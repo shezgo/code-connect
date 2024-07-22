@@ -32,5 +32,7 @@ module.exports = {
     Chatbot:require("./chatbot.js"),
     CodeChallenge:require("./codeChallenge.js"),
     ChatSession:require("./chatSession.js"),
+    Leaderboard:require("./leaderboard.js"),
+
 }
 
