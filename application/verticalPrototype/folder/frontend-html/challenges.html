@@ -1,31 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Challenges</title>
+    <title>Home</title>
     <meta charset="utf-8" />
     <link
       rel="stylesheet"
-      href="G:\Downloads\CSC648\csc648-848-05-sw-engineering-su24-T1\application\verticalPrototype\folder\frontend-css\style.css"
+      text="style\css"
+      href="application\verticalPrototype\folder\frontend-css\style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 0; /* Remove default margin */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f0f0f0;
+      * {
+        box-sizing: border-box;
       }
 
-      h1 {
-        font-size: 40px;
-        color: #333;
+      /* Create three unequal columns that sits next to each other */
+      .column {
+        padding: 10px;
+      }
+
+      /* Left columns stacked */
+      .column.side {
+        flex: 1;
+        margin-bottom: 10px;
+      }
+
+      /* Right column takes the rest of the space */
+      .column.middle {
+        flex: 2;
+        margin-bottom: 10px;
+      }
+
+      /* Style the footer */
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-icons {
+        margin: 10px 0;
+      }
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      /* Welcome box and search bar */
+      .welcome-box {
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background-color: #575757;
+      }
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .big-button {
+        display: inline-block;
+        padding: 20px 40px;
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+        border-radius: 8px;
+        transition: background-color 0.3s;
+      }
+
+      .big-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+      @media (max-width: 600px) {
+        .row {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>COMING SOON!</h1>
+    <div class="header">
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
+      <div class="brand">CodeConnect</div>
+      <h2>Challenges</h2>
+      <a href="challenges.html">Challenges</a>
+      <a href="mentors.html">Mentors</a>
+      <a href="forum.html">Forums</a>
+      <a href="store.html">Store</a>
+      <a href="premium.html">Premium</a>
+      <a href="explore.html">Explore</a>
+      <a href="inbox.html" class="icon-button">
+        <svg
+          class="mail-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16v16H4z" />
+          <path d="M4 4l8 8 8-8" />
+        </svg>
+      </a>
+
+      <a href="profile.html" class="icon-button">
+        <svg
+          class="profile-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+          />
+        </svg>
+      </a>
+
+      <button class="icon-button" onclick="openSidebar()">Friends</button>
+
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+          >&times;</a
+        >
+        <a href="profile.html">Friend 1</a>
+        <a href="profile.html">Friend 2</a>
+        <a href="profile.html">Friend 3</a>
+        <a href="profile.html">Friend 4</a>
+        <a href="profile.html">Friend 5</a>
+      </div>
+    </div>
+    <script>
+      function openSidebar() {
+        document.getElementById("mySidebar").style.width = "250px";
+      }
+
+      function closeSidebar() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
+
+    <div class="button-container">
+      <a href="java_best_practices.html" class="big-button"
+        >Java Best Practice</a
+      >
+      <a href="javascript.html" class="big-button">JavaScript</a>
+      <a href="java.html" class="big-button">Java</a>
+      <a href="cpp.html" class="big-button">C++</a>
+      <a href="optimize_sql.html" class="big-button">Optimize SQL</a>
+      <a href="react_getting_started.html" class="big-button"
+        >React Getting Started</a
+      >
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-nav">
+          <ul>
+            <li>
+              <a href="index.html"><strong>Home</strong></a>
+            </li>
+            <li>
+              <a href="about.html"><strong>About</strong></a>
+            </li>
+            <li>
+              <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
+            </li>
+            <li>
+              <a><strong>Phone: 888-888-8888</strong></a>
+            </li>
+          </ul>
+        </div>
+        <div class="media-icons">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-bott">
+          <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

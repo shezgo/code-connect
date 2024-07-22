@@ -5,7 +5,8 @@
     <meta charset="utf-8" />
     <link
       rel="stylesheet"
-      href="G:\Downloads\CSC648\csc648-848-05-sw-engineering-su24-T1\application\verticalPrototype\folder\frontend-css\style.css"
+      text="style\css"
+      href="application\verticalPrototype\folder\frontend-css\style.css"
     />
     <link
       rel="stylesheet"
@@ -56,6 +57,14 @@
         background-color: #f0f0f0;
         border-bottom: 1px solid #ccc;
       }
+      #search-bar {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
       .search-container {
         display: flex;
         justify-content: center;
@@ -76,6 +85,34 @@
       }
       .search-container button:hover {
         background-color: #5393a1;
+      }
+
+      .suggestions {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        background: #fff;
+        display: none;
+        z-index: 1000;
+      }
+
+      .suggestions a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .suggestions a:hover {
+        background: #f0f0f0;
+      }
+
+      .suggestions a:last-child {
+        border-bottom: none;
       }
 
       .sidebar {
@@ -118,7 +155,9 @@
   </head>
   <body>
     <div class="header">
-      <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
       <div class="brand">CodeConnect</div>
       <h2>Explore</h2>
       <a href="challenges.html">Challenges</a>
@@ -173,9 +212,54 @@
         <a href="profile.html">Friend 5</a>
       </div>
       <div class="search-container">
-        <input type="text" placeholder="Search..." />
-        <button><i class="fa fa-search"></i></button>
+        <input type="text" id="search-bar" placeholder="Search..." />
+        <div id="suggestions" class="suggestions"></div>
       </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const searchBar = document.getElementById("search-bar");
+          const suggestions = document.getElementById("suggestions");
+
+          const pages = [
+            { name: "Home", url: "homepage.html" },
+            { name: "About", url: "about.html" },
+            { name: "Inbox", url: "inbox.html" },
+            { name: "Mentors", url: "mentors.html" },
+            { name: "Premium", url: "premium.html" },
+            { name: "Store", url: "store.html" },
+            { name: "Challenges", url: "challenges.html" },
+            { name: "Forum", url: "forum.html" },
+            { name: "Profile", url: "profile.html" },
+          ];
+
+          searchBar.addEventListener("input", () => {
+            const input = searchBar.value.toLowerCase();
+            suggestions.innerHTML = "";
+
+            if (input) {
+              const filteredPages = pages.filter((page) =>
+                page.name.toLowerCase().includes(input)
+              );
+              filteredPages.forEach((page) => {
+                const suggestionItem = document.createElement("a");
+                suggestionItem.href = page.url;
+                suggestionItem.textContent = page.name;
+                suggestions.appendChild(suggestionItem);
+              });
+              suggestions.style.display = "block";
+            } else {
+              suggestions.style.display = "none";
+            }
+          });
+
+          document.addEventListener("click", (event) => {
+            if (!event.target.closest(".search-container")) {
+              suggestions.style.display = "none";
+            }
+          });
+        });
+      </script>
     </div>
     <script>
       function openSidebar() {
@@ -186,23 +270,6 @@
         document.getElementById("mySidebar").style.width = "0";
       }
     </script>
-
-    <div class="welcome-box">
-      <h2>Welcome to Code Connect!</h2>
-    </div>
-
-    <div class="row">
-      <div class="column side" style="background-color: #aaa">
-        Job Listings
-        <br />
-      </div>
-      <div class="column side" style="background-color: #bbb">
-        Want to chat?
-      </div>
-      <div class="column middle" style="background-color: #ccc">
-        General Chat
-      </div>
-    </div>
 
     <footer>
       <div class="footer-container">
