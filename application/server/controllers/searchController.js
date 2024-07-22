@@ -32,7 +32,7 @@ exports.search_user_data = asyncHandler(async (req, res) => {
         //});
 
         //Return all users. change the key fields if you need more data
-        const [results] = await sequelize.query('SELECT userID, email FROM user');
+        const [results] = await sequelize.query('SELECT userID, email FROM user LIMIT 10');
 
         //extract just the emails and make a map of them
         const users = results.map(results => ({
