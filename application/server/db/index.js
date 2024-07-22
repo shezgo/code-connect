@@ -112,6 +112,10 @@ PremiumUserModel.hasOne(MentorUserModel, { foreignKey: 'userID' ,sourceKey:"user
 MentorUserModel.belongsTo(PremiumUserModel, { foreignKey: 'userID',targetKey:"userID" });
 console.log("MentorUserModel:", MentorUserModel);
 
+const FeedbackModel = require('./models/feedback'); 
+MentorUserModel.hasMany(FeedbackModel, { foreignKey: 'userID' });
+FeedbackModel.belongsTo(MentorUserModel, { foreignKey: 'userID' });
+console.log("FeedbackModel:", FeedbackModel);
 //
 
 const db = {};
@@ -170,7 +174,7 @@ const initialize = async () => {
 
         db.MentorUser = await new MentorUserModel(sequelize, DataTypes);
 
-        // db.MentorUserModel = await new MentorUserModel(sequelize, DataTypes);
+        db.Feedback = await new FeedbackModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);

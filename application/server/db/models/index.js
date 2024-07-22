@@ -1,3 +1,4 @@
+const Feedback = require("./feedback.js");
 const MentorUser = require("./mentorUser.js");
 const UserHiring = require("./userHiring.js");
 
@@ -26,5 +27,6 @@ module.exports = {
     PremiumUser:require("./premiumUser.js"),
     UserHiring:require("./userHiring.js"),
     MentorUser:require("./mentorUser.js"),
+    Feedback:require("./feedback.js"),
 }
 
