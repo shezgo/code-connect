@@ -30,5 +30,6 @@ module.exports = {
     UserMentorGroup:require("./userMentorGroup.js"),
     Groups:require("./groups.js"),
     Chatbot:require("./chatbot.js"),
+    CodeChallenge:require("./codeChallenge.js"),
 }
 
