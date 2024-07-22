@@ -129,14 +129,26 @@ const UserMentorGroupModel = require('./models/userMentorGroup.js');
 console.log("UserMentorGroupModel:", UserMentorGroupModel);
 
 const MentorGroupModel = require('./models/mentorGroup.js'); 
-GroupModel.hasOne(MentorGroupModel, { foreignKey: 'groupID' ,sourceKey:"groupID"});
-MentorGroupModel.belongsTo(GroupModel, { foreignKey: 'groupID',targetKey:"groupID"});
+GroupModel.hasOne(MentorGroupModel, { foreignKey: 'groupID' ,sourceKey:"groupID"});//extend
+MentorGroupModel.belongsTo(GroupModel, { foreignKey: 'groupID',targetKey:"groupID"});//group
+
 MentorUserModel.belongsToMany(MentorGroupModel, { through:UserMentorGroupModel,foreignKey: 'userID' });
 MentorGroupModel.belongsToMany(MentorUserModel, { through:UserMentorGroupModel,foreignKey: 'groupID'});
 console.log("MentorGroupModel:", MentorGroupModel);
 
 const GroupsModel = require('./models/groups.js');
+GroupsModel.hasMany(GroupModel, { foreignKey: 'groupsID' });
+GroupModel.belongsTo(GroupsModel, { foreignKey: 'groupsID' });
+
+GroupsModel.hasMany(MentorGroupModel, { foreignKey: 'groupsID' });
+MentorGroupModel.belongsTo(GroupsModel, { foreignKey: 'groupsID' });
 console.log("GroupsModel:", GroupsModel);
+
+const ChatbotModel = require('./models/chatbot.js'); 
+UserHiringModel.hasOne(ChatbotModel, { foreignKey: 'userID'});
+ChatbotModel.belongsTo(UserHiringModel, { foreignKey: 'userID'});
+console.log("ChatbotModel:", ChatbotModel);
+
 //
 
 const db = {};
@@ -206,6 +218,8 @@ const initialize = async () => {
         db.MentorGroup= await new MentorGroupModel(sequelize, DataTypes);
 
         db.Groups= await new GroupsModel(sequelize, DataTypes);
+
+        db.Chatbot= await new ChatbotModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);

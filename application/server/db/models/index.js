@@ -29,5 +29,6 @@ module.exports = {
     MentorGroup:require("./mentorGroup.js"),
     UserMentorGroup:require("./userMentorGroup.js"),
     Groups:require("./groups.js"),
+    Chatbot:require("./chatbot.js"),
 }
 

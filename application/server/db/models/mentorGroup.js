@@ -5,6 +5,8 @@ const sequelize = require("../config.js");
 //import for reference
 const Group=require('./group.js')
 
+const Groups=require('./groups.js')
+
 class MentorGroup extends Group {}
 
 MentorGroup.init(
@@ -22,6 +24,13 @@ MentorGroup.init(
         },mentorMembers:{
             field: 'mentorMembers',
             type:DataTypes.STRING,//Array of User 
+        },groupsID: { 
+            field: 'groupsID',
+            type: DataTypes.INTEGER, 
+            references: { 
+                model: Groups, 
+                key: 'groupsID' 
+            }
         }
     },
     {
