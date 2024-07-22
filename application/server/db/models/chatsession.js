@@ -1,42 +1,42 @@
-// const {DataTypes,Model} = require('sequelize');
+const {DataTypes,Model} = require('sequelize');
 
-// const sequelize = require("../config.js");
+const sequelize = require("../config.js");
 
-// //import for reference
-// const {User}=require('./user.js')
+//import for reference
+const {User}=require('./user.js')
 
-// class Message extends Model {}
+class ChatSession extends Model {}
 
-// Message.init(
-//     {
-//         meetingID : {
-//             field: 'mett',
-//             type: DataTypes.INTEGER,
-//             primaryKey: true,
-//             autoIncrementv: true
-//         },userID: { 
-//             type: DataTypes.INTEGER, 
-//             references: { 
-//                 model: User, 
-//                 key: 'userID' 
-//             }
-//         },date:{
-//             field: 'mett',
-//             type:DataTypes.DATE,
-//         },title:{
-//             field: 'mett',
-//             type:DataTypes.STRING(256),
-//         },invitees:{
-//             field: 'mett',
-//             type:DataTypes.JSON,
-//         }
-//     },
-//     {
-//         sequelize,
-//         timestamps:false,
-//         modelName: 'Message',
-//         tableName: 'message',
-//     }
-// );
+ChatSession.init(
+    {
+        chatSessionID : {
+            field: 'chatSessionID',
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrementv: true
+        },userID: {  //from user who posted
+            type: DataTypes.INTEGER, 
+            references: { 
+                model: User, 
+                key: 'userID' 
+            }
+        },date:{
+            field: 'date',
+            type:DataTypes.DATE,
+        },title:{
+            field: 'title',
+            type:DataTypes.STRING,
+        },invitees:{
+            field: 'invitees',
+            type:DataTypes.JSON,
+        }
+    },
+    {
+        sequelize,
+        timestamps:false,
+        modelName: 'ChatSession',
+        tableName: 'chatSession',
+    }
+);
 
-// module.exports = Message;
+module.exports = ChatSession;

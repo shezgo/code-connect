@@ -156,6 +156,11 @@ ChallengeSubModel.belongsTo(UserModel, { foreignKey: 'userID'});
 CodeChallengeModel.hasMany(ChallengeSubModel, { foreignKey: 'challengeID'});
 ChallengeSubModel.belongsTo(CodeChallengeModel, { foreignKey: 'challengeID'});
 console.log("ChallengeSubModel:", ChallengeSubModel);
+
+const ChatSessionModel = require('./models/chatSession.js'); 
+UserModel.hasOne(ChatSessionModel, { foreignKey: 'userID'});
+ChatSessionModel.belongsTo(UserModel, { foreignKey: 'userID'});
+console.log("ChatSessionModel:", ChatSessionModel);
 //
 
 const db = {};
@@ -229,6 +234,8 @@ const initialize = async () => {
         db.Chatbot= await new ChatbotModel(sequelize, DataTypes);
 
         db.ChallengeSub = await new ChallengeSubModel(sequelize, DataTypes);
+
+        db.ChatSession = await new ChatSessionModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
