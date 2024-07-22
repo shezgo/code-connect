@@ -135,7 +135,8 @@ MentorUserModel.belongsToMany(MentorGroupModel, { through:UserMentorGroupModel,f
 MentorGroupModel.belongsToMany(MentorUserModel, { through:UserMentorGroupModel,foreignKey: 'groupID'});
 console.log("MentorGroupModel:", MentorGroupModel);
 
-
+const GroupsModel = require('./models/groups.js');
+console.log("GroupsModel:", GroupsModel);
 //
 
 const db = {};
@@ -203,6 +204,8 @@ const initialize = async () => {
         db.UserMentorGroup= await new UserMentorGroupModel(sequelize, DataTypes);
 
         db.MentorGroup= await new MentorGroupModel(sequelize, DataTypes);
+
+        db.Groups= await new GroupsModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
