@@ -102,6 +102,11 @@ UserModel.hasOne(PremiumUserModel, { foreignKey: 'userID' ,sourceKey:"userID"});
 PremiumUserModel.belongsTo(UserModel, { foreignKey: 'userID',targetKey:"userID" });
 console.log("PremiumUserModel:", PremiumUserModel);
 
+const userHiringModel = require('./models/userHiring'); 
+UserModel.hasOne(userHiringModel, { foreignKey: 'userID' ,sourceKey:"userID"});
+userHiringModel.belongsTo(UserModel, { foreignKey: 'userID',targetKey:"userID" });
+console.log("userHiringModel:", userHiringModel);
+
 //
 
 const db = {};
@@ -155,7 +160,9 @@ const initialize = async () => {
         db.PaymentInfo = await new PaymentInfoModel(sequelize, DataTypes);
 
         db.PremiumUser = await new PremiumUserModel(sequelize, DataTypes);
-        
+
+        db.userHiring = await new userHiringModel(sequelize, DataTypes);
+
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
       //Add any additional models here as needed

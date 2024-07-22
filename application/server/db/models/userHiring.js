@@ -1,13 +1,13 @@
- const {DataTypes} = require('sequelize');
+const {DataTypes} = require('sequelize');
 
 const sequelize = require("../config.js");
 
 //import for reference
 const User=require('./user.js')
 
-class PremiumUser extends User {}
+class UserHiring extends User {}
 
-PremiumUser.init(
+UserHiring.init(
     {
         userID:{
             field: 'userID',
@@ -19,15 +19,21 @@ PremiumUser.init(
                 model: User, 
                 key: 'userID' 
             }
+        },company:{
+            field: 'company',
+            type:DataTypes.STRING,
+        },position:{
+            field: 'position',
+            type:DataTypes.STRING,
         }
     },
     {
         sequelize,
         timestamps:false,
-        modelName: 'PremiumUser',
-        tableName: 'premiumUser',
+        modelName: 'UserHiring',
+        tableName: 'userHiring',
     }
 );
 
 
-module.exports = PremiumUser;
+module.exports = UserHiring;
