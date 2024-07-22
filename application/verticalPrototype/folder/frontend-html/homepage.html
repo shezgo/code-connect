@@ -18,6 +18,17 @@
         box-sizing: border-box;
       }
 
+      .section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .section .text {
+        flex: 1;
+        padding: 20px;
+      }
+
       /* Create three unequal columns that sits next to each other */
       .column {
         padding: 10px;
@@ -109,6 +120,16 @@
         margin-left: 50px;
       }
 
+      .paragraph {
+        font-family: "Open Sans", sans-serif;
+        font-size: 30px;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 20px; /* Space below the paragraph */
+        padding: 10px; /* Space inside the paragraph borders */
+        border: 1px solid #ddd;
+      }
+
       /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
       @media (max-width: 600px) {
         .row {
@@ -124,6 +145,7 @@
       </a>
       <div class="brand">CodeConnect</div>
       <h2>Home Page</h2>
+      <a href="homepage.html">Home</a>
       <a href="challenges.html">Challenges</a>
       <a href="mentors.html">Mentors</a>
       <a href="forum.html">Forums</a>
@@ -190,17 +212,17 @@
       <h2>Welcome to Code Connect!</h2>
     </div>
 
-    <div class="row">
-      <div class="column side" style="background-color: #aaa">
-        Job Listings
-        <br />
-      </div>
-      <div class="column side" style="background-color: #bbb">
-        Want to chat?
-      </div>
-      <div class="column middle" style="background-color: #ccc">
-        General Chat
-      </div>
+    <div class="paragraph">
+      <p>
+        This is Code Connect, a premier social media app for coders. Code
+        Connect creates a learning environment for people of all experince
+        levels and brings a community together through experience. Here, you can
+        create forum posts about your favorite topics, attempt coding challenges
+        daily, make friends, workshop, gain a mentor or provide mentorship, and
+        more!
+      </p>
+      <br />
+      <p>See what Code Connect has in store for you today!</p>
     </div>
 
     <footer>
