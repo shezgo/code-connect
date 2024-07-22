@@ -1,5 +1,6 @@
 const SpecificTrophy = require("./specificTrophy.js");
 const SubmissionShare = require("./submissionShare.js");
+const SupportForm = require("./supportForm.js");
 const UserChatSession = require("./userChatSession.js");
 
 //Should we delete this file and keep all models in server/db/index.js?
@@ -39,6 +40,7 @@ module.exports = {
     ChatSession:require("./chatSession.js"),
     UserChatSession:require("./userChatSession.js"),
     Leaderboard:require("./leaderboard.js"),
-    SubmissionShare:require('./submissionShare.js')
+    SubmissionShare:require('./submissionShare.js'),
+    SupportForm:require('./supportForm.js')
 }
 

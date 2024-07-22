@@ -182,6 +182,17 @@ const SubmissionShareModel = require('./models/submissionShare.js');
 UserModel.hasMany(SubmissionShareModel, { foreignKey: 'userID' });
 SubmissionShareModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("SubmissionShareModel:", SubmissionShareModel);
+
+const SupportFormModel = require('./models/supportForm.js'); 
+
+UserModel.hasMany(SupportFormModel, { foreignKey: 'from_userID' });
+SupportFormModel.belongsTo(UserModel, { foreignKey: 'from_userID' });
+
+UserHiringModel.hasMany(SupportFormModel, { foreignKey: 'to_userID' });
+SupportFormModel.belongsTo(UserHiringModel, { foreignKey: 'to_userID' });
+
+console.log("SupportFormModel:", SupportFormModel);
+
 //
 
 const db = {};
@@ -265,6 +276,8 @@ const initialize = async () => {
         db.leaderboard = await new LeaderboardModel(sequelize, DataTypes);
 
         db.SubmissionShare = await new SubmissionShareModel(sequelize, DataTypes);
+
+        db.SupportForm = await new SupportFormModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
