@@ -77,6 +77,9 @@ console.log("RanksModel:", RanksModel);
 const RankModel = require('./models/rank'); 
 RanksModel.hasMany(RankModel, { foreignKey: 'ranksID' });
 RankModel.belongsTo(RanksModel, { foreignKey: 'ranksID' });
+
+RankModel.hasMany(UserModel, { foreignKey: 'rankID' });
+UserModel.belongsTo(RankModel, { foreignKey: 'rankID' });
 console.log("RankModel:", RankModel);
 
 const JobListModel = require('./models/jobList'); 
