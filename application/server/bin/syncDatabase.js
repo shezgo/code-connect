@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const { initialize } = require("../db/index.js");
 
+
 const sync_database = async ()=>{
 
     try {
