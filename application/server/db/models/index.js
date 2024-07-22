@@ -1,7 +1,3 @@
-const Feedback = require("./feedback.js");
-const MentorUser = require("./mentorUser.js");
-const UserHiring = require("./userHiring.js");
-
 //Should we delete this file and keep all models in server/db/index.js?
 module.exports = {
     User:require("./user.js"),
@@ -28,5 +24,7 @@ module.exports = {
     UserHiring:require("./userHiring.js"),
     MentorUser:require("./mentorUser.js"),
     Feedback:require("./feedback.js"),
+    Group:require("./group.js"),
+    UserGroup:require("./userGroup.js"),
 }
 

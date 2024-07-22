@@ -116,6 +116,14 @@ const FeedbackModel = require('./models/feedback');
 MentorUserModel.hasMany(FeedbackModel, { foreignKey: 'userID' });
 FeedbackModel.belongsTo(MentorUserModel, { foreignKey: 'userID' });
 console.log("FeedbackModel:", FeedbackModel);
+
+const UserGroupModel = require('./models/userGroup.js');
+console.log("UserPaymentModel:", UserGroupModel);
+
+const GroupModel = require('./models/group.js'); 
+UserModel.belongsToMany(GroupModel, { through:UserGroupModel,foreignKey: 'userID' });
+GroupModel.belongsToMany(UserModel, { through:UserGroupModel,foreignKey: 'groupID'});
+console.log("GroupModel:", GroupModel);
 //
 
 const db = {};
@@ -175,6 +183,10 @@ const initialize = async () => {
         db.MentorUser = await new MentorUserModel(sequelize, DataTypes);
 
         db.Feedback = await new FeedbackModel(sequelize, DataTypes);
+        
+        db.UserGroup= await new UserGroupModel(sequelize, DataTypes);
+        
+        db.Group= await new GroupModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
