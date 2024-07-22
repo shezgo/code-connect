@@ -27,6 +27,6 @@ module.exports = {
     Group:require("./group.js"),
     UserGroup:require("./userGroup.js"),
     MentorGroup:require("./mentorGroup.js"),
-    // UserMentorGroup:require("./userMentorGroup.js"),
+    UserMentorGroup:require("./userMentorGroup.js"),
 }
 
