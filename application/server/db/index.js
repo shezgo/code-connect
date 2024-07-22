@@ -158,14 +158,21 @@ ChallengeSubModel.belongsTo(CodeChallengeModel, { foreignKey: 'challengeID'});
 console.log("ChallengeSubModel:", ChallengeSubModel);
 
 const ChatSessionModel = require('./models/chatSession.js'); 
-UserModel.hasOne(ChatSessionModel, { foreignKey: 'userID'});
+UserModel.hasMany(ChatSessionModel, { foreignKey: 'userID'});
 ChatSessionModel.belongsTo(UserModel, { foreignKey: 'userID'});
 console.log("ChatSessionModel:", ChatSessionModel);
+
+const UserChatSessionModel = require('./models/userChatSession.js');
+UserModel.belongsToMany(ChatSessionModel, { through:UserChatSessionModel,foreignKey: 'userID' });
+ChatSessionModel.belongsToMany(UserModel, { through:UserChatSessionModel,foreignKey: 'chatSessionID'});
+console.log("UserChatSessionModel:", UserChatSessionModel);
+
 
 const LeaderboardModel = require('./models/leaderboard.js'); 
 UserModel.hasMany(LeaderboardModel, { foreignKey: 'userID'});
 LeaderboardModel.belongsTo(UserModel, { foreignKey: 'userID'});
 console.log("LeaderboardModel:", LeaderboardModel);
+
 
 //
 
@@ -242,6 +249,8 @@ const initialize = async () => {
         db.ChallengeSub = await new ChallengeSubModel(sequelize, DataTypes);
 
         db.ChatSession = await new ChatSessionModel(sequelize, DataTypes);
+
+        db.UserChatSession = await new UserChatSessionModel(sequelize, DataTypes);
 
         db.leaderboard = await new LeaderboardModel(sequelize, DataTypes);
 

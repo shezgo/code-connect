@@ -1,3 +1,5 @@
+const UserChatSession = require("./userChatSession.js");
+
 //Should we delete this file and keep all models in server/db/index.js?
 module.exports = {
     User:require("./user.js"),
@@ -32,7 +34,7 @@ module.exports = {
     Chatbot:require("./chatbot.js"),
     CodeChallenge:require("./codeChallenge.js"),
     ChatSession:require("./chatSession.js"),
+    UserChatSession:require("./userChatSession.js"),
     Leaderboard:require("./leaderboard.js"),
-
 }
 
