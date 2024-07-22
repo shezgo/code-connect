@@ -26,5 +26,7 @@ module.exports = {
     Feedback:require("./feedback.js"),
     Group:require("./group.js"),
     UserGroup:require("./userGroup.js"),
+    MentorGroup:require("./mentorGroup.js"),
+    // UserMentorGroup:require("./userMentorGroup.js"),
 }
 

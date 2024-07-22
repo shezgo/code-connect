@@ -124,6 +124,18 @@ const GroupModel = require('./models/group.js');
 UserModel.belongsToMany(GroupModel, { through:UserGroupModel,foreignKey: 'userID' });
 GroupModel.belongsToMany(UserModel, { through:UserGroupModel,foreignKey: 'groupID'});
 console.log("GroupModel:", GroupModel);
+
+// const UserMentorGroupModel = require('./models/userMentorGroup.js');
+// console.log("UserMentorGroupModel:", UserMentorGroupModel);
+
+const MentorGroupModel = require('./models/mentorGroup.js'); 
+GroupModel.hasOne(MentorGroupModel, { foreignKey: 'groupID' ,sourceKey:"groupID"});
+MentorGroupModel.belongsTo(GroupModel, { foreignKey: 'groupID',targetKey:"groupID"});
+// MentorUserModel.belongsToMany(MentorGroupModel, { through:UserMentorGroupModel,foreignKey: 'userID' });
+// MentorGroupModel.belongsToMany(MentorUserModel, { through:UserMentorGroupModel,foreignKey: 'groupID'});
+console.log("MentorGroupModel:", MentorGroupModel);
+
+
 //
 
 const db = {};
@@ -187,6 +199,8 @@ const initialize = async () => {
         db.UserGroup= await new UserGroupModel(sequelize, DataTypes);
         
         db.Group= await new GroupModel(sequelize, DataTypes);
+
+        db.MentorGroup= await new MentorGroupModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);

@@ -6,8 +6,8 @@ class Group extends Model {}
 
 Group.init(
     {
-        groupsID:{
-            field: 'groupsID',
+        groupID:{
+            field: 'groupID',
             type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement:true,
