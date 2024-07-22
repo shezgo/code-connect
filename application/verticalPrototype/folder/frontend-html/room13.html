@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Storefront</title>
+<title>Room 1 - CodeConnect</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -88,54 +88,36 @@ body {
   background-color: #000000;
 }
 
-/* Storefront content */
-.storefront {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #f0f0f0;
-  flex: 1;
-}
-
-.membership-section {
+/* Container for flexboxes */
+.row {
   display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-}
-
-.membership {
-  width: 45%;
-}
-
-.membership h2 {
-  margin-top: 0;
-  font-size: 28px;
-}
-
-.membership p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.membership .button {
-  background-color: #000000;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 18px;
-  display: inline-block;
+  flex: 1; /* Ensure the row takes up available space */
+  justify-content: space-around; /* Center the boxes */
+  align-items: flex-start;
   margin-top: 20px;
 }
 
-.membership .button:hover {
-  background-color: #333333;
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+/* Middle column is slightly larger */
+.column.middle {
+  flex: 1.5;
+}
+
+/* Room link container */
+.room-link-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-radius: 5px;
 }
 
 /* Style the footer */
@@ -191,19 +173,17 @@ footer {
   text-decoration: underline;
 }
 
-/* Responsive layout - makes the storefront content stack properly on small screens */
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+  .column, .column.middle {
+    width: 100%;
+  }
   .search-container {
     top: 100px;
     right: 10px;
-  }
-  .membership-section {
-    flex-direction: column;
-    align-items: center;
-  }
-  .membership {
-    width: 100%;
-    margin-bottom: 20px;
   }
 }
 </style>
@@ -227,29 +207,19 @@ footer {
     <input type="text" placeholder="Search...">
     <button onclick="showDevelopmentAlert()"><i class="fa fa-search"></i></button>
   </div>
-  <h2>Memberships</h2>
+  <h2>Room 13</h2>
   <a href="index.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
   <a href="index.html">Forums</a>
-  <a href="store.html">Memberships</a>
+  <a href="store.html">Store</a>
   <a href="premium.html">Premium</a>
   <a href="interview.html">Interview Help</a>
 </div>
 
-<div class="storefront">
-  <div class="membership-section">
-    <div class="membership">
-      <h2>Free Membership</h2>
-      <p>Join our community with a free membership to access basic features, including forums, basic challenges, and mentor connections. Start networking and growing your skills today without any cost.</p>
-      <a href="signup.html" class="button">Join for Free</a>
-    </div>
-    <div class="membership">
-      <h2>Premium Membership</h2>
-      <p>Upgrade to our Premium Service to unlock exclusive features that enhance your networking experience. Enjoy priority support, additional tools, and special access to premium groups and sessions.</p>
-      <a href="premium.html" class="button">Upgrade Now</a>
-    </div>
-  </div>
+<div class="room-link-container">
+  <h3>Join the session</h3>
+  <p><a href="https://sfsu.zoom.us/j/7654131246?pwd=WEJZcnlyVXFScEtPUEZHNXNrZ3luZz09">Click here to join the Zoom meeting</a></p>
 </div>
 
 <footer>

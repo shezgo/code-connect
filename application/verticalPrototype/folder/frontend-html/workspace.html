@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Storefront</title>
+<title>Workspace</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -88,54 +88,75 @@ body {
   background-color: #000000;
 }
 
-/* Storefront content */
-.storefront {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #f0f0f0;
-  flex: 1;
-}
-
-.membership-section {
+/* Container for flexboxes */
+.row {
   display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-}
-
-.membership {
-  width: 45%;
-}
-
-.membership h2 {
-  margin-top: 0;
-  font-size: 28px;
-}
-
-.membership p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.membership .button {
-  background-color: #000000;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 18px;
-  display: inline-block;
+  flex: 1; /* Ensure the row takes up available space */
+  justify-content: space-around; /* Center the boxes */
+  align-items: flex-start;
   margin-top: 20px;
 }
 
-.membership .button:hover {
-  background-color: #333333;
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+/* Middle column is slightly larger */
+.column.middle {
+  flex: 1.5;
+}
+
+/* Network message */
+.network-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+/* Session sections */
+.session-section {
+  margin: 0 10px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+/* Room boxes */
+.room-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.room-box {
+  background-color: #ccc;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+}
+
+.room-box:hover {
+  background-color: #bbb;
+}
+
+/* Create your own workspace section */
+.create-workspace {
+  margin: 0 10px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 /* Style the footer */
@@ -191,19 +212,17 @@ footer {
   text-decoration: underline;
 }
 
-/* Responsive layout - makes the storefront content stack properly on small screens */
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+  .column, .column.middle {
+    width: 100%;
+  }
   .search-container {
     top: 100px;
     right: 10px;
-  }
-  .membership-section {
-    flex-direction: column;
-    align-items: center;
-  }
-  .membership {
-    width: 100%;
-    margin-bottom: 20px;
   }
 }
 </style>
@@ -227,29 +246,70 @@ footer {
     <input type="text" placeholder="Search...">
     <button onclick="showDevelopmentAlert()"><i class="fa fa-search"></i></button>
   </div>
-  <h2>Memberships</h2>
+  <h2>Workspace</h2>
   <a href="index.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
   <a href="index.html">Forums</a>
-  <a href="store.html">Memberships</a>
+  <a href="store.html">Store</a>
   <a href="premium.html">Premium</a>
   <a href="interview.html">Interview Help</a>
 </div>
 
-<div class="storefront">
-  <div class="membership-section">
-    <div class="membership">
-      <h2>Free Membership</h2>
-      <p>Join our community with a free membership to access basic features, including forums, basic challenges, and mentor connections. Start networking and growing your skills today without any cost.</p>
-      <a href="signup.html" class="button">Join for Free</a>
-    </div>
-    <div class="membership">
-      <h2>Premium Membership</h2>
-      <p>Upgrade to our Premium Service to unlock exclusive features that enhance your networking experience. Enjoy priority support, additional tools, and special access to premium groups and sessions.</p>
-      <a href="premium.html" class="button">Upgrade Now</a>
-    </div>
+<div class="network-message">
+  <h2>Network with others!</h2>
+</div>
+
+<div class="row">
+  <div class="column">
+    <h3>How it works!</h3>
+    <p>Here at CodeConnect, we offer the ability to talk to your peers and meet new people that are interested in the subjects you like! Click a room now</p>
   </div>
+  <div class="column middle">
+    <h3>Find a group!</h3>
+    <p>Trying to figure out where you would fit in? This is the perfect place for you! CodeConnects focus is to make everyone feel safe and comfortable to talk to new people. We heavily push the issue of collaborating and networking with others so we can all achieve our goals. Join a session now and meet your new peers! </p>
+  </div>
+  <div class="column">
+    <h3>Join a session based on what you like!</h3>
+    <p>We offer a variety amount of different workspaces for specific fields, listed below we have three different categories that are specified based on what we offer.</p>
+  </div>
+</div>
+
+<div class="session-section">
+  <h2>Programming Language Help!</h2>
+  <div class="room-boxes">
+    <div class="room-box" onclick="location.href='room1.html'">Room 1</div>
+    <div class="room-box" onclick="location.href='room2.html'">Room 2</div>
+    <div class="room-box" onclick="location.href='room3.html'">Room 3</div>
+    <div class="room-box" onclick="location.href='room4.html'">Room 4</div>
+    <div class="room-box" onclick="location.href='room5.html'">Room 5</div>
+  </div>
+</div>
+
+<div class="session-section">
+  <h2>Code Review!</h2>
+  <div class="room-boxes">
+    <div class="room-box" onclick="location.href='room6.html'">Room 6</div>
+    <div class="room-box" onclick="location.href='room7.html'">Room 7</div>
+    <div class="room-box" onclick="location.href='room8.html'">Room 8</div>
+    <div class="room-box" onclick="location.href='room9.html'">Room 9</div>
+    <div class="room-box" onclick="location.href='room10.html'">Room 10</div>
+  </div>
+</div>
+
+<div class="session-section">
+  <h2>Open Space!</h2>
+  <div class="room-boxes">
+    <div class="room-box" onclick="location.href='room11.html'">Room 11</div>
+    <div class="room-box" onclick="location.href='room12.html'">Room 12</div>
+    <div class="room-box" onclick="location.href='room13.html'">Room 13</div>
+    <div class="room-box" onclick="location.href='room14.html'">Room 14</div>
+    <div class="room-box" onclick="location.href='room15.html'">Room 15</div>
+  </div>
+</div>
+
+<div class="create-workspace">
+  Create Your Own Workspace!
 </div>
 
 <footer>
