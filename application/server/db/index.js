@@ -102,10 +102,15 @@ UserModel.hasOne(PremiumUserModel, { foreignKey: 'userID' ,sourceKey:"userID"});
 PremiumUserModel.belongsTo(UserModel, { foreignKey: 'userID',targetKey:"userID" });
 console.log("PremiumUserModel:", PremiumUserModel);
 
-const userHiringModel = require('./models/userHiring'); 
-UserModel.hasOne(userHiringModel, { foreignKey: 'userID' ,sourceKey:"userID"});
-userHiringModel.belongsTo(UserModel, { foreignKey: 'userID',targetKey:"userID" });
-console.log("userHiringModel:", userHiringModel);
+const UserHiringModel = require('./models/userHiring'); 
+UserModel.hasOne(UserHiringModel, { foreignKey: 'userID' ,sourceKey:"userID"});
+UserHiringModel.belongsTo(UserModel, { foreignKey: 'userID',targetKey:"userID" });
+console.log("userHiringModel:", UserHiringModel);
+
+const MentorUserModel = require('./models/mentorUser'); 
+PremiumUserModel.hasOne(MentorUserModel, { foreignKey: 'userID' ,sourceKey:"userID"});
+MentorUserModel.belongsTo(PremiumUserModel, { foreignKey: 'userID',targetKey:"userID" });
+console.log("MentorUserModel:", MentorUserModel);
 
 //
 
@@ -161,7 +166,11 @@ const initialize = async () => {
 
         db.PremiumUser = await new PremiumUserModel(sequelize, DataTypes);
 
-        db.userHiring = await new userHiringModel(sequelize, DataTypes);
+        db.UserHiring = await new UserHiringModel(sequelize, DataTypes);
+
+        db.MentorUser = await new MentorUserModel(sequelize, DataTypes);
+
+        // db.MentorUserModel = await new MentorUserModel(sequelize, DataTypes);
 
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);

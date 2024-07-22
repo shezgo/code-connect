@@ -1,3 +1,4 @@
+const MentorUser = require("./mentorUser.js");
 const UserHiring = require("./userHiring.js");
 
 //Should we delete this file and keep all models in server/db/index.js?
@@ -24,5 +25,6 @@ module.exports = {
     PaymentInfo:require("./paymentInfo.js"),
     PremiumUser:require("./premiumUser.js"),
     UserHiring:require("./userHiring.js"),
+    MentorUser:require("./mentorUser.js"),
 }
 
