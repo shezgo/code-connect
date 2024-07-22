@@ -1,5 +1,5 @@
 // This module contains search utilities
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 const Fuse = require('fuse.js')
 /*
 Basic options can be
@@ -41,18 +41,20 @@ exports.fuzzy_search = async (model, options)=>{
     // For more details about querying https://sequelize.org/docs/v6/core-concepts/model-querying-basics/ 
     let where_filter = undefined
     
+    console.log(Object.keys(filter))
     if (filter!== undefined){
         // if filter are used, reduce the keys of the object to a list of 'and' of attribute in conditions
         where_filter = Object.keys(filter).reduce(
             (accumulator, key)=>{
-                return accumulator[[Op.and]].push({
+                return accumulator.push({
                     key: {
                         [Op.in]: filter[key]
                 }
             })
             }
-        , {[Op.and]: []})
+        ,  [])
     }
+    
 
     const results = await model.findAll({
         where: where_filter, 
