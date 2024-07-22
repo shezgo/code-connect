@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Membership</title>
+    <title>Find a Mentor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -87,44 +87,41 @@
             text-align: center;
             margin: 30px 0;
         }
-        .pricing-table {
+        .mentors-container {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
-        .pricing-plan {
+        .mentor-box {
             background-color: #f0f0f0;
             padding: 20px;
             border-radius: 8px;
-            width: 50%;
+            width: 30%;
             text-align: center;
-            cursor: default;
+            margin: 10px;
+            cursor: pointer;
             border: 2px solid transparent;
             transition: border-color 0.3s, background-color 0.3s;
         }
-        .pricing-plan.selected {
+        .mentor-box:hover {
+            border-color: #007BFF;
+        }
+        .mentor-box img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .mentor-box.selected {
             border-color: #007BFF;
             background-color: #e0e7ff;
         }
-        .pricing-plan h3 {
-            margin-bottom: 20px;
+        #request-button {
+            display: none;
+            text-align: center;
+            margin: 20px;
         }
-        .pricing-plan p {
-            margin-bottom: 20px;
-        }
-        .payment-container input[type="text"],
-        .payment-container input[type="email"],
-        .payment-container input[type="number"],
-        .payment-container input[type="password"],
-        .payment-container button {
-            width: calc(100% - 40px);
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .payment-container button {
+        #request-button button {
             padding: 10px 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -133,7 +130,7 @@
             cursor: pointer;
             font-size: 16px;
         }
-        .payment-container button:hover {
+        #request-button button:hover {
             background-color: #333;
         }
         footer {
@@ -175,34 +172,19 @@
         }
         .footer-bott {
             margin-top: 10px;
-        }    
+        }
     </style>
     <script>
-      //added script that doesnt allow users to click submit unless all fields are filled out
+        //Script that only prompts request button once user choosse a mentr
+        let selectedMentor = '';
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const nameInput = document.getElementById('name-on-card');
-            const cardNumberInput = document.getElementById('card-number');
-            const expiryDateInput = document.getElementById('expiry-date');
-            const cvvInput = document.getElementById('cvv');
-            const submitButton = document.getElementById('submit-button');
-
-            function validateForm() {
-                const isValid = nameInput.value.trim() !== '' &&
-                    cardNumberInput.value.trim() !== '' &&
-                    expiryDateInput.value.trim() !== '' &&
-                    cvvInput.value.trim() !== '';
-                submitButton.disabled = !isValid;
-                submitButton.style.cursor = isValid ? 'pointer' : 'not-allowed';
-            }
-
-            nameInput.addEventListener('input', validateForm);
-            cardNumberInput.addEventListener('input', validateForm);
-            expiryDateInput.addEventListener('input', validateForm);
-            cvvInput.addEventListener('input', validateForm);
-
-            validateForm(); // Initial checking if fields are filled
-        });
+        function selectMentor(name, element) {
+            selectedMentor = name;
+            document.getElementById('request-button').style.display = 'block';
+            const mentorBoxes = document.querySelectorAll('.mentor-box');
+            mentorBoxes.forEach(box => box.classList.remove('selected'));
+            element.classList.add('selected');
+        }
     </script>
 </head>
 <body>
@@ -210,38 +192,50 @@
         <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
         <div class="brand">CodeConnect</div>
         <div class="login-signup">
-            <a href="login.html">Sign Out</a>
+          <a href="login.html">Sign Out</a>
         </div>
-        <h2>Premium Membership</h2>
+        <h2>Find a Mentor</h2>
         <a href="index.html">Home</a>
         <a href="challenges.html">Challenges</a>
         <a href="mentors.html">Mentors</a>
         <a href="index.html">Forums</a>
-        <a href="store.html">Memberships</a>
+        <a href="store.html">Store</a>
         <a href="premium.html">Premium</a>
         <a href="interview.html">Interview Help</a>
-    </div>
-    <div class="container payment-container">
+      </div>
+    <div class="container">
         <div class="section-title">
-            <h2>Join Our Premium Membership</h2>
+            <h2>Available Mentors</h2>
         </div>
-        <div class="pricing-table">
-            <div id="premium" class="pricing-plan">
-                <h3>Premium Plan</h3>
-                <p>$10.00/month</p>
-                <p>Access to premium content</p>
+        <div class="mentors-container">
+            <div class="mentor-box" onclick="selectMentor('Max', this)">
+                <img src="Max_Shigeyoshi.jpg" alt="Max">
+                <p><strong>Max</strong></p>
+                <p>2 years of experience</p>
+                <p>Software Engineer</p>
+            </div>
+            <div class="mentor-box" onclick="selectMentor('Shez', this)">
+                <img src="Shez.jpg" alt="Shez">
+                <p><strong>Shez</strong></p>
+                <p>4 years of experience</p>
+                <p>Frontend Developer at BigC</p>
+            </div>
+            <div class="mentor-box" onclick="selectMentor('Phillip', this)">
+                <img src="Phillip.jpg" alt="Phillip">
+                <p><strong>Phillip</strong></p>
+                <p>10 years of experience</p>
+                <p>AI Cloud Engineer at Google</p>
+            </div>
+            <div class="mentor-box" onclick="selectMentor('Aaron', this)">
+                <img src="aaron.jpg" alt="Aaron">
+                <p><strong>Aaron</strong></p>
+                <p>5 years of experience</p>
+                <p>Data Scientist at Facebook</p>
             </div>
         </div>
-        <div class="section-title">
-            <h2>Payment Information</h2>
+        <div id="request-button">
+            <button onclick="requestMentor()">Request</button>
         </div>
-        <form onsubmit="handleSubmit(event)">
-            <input type="text" id="name-on-card" placeholder="Name on Card">
-            <input type="text" id="card-number" placeholder="Card Number">
-            <input type="text" id="expiry-date" placeholder="Expiry Date (MM/YY)">
-            <input type="text" id="cvv" placeholder="CVV">
-            <button type="submit" id="submit-button" disabled>Submit Payment</button>
-        </form>
     </div>
     <footer>
         <div class="footer-container">
@@ -266,4 +260,3 @@
     </footer>
 </body>
 </html>
-
