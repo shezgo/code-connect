@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const { Op } = require("sequelize");
 const crypto = require('crypto');
 const utils = require("../utils");
-
+require('dotenv').config()
 
 
 exports.login_user_post = asyncHandler(async (req, res, next) => {
