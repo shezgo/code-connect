@@ -9,3 +9,5 @@ node_modules/
 
 # .vs files
 .vs/
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
