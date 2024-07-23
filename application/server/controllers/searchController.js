@@ -32,12 +32,14 @@ exports.search_user_data = asyncHandler(async (req, res) => {
             //username: results.username,
         }));
 
+        //alphabetical sort
         users.sort((a, b) => {
             if (a[sortField] < b[sortField]) {
                 return sortDirection === 'asc' ? 1 : -1;
             }
             return 0;
         });
+
         //Fuzzy search the map.
         const options = {
             keys: [
