@@ -16,6 +16,7 @@ dotenv.config()
 
 // Frontend files path
 const static_path = path.join(__dirname, '../verticalPrototype/folder/frontend-html');
+const static_css_path = path.join(__dirname, '../verticalPrototype/folder/frontend-css');
 const port = parseInt(process.env.PORT);
 const start = async () => {
     await initialize();
@@ -61,7 +62,8 @@ const start = async () => {
     app.use(routes);
     // Serve Frontend Static Files
     app.use(express.static(static_path));
-
+    // Serve Frontend CSS
+    app.use("/frontend-css", express.static(static_css_path));
     // app.get("/about", (req, res) => {
     //     res.sendFile(path.join(__dirname, "../about/about_us.html"))
     // });
