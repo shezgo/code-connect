@@ -170,7 +170,6 @@
         var passwordPattern =
           /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
 
-<<<<<<< HEAD
             if (!passwordPattern.test(password)) {
                 errorMessage.textContent = "Password must be more than 8 letters and contain a number and a special character.";
                 errorMessage.style.display = "block";
@@ -230,24 +229,6 @@
                 return false;
             }
         }
-=======
-        if (!passwordPattern.test(password)) {
-          errorMessage.textContent =
-            "Password must be more than 8 letters and contain a number and a special character.";
-          errorMessage.style.display = "block";
-          return false;
-        }
-
-        if (password !== confirmPassword) {
-          errorMessage.textContent = "Passwords do not match.";
-          errorMessage.style.display = "block";
-          return false;
-        }
-
-        errorMessage.style.display = "none";
-        return true;
-      }
->>>>>>> origin/frontend-dev
     </script>
     <link
       rel="stylesheet"
