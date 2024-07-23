@@ -18,157 +18,169 @@
         box-sizing: border-box;
       }
 
-      html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  /* Body Layout */
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0; /* Remove default margin */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-  .logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-.logo-container {
-    display: inline-block;
-}
+      /* Body Layout */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-  .header .brand {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    font-size: 20px;
-  }
-  
-  /* Header Styles */
-  .header {
-    background-color: #62b4c9;
-    padding: 10px;
-    text-align: center;
-    font-size: 25px;
-    color: white;
-    position: relative;
-  }
+      .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .logo-container {
+        display: inline-block;
+      }
 
-  .header a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-  }
-  .header a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Flexbox Container */
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 20px;
-  }
-  
-  /* Column Styles */
-  .column {
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    flex: 1;
-    min-width: 250px; /* Ensure columns stack on small screens */
-  }
-  
-  /* Footer Styles */
-  footer {
-    width: 100%;
-    background-color: #62b4c9;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    margin-top: auto;
-  }
-  
-  .footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .media-icons {
-    margin: 10px 0;
-  }
-  
-  .media-icons a {
-    color: white;
-    margin: 0 10px;
-    text-decoration: none;
-  }
-  
-  .footer-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-  }
-  
-  .footer-nav li {
-    margin: 0 15px;
-  }
-  
-  .footer-nav a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .footer-nav a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-bott {
-    margin-top: 10px;
-  }
-  
-  /* Responsive Layout */
-  @media (max-width: 600px) {
-    .row {
-      flex-direction: column;
-    }
-  }
-  
-  .logo-button {
-    position: absolute; 
-    top: 10px; 
-    right: 10px; 
+      .header .brand {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        font-size: 20px;
+      }
 
-    background: none; 
-    border: none; 
-    padding: 0; 
-    
-    cursor: pointer; 
-  }
+      /* Header Styles */
+      .header {
+        background-color: #62b4c9;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: white;
+        position: relative;
+      }
 
-  .mail-icon {
-    width: 20px;
-    height: 20px;
-  }
+      .header a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
 
-  .profile-icon {
-    width: 20px;
-    height: 20px;
-  }
+      /* Flexbox Container */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px;
+      }
+
+      /* Column Styles */
+      .column {
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        flex: 1;
+        min-width: 250px; /* Ensure columns stack on small screens */
+      }
+
+      /* Footer Styles */
+      footer {
+        width: 100%;
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        margin-top: auto;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .media-icons {
+        margin: 10px 0;
+      }
+
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .footer-nav li {
+        margin: 0 15px;
+      }
+
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-bott {
+        margin-top: 10px;
+      }
+
+      /* Responsive Layout */
+      @media (max-width: 600px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+
+      .logo-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        background: none;
+        border: none;
+        padding: 0;
+
+        cursor: pointer;
+      }
+
+      .mail-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .profile-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .section .text {
+        flex: 1;
+        padding: 20px;
+      }
 
       /* Create three unequal columns that sits next to each other */
       .column {
@@ -209,6 +221,27 @@
         background-color: #f0f0f0;
         border-bottom: 1px solid #ccc;
       }
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .search-container input[type="text"] {
+        width: 50%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-right: none;
+      }
+      .search-container button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #62b4c9;
+        color: white;
+        cursor: pointer;
+      }
+      .search-container button:hover {
+        background-color: #5393a1;
+      }
 
       .sidebar {
         height: 100%;
@@ -240,28 +273,14 @@
         margin-left: 50px;
       }
 
-      .button-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px;
-      }
-
-      .big-button {
-        display: inline-block;
-        padding: 20px 40px;
-        background-color: #007bff;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        font-size: 20px;
-        border-radius: 8px;
-        transition: background-color 0.3s;
-      }
-
-      .big-button:hover {
-        background-color: #0056b3;
+      .paragraph {
+        font-family: "Open Sans", sans-serif;
+        font-size: 30px;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 20px; /* Space below the paragraph */
+        padding: 10px; /* Space inside the paragraph borders */
+        border: 1px solid #ddd;
       }
 
       /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -278,7 +297,7 @@
         <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
       </a>
       <div class="brand">CodeConnect</div>
-      <h2>Challenges</h2>
+      <h2>Home Page</h2>
       <a href="homepage.html">Home</a>
       <a href="challenges.html">Challenges</a>
       <a href="mentors.html">Mentors</a>
@@ -343,17 +362,21 @@
       }
     </script>
 
-    <div class="button-container">
-      <a href="java_best_practices.html" class="big-button"
-        >Java Best Practice</a
-      >
-      <a href="javascript.html" class="big-button">JavaScript</a>
-      <a href="java.html" class="big-button">Java</a>
-      <a href="cpp.html" class="big-button">C++</a>
-      <a href="optimize_sql.html" class="big-button">Optimize SQL</a>
-      <a href="react_getting_started.html" class="big-button"
-        >React Getting Started</a
-      >
+    <div class="welcome-box">
+      <h2>Welcome to Code Connect!</h2>
+    </div>
+
+    <div class="paragraph">
+      <p>
+        This is Code Connect, a premier social media app for coders. Code
+        Connect creates a learning environment for people of all experince
+        levels and brings a community together through experience. Here, you can
+        create forum posts about your favorite topics, attempt coding challenges
+        daily, make friends, workshop, gain a mentor or provide mentorship, and
+        more!
+      </p>
+      <br />
+      <p>See what Code Connect has in store for you today!</p>
     </div>
 
     <footer>

@@ -240,28 +240,68 @@
         margin-left: 50px;
       }
 
-      .button-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+      .profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #fff;
         padding: 20px;
-      }
-
-      .big-button {
-        display: inline-block;
-        padding: 20px 40px;
-        background-color: #007bff;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        font-size: 20px;
         border-radius: 8px;
-        transition: background-color 0.3s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
 
-      .big-button:hover {
-        background-color: #0056b3;
+      .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .profile-header h1 {
+        margin: 10px 0 5px 0;
+        font-size: 24px;
+      }
+
+      .profile-header p {
+        margin: 5px 0;
+        color: #666;
+      }
+
+      .profile-section {
+        margin-bottom: 20px;
+      }
+
+      .profile-section h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+      }
+
+      .profile-section p {
+        margin: 0;
+      }
+
+      .profile-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .profile-section ul li {
+        padding: 10px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        border-radius: 4px;
+      }
+
+      .empty-message {
+        text-align: center;
+        color: #999;
+        font-style: italic;
       }
 
       /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -278,15 +318,14 @@
         <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
       </a>
       <div class="brand">CodeConnect</div>
-      <h2>Challenges</h2>
+      <h2>Profile</h2>
       <a href="homepage.html">Home</a>
       <a href="challenges.html">Challenges</a>
       <a href="mentors.html">Mentors</a>
       <a href="forum.html">Forums</a>
-      <a href="store.html">Memberships</a>
+      <a href="store.html">Store</a>
       <a href="premium.html">Premium</a>
       <a href="explore.html">Explore</a>
-      <a href="workspace.html">Workspaces</a>
       <a href="inbox.html" class="icon-button">
         <svg
           class="mail-icon"
@@ -343,18 +382,41 @@
       }
     </script>
 
-    <div class="button-container">
-      <a href="java_best_practices.html" class="big-button"
-        >Java Best Practice</a
-      >
-      <a href="javascript.html" class="big-button">JavaScript</a>
-      <a href="java.html" class="big-button">Java</a>
-      <a href="cpp.html" class="big-button">C++</a>
-      <a href="optimize_sql.html" class="big-button">Optimize SQL</a>
-      <a href="react_getting_started.html" class="big-button"
-        >React Getting Started</a
-      >
+    <div class="profile-container">
+      <div class="profile-header">
+        <img src="profile-pic.jpg" alt="Profile Picture" />
+        <h1>John Doe</h1>
+        <p>@johndoe</p>
+      </div>
+
+      <div class="profile-section">
+        <h2>Bio</h2>
+        <p class="empty-message">No bio available.</p>
+      </div>
+
+      <div class="profile-section">
+        <h2>About</h2>
+        <p class="empty-message">No information available.</p>
+      </div>
+
+      <div class="profile-section">
+        <h2>Activity / Forum Posts</h2>
+        <ul>
+          <li class="empty-message">No activity or forum posts yet.</li>
+        </ul>
+      </div>
+
+      <div class="profile-section">
+        <h2>Position / Leaderboard</h2>
+        <p class="empty-message">Not ranked yet.</p>
+      </div>
     </div>
+
+    <div class="profile-actions">
+                <a href="logout.html">Logout</a>
+                <a href="deleteprofile.html">Delete Profile</a>
+              </div>
+            </div>
 
     <footer>
       <div class="footer-container">

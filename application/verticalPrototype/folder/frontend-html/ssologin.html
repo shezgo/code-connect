@@ -8,7 +8,7 @@
       text="style\css"
       href="application\verticalPrototype\folder\frontend-css\style.css"
     />
-    <title>CodeConnect Forgot Password</title>
+    <title>CodeConnect Login</title>
     <style>
       html,
       body {
@@ -22,26 +22,27 @@
         justify-content: space-between;
         background-color: #f0f0f0;
       }
-      .forgot-password-container {
+      .login-container {
         background-color: white;
         padding: 40px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
         width: 400px;
-        margin: auto;
+        margin: 20px auto;
       }
-      .forgot-password-container img {
+      .login-container img {
         width: 250px;
         height: 120px;
         margin-bottom: 20px;
         border-radius: 50%; /* Make the image circular */
       }
-      .forgot-password-container h1 {
+      .login-container h1 {
         margin-bottom: 30px;
       }
-      .forgot-password-container input[type="email"],
-      .forgot-password-container button {
+      .login-container input[type="text"],
+      .login-container input[type="password"],
+      .login-container button {
         width: calc(100% - 40px);
         padding: 15px;
         margin-bottom: 15px;
@@ -49,32 +50,26 @@
         border-radius: 4px;
         box-sizing: border-box;
       }
-      .forgot-password-container button {
+      .login-container button {
         background-color: transparent;
         color: black;
         border: 1px solid #ccc;
         cursor: pointer;
       }
-      .forgot-password-container button:hover {
+      .login-container button:hover {
         background-color: transparent;
       }
-      .forgot-password-container .links {
+      .login-container .links {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         margin-top: 15px;
       }
-      .forgot-password-container .links a {
+      .login-container .links a {
         color: #007bff;
         text-decoration: none;
-        margin-left: 5px;
       }
-      .forgot-password-container .links a:hover {
+      .login-container .links a:hover {
         text-decoration: underline;
-      }
-      .contact-info {
-        text-align: center;
-        font-size: 14px;
-        color: #333;
       }
       footer {
         width: 100%;
@@ -117,6 +112,7 @@
       .footer-bott {
         margin-top: 10px;
       }
+      /* Style the header */
       .header {
         background-color: #040404;
         padding: 5px;
@@ -125,6 +121,7 @@
         color: white;
         position: relative;
       }
+
       .logo {
         position: absolute;
         top: 5px;
@@ -133,23 +130,27 @@
         height: 40px;
         border-radius: 50%;
       }
+
       .header .brand {
         position: absolute;
         top: 10px;
         right: 10px;
         font-size: 18px;
       }
+
       .login-signup {
         position: absolute;
         top: 40px;
         right: 10px;
         font-size: 14px;
       }
+
       .login-signup a {
         color: white;
         text-decoration: none;
         margin: 0 5px;
       }
+
       .login-signup a:hover {
         text-decoration: underline;
       }
@@ -180,18 +181,17 @@
         <a href="login.html">Login</a>
         <a href="signup.html">Sign Up</a>
       </div>
-      <h2>Forgot Password</h2>
+      <h2>Login</h2>
     </div>
-    <div class="forgot-password-container">
-      <img src="Codeconnect Logo.jpg" alt="Logo" style="border-radius: 50%" />
-      <h1>Please enter your new password</h1>
-      <h2>Reset Password for: johndoe123@email.com</h2>
-      <input type="password" placeholder="Enter password" />
-      <input type="password" placeholder="Confirm password" />
-      <button>Reset Password</button>
-      <div class="links">
-        <a href="./login.html">Back to Sign In</a>
-      </div>
+    <div class="login-container">
+      <img src="Codeconnect Logo.jpg" alt="Logo" />
+      <h1>CodeConnect: SSO Portal</h1>
+      <h4>Push your way through!</h4>
+      <input type="text" placeholder="Work Email" />
+      <input type="password" placeholder="Password" />
+      <a href="homepage.html">
+        <button>Sign in</button>
+      </a>
     </div>
     <footer>
       <div class="footer-container">

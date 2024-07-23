@@ -240,27 +240,53 @@
         margin-left: 50px;
       }
 
-      .button-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+      .create-post-container {
+        max-width: 600px;
+        margin: 50px auto;
         padding: 20px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
 
-      .big-button {
-        display: inline-block;
-        padding: 20px 40px;
+      .create-post-container h2 {
+        margin-bottom: 20px;
+        color: #007bff;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input[type="text"],
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        height: 150px;
+      }
+
+      .form-group button {
+        padding: 10px 20px;
         background-color: #007bff;
         color: white;
-        text-align: center;
-        text-decoration: none;
-        font-size: 20px;
-        border-radius: 8px;
-        transition: background-color 0.3s;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
       }
 
-      .big-button:hover {
+      .form-group button:hover {
         background-color: #0056b3;
       }
 
@@ -278,7 +304,6 @@
         <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
       </a>
       <div class="brand">CodeConnect</div>
-      <h2>Challenges</h2>
       <a href="homepage.html">Home</a>
       <a href="challenges.html">Challenges</a>
       <a href="mentors.html">Mentors</a>
@@ -343,17 +368,25 @@
       }
     </script>
 
-    <div class="button-container">
-      <a href="java_best_practices.html" class="big-button"
-        >Java Best Practice</a
-      >
-      <a href="javascript.html" class="big-button">JavaScript</a>
-      <a href="java.html" class="big-button">Java</a>
-      <a href="cpp.html" class="big-button">C++</a>
-      <a href="optimize_sql.html" class="big-button">Optimize SQL</a>
-      <a href="react_getting_started.html" class="big-button"
-        >React Getting Started</a
-      >
+    <div class="header">
+      <h2>Create a New Post</h2>
+    </div>
+
+    <div class="create-post-container">
+      <h2>New Forum Post</h2>
+      <form>
+        <div class="form-group">
+          <label for="post-title">Post Title</label>
+          <input type="text" id="post-title" name="post-title" required />
+        </div>
+        <div class="form-group">
+          <label for="post-content">Post Content</label>
+          <textarea id="post-content" name="post-content" required></textarea>
+        </div>
+        <div class="form-group">
+          <a href="forum.html" class="button">Submit Post</a>
+        </div>
+      </form>
     </div>
 
     <footer>

@@ -8,7 +8,7 @@
       text="style\css"
       href="application\verticalPrototype\folder\frontend-css\style.css"
     />
-    <title>CodeConnect Mentorship</title>
+    <title>Find a Mentor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -92,13 +92,42 @@
             text-align: center;
             margin: 30px 0;
         }
-        .buttons {
+        .mentors-container {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
-        .buttons button {
-          padding: 10px 20px;
+        .mentor-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .mentor-box:hover {
+            border-color: #007BFF;
+        }
+        .mentor-box img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .mentor-box.selected {
+            border-color: #007BFF;
+            background-color: #e0e7ff;
+        }
+        #request-button {
+            display: none;
+            text-align: center;
+            margin: 20px;
+        }
+        #request-button button {
+            padding: 10px 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             background-color: black;
@@ -106,54 +135,8 @@
             cursor: pointer;
             font-size: 16px;
         }
-        .buttons button:hover {
-          background-color: #333;
-        }
-        .featured-mentors {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-        }
-        .mentor {
-            text-align: center;
-            width: 30%;
-        }
-        .mentor img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-        .reviews {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .review-box {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 10px auto;
-            width: 60%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .quick-links {
-            margin-top: 20px;
-        }
-        .quick-links ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
-        .quick-links ul li {
-            margin: 10px 0;
-        }
-        .quick-links ul li a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        .quick-links ul li a:hover {
-            text-decoration: underline;
+        #request-button button:hover {
+            background-color: #333;
         }
         footer {
             width: 100%;
@@ -196,102 +179,92 @@
             margin-top: 10px;
         }
     </style>
+    <script>
+        //Script that only prompts request button once user choosse a mentr
+        let selectedMentor = '';
+
+        function selectMentor(name, element) {
+            selectedMentor = name;
+            document.getElementById('request-button').style.display = 'block';
+            const mentorBoxes = document.querySelectorAll('.mentor-box');
+            mentorBoxes.forEach(box => box.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+    </script>
 </head>
 <body>
-  <div class="header">
-    <a href="homepage.html" class="logo-container">
-        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
-      </a>
-    <div class="brand">CodeConnect</div>
-    <div class="login-signup">
-      <a href="login.html">Sign Out</a>
-    
-    </div>
-    <h2>Mentorship</h2>
-    <a href="homepage.html">Home</a>
-    <a href="challenges.html">Challenges</a>
-    <a href="mentors.html">Mentors</a>
-    <a href="forum.html">Forums</a>
-    <a href="store.html">Memberships</a>
-    <a href="premium.html">Premium</a>
-    <a href="explore.html">Explore</a>
-    <a href="workspace.html">Workspaces</a>
-  </div>
+    <div class="header">
+        <a href="homepage.html" class="logo-container">
+            <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+          </a>
+        <div class="brand">CodeConnect</div>
+        <div class="login-signup">
+          <a href="login.html">Sign Out</a>
+        </div>
+        <h2>Find a Mentor</h2>
+        <a href="homepage.html">Home</a>
+        <a href="challenges.html">Challenges</a>
+        <a href="mentors.html">Mentors</a>
+        <a href="forum.html">Forums</a>
+        <a href="store.html">Memberships</a>
+        <a href="premium.html">Premium</a>
+        <a href="explore.html">Explore</a>
+        <a href="workspace.html">Workspaces</a>
+      </div>
     <div class="container">
         <div class="section-title">
-            <h2>Connect with Experienced Coders</h2>
+            <h2>Available Mentors</h2>
         </div>
-        <div class="buttons">
-            <button onclick="location.href='find_mentor.html'">Find A Mentor</button>
-            <button onclick="location.href='become_mentor.html'">Become A Mentor</button>
-        </div>
-        <div class="section-title">
-            <h2>Featured Mentors</h2>
-        </div>
-        <div class="featured-mentors">
-            <div class="mentor">
+        <div class="mentors-container">
+            <div class="mentor-box" onclick="selectMentor('Max', this)">
                 <img src="Max_Shigeyoshi.jpg" alt="Max">
                 <p><strong>Max</strong></p>
-    
-                
+                <p>2 years of experience</p>
+                <p>Software Engineer</p>
             </div>
-            <div class="mentor">
+            <div class="mentor-box" onclick="selectMentor('Shez', this)">
                 <img src="Shez.jpg" alt="Shez">
                 <p><strong>Shez</strong></p>
-              
-              
+                <p>4 years of experience</p>
+                <p>Frontend Developer at BigC</p>
             </div>
-            <div class="mentor">
+            <div class="mentor-box" onclick="selectMentor('Phillip', this)">
                 <img src="Phillip.jpg" alt="Phillip">
                 <p><strong>Phillip</strong></p>
-               
-    
+                <p>10 years of experience</p>
+                <p>AI Cloud Engineer at Google</p>
             </div>
-            <div class="mentor">
+            <div class="mentor-box" onclick="selectMentor('Aaron', this)">
                 <img src="aaron.jpg" alt="Aaron">
                 <p><strong>Aaron</strong></p>
-       
-            
+                <p>5 years of experience</p>
+                <p>Data Scientist at Facebook</p>
             </div>
         </div>
-        <div class="section-title">
-            <h2>Reviews</h2>
-        </div>
-        <div class="reviews">
-            <div class="review-box">
-                <p>⭐⭐⭐⭐⭐</p>
-                <p>"Great experience!" - Noah</p>
-            </div>
-            <div class="review-box">
-                <p>⭐⭐⭐⭐⭐</p>
-                <p>"Very helpful." - William</p>
-            </div>
-            <div class="review-box">
-                <p>⭐⭐⭐⭐⭐</p>
-                <p>"Learned a lot!" - Ghadeer</p>
-            </div>
+        <div id="request-button">
+            <button onclick="requestMentor()">Request</button>
         </div>
     </div>
     <footer>
-      <div class="footer-container">
-          <div class="footer-nav">
-              <ul>
-                  <li><a href="index.html"><strong>Home</strong></a></li>
-                  <li><a href="about.html"><strong>About</strong></a></li>
-                  <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
-                  <li><a><strong>Phone: 888-888-8888</strong></a></li>
-              </ul>
-          </div>
-          <div class="media-icons">
-            <a href="https://www.instagram.com/codeconnect"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/codeconnect"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.google.com/codeconnect"><i class="fa-brands fa-google-plus"></i></a>
-            <a href="https://www.youtube.com/codeconnect"><i class="fa-brands fa-youtube"></i></a>
-          </div>
-          <div class="footer-bott">
-              <p>&copy; 2024 CodeConnect. All rights reserved.</p>
-          </div>
-      </div>
-  </footer>
+        <div class="footer-container">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html"><strong>Home</strong></a></li>
+                    <li><a href="about.html"><strong>About</strong></a></li>
+                    <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
+                    <li><a><strong>Phone: 888-888-8888</strong></a></li>
+                </ul>
+            </div>
+            <div class="media-icons">
+                <a href="https://www.instagram.com/codeconnect"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/codeconnect"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.google.com/codeconnect"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="https://www.youtube.com/codeconnect"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footer-bott">
+                <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
