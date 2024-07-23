@@ -17,10 +17,10 @@
 |    :---:     |   :---:           |       :---:       |     :---:       |        :---:       |          :---:           | 
 |      #1      |  Max Shigeyoshi   |mshigeyoshi@sfsu.edu|  mshigeyoshi   |  thanegreywolf     |       Team-lead          |
 |      #2      |  Shez Rahman      |srahman2@sfsu.edu  |  shezgo         |  Shez.go           |       Backend-lead       |
-|      #3      |  Majd Alnajjar    |malshemari@sfsu.edu|  majda1najjar   |  majdnajjar        |                          |
-|      #4      |  Ghadeer Albadani |galbadani@sfsu.edu |  Ghadeer320     |  ghadeer7936       |                          |
+|      #3      |  Majd Alnajjar    |malshemari@sfsu.edu|  majda1najjar   |  majdnajjar        |       Frontend           |
+|      #4      |  Ghadeer Albadani |galbadani@sfsu.edu |  Ghadeer320     |  ghadeer7936       |       Backend            |
 |      #5      |  Noah Hai         |nhai@sfsu.edu      |  Noahhai22      |  noah_h8076        |       Docs-editor        |
-|      #6      |  William Pan      |wpan1@sfsu.edu     |  WilliamPanTW   |  90561lkk          |                          |
+|      #6      |  William Pan      |wpan1@sfsu.edu     |  WilliamPanTW   |  90561lkk          |       Database-admin     |
 |      #7      |  Aaron Rayray     |arayray@sfsu.edu   |  yaryarcodes    |  aaronyaryar       |       Github-master      |
 |      #8      |  Phillip Ma       |pma1@mail.sfsu.edu |  Byakou         |  .byakou           |       Frontend-lead      |
 
@@ -31,7 +31,7 @@
 
 |             Name of the Project               |                            URL of the Project                          | 
 |                       :---:                   |                                 :---:                                  |
-|                  Code Connect                 |                     http://54.67.96.183:3000/about                     |                                                        
+|                  Code Connect                 |                     http://18.144.86.237:3000/application/verticalPrototype/folder/frontend-html/index.html                    |                                                        
  
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
