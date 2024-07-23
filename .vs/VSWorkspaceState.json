@@ -3,12 +3,14 @@
     "",
     "\\application",
     "\\application\\server",
+    "\\application\\server\\controllers",
+    "\\application\\server\\db",
     "\\application\\server\\routes",
     "\\application\\server\\routes\\api",
+    "\\application\\server\\utils",
     "\\application\\verticalPrototype",
-    "\\application\\verticalPrototype\\folder",
-    "\\application\\verticalPrototype\\folder\\frontend-html"
+    "\\application\\verticalPrototype\\folder"
   ],
-  "SelectedNode": "\\application\\server\\index.js",
+  "SelectedNode": "\\application\\server\\utils\\search.js",
   "PreviewInSolutionExplorer": false
 }

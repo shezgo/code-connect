@@ -1,5 +1,6 @@
 module.exports = {
     email: require('./email'),
     token: require('./token'),
-    crypto: require('./crypto')
+    crypto: require('./crypto'),
+    search: require('./search')
 }

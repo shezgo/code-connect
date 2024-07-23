@@ -1,29 +1,21 @@
 const { Router } = require('express')
-
-//const signup = require('./signup')
-//const search = require('./search')
-
-const auth = require('./auth')
-
+const signup = require('./auth')
+const search = require('./search')
+const post = require('./post')
+const challenge = require('./challenge')
+const user = require('./user')
+//const auth = require('./auth')
 const { version } = require('../../package.json')
 
 const router = Router()
 
 
 //router.use('/signup', signup)
-
-router.get("searchUser/:searchTerm", (req, res) => {
-    try {
-        res.console("we are here")
-    }
-    catch (err) {
-        console.log(err)
-    }
-})
-
-
-router.use('/auth', auth)
-
+router.use('/auth', signup)
+router.use('/search', search)
+router.use('/post', post)
+router.use('/challenge', challenge)
+router.use('/user', user)
 
 router.get('/', (req, res) => {
     res.end(`API v.${version}`)
