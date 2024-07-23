@@ -13,6 +13,7 @@ const loginController = require('./controllers/loginController');
 
 dotenv.config()
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 
 // Frontend files path
@@ -21,6 +22,11 @@ const static_path = path.join(__dirname, '../verticalPrototype/folder/frontend-h
 const frontendPath = "../verticalPrototype/folder/"
 
 >>>>>>> shez-backend-dev
+=======
+
+// Frontend files path
+const static_path = path.join(__dirname, '../verticalPrototype/folder/frontend-html');
+>>>>>>> Stashed changes
 const port = parseInt(process.env.PORT);
 const start = async () => {
     await initialize();
@@ -67,6 +73,7 @@ const start = async () => {
     // Serve Frontend Static Files
     app.use(express.static(static_path));
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     // app.get("/about", (req, res) => {
     //     res.sendFile(path.join(__dirname, "../about/about_us.html"))
@@ -104,6 +111,21 @@ const start = async () => {
             console.log(err);
         }
     });
+=======
+    // app.get("/about", (req, res) => {
+    //     res.sendFile(path.join(__dirname, "../about/about_us.html"))
+    // });
+    
+    // app.get("/about/:member", (req, res) => {
+    //     try {
+    //         res.sendFile(path.join(__dirname, ("../about/" + req.params.member)));
+    //     }
+    //     catch (err) {
+    //         console.log(err);
+    //     }
+
+    // });
+>>>>>>> Stashed changes
 
     app.use((err, req, res, next) => {
         if (!err.isBoom) err = boom.badImplementation(err)
@@ -112,11 +134,15 @@ const start = async () => {
     });
     //This should forward any unknown pages to login
     app.all('/**', function (req, res) {
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         res.status(301).redirect('/login');
 =======
         res.status(301).redirect('/index');
 >>>>>>> shez-backend-dev
+=======
+        res.status(301).redirect('/login');
+>>>>>>> Stashed changes
     });
 
     app.listen(port, () => {
