@@ -1,59 +1,66 @@
+const Fuse = require('fuse.js');
 const asyncHandler = require("express-async-handler");
-const utils = require("../utils")
-const boom = require("@hapi/boom")
-const { User } = require("../db/models/index")
+const { User } = require("../db/models/index");
+const boom = require("@hapi/boom");
+const dbConfig = require("../db/config");
+const { Sequelize, QueryTypes } = require('sequelize');
 
-exports.find_user_post = asyncHandler(async (req, res, next) => {
+const sequelize = new Sequelize(
+    database = dbConfig.config.database,
+    user = dbConfig.config.username,
+    password = dbConfig.config.password,
+    {
+       host : dbConfig.config.host,
+       dialect: "mysql"
+    },
+);
+
+
+exports.search_user_data = asyncHandler(async (req, res) => {
+    const searchTerm = req.params.searchTerm;
+    const sortField = req.query.sortField || 'email';
+    const sortDirection = req.query.sortDirection || 'asc';
+    console.log(searchTerm);
     try {
-        const db =
-            mysql.createConnection({
-                host: 'ec2-18-144-86-237.us-west-1.compute.amazonaws.com',
-                user: 'admin',
-                password: '1234',
-                database: 'test_db',
-            });
+        //Return all items. change the key fields if you need more data
+        const [results] = await sequelize.query('SELECT userID, email FROM user LIMIT 10');
 
-        db.connect(err => {
-            if (err) {
-                console.error('Error connecting to MySQL:', err);
-            } else {
-                console.log('Connected to MySQL');
+        //extract just the emails and make a map of them
+        const users = results.map(results => ({
+            userID: results.userID,
+            email: results.email,
+            //username: results.username,
+        }));
+
+        //alphabetical sort
+        users.sort((a, b) => {
+            if (a[sortField] < b[sortField]) {
+                return sortDirection === 'asc' ? 1 : -1;
             }
+            return 0;
         });
-    }
-    catch (err) {
-        throw boom.notFound(err.message);
-    }
 
-    try {
-        get('/search', (req, res) => {
-            const searchTerm = req.query.term;
-            if (!searchTerm) {
-                return res.status(400)
-                    .json(
-                        {
-                            error: 'Search term is required'
-                        }
-                    );
-            }
+        //Fuzzy search the map.
+        const options = {
+            keys: [
+                "userID",
+                { name: "email", weight: 2 },
+                //{ name: "username", weight: 3 }
+                //add more fields above this line.
+            ]
+        };
+        const fuse = new Fuse(users, options);
+        const searchResults = fuse.search(searchTerm);
 
-            const query = `
-    SELECT * FROM items
-    WHERE username LIKE OR email LIKE?
-    `;
-            const searchValue = `%${searchTerm}%`;
+        if (searchResults.length === 0) {
+            const topResults = users.slice(0, 3);
+            return res.json(topResults);
+        }
+        return res.json(searchResults);
 
-            db.query(query, [searchValue, searchValue],
-                (err, results) => {
-                    if (err) {
-                        console
-                            .error('Error executing search query:', err);
-                    }
-                    res.json(results);
-                });
-        });
-    }
-    catch (err) {
-        throw boom.notFound(err.message);
+        //return res.json(sortedJSON);
+    } catch (error) {
+        console.error('Error with query: ' + error);
+        return res.status(500).json({ error: 'Internal Server Error' });
     }
 });

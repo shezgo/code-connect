@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      text="style\css"
+      href="application\verticalPrototype\folder\frontend-css\style.css"
+    />
+
+    <link
+      rel="stylesheet"
+      text="style\css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Inbox Page</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* Body Layout */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .logo-container {
+        display: inline-block;
+      }
+
+      .header .brand {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        font-size: 20px;
+      }
+
+      /* Header Styles */
+      .header {
+        background-color: #62b4c9;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: white;
+        position: relative;
+      }
+
+      .header a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
+
+      /* Flexbox Container */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px;
+      }
+
+      /* Column Styles */
+      .column {
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        flex: 1;
+        min-width: 250px; /* Ensure columns stack on small screens */
+      }
+
+      /* Footer Styles */
+      footer {
+        width: 100%;
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        margin-top: auto;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .media-icons {
+        margin: 10px 0;
+      }
+
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .footer-nav li {
+        margin: 0 15px;
+      }
+
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-bott {
+        margin-top: 10px;
+      }
+
+      /* Responsive Layout */
+      @media (max-width: 600px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+
+      .logo-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        background: none;
+        border: none;
+        padding: 0;
+
+        cursor: pointer;
+      }
+
+      .mail-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .profile-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .sidebar {
+        width: 100px;
+        background-color: #f0f0f0;
+        border-right: 1px solid #ccc;
+        overflow-y: auto;
+        padding-top: 20px;
+        height: 50%;
+      }
+      .conversation {
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .conversation:hover {
+        background-color: #e0e0e0;
+      }
+      .conversation img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-bottom: 5px;
+      }
+      .chat-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        background-color: #fafafa;
+      }
+      .messages {
+        flex: 1;
+        overflow-y: auto;
+        padding-bottom: 15px;
+      }
+      .input-area {
+        display: flex;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+      }
+      .input-area input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        margin-right: 10px;
+      }
+      .input-area button {
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      .input-area button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
+      <div class="brand">CodeConnect</div>
+      <h2>Inbox</h2>
+      <a href="homepage.html">Home</a>
+      <a href="challenges.html">Challenges</a>
+      <a href="mentors.html">Mentors</a>
+      <a href="forum.html">Forums</a>
+      <a href="store.html">Memberships</a>
+      <a href="premium.html">Premium</a>
+      <a href="explore.html">Explore</a>
+      <a href="workspace.html">Workspaces</a>
+      <a href="inbox.html" class="icon-button">
+        <svg
+          class="mail-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16v16H4z" />
+          <path d="M4 4l8 8 8-8" />
+        </svg>
+      </a>
+
+      <a href="profile.html" class="icon-button">
+        <svg
+          class="profile-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+          />
+        </svg>
+      </a>
+
+      <div class="sidebar">
+        <div class="conversation">
+          <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+          <div>John</div>
+        </div>
+        <div class="conversation">
+          <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+          <div>Jane</div>
+        </div>
+        <div class="conversation">
+          <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+          <div>Mike</div>
+        </div>
+        <div class="conversation">
+          <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+          <div>Lisa</div>
+        </div>
+        <div class="conversation">
+          <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+          <div>Chris</div>
+        </div>
+        <!-- Add more conversations as needed -->
+      </div>
+    </div>
+
+    <div class="chat-content">
+      <div class="messages">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="input-area">
+        <input type="text" placeholder="Type a message..." />
+        <button>Send</button>
+      </div>
+    </div>
+  </body>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-nav">
+        <ul>
+          <li>
+            <a href="index.html"><strong>Home</strong></a>
+          </li>
+          <li>
+            <a href="about.html"><strong>About</strong></a>
+          </li>
+          <li>
+            <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
+          </li>
+          <li>
+            <a><strong>Phone: 888-888-8888</strong></a>
+          </li>
+        </ul>
+      </div>
+      <div class="media-icons">
+        <a href="https://www.instagram.com/codeconnect"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/codeconnect"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.google.com/codeconnect"><i class="fa-brands fa-google-plus"></i></a>
+        <a href="https://www.youtube.com/codeconnect"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="footer-bott">
+        <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</html>

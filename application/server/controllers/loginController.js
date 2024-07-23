@@ -46,6 +46,7 @@ exports.login_user_post = asyncHandler(async (req, res, next) => {
 
         // Send back the token as a response
         res.json({ message: "Login successful", token: token });
+
     } else {
         // If passwords do not match, throw unauthorized error
         throw boom.unauthorized("Invalid email or password");

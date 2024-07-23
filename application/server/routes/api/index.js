@@ -1,23 +1,24 @@
 const { Router } = require('express')
-<<<<<<< HEAD
-const signup = require('./signup')
-const search = require('./search')
-=======
 const signup = require('./auth')
->>>>>>> shez-backend-dev
+const search = require('./search')
+const post = require('./post')
+const challenge = require('./challenge')
+const user = require('./user')
+//const auth = require('./auth')
 const { version } = require('../../package.json')
 
 const router = Router()
 
-<<<<<<< HEAD
-router.use('/signup', signup)
-router.use('/search', search)
-=======
+
+//router.use('/signup', signup)
 router.use('/auth', signup)
->>>>>>> shez-backend-dev
+router.use('/search', search)
+router.use('/post', post)
+router.use('/challenge', challenge)
+router.use('/user', user)
 
 router.get('/', (req, res) => {
-  res.end(`API v.${ version }`)
+    res.end(`API v.${version}`)
 })
 
 module.exports = router
