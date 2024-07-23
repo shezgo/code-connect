@@ -3,44 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\api\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\routes\\api\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\verticalPrototype\\folder\\frontend-html\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\routes\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\signup.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\verticalPrototype\\folder\\frontend-html\\signup.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\premium.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\verticalPrototype\\folder\\frontend-html\\premium.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\bin\\syncDatabase.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\bin\\syncDatabase.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\store.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\verticalPrototype\\folder\\frontend-html\\store.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\db\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\mentors.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\verticalPrototype\\folder\\frontend-html\\mentors.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\signupController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\controllers\\signupController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\verticalPrototype\\folder\\frontend-html\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\verticalPrototype\\folder\\frontend-html\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\loginController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\controllers\\loginController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\models\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\db\\models\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\models\\user.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\db\\models\\user.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\db\\config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\api\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:application\\server\\routes\\api\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -63,131 +59,118 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "index.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\index.js",
-              "RelativeDocumentMoniker": "application\\server\\routes\\index.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\index.js",
-              "RelativeToolTip": "application\\server\\routes\\index.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T03:19:28.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "auth.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\api\\auth.js",
-              "RelativeDocumentMoniker": "application\\server\\routes\\api\\auth.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\api\\auth.js",
-              "RelativeToolTip": "application\\server\\routes\\api\\auth.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T03:14:47.267Z",
+              "Title": "signup.html",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\signup.html",
+              "RelativeDocumentMoniker": "application\\verticalPrototype\\folder\\frontend-html\\signup.html",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\signup.html",
+              "RelativeToolTip": "application\\verticalPrototype\\folder\\frontend-html\\signup.html",
+              "ViewState": "AQIAAIoAAAAAAAAAAAAAACMAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-23T00:05:56.542Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "index.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\index.js",
-              "RelativeDocumentMoniker": "application\\server\\index.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\index.js",
-              "RelativeToolTip": "application\\server\\index.js",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T03:11:28.325Z",
+              "Title": "premium.html",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\premium.html",
+              "RelativeDocumentMoniker": "application\\verticalPrototype\\folder\\frontend-html\\premium.html",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\premium.html",
+              "RelativeToolTip": "application\\verticalPrototype\\folder\\frontend-html\\premium.html",
+              "ViewState": "AQIAANoAAAAAAAAAAADwv+cAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-22T13:13:20.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "syncDatabase.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\bin\\syncDatabase.js",
-              "RelativeDocumentMoniker": "application\\server\\bin\\syncDatabase.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\bin\\syncDatabase.js",
-              "RelativeToolTip": "application\\server\\bin\\syncDatabase.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T02:57:05.278Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "index.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\models\\index.js",
-              "RelativeDocumentMoniker": "application\\server\\db\\models\\index.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\models\\index.js",
-              "RelativeToolTip": "application\\server\\db\\models\\index.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T02:44:59.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "user.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\models\\user.js",
-              "RelativeDocumentMoniker": "application\\server\\db\\models\\user.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\models\\user.js",
-              "RelativeToolTip": "application\\server\\db\\models\\user.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T02:44:52.847Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "config.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\config.js",
-              "RelativeDocumentMoniker": "application\\server\\db\\config.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\config.js",
-              "RelativeToolTip": "application\\server\\db\\config.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T02:25:35.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "loginController.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\loginController.js",
-              "RelativeDocumentMoniker": "application\\server\\controllers\\loginController.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\loginController.js",
-              "RelativeToolTip": "application\\server\\controllers\\loginController.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T02:03:38.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "signupController.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\signupController.js",
-              "RelativeDocumentMoniker": "application\\server\\controllers\\signupController.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\signupController.js",
-              "RelativeToolTip": "application\\server\\controllers\\signupController.js",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADoAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T01:51:43.315Z",
+              "Title": "store.html",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\store.html",
+              "RelativeDocumentMoniker": "application\\verticalPrototype\\folder\\frontend-html\\store.html",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\store.html",
+              "RelativeToolTip": "application\\verticalPrototype\\folder\\frontend-html\\store.html",
+              "ViewState": "AQIAABUAAAAAAAAAAAAgwBgAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-22T13:12:18.359Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "index.js",
-              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\index.js",
-              "RelativeDocumentMoniker": "application\\server\\db\\index.js",
-              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\db\\index.js",
-              "RelativeToolTip": "application\\server\\db\\index.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAwAAAA",
+              "Title": "mentors.html",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\mentors.html",
+              "RelativeDocumentMoniker": "application\\verticalPrototype\\folder\\frontend-html\\mentors.html",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\mentors.html",
+              "RelativeToolTip": "application\\verticalPrototype\\folder\\frontend-html\\mentors.html",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAgwM4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-22T13:10:56.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "about.html",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\about.html",
+              "RelativeDocumentMoniker": "application\\verticalPrototype\\folder\\frontend-html\\about.html",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\about.html",
+              "RelativeToolTip": "application\\verticalPrototype\\folder\\frontend-html\\about.html",
+              "ViewState": "AQIAALgAAAAAAAAAAAAgwMEAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-22T13:09:03.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\index.html",
+              "RelativeDocumentMoniker": "application\\verticalPrototype\\folder\\frontend-html\\index.html",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\index.html",
+              "RelativeToolTip": "application\\verticalPrototype\\folder\\frontend-html\\index.html",
+              "ViewState": "AQIAAN0AAAAAAAAAAAAgwPcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-22T12:45:24.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "loginController.js",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\loginController.js",
+              "RelativeDocumentMoniker": "application\\server\\controllers\\loginController.js",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\controllers\\loginController.js",
+              "RelativeToolTip": "application\\server\\controllers\\loginController.js",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAD4AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-09T01:51:09.205Z",
+              "WhenOpened": "2024-07-22T12:36:20.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "auth.js",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\api\\auth.js",
+              "RelativeDocumentMoniker": "application\\server\\routes\\api\\auth.js",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\server\\routes\\api\\auth.js",
+              "RelativeToolTip": "application\\server\\routes\\api\\auth.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-07-22T12:36:06.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "login.html",
+              "DocumentMoniker": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\login.html",
+              "RelativeDocumentMoniker": "application\\verticalPrototype\\folder\\frontend-html\\login.html",
+              "ToolTip": "C:\\Users\\shezp\\Documents\\CSC648\\csc648-848-05-sw-engineering-su24-T1\\application\\verticalPrototype\\folder\\frontend-html\\login.html",
+              "RelativeToolTip": "application\\verticalPrototype\\folder\\frontend-html\\login.html",
+              "ViewState": "AQIAAAIBAAAAAAAAAAAAAMEAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-22T12:36:00.39Z",
               "EditorCaption": ""
             }
           ]
