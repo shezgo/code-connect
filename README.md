@@ -17,10 +17,10 @@
 |    :---:     |   :---:           |       :---:       |     :---:       |        :---:       |          :---:           | 
 |      #1      |  Max Shigeyoshi   |mshigeyoshi@sfsu.edu|  mshigeyoshi   |  thanegreywolf     |       Team-lead          |
 |      #2      |  Shez Rahman      |srahman2@sfsu.edu  |  shezgo         |  Shez.go           |       Backend-lead       |
-|      #3      |  Majd Alnajjar    |malshemari@sfsu.edu|  majda1najjar   |  majdnajjar        |                          |
-|      #4      |  Ghadeer Albadani |galbadani@sfsu.edu |  Ghadeer320     |  ghadeer7936       |                          |
+|      #3      |  Majd Alnajjar    |malshemari@sfsu.edu|  majda1najjar   |  majdnajjar        |       Frontend           |
+|      #4      |  Ghadeer Albadani |galbadani@sfsu.edu |  Ghadeer320     |  ghadeer7936       |       Backend            |
 |      #5      |  Noah Hai         |nhai@sfsu.edu      |  Noahhai22      |  noah_h8076        |       Docs-editor        |
-|      #6      |  William Pan      |wpan1@sfsu.edu     |  WilliamPanTW   |  90561lkk          |                          |
+|      #6      |  William Pan      |wpan1@sfsu.edu     |  WilliamPanTW   |  90561lkk          |       Database-admin     |
 |      #7      |  Aaron Rayray     |arayray@sfsu.edu   |  yaryarcodes    |  aaronyaryar       |       Github-master      |
 |      #8      |  Phillip Ma       |pma1@mail.sfsu.edu |  Byakou         |  .byakou           |       Frontend-lead      |
 
