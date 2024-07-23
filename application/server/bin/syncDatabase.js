@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const { initialize } = require("../db/index.js");
 
+const force = process.env.npm_config_force ? process.env.npm_config_force : "false"
 
 const sync_database = async ()=>{
 
@@ -11,7 +12,7 @@ const sync_database = async ()=>{
       // await sequelize.authenticate();
       // console.log('Connection to the database has been established successfully.');
 
-        await sequelize.sync({ alter: true });
+        await sequelize.sync({ force: force==="true"? true: false });
         console.log('Database synchronized successfully.');
 
         // Additional sync or setup logic here if needed
