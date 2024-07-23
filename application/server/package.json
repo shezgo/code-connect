@@ -6,23 +6,30 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "sync": "node ./bin/syncDatabase.js"
+    "sync": "node ./bin/syncDatabase.js",
+    "seed": "node ./bin/seed.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@hapi/boom": "^10.0.1",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "check-password-strength": "^2.0.10",
+    "connect-session-sequelize": "^7.1.7",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
+    "express-session": "^1.18.0",
+    "fuse.js": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.10.1",
     "nodemailer": "^6.9.14",
     "sequelize": "^6.37.3"
   },
   "devDependencies": {
-    "eslint": "^9.6.0"
+    "eslint": "^9.7.0"
   }
 }

@@ -1,6 +1,6 @@
 const Fuse = require('fuse.js');
 const asyncHandler = require("express-async-handler");
-const { User } = require("../db/models/index");
+const { challenge } = require("../db/models/index");
 const boom = require("@hapi/boom");
 const dbConfig = require("../db/config");
 const { Sequelize, QueryTypes } = require('sequelize');
@@ -10,30 +10,32 @@ const sequelize = new Sequelize(
     user = dbConfig.config.username,
     password = dbConfig.config.password,
     {
-       host : dbConfig.config.host,
-       dialect: "mysql"
+        host: dbConfig.config.host,
+        dialect: "mysql"
     },
 );
 
 
-exports.search_user_data = asyncHandler(async (req, res) => {
+exports.search_challenge_data = asyncHandler(async (req, res) => {
     const searchTerm = req.params.searchTerm;
-    const sortField = req.query.sortField || 'email';
+    const sortField = req.query.sortField || 'title';
     const sortDirection = req.query.sortDirection || 'asc';
     console.log(searchTerm);
     try {
         //Return all items. change the key fields if you need more data
-        const [results] = await sequelize.query('SELECT userID, email FROM user LIMIT 10');
+        const [results] = await sequelize.query('SELECT challengeID, title, description, language, difficulty FROM codechallenge LIMIT 10');
 
         //extract just the emails and make a map of them
-        const users = results.map(results => ({
-            userID: results.userID,
-            email: results.email,
-            //username: results.username,
+        const challenges = results.map(results => ({
+            challangeID: results.challangeID,
+            title: results.title,
+            description: results.description,
+            language: results.language,
+            difficulty: results.difficulty
         }));
 
         //alphabetical sort
-        users.sort((a, b) => {
+        challenges.sort((a, b) => {
             if (a[sortField] < b[sortField]) {
                 return sortDirection === 'asc' ? 1 : -1;
             }
@@ -43,17 +45,18 @@ exports.search_user_data = asyncHandler(async (req, res) => {
         //Fuzzy search the map.
         const options = {
             keys: [
-                "userID",
-                { name: "email", weight: 2 },
-                //{ name: "username", weight: 3 }
+                { name: "title", weight: 3 },
+                { name: "description", weight: 2 },
+                { name: "language", weight: 1 }
                 //add more fields above this line.
             ]
         };
-        const fuse = new Fuse(users, options);
+        const fuse = new Fuse(challenges, options);
         const searchResults = fuse.search(searchTerm);
 
         if (searchResults.length === 0) {
-            const topResults = users.slice(0, 3);
+            console.log("searchResults.length = 0");
+            const topResults = challenges.slice(0, 3);
             return res.json(topResults);
         }
         return res.json(searchResults);

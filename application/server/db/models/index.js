@@ -1,4 +1,46 @@
+const SpecificTrophy = require("./specificTrophy.js");
+const SubmissionShare = require("./submissionShare.js");
+const SupportForm = require("./supportForm.js");
+const UserChatSession = require("./userChatSession.js");
+
 //Should we delete this file and keep all models in server/db/index.js?
 module.exports = {
-    User:require("./user.js")
+    User:require("./user.js"),
+    Message:require("./message.js"),
+    Inbox:require("./inbox.js"),
+    MessageThread:require("./messageThread.js"),
+    Profile:require("./profile.js"),
+    ExternalLinks:require("./externalLinks.js"),
+    Portfolio:require("./portfolio.js"),
+    Project:require("./project.js"),
+    Post:require("./post.js"),
+    ForumThread:require("./forumThread.js"),
+    Forum:require("./forum.js"),
+    UserChallenge:require("./userChallenge.js"),
+    CodeChallenge:require("./codeChallenge.js"),
+    UserNotification:require("./userNotification.js"),
+    Ranks:require("./ranks.js"),
+    Rank:require("./rank.js"),
+    JobList:require("./jobList.js"),
+    Trophy:require("./trophy.js"),
+    SpecificTrophy:require("./specificTrophy.js"),
+    UserPayment:require("./userPayment.js"),
+    PaymentInfo:require("./paymentInfo.js"),
+    PremiumUser:require("./premiumUser.js"),
+    UserHiring:require("./userHiring.js"),
+    MentorUser:require("./mentorUser.js"),
+    Feedback:require("./feedback.js"),
+    Group:require("./group.js"),
+    UserGroup:require("./userGroup.js"),
+    MentorGroup:require("./mentorGroup.js"),
+    UserMentorGroup:require("./userMentorGroup.js"),
+    Groups:require("./groups.js"),
+    Chatbot:require("./chatbot.js"),
+    CodeChallenge:require("./codeChallenge.js"),
+    ChatSession:require("./chatSession.js"),
+    UserChatSession:require("./userChatSession.js"),
+    Leaderboard:require("./leaderboard.js"),
+    SubmissionShare:require('./submissionShare.js'),
+    SupportForm:require('./supportForm.js')
 }
+

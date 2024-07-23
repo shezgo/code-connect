@@ -1,5 +1,6 @@
 const { crypto } = require("../../utils");
 const { DataTypes, Model } = require('sequelize');
+const {Rank}=require('./rank.js');
 const bcrypt = require('bcryptjs'); // Import bcrypt for password hashing
 
 const sequelize = require("../config.js");
@@ -15,23 +16,34 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
+        firstName: {
+            field: 'firstName',
+            type: DataTypes.STRING,
+        },
+        lastName: {
+            field: 'lastName',
+            type: DataTypes.STRING,
+        },
+        userName: {
+            field: 'userName',
+            type: DataTypes.STRING,
+            unique: true,
+        },
+        membershipType: {
+            field: 'membershipType',
+            type: DataTypes.STRING,
+        },
         email: {
             field: 'email',
             unique: true,
             type: DataTypes.STRING,
             allowNull: false
         },
-        /*username: {
-            field: 'username',
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },*/
-        /*password: {
+        password: {
             field: 'password',
             type: DataTypes.STRING,
             allowNull: false
-        },*/
+        },
         salt: {
             field: 'salt',
             type: DataTypes.STRING,
@@ -51,12 +63,76 @@ User.init(
             field: 'resetPasswordExpires',
             type: DataTypes.DATE,
             allowNull: true
+        },
+        points: {
+            field: 'points',
+            type: DataTypes.INTEGER,
+        },
+        rankID: {
+            field: 'rankID',
+            type: DataTypes.INTEGER,
+            references: { 
+                model: Rank, 
+                key: 'rankID' 
+            }
+        },
+        challengesCompleted: {
+            field: 'challengesCompleted',
+            type: DataTypes.INTEGER,
+        },
+        numChallengesCompleted: {
+            field: 'numChallengesCompleted',
+            type: DataTypes.INTEGER,
+        },
+        allTrophies: {
+            field: 'allTrophies',
+            type: DataTypes.INTEGER,
+        },
+        streakChallenge: {
+            field: 'streakChallenge',
+            type: DataTypes.INTEGER,
+        },
+        coins: {
+            field: 'coins',
+            type: DataTypes.INTEGER,
+        },
+        mentees: {
+            field: 'mentees',
+            type: DataTypes.JSON,
+        },
+        notificationList: {
+            field: 'notificationList',
+            type: DataTypes.JSON,
+        },
+        bookmarks: {
+            field: 'bookmarks',
+            type: DataTypes.STRING,
+        },
+        numPosts: {
+            field: 'numPosts',
+            type: DataTypes.INTEGER,
+        },
+        groups : {
+            field: 'groups',
+            type: DataTypes.JSON,
+        },
+        groupsMentored: {
+            field: 'groupsMentored',
+            type: DataTypes.JSON,
+        },
+        isPremium : {
+            field: 'isPremium',
+            type: DataTypes.BOOLEAN,
+        },isMentor  : {
+            field: 'isMentor',
+            type: DataTypes.BOOLEAN,
         }
     },
     {
         sequelize,
         modelName: 'User',
         tableName: 'user',
+        /*
         hooks: {
             beforeCreate: async (user) => {
                 if (user.password) {
@@ -70,7 +146,7 @@ User.init(
                     user.password = await bcrypt.hash(user.password, salt);
                 }
             }
-        }
+        }*/
     }
 );
 

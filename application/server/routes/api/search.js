@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const search_controller = require("../../controllers/searchController");
-const mysql = require('mysql8');
-
-const app = express();
-const port = 3306;
-
 const router = express.Router();
-router.get()
+const { sequelize } = require("../../db/index");
+
+router.get("/search/:searchTerm", search_controller.search_user_data);
+//router.get("/search", search_controller.search_user_data);
+
+module.exports = router;

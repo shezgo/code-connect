@@ -1,27 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Store</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0; /* Remove default margin */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-}
+  <head>
+    <title>Storefront</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+    rel="stylesheet"
+    text="style\css"
+    href="application/verticalPrototype/folder/frontend-css/style.css"
+  />
 
-h1 {
-  font-size: 40px;
-  color: #333;
-}
-</style>
-</head>
-<body>
-  <h1>COMING SOON!</h1>
-</body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Style the header */
+      .header {
+        background-color: #62b4c9;
+        padding: 5px;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        position: relative;
+      }
+
+      .logo {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .header .brand {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+      }
+
+      .login-signup {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        font-size: 14px;
+      }
+
+      .login-signup a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+
+      .login-signup a:hover {
+        text-decoration: underline;
+      }
+
+      /* Storefront content */
+      .storefront {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f0f0f0;
+        flex: 1;
+      }
+
+      .membership-section {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+      }
+
+      .membership {
+        width: 45%;
+      }
+
+      .membership h2 {
+        margin-top: 0;
+        font-size: 28px;
+      }
+
+      .membership p {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .membership .button {
+        background-color: #000000;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 18px;
+        display: inline-block;
+        margin-top: 20px;
+      }
+
+      .membership .button:hover {
+        background-color: #333333;
+      }
+
+      /* Style the footer */
+      footer {
+        width: 100%;
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        margin-top: auto;
+      }
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-icons {
+        margin: 10px 0;
+      }
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+      .footer-nav li {
+        margin: 0 15px;
+      }
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+      }
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+      .footer-bott {
+        margin-top: 10px;
+      }
+
+      /* Style for links in header */
+      .header a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
+
+      /* Icon buttons in header */
+      .icon-button {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+
+      .icon-button svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Responsive layout - makes the storefront content stack properly on small screens */
+      @media (max-width: 600px) {
+        .search-container {
+          top: 100px;
+          right: 10px;
+        }
+        .membership-section {
+          flex-direction: column;
+          align-items: center;
+        }
+        .membership {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background-color: #575757;
+      }
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      <div class="brand">CodeConnect</div>
+      <div class="login-signup">
+        <a href="login.html">Sign Out</a>
+      </div>
+
+      <h2>Memberships</h2>
+      <a href="homepage.html">Home</a>
+      <a href="challenges.html">Challenges</a>
+      <a href="mentors.html">Mentors</a>
+      <a href="forum.html">Forums</a>
+      <a href="store.html">Memberships</a>
+      <a href="premium.html">Premium</a>
+      <a href="explore.html">Explore</a>
+      <a href="workspace.html">Workspaces</a>
+      <a href="leaderboards.html">Leaderboards</a>
+      <a href="jobs.html">Jobs</a>
+
+      <a href="inbox.html" class="icon-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16v16H4z"></path>
+          <path d="M4 4l8 8 8-8"></path>
+        </svg>
+      </a>
+
+      <a href="profile.html" class="icon-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+          ></path>
+        </svg>
+      </a>
+      <button class="icon-button" onclick="openSidebar()">Friends</button>
+
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+          >&times;</a
+        >
+        <a href="profile.html">Friend 1</a>
+        <a href="profile.html">Friend 2</a>
+        <a href="profile.html">Friend 3</a>
+        <a href="profile.html">Friend 4</a>
+        <a href="profile.html">Friend 5</a>
+      </div>
+    </div>
+
+    <script>
+      function openSidebar() {
+        document.getElementById("mySidebar").style.width = "250px";
+      }
+  
+      function closeSidebar() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
+
+    <div class="storefront">
+      <div class="membership-section">
+        <div class="membership">
+          <h2>Free Membership</h2>
+          <p>
+            Join our community with a free membership to access basic features,
+            including forums, basic challenges, and mentor connections. Start
+            networking and growing your skills today without any cost.
+          </p>
+          <a href="homepage.html" class="button">Explore Here!</a>
+        </div>
+        <div class="membership">
+          <h2>Premium Membership</h2>
+          <p>
+            Upgrade to our Premium Service to unlock exclusive features that
+            enhance your networking experience. Enjoy priority support,
+            additional tools, and special access to premium groups and sessions.
+          </p>
+          <a href="premium.html" class="button">Upgrade Now</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-nav">
+          <ul>
+            <li>
+              <a href="index.html"><strong>Home</strong></a>
+            </li>
+            <li>
+              <a href="about.html"><strong>About</strong></a>
+            </li>
+            <li>
+              <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
+            </li>
+            <li>
+              <a><strong>Phone: 888-888-8888</strong></a>
+            </li>
+          </ul>
+        </div>
+        <div class="media-icons">
+          <a href="#" class="icon-button"><i class="fa fa-twitter"></i></a>
+          <a href="#" class="icon-button"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="icon-button"><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="footer-bott">
+          <p>© 2024 CodeConnect. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
