@@ -218,27 +218,49 @@
         expiryDateInput.addEventListener("input", validateForm);
         cvvInput.addEventListener("input", validateForm);
 
-        validateForm(); // Initial checking if fields are filled
-      });
+
+            validateForm(); // Initial checking if fields are filled
+        });
+        async function logoutUser() {
+            try {
+                const response = await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    // Redirect to the login page or home page after logout
+                    window.location.href = 'login.html';
+                } else {
+                    const result = await response.json();
+                    alert(`Logout failed: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Error during logout:', error);
+                alert('Logout failed. Please try again.');
+            }
+        }
     </script>
   </head>
   <body>
     <div class="header">
-        <a href="homepage.html" class="logo-container">
-            <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
-          </a>
-      <div class="brand">CodeConnect</div>
-      <div class="login-signup">
-        <a href="login.html">Sign Out</a>
-      </div>
-      <h2>Premium Membership</h2>
-      <a href="homepage.html">Home</a>
-      <a href="challenges.html">Challenges</a>
-      <a href="mentors.html">Mentors</a>
-      <a href="forum.html">Forums</a>
-      <a href="store.html">Memberships</a>
-      <a href="premium.html">Premium</a>
-      <a href="interview.html">Interview Help</a>
+
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
+        <div class="brand">CodeConnect</div>
+        <div class="login-signup">
+            <button onclick="logoutUser()">Sign Out</button>
+        </div>
+        <h2>Premium Membership</h2>
+        <a href="index.html">Home</a>
+        <a href="challenges.html">Challenges</a>
+        <a href="mentors.html">Mentors</a>
+        <a href="index.html">Forums</a>
+        <a href="store.html">Memberships</a>
+        <a href="premium.html">Premium</a>
+        <a href="interview.html">Interview Help</a>
+
     </div>
     <div class="container payment-container">
       <div class="section-title">

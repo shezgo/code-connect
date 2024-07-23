@@ -20,8 +20,95 @@ h1 {
   color: #333;
 }
 </style>
+
+<script>
+  function showDevelopmentAlert() {
+    alert("Still in development");
+    }
+    async function logoutUser() {
+        try {
+            const response = await fetch('/api/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                // Redirect to the login page or home page after logout
+                window.location.href = 'login.html';
+            } else {
+                const result = await response.json();
+                alert(`Logout failed: ${result.message}`);
+            }
+        } catch (error) {
+            console.error('Error during logout:', error);
+            alert('Logout failed. Please try again.');
+        }
+    }
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <h1>COMING SOON!</h1>
+
+<div class="header">
+  <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
+  <div class="brand">CodeConnect</div>
+  <div class="login-signup">
+      <button onclick="logoutUser()">Sign Out</button>
+  </div>
+  <div class="search-container">
+    <input type="text" placeholder="Search...">
+    <button onclick="showDevelopmentAlert()"><i class="fa fa-search"></i></button>
+  </div>
+  <h2>Memberships</h2>
+  <a href="index.html">Home</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="mentors.html">Mentors</a>
+  <a href="index.html">Forums</a>
+  <a href="store.html">Memberships</a>
+  <a href="premium.html">Premium</a>
+  <a href="interview.html">Interview Help</a>
+</div>
+
+<div class="storefront">
+  <div class="membership-section">
+    <div class="membership">
+      <h2>Free Membership</h2>
+      <p>Join our community with a free membership to access basic features, including forums, basic challenges, and mentor connections. Start networking and growing your skills today without any cost.</p>
+      <a href="signup.html" class="button">Join for Free</a>
+    </div>
+    <div class="membership">
+      <h2>Premium Membership</h2>
+      <p>Upgrade to our Premium Service to unlock exclusive features that enhance your networking experience. Enjoy priority support, additional tools, and special access to premium groups and sessions.</p>
+      <a href="premium.html" class="button">Upgrade Now</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-nav">
+      <ul>
+        <li><a href="index.html"><strong>Home</strong></a></li>
+        <li><a href="about.html"><strong>About</strong></a></li>
+        <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
+        <li><a><strong>Phone: 888-888-8888</strong></a></li>
+      </ul>
+    </div>
+    <div class="media-icons">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="footer-bott">
+      <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
 </body>
 </html>

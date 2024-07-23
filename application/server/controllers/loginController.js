@@ -74,7 +74,7 @@ exports.logout_user_post = asyncHandler(async (req, res, next) => {
 //Send password reset email containing reset token. Passing this token and new password
 //into reset_password_post successfully changes the password.
 const sendPasswordResetEmail = (email, token) => {
-    const resetLink = `${process.env.HOST_NAME}:${process.env.PORT}/api/auth/reset-password?token=${token}`;
+    const resetLink = `${process.env.HOST_NAME}:${process.env.PORT}/resetpassword.html?token=${token}`;
     const text = `Hi there,\n\nPlease follow the link below to reset your password:\n\n${resetLink}\n\nThanks!`;
     const subject = 'Password Reset';
 
