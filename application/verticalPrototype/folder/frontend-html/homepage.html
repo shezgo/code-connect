@@ -18,6 +18,17 @@
         box-sizing: border-box;
       }
 
+      .section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .section .text {
+        flex: 1;
+        padding: 20px;
+      }
+
       /* Create three unequal columns that sits next to each other */
       .column {
         padding: 10px;
@@ -57,6 +68,27 @@
         background-color: #f0f0f0;
         border-bottom: 1px solid #ccc;
       }
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .search-container input[type="text"] {
+        width: 50%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-right: none;
+      }
+      .search-container button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #62b4c9;
+        color: white;
+        cursor: pointer;
+      }
+      .search-container button:hover {
+        background-color: #5393a1;
+      }
 
       .sidebar {
         height: 100%;
@@ -88,28 +120,14 @@
         margin-left: 50px;
       }
 
-      .button-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px;
-      }
-
-      .big-button {
-        display: inline-block;
-        padding: 20px 40px;
-        background-color: #007bff;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        font-size: 20px;
-        border-radius: 8px;
-        transition: background-color 0.3s;
-      }
-
-      .big-button:hover {
-        background-color: #0056b3;
+      .paragraph {
+        font-family: "Open Sans", sans-serif;
+        font-size: 30px;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 20px; /* Space below the paragraph */
+        padding: 10px; /* Space inside the paragraph borders */
+        border: 1px solid #ddd;
       }
 
       /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -126,7 +144,7 @@
         <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
       </a>
       <div class="brand">CodeConnect</div>
-      <h2>Challenges</h2>
+      <h2>Home Page</h2>
       <a href="homepage.html">Home</a>
       <a href="challenges.html">Challenges</a>
       <a href="mentors.html">Mentors</a>
@@ -190,17 +208,21 @@
       }
     </script>
 
-    <div class="button-container">
-      <a href="java_best_practices.html" class="big-button"
-        >Java Best Practice</a
-      >
-      <a href="javascript.html" class="big-button">JavaScript</a>
-      <a href="java.html" class="big-button">Java</a>
-      <a href="cpp.html" class="big-button">C++</a>
-      <a href="optimize_sql.html" class="big-button">Optimize SQL</a>
-      <a href="react_getting_started.html" class="big-button"
-        >React Getting Started</a
-      >
+    <div class="welcome-box">
+      <h2>Welcome to Code Connect!</h2>
+    </div>
+
+    <div class="paragraph">
+      <p>
+        This is Code Connect, a premier social media app for coders. Code
+        Connect creates a learning environment for people of all experince
+        levels and brings a community together through experience. Here, you can
+        create forum posts about your favorite topics, attempt coding challenges
+        daily, make friends, workshop, gain a mentor or provide mentorship, and
+        more!
+      </p>
+      <br />
+      <p>See what Code Connect has in store for you today!</p>
     </div>
 
     <footer>

@@ -8,18 +8,21 @@
       text="style\css"
       href="application\verticalPrototype\folder\frontend-css\style.css"
     />
-    <title>CodeConnect Sign Up</title>
+    <title>CodeConnect Login</title>
     <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
       body {
         font-family: Arial, sans-serif;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 100vh;
-        margin: 0;
         background-color: #f0f0f0;
       }
-      .signup-container {
+      .login-container {
         background-color: white;
         padding: 40px;
         border-radius: 8px;
@@ -28,47 +31,46 @@
         width: 400px;
         margin: 20px auto;
       }
-      .signup-container img {
+      .login-container img {
         width: 250px;
         height: 120px;
         margin-bottom: 20px;
         border-radius: 50%; /* Make the image circular */
       }
-      .signup-container h1 {
+      .login-container h1 {
         margin-bottom: 30px;
       }
-      .signup-container input[type="text"],
-      .signup-container input[type="email"],
-      .signup-container input[type="password"],
-      .signup-container button {
+      .login-container input[type="text"],
+      .login-container input[type="password"],
+      .login-container button {
         width: calc(100% - 40px);
         padding: 15px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+        justify-content: center;
       }
-      .signup-container button {
+      .login-container button {
         background-color: transparent;
         color: black;
         border: 1px solid #ccc;
         cursor: pointer;
+        margin: 20px auto;
       }
-      .signup-container button:hover {
+      .login-container button:hover {
         background-color: transparent;
       }
-      .signup-container .links {
+      .login-container .links {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: space-between;
         margin-top: 15px;
       }
-      .signup-container .links a {
+      .login-container .links a {
         color: #007bff;
         text-decoration: none;
-        margin-top: 10px;
       }
-      .signup-container .links a:hover {
+      .login-container .links a:hover {
         text-decoration: underline;
       }
       footer {
@@ -77,6 +79,7 @@
         color: white;
         padding: 10px 0;
         text-align: center;
+        margin-top: auto;
       }
       .footer-container {
         display: flex;
@@ -162,75 +165,6 @@
         text-decoration: underline;
       }
     </style>
-    <script>
-      function validatePassword() {
-        var password = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirm-password").value;
-        var errorMessage = document.getElementById("error-message");
-        var passwordPattern =
-          /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-
-            if (!passwordPattern.test(password)) {
-                errorMessage.textContent = "Password must be more than 8 letters and contain a number and a special character.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-
-            if (password !== confirmPassword) {
-                errorMessage.textContent = "Passwords do not match.";
-                errorMessage.style.display = "block";
-                return false;
-            }
-            
-            errorMessage.style.display = "none";
-            return true;
-        }
-        
-        async function signUp(){
-            var password = document.getElementById("password").value;
-            var email = document.getElementById("email").value;
-            var confirmPassword = document.getElementById("confirm-password").value;
-            var errorMessage = document.getElementById("error-message");
-
-            // if password is not strong enough or does not match
-            if(!validatePassword()){
-                return false;
-            }
-            try{
-                // Try calling /api/auth/signup with email and password
-                const requestOptions = {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ email: email, password: password })
-                };
-                
-                // Catch Server Errors
-                const response = await fetch("/api/auth/signup", requestOptions);
-
-                // If fetch response code is not successfull
-                if(!response.ok){
-                    errorMessage.textContent = await response.json().message;
-                    errorMessage.style.display = "block";
-                    return false;
-                }
-                
-                // Show the user that a verification email was sent
-                errorMessage.textContent = "Please check your email inbox and verify it";
-                errorMessage.style.display = "block";
-                return true;
-            }
-            catch (error) {
-                // Catch any unexpected error
-                console.error("Failed at signing up user, Error: ", error);
-                errorMessage.textContent = error;
-                errorMessage.style.display = "block";
-                return false;
-            }
-        }
-
-    </script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -241,37 +175,34 @@
   </head>
   <body>
     <div class="header">
-      <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
       <div class="brand">CodeConnect</div>
       <div class="login-signup">
         <a href="login.html">Login</a>
         <a href="signup.html">Sign Up</a>
       </div>
-      <h2>Sign Up</h2>
+      <h2>Login</h2>
     </div>
-    <div class="signup-container">
-
-        <img src="Codeconnect Logo.jpg" alt="Logo">
-        <h1>CodeConnect</h1>
-        <h3>Start Your Tech Journey With Us.</h3>
-        <input type="text" placeholder="Username">
-        <input type="email" id="email" placeholder="Email Address">
-        <input type="password" id="password" placeholder="Password">
-        <input type="password" id="confirm-password" placeholder="Confirm Password">
-        <div id="error-message" class="error-message"></div>
-        <button onclick="return signUp();">Sign Up</button>
-        <div class="links">
-            <p>Have an account?</p>
-            <a href="./login.html">Sign In</a>
-        </div>
-
+    <div class="login-container">
+      <img src="Codeconnect Logo.jpg" alt="Logo" />
+      <h1>CodeConnect</h1>
+      <h4>Are you sure you want to delete your account?</h4>
+      <a href="splash.html">
+        <button>Delete Profile</button>
+      </a>
+      <div class="links">
+        <a href="./forgotpass.html">Forgot Password</a>
+        <a href="./signup.html">Sign Up</a>
+      </div>
     </div>
     <footer>
       <div class="footer-container">
         <div class="footer-nav">
           <ul>
             <li>
-              <a href="index.html"><strong>Home</strong></a>
+              <a href="homepage.html"><strong>Home</strong></a>
             </li>
             <li>
               <a href="about.html"><strong>About</strong></a>
