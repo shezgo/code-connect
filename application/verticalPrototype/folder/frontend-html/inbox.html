@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Challenges</title>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link
     rel="stylesheet"
     text="style\css"
@@ -12,12 +12,8 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inbox Page</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     html, body {
       height: 100%;
       margin: 0;
@@ -122,53 +118,72 @@
       height: 20px;
     }
 
-    .storefront {
-      text-align: center;
-      padding: 40px 20px;
+    .sidebar {
+      width: 100px;
       background-color: #f0f0f0;
-      flex: 1;
+      border-right: 1px solid #ccc;
+      overflow-y: auto;
+      padding-top: 20px;
+      height: 50%;
     }
 
-    .membership-section {
-      display: flex;
-      justify-content: space-around;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-width: 1200px;
-    }
-
-    .membership {
-      width: 45%;
-    }
-
-    .membership h2 {
-      margin-top: 0;
-      font-size: 28px;
-    }
-
-    .membership p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .membership .button {
-      background-color: #000000;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
+    .conversation {
+      padding: 10px;
+      text-align: center;
       cursor: pointer;
-      text-decoration: none;
-      font-size: 18px;
-      display: inline-block;
-      margin-top: 20px;
     }
 
-    .membership .button:hover {
-      background-color: #333333;
+    .conversation:hover {
+      background-color: #e0e0e0;
+    }
+
+    .conversation img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+
+    .chat-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+      background-color: #fafafa;
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 15px;
+    }
+
+    .input-area {
+      display: flex;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      margin-right: 10px;
+    }
+
+    .input-area button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .input-area button:hover {
+      background-color: #0056b3;
     }
 
     footer {
@@ -221,78 +236,26 @@
       margin-top: 10px;
     }
 
-    .sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      right: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-    }
-
-    .sidebar a {
-      padding: 10px 15px;
-      text-decoration: none;
-      font-size: 25px;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #575757;
-    }
-
-    .sidebar .closebtn {
-      position: absolute;
-      top: 0;
-      right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
-    }
-
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .big-button {
-      display: inline-block;
-      padding: 20px 40px;
-      background-color: #007bff;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      font-size: 20px;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-    }
-
-    .big-button:hover {
-      background-color: #0056b3;
-    }
-
     @media (max-width: 600px) {
-      .membership-section {
-        flex-direction: column;
-        align-items: center;
+      .header {
+        padding: 10px;
+        font-size: 18px;
       }
 
-      .membership {
-        width: 100%;
-        margin-bottom: 20px;
+      .header a {
+        margin: 0 5px;
       }
 
-      .row {
-        flex-direction: column;
+      .icon-button svg {
+        width: 16px;
+        height: 16px;
       }
-      .login-signup {
+
+      .sidebar {
+        width: 80px;
+      }
+    }
+    .login-signup {
         position: absolute;
         top: 40px;
         right: 10px;
@@ -306,7 +269,6 @@
       .login-signup a:hover {
         text-decoration: underline;
       }
-    }
   </style>
 </head>
 <body>
@@ -315,10 +277,10 @@
       <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
     </a>
     <div class="brand">CodeConnect</div>
+    <h2>Inbox</h2>
     <div class="login-signup">
       <a href="login.html">Sign Out</a>
     </div>
-    <h2>Challenges</h2>
     <a href="homepage.html">Home</a>
     <a href="challenges.html">Challenges</a>
     <a href="mentors.html">Mentors</a>
@@ -360,37 +322,41 @@
       </svg>
     </a>
 
-    <button class="icon-button" onclick="openSidebar()">Friends</button>
-
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-      <a href="profile.html">Friend 1</a>
-      <a href="profile.html">Friend 2</a>
-      <a href="profile.html">Friend 3</a>
-      <a href="profile.html">Friend 4</a>
-      <a href="profile.html">Friend 5</a>
+    <div class="sidebar">
+      <div class="conversation">
+        <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+        <div>John</div>
+      </div>
+      <div class="conversation">
+        <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+        <div>Jane</div>
+      </div>
+      <div class="conversation">
+        <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+        <div>Mike</div>
+      </div>
+      <div class="conversation">
+        <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+        <div>Lisa</div>
+      </div>
+      <div class="conversation">
+        <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+        <div>Chris</div>
+      </div>
+      <!-- Add more conversations as needed -->
     </div>
   </div>
 
-  <script>
-    function openSidebar() {
-      document.getElementById("mySidebar").style.width = "250px";
-    }
-
-    function closeSidebar() {
-      document.getElementById("mySidebar").style.width = "0";
-    }
-  </script>
-
-  <div class="button-container">
-    <a href="java_best_practices.html" class="big-button">Java Best Practice</a>
-    <a href="javascript.html" class="big-button">JavaScript</a>
-    <a href="java.html" class="big-button">Java</a>
-    <a href="cpp.html" class="big-button">C++</a>
-    <a href="optimize_sql.html" class="big-button">Optimize SQL</a>
-    <a href="react_getting_started.html" class="big-button">React Getting Started</a>
+  <div class="chat-content">
+    <div class="messages">
+      <!-- Messages will appear here -->
+    </div>
+    <div class="input-area">
+      <input type="text" placeholder="Type a message..." />
+      <button>Send</button>
+    </div>
   </div>
-
+  
   <footer>
     <div class="footer-container">
       <div class="footer-nav">

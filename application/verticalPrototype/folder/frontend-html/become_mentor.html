@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      text="style\css"
+      href="application\verticalPrototype\folder\frontend-css\style.css"
+    />
+    <title>Become a Mentor</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* Body Layout */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .logo-container {
+        display: inline-block;
+      }
+
+      .header .brand {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        font-size: 20px;
+      }
+
+      /* Header Styles */
+      .header {
+        background-color: #62b4c9;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: white;
+        position: relative;
+      }
+
+      .header a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
+
+      /* Flexbox Container */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px;
+      }
+
+      /* Footer Styles */
+      footer {
+        width: 100%;
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        margin-top: auto;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .media-icons {
+        margin: 10px 0;
+      }
+
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .footer-nav li {
+        margin: 0 15px;
+      }
+
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-bott {
+        margin-top: 10px;
+      }
+
+      /* Responsive Layout */
+      @media (max-width: 600px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+
+      .logo-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        background: none;
+        border: none;
+        padding: 0;
+
+        cursor: pointer;
+      }
+
+      .mail-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .profile-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .section .text {
+        flex: 1;
+        padding: 20px;
+      }
+
+      /* Create three unequal columns that sits next to each other */
+      .column {
+        padding: 10px;
+      }
+
+      /* Left columns stacked */
+      .column.side {
+        flex: 1;
+        margin-bottom: 10px;
+      }
+
+      /* Right column takes the rest of the space */
+      .column.middle {
+        flex: 2;
+        margin-bottom: 10px;
+      }
+
+      /* Style the footer */
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-icons {
+        margin: 10px 0;
+      }
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      /* Welcome box and search bar */
+      .welcome-box {
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #ccc;
+      }
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .search-container input[type="text"] {
+        width: 50%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-right: none;
+      }
+      .search-container button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #62b4c9;
+        color: white;
+        cursor: pointer;
+      }
+      .search-container button:hover {
+        background-color: #5393a1;
+      }
+
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background-color: #575757;
+      }
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        margin: 20px auto;
+        flex-grow: 1;
+      }
+      .header {
+        background-color: #62b4c9;
+        padding: 5px;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        position: relative;
+      }
+      .logo {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      .header .brand {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        font-size: 20px;
+      }
+      .login-signup {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        font-size: 14px;
+      }
+      .login-signup a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+      .login-signup a:hover {
+        text-decoration: underline;
+      }
+      .header a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
+      .section-title {
+        text-align: center;
+        margin: 30px 0;
+      }
+      .mentorship-container input[type="text"],
+      .mentorship-container input[type="email"],
+      .mentorship-container select,
+      .mentorship-container textarea,
+      .mentorship-container button {
+        width: calc(100% - 40px);
+        padding: 15px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .mentorship-container button {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .mentorship-container button:hover {
+        background-color: #333;
+      }
+      footer {
+        width: 100%;
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+      }
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-icons {
+        margin: 10px 0;
+      }
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+      .footer-nav li {
+        margin: 0 15px;
+      }
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+      }
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+      .footer-bott {
+        margin-top: 10px;
+      }
+    </style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const nameInput = document.querySelector('input[type="text"]');
+    const emailInput = document.querySelector('input[type="email"]');
+    const selectInput = document.querySelector("select");
+    const textareaInput = document.querySelector("textarea");
+    const submitButton = document.querySelector("button");
+
+    function validateForm() {
+      const isValid =
+        nameInput.value.trim() !== "" &&
+        emailInput.value.trim() !== "" &&
+        selectInput.value !== "" &&
+        textareaInput.value.trim() !== "";
+      submitButton.disabled = !isValid;
+      submitButton.style.cursor = isValid ? "pointer" : "not-allowed";
+    }
+
+    nameInput.addEventListener("input", validateForm);
+    emailInput.addEventListener("input", validateForm);
+    selectInput.addEventListener("change", validateForm);
+    textareaInput.addEventListener("input", validateForm);
+
+    submitButton.addEventListener("click", function (event) {
+      if (!submitButton.disabled) {
+        window.location.href = "mentors.html";
+      }
+    });
+
+    validateForm(); // checks if fields are filled
+  });
+</script>
+
+  </head>
+  <body>
+    <div class="header">
+        <a href="homepage.html" class="logo-container">
+            <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+          </a>
+        <div class="brand">CodeConnect</div>
+        <div class="login-signup">
+          <a href="login.html">Sign Out</a>
+        </div>
+        <h2>Become a Mentor</h2>
+        <a href="homepage.html">Home</a>
+        <a href="challenges.html">Challenges</a>
+        <a href="mentors.html">Mentors</a>
+        <a href="forum.html">Forums</a>
+        <a href="store.html">Memberships</a>
+        <a href="premium.html">Premium</a>
+        <a href="explore.html">Explore</a>
+        <a href="workspace.html">Workspaces</a>
+      </div>
+    <div class="container mentorship-container">
+      <div class="section-title">
+        <h2>Apply here to become a mentor</h2>
+      </div>
+      <input type="text" placeholder="Name" />
+      <input type="email" placeholder="Email Address" />
+      <select>
+        <option value="" disabled selected>Select Expertise</option>
+        <option value="frontend">Frontend Development</option>
+        <option value="backend">Backend Development</option>
+        <option value="database">Databases</option>
+        <option value="dsa">Data structures and Algorithms</option>
+      </select>
+      <textarea
+        placeholder="Tell us about your experience and how you can help"
+        rows="4"
+      ></textarea>
+      <button disabled>Submit</button>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="index.html"><strong>Home</strong></a></li>
+                    <li><a href="about.html"><strong>About</strong></a></li>
+                    <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
+                    <li><a><strong>Phone: 888-888-8888</strong></a></li>
+                </ul>
+            </div>
+            <div class="media-icons">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footer-bott">
+                <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>
