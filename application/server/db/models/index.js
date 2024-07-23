@@ -41,6 +41,8 @@ module.exports = {
     UserChatSession:require("./userChatSession.js"),
     Leaderboard:require("./leaderboard.js"),
     SubmissionShare:require('./submissionShare.js'),
-    SupportForm:require('./supportForm.js')
+    SupportForm:require('./supportForm.js'),
+    AllEntities:require('./allEntities.js')
+
 }
 

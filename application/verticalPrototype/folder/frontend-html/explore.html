@@ -390,7 +390,7 @@
       </div>
 
       <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded",  () => {
           const searchBar = document.getElementById("search-bar");
           const suggestions = document.getElementById("suggestions");
 
@@ -406,21 +406,32 @@
             { name: "Profile", url: "profile.html" },
           ];
 
-          searchBar.addEventListener("input", () => {
+          searchBar.addEventListener("input",  async () => {
             const input = searchBar.value.toLowerCase();
             suggestions.innerHTML = "";
 
             if (input) {
+              const requestOptions = {method: "GET"};
+              
               const filteredPages = pages.filter((page) =>
                 page.name.toLowerCase().includes(input)
               );
-              filteredPages.forEach((page) => {
-                const suggestionItem = document.createElement("a");
-                suggestionItem.href = page.url;
-                suggestionItem.textContent = page.name;
-                suggestions.appendChild(suggestionItem);
+              const response = await fetch(`/api/search/${input}` , requestOptions);
+              const response_json = await response.json();
+              const filteredRecords = response_json.records.map((record)=>
+                  {
+                    // url:`/${record.entityType}/${record.entityId}` Once pages for resources are implemented
+                    return {name:record.title, url:'/explore.html'}
+                  }
+                );
+                filteredPages.concat(filteredRecords).forEach((page) => {
+                    const suggestionItem = document.createElement("a");
+                    suggestionItem.href = page.url;
+                    suggestionItem.textContent = page.name;
+                    suggestions.appendChild(suggestionItem);
               });
               suggestions.style.display = "block";
+              
             } else {
               suggestions.style.display = "none";
             }

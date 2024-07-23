@@ -60,7 +60,7 @@ exports.fuzzy_search = async (model, options)=>{
         raw : true, // This will return a simple object
         order: [order] // get result as simple objects
     });
-    
+
     // Map all search properties to a object list of name and weight
     const fuse_keys = Object.keys(search_properties).map((key)=>{
         return {
