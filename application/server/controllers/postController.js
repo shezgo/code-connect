@@ -1,6 +1,5 @@
 const asyncHandler = require("express-async-handler");
 const boom = require("@hapi/boom");
-// Replace this with export from 
 const { Post } = require("../db/models/index.js");
 const { search } = require("../utils/index.js")
 
@@ -19,7 +18,6 @@ exports.search_post_get = asyncHandler(async (req, res, next) => {
     }
     
     const search_results = await search.fuzzy_search(Post, search_options)
-    res.json({ records: search_results });
-           
+    res.json({ records: search_results });     
 });
 

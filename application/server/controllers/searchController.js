@@ -4,16 +4,13 @@ const { User } = require("../db/models/index");
 const boom = require("@hapi/boom");
 const dbConfig = require("../db/config");
 const { Sequelize, QueryTypes } = require('sequelize');
-const { search } = require('../routes/api/auth');
 
-console.log("LINE 8: ", dbConfig);
 const sequelize = new Sequelize(
     database = dbConfig.config.database,
     user = dbConfig.config.username,
     password = dbConfig.config.password,
     {
        host : dbConfig.config.host,
-       //dialect : dbConfig.config.dialect
        dialect: "mysql"
     },
 );
@@ -25,13 +22,7 @@ exports.search_user_data = asyncHandler(async (req, res) => {
     const sortDirection = req.query.sortDirection || 'asc';
     console.log(searchTerm);
     try {
-        //Find the subset of the search.
-        //const results = await sequelize.query('SELECT userID, email FROM user WHERE email LIKE :searchTerm', {
-        //    replacements: { searchTerm: `%${searchTerm}%` },
-        //    type: QueryTypes.SELECT
-        //});
-
-        //Return all users. change the key fields if you need more data
+        //Return all items. change the key fields if you need more data
         const [results] = await sequelize.query('SELECT userID, email FROM user LIMIT 10');
 
         //extract just the emails and make a map of them
@@ -47,16 +38,6 @@ exports.search_user_data = asyncHandler(async (req, res) => {
             }
             return 0;
         });
-
-        //const sortedJSON = emails.map(email => ({ email }));
-
-        //Sorting the returned subset
-        //console.log("Unsorted: " + results);
-        //let sortedJSON = results;
-        //sortedJSON.sort((a, b) => (
-        //    a.email > b.email ? 1 : -1));
-        //console.log("Sorted: " + sortedJSON);
-
         //Fuzzy search the map.
         const options = {
             keys: [
