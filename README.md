@@ -31,7 +31,7 @@
 
 |             Name of the Project               |                            URL of the Project                          | 
 |                       :---:                   |                                 :---:                                  |
-|                  Code Connect                 |                     http://18.144.86.237:3000/application/verticalPrototype/folder/frontend-html/index.html                    |                                                        
+|                  Code Connect                 |                      http://54.153.31.83:3000/home                     |                                                        
  
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
