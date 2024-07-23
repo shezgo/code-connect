@@ -9,15 +9,17 @@ exports.search_post_get = asyncHandler(async (req, res, next) => {
     const filter = req.body?.filter;
     const search_options = {
         search_query: search_query, // Query of the search
-        search_properties:{
-            content: 1 // Weight of the column content of model post to fuzzy search in
+        search_properties: {
+            content: 1, // Weight of the column content of model post to fuzzy search in
+            //postID,
+            //userID,
         }, 
         filter: filter,
-        order: ["date", "DESC"],
+        order: ["postID", "DESC"],
         limit: 3 // Number of records to return
     }
     
-    const search_results = await search.fuzzy_search(Post, search_options)
+    const search_results = await search.fuzzy_search(Post, search_options);
     res.json({ records: search_results });     
 });
 

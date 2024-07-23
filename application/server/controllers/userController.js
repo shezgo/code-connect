@@ -13,13 +13,19 @@ exports.search_challenge_get = asyncHandler(async (req, res, next) => {
             userID: 1,// Weight of the column content of model challenge to fuzzy search in
             firstName: 2,
             lastName: 2,
-            email: 2, 
+            email: 2,
         },
         filter: filter,
-        order: ["userID", "DESC"],
+        order: ["email", "ASC"],
         limit: 3 // Number of records to return
     }
 
     const search_results = await search.fuzzy_search(User, search_options)
+
+    if (search_results.length === 0) {
+        search_options.search_query = "";
+        search_results = await search.fuzzy_search(User, search_options);
+        return res.json({ records: search_results });
+    }
     res.json({ records: search_results });
 });
