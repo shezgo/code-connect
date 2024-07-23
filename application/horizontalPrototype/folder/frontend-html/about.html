@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>About Us</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      text="style\css"
+      href="application\verticalPrototype\folder\frontend-css\style.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Style the header */
+      .header {
+        background-color: #62b4c9;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: white;
+        position: relative;
+      }
+
+      .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .logo-container {
+        display: inline-block;
+      }
+
+      .header .brand {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        font-size: 20px;
+      }
+
+      .login-signup {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        font-size: 14px;
+      }
+
+      .login-signup a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+
+      .login-signup a:hover {
+        text-decoration: underline;
+      }
+
+      .search-container {
+        position: absolute;
+        top: 70px;
+        right: 10px;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .search-container input[type="text"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 4px 0 0 4px;
+      }
+
+      .search-container button {
+        padding: 5px;
+        border: 1px solid #ccc;
+        color: white;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0;
+      }
+
+      .search-container button:hover {
+        background-color: #000000;
+      }
+
+      /* Content styling */
+      .container {
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      .section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .section .text {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .section .imgAbt {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .section .imgR {
+        order: -1; /* Reverses order for alternate sections */
+      }
+
+      /* Style the footer */
+      footer {
+        width: 100%;
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        margin-top: auto;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .media-icons {
+        margin: 10px 0;
+      }
+
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+
+      .footer-nav li {
+        margin: 0 15px;
+      }
+
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+
+      .footer-bott {
+        margin-top: 10px;
+      }
+
+      /* Style for links in header */
+      .header a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      .header a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <script>
+      function showDevelopmentAlert() {
+        alert("Still in development");
+      }
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
+      <div class="brand">CodeConnect</div>
+      <div class="login-signup">
+        <a href="login.html">Sign Out</a>
+      </div>
+      <div class="search-container">
+        <input type="text" placeholder="Search..." />
+        <button onclick="showDevelopmentAlert()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <h2>About Us</h2>
+      <a href="homepage.html">Home</a>
+      <a href="challenges.html">Challenges</a>
+      <a href="mentors.html">Mentors</a>
+      <a href="forum.html">Forums</a>
+      <a href="store.html">Memberships</a>
+      <a href="premium.html">Premium</a>
+      <a href="explore.html">Explore</a>
+      <a href="workspace.html">Workspaces</a>
+    </div>
+
+    <div class="container">
+      <h1 style="text-align: center; letter-spacing: 3px">
+        CodeConnect: Meet the Squad
+      </h1>
+      <br /><br />
+      <div class="section">
+        <div class="text">
+          <h2>Max Shigeyoshi</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Hello, I am Max Shigeyoshi. I am an aspiring cybersecurity student
+            and am looking forward to working in the industry.
+          </p>
+        </div>
+        <img
+          class="imgAbt imgR"
+          src="Max_Shigeyoshi.jpg"
+          alt="Max Shigeyoshi"
+        />
+      </div>
+      <div class="section">
+        <div class="text">
+          <h2>Ghadeer Al-badani</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Hi everyone. My name is Ghadeer and and I am a student eager to gain
+            more skills and launch a career as a software engineer.
+          </p>
+        </div>
+        <img class="imgAbt" src="Ghadeer.jpg" alt="Ghadeer Al-badani" />
+      </div>
+      <div class="section">
+        <div class="text">
+          <h2>Noah Hai</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Hi everyone. My name is Noah and I am an aspiring software engineer
+            looking to breakthrough in the tech industry in the near future
+          </p>
+        </div>
+        <img class="imgAbt" src="Noah.JPG" alt="Noah Hai" />
+      </div>
+      <div class="section">
+        <div class="text">
+          <h2>Phillip Ma</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Hi everyone. My name is Phillip Ma, and I am an aspiring
+            Cybersecurity Analyst. My dream is to one day make information
+            convenient/accessable and equally as secure.
+          </p>
+        </div>
+        <img class="imgAbt imgR" src="Phillip.jpg" alt="Phillip Ma" />
+      </div>
+      <div class="section">
+        <div class="text">
+          <h2>Shez Rahman</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Hi everyone, my name is Shez and I'm from the Bay Area. As an artist
+            and aspiring software engineer, I'm on the search for positions that
+            can fuel my passion for systems/processes, narratives, and
+            psychology.
+          </p>
+        </div>
+        <img class="imgAbt" src="Shez.jpg" alt="Shez Rahman" />
+      </div>
+      <div class="section">
+        <div class="text">
+          <h2>William Pan</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Hi everyone. My name is William, a Senior computer science student
+            at SFSU who believes talent wins games, but teamwork wins
+            championships
+          </p>
+        </div>
+        <img class="imgAbt imgR" src="will.jpg" alt="William Pan" />
+      </div>
+      <div class="section">
+        <div class="text">
+          <h2>Aaron Rayray</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Growing up in the Bay Area, a super fast-paced environment that
+            adapts to technology quickly, I found a liking to learning new
+            technology and software. That could be from hardware manufacture or
+            software development. I enjoy creating new complex projects because
+            it allows me to be as creative as I want and let others use it for
+            their own good. As I deepen into my technological career, I found a
+            liking for Project Management with a focus in Frontend.
+          </p>
+        </div>
+        <img class="imgAbt" src="aaron.jpg" alt="Aaron Rayray" />
+      </div>
+      <div class="section">
+        <div class="text">
+          <h2>Majd Alnajjar</h2>
+          <p>---------------------</p>
+          <br />
+          <p>
+            Hi everyone. My name is Majd, I'm fascinated by software engineering
+            and am looking forward to the many projects I'm going to create in
+            the future!
+          </p>
+        </div>
+        <img class="imgAbt imgR" src="majd.png" alt="Majd Alnajjar" />
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-nav">
+          <ul>
+            <li>
+              <a href="index.html"><strong>Home</strong></a>
+            </li>
+            <li>
+              <a href="about.html"><strong>About</strong></a>
+            </li>
+            <li>
+              <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
+            </li>
+            <li>
+              <a><strong>Phone: 888-888-8888</strong></a>
+            </li>
+          </ul>
+        </div>
+        <div class="media-icons">
+          <a href="https://www.instagram.com/codeconnect"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/codeconnect"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.google.com/codeconnect"><i class="fa-brands fa-google-plus"></i></a>
+          <a href="https://www.youtube.com/codeconnect"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-bott">
+          <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
