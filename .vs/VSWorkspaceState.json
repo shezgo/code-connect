@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\application",
+    "\\application\\server",
+    "\\application\\server\\routes",
+    "\\application\\server\\routes\\api",
+    "\\application\\verticalPrototype",
+    "\\application\\verticalPrototype\\folder",
+    "\\application\\verticalPrototype\\folder\\frontend-html"
+  ],
+  "SelectedNode": "\\application\\server\\index.js",
+  "PreviewInSolutionExplorer": false
+}

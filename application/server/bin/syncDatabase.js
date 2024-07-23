@@ -1,8 +1,7 @@
 require('dotenv').config();
 
-const sequelize = require('../db/config');
 
-const initialize = require("../db/index.js");
+const { initialize } = require("../db/index.js");
 
 const sync_database = async ()=>{
 
@@ -21,5 +20,7 @@ const sync_database = async ()=>{
 }
     
 (async () => await sync_database())();
+
+module.exports = sync_database;
 
 return 0;
