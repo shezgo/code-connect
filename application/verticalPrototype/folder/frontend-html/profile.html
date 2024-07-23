@@ -325,7 +325,30 @@
         text-decoration: underline;
       }
     </style>
+     <script>
+      function previewProfilePic(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          const output = document.getElementById('profile-pic-preview');
+          output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+  
+      function saveChanges() {
+        const name = document.getElementById('nickname').value;
+        const bio = document.getElementById('bio').value;
+        const about = document.getElementById('about').value;
+  
+        document.getElementById('display-name').innerText = name;
+        document.getElementById('display-bio').innerText = bio || "No bio available.";
+        document.getElementById('display-about').innerText = about || "No information available.";
+  
+        alert('Changes saved successfully!');
+      }
+    </script>
   </head>
+
   <body>
     <div class="header">
       <a href="homepage.html" class="logo-container">
@@ -404,7 +427,7 @@
 
     <div class="profile-container">
       <div class="profile-header">
-        <img src="profile-pic.jpg" alt="Profile Picture" />
+        <img id="profile-pic-preview" src="blankprofile.jpg" alt="Profile Picture">
         <h1>John Doe</h1>
         <p>@johndoe</p>
       </div>
