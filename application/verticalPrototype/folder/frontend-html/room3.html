@@ -19,7 +19,7 @@ body {
 
 /* Style the header */
 .header {
-  background-color: #000000;
+  background-color: #62b4c9;
   padding: 5px;
   text-align: center;
   font-size: 20px;
@@ -123,7 +123,7 @@ body {
 /* Style the footer */
 footer {
   width: 100%;
-  background-color: #000000;
+  background-color: #62b4c9;
   color: white;
   padding: 10px 0;
   text-align: center;
@@ -186,6 +186,44 @@ footer {
     right: 10px;
   }
 }
+.sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background-color: #575757;
+      }
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      .mail-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .profile-icon {
+    width: 20px;
+    height: 20px;
+  }
 </style>
 <script>
   function showDevelopmentAlert() {
@@ -203,10 +241,7 @@ footer {
   <div class="login-signup">
     <a href="login.html">Sign Out</a>
   </div>
-  <div class="search-container">
-    <input type="text" placeholder="Search...">
-    <button onclick="showDevelopmentAlert()"><i class="fa fa-search"></i></button>
-  </div>
+
   <h2>Room 3</h2>
   <a href="homepage.html">Home</a>
   <a href="challenges.html">Challenges</a>
@@ -216,6 +251,62 @@ footer {
   <a href="premium.html">Premium</a>
   <a href="explore.html">Explore</a>
   <a href="workspace.html">Workspaces</a>
+  <a href="leaderboards.html">Leaderboards</a>
+  <a href="jobs.html">Jobs</a>
+  <svg
+          class="mail-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16v16H4z" />
+          <path d="M4 4l8 8 8-8" />
+        </svg>
+      </a>
+
+      <a href="profile.html" class="icon-button">
+        <svg
+          class="profile-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+          />
+        </svg>
+      </a>
+
+      <button class="icon-button" onclick="openSidebar()">Friends</button>
+
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+          >&times;</a
+        >
+        <a href="profile.html">Friend 1</a>
+        <a href="profile.html">Friend 2</a>
+        <a href="profile.html">Friend 3</a>
+        <a href="profile.html">Friend 4</a>
+        <a href="profile.html">Friend 5</a>
+      </div>
+    </div>
+    <script>
+      function openSidebar() {
+        document.getElementById("mySidebar").style.width = "250px";
+      }
+
+      function closeSidebar() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
 </div>
 
 <div class="room-link-container">
