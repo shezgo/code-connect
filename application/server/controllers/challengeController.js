@@ -18,9 +18,6 @@ exports.search_challenge_get = asyncHandler(async (req, res, next) => {
         order: ["title", "DESC"],
         limit: 3 // Number of records to return
     }
-    console.log(req.params.search_query);
-    console.log(filter);
-
     const search_results = await search.fuzzy_search(CodeChallenge, search_options)
     res.json({ records: search_results });
 });
