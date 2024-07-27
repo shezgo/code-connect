@@ -4,15 +4,14 @@ const { CodeChallenge } = require("../db/models/index.js");
 const { search } = require("../utils/index.js")
 
 exports.search_challenge_get = asyncHandler(async (req, res, next) => {
-    const search_query = req.params.SearchTerm;
+    const search_query = req.params.searchTerm;
     // Send filter with the body
     const filter = req.body?.filter;
     const search_options = {
         search_query: search_query, // Query of the search
         search_properties: {
-            challengeID: 1,// Weight of the column content of model challenge to fuzzy search in
             title: 2,
-            language: 2,
+            description: 2,
         },
         filter: filter,
         order: ["title", "DESC"],
