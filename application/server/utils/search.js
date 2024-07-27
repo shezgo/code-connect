@@ -41,7 +41,6 @@ exports.fuzzy_search = async (model, options)=>{
     // For more details about querying https://sequelize.org/docs/v6/core-concepts/model-querying-basics/ 
     let where_filter = undefined
     
-    console.log(Object.keys(filter))
     if (filter!== undefined){
         // if filter are used, reduce the keys of the object to a list of 'and' of attribute in conditions
         where_filter = Object.keys(filter).reduce(
@@ -73,6 +72,7 @@ exports.fuzzy_search = async (model, options)=>{
     // Check More about Fuse Options here https://www.fusejs.io/api/options.html#basic-options
     const fuse_option = {
         includeScore: true,
+        threshold:0.4,
         findAllMatches: true, // Find All matches
         keys: fuse_keys
       }
@@ -80,7 +80,6 @@ exports.fuzzy_search = async (model, options)=>{
     const fuse = new Fuse(results, fuse_option)
     
     const search_results = fuse.search(search_query)
-    
     // if no results found return top results according to sort
     if(search_results.length < 1){
         return results.slice(0, limit)
