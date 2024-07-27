@@ -10,6 +10,7 @@
     />
     <title>CodeConnect Mentorship</title>
     <style>
+
       body {
         font-family: Arial, sans-serif;
         display: flex;
@@ -240,7 +241,7 @@
       </a>
       <div class="brand">CodeConnect</div>
       <div class="login-signup">
-        <a href="login.html">Sign Out</a>
+          <button onclick="logoutUser()">Sign Out</button>
       </div>
       <h2>Mentorship</h2>
       <a href="homepage.html">Home</a>
@@ -297,6 +298,27 @@
       </div>
 
       <script>
+          async function logoutUser() {
+              try {
+                  const response = await fetch('/api/auth/logout', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                  });
+
+                  if (response.ok) {
+                      // Redirect to the login page or home page after logout
+                      window.location.href = 'login.html';
+                  } else {
+                      const result = await response.json();
+                      alert(`Logout failed: ${result.message}`);
+                  }
+              } catch (error) {
+                  console.error('Error during logout:', error);
+                  alert('Logout failed. Please try again.');
+              }
+          }
         function openSidebar() {
           document.getElementById("mySidebar").style.width = "250px";
         }
@@ -305,6 +327,7 @@
           document.getElementById("mySidebar").style.width = "0";
         }
       </script>
+
     </div>
     <div class="container">
       <div class="section-title">

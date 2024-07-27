@@ -254,18 +254,41 @@
         expiryDateInput.addEventListener("input", validateForm);
         cvvInput.addEventListener("input", validateForm);
 
-        validateForm(); // Initial checking if fields are filled
-      });
+
+            validateForm(); // Initial checking if fields are filled
+        });
+        async function logoutUser() {
+            try {
+                const response = await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    // Redirect to the login page or home page after logout
+                    window.location.href = 'login.html';
+                } else {
+                    const result = await response.json();
+                    alert(`Logout failed: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Error during logout:', error);
+                alert('Logout failed. Please try again.');
+            }
+        }
     </script>
   </head>
   <body>
     <div class="header">
+
         <a href="homepage.html" class="logo-container">
             <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
           </a>
       <div class="brand">CodeConnect</div>
       <div class="login-signup">
-        <a href="login.html">Sign Out</a>
+          <button onclick="logoutUser()">Sign Out</button>
       </div>
       <h2>Premium Membership</h2>
       <a href="homepage.html">Home</a>
@@ -329,6 +352,7 @@
         document.getElementById("mySidebar").style.width = "0";
       }
     </script>
+
     </div>
     <div class="container payment-container">
       <div class="section-title">
