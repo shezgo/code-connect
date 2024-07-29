@@ -439,7 +439,11 @@
 
     submitButton.addEventListener("click", function (event) {
       if (!submitButton.disabled) {
-        window.location.href = "mentors.html";
+        console.log(nameInput.value);
+        console.log(emailInput.value);
+        console.log(selectInput.value);
+        console.log(textareaInput.value);
+        // window.location.href = "mentors.html";
       }
     });
 
@@ -486,7 +490,7 @@
         placeholder="Tell us about your experience and how you can help"
         rows="4"
       ></textarea>
-      <button disabled>Submit</button>
+      <button id="submit_button">Test(Submit)</button>
     </div>
     <footer>
         <div class="footer-container">
