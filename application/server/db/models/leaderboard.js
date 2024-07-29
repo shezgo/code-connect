@@ -39,5 +39,8 @@ Leaderboard.init(
     }
 );
 
+User.hasMany(Leaderboard, { foreignKey: 'userID' });
+Leaderboard.belongsTo(User, { foreignKey: 'userID' });
+
 
 module.exports = Leaderboard;
