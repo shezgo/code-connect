@@ -161,6 +161,55 @@
       .header a:hover {
         text-decoration: underline;
       }
+      .tos-privacy {
+        text-align: left;
+        font-size: 14px;
+        margin: 10px 0;
+      }
+      .tos-privacy a {
+        color: #007bff;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .tos-privacy a:hover {
+        text-decoration: underline;
+      }
+      
+      .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto;
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+        padding-top: 60px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; 
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
     </style>
     <script>
       function validatePassword() {
@@ -185,7 +234,7 @@
             errorMessage.style.display = "none";
             return true;
         }
-        
+
         async function signUp(){
             var password = document.getElementById("password").value;
             var email = document.getElementById("email").value;
@@ -230,6 +279,35 @@
             }
         }
 
+    
+      document.addEventListener("DOMContentLoaded", function() {
+
+        var tosPanel = document.getElementById("tos-panel");
+        var privacyPanel = document.getElementById("privacy-panel");
+
+        var tosLink = document.querySelector(".tos-privacy a[href='#tos']");
+        var privacyLink = document.querySelector(".tos-privacy a[href='#privacy']");
+
+        var tosClose = document.querySelector("#tos-panel .close");
+        var privacyClose = document.querySelector("#privacy-panel .close");
+
+        // promps tos and provacy
+        tosLink.onclick = function(event) {
+          event.preventDefault();
+          tosPanel.style.display = "block";
+        }
+        privacyLink.onclick = function(event) {
+          event.preventDefault();
+          privacyPanel.style.display = "block";
+        }
+
+        tosClose.onclick = function() {
+          tosPanel.style.display = "none";
+        }
+        privacyClose.onclick = function() {
+          privacyPanel.style.display = "none";
+        }
+      });
     </script>
     <link
       rel="stylesheet"
@@ -250,21 +328,39 @@
       <h2>Sign Up</h2>
     </div>
     <div class="signup-container">
+      <img src="Codeconnect Logo.jpg" alt="Logo" />
+      <h1>CodeConnect</h1>
+      <h3>Start Your Tech Journey With Us.</h3>
+      <input type="text" placeholder="Username" />
+      <input type="email" id="email" placeholder="Email Address" />
+      <input type="password" id="password" placeholder="Password" />
+      <input type="password" id="confirm-password" placeholder="Confirm Password" />
+      <div id="error-message" class="error-message"></div>
+      <div class="tos-privacy">
+        <input type="checkbox" id="tos-checkbox" />
+        <label for="tos-checkbox">You agree to the <a href="#tos">terms of use</a> and acknowledge the <a href="#privacy">privacy policy</a>.</label>
+      </div>
+      <button onclick="return signUp();">Sign Up</button>
+      <div class="links">
+        <p>Have an account?</p>
+        <a href="./login.html">Sign In</a>
+      </div>
+    </div>
 
-        <img src="Codeconnect Logo.jpg" alt="Logo">
-        <h1>CodeConnect</h1>
-        <h3>Start Your Tech Journey With Us.</h3>
-        <input type="text" placeholder="Username">
-        <input type="email" id="email" placeholder="Email Address">
-        <input type="password" id="password" placeholder="Password">
-        <input type="password" id="confirm-password" placeholder="Confirm Password">
-        <div id="error-message" class="error-message"></div>
-        <button onclick="return signUp();">Sign Up</button>
-        <div class="links">
-            <p>Have an account?</p>
-            <a href="./login.html">Sign In</a>
-        </div>
+    <div id="tos-panel" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Terms of Service</h2>
+        <p>Codeconnect terms of service</p>
+      </div>
+    </div>
 
+    <div id="privacy-panel" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Privacy Policy</h2>
+        <p>Codeconnect privacy policy</p>
+      </div>
     </div>
     <footer>
       <div class="footer-container">
