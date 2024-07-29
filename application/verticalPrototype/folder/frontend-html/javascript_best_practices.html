@@ -233,7 +233,7 @@ footer {
     let messages = [];
 
     // Sanitize input by removing potentially dangerous characters 
-    const sanitizedCode = code.replace(/[^a-zA-Z0-9\s\(\)\.\,\;\+\-\*\/\=\!\<\>\&\|\%\:\'\[\]\{\}\"\[\]\{\}\#]/g, '');
+    const sanitizedCode = code.replace(/[{}\[\]<>\:\%\#\$]/g, '');
     console.log(sanitizedCode);
     try {
         // Capture the output
