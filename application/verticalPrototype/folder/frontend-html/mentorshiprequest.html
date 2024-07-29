@@ -3,14 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      text="style\css"
-      href="/frontend-css/style.css"
-    />
-    <title>CodeConnect Mentorship</title>
+    <link rel="stylesheet" text="style\css" href="/frontend-css/style.css" />
+    <title>Mentor Request - CodeConnect</title>
     <style>
-
       body {
         font-family: Arial, sans-serif;
         display: flex;
@@ -106,55 +101,10 @@
         color: white;
         cursor: pointer;
         font-size: 16px;
+        margin: 0 10px;
       }
       .buttons button:hover {
         background-color: #333;
-      }
-      .featured-mentors {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 20px;
-      }
-      .mentor {
-        text-align: center;
-        width: 30%;
-      }
-      .mentor img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-bottom: 10px;
-      }
-      .reviews {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      .review-box {
-        background-color: #f9f9f9;
-        padding: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        margin: 10px auto;
-        width: 60%;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-      .quick-links {
-        margin-top: 20px;
-      }
-      .quick-links ul {
-        list-style: none;
-        padding: 0;
-        text-align: left;
-      }
-      .quick-links ul li {
-        margin: 10px 0;
-      }
-      .quick-links ul li a {
-        color: #007bff;
-        text-decoration: none;
-      }
-      .quick-links ul li a:hover {
-        text-decoration: underline;
       }
       footer {
         width: 100%;
@@ -211,7 +161,6 @@
         transition: 0.5s;
         padding-top: 60px;
       }
-
       .sidebar a {
         padding: 10px 15px;
         text-decoration: none;
@@ -220,11 +169,9 @@
         display: block;
         transition: 0.3s;
       }
-
       .sidebar a:hover {
         background-color: #575757;
       }
-
       .sidebar .closebtn {
         position: absolute;
         top: 0;
@@ -287,9 +234,7 @@
       <button class="icon-button" onclick="openSidebar()">Friends</button>
 
       <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
-          >&times;</a
-        >
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
         <a href="profile.html">Friend 1</a>
         <a href="profile.html">Friend 2</a>
         <a href="profile.html">Friend 3</a>
@@ -308,7 +253,6 @@
                   });
 
                   if (response.ok) {
-                      // Redirect to the login page or home page after logout
                       window.location.href = 'login.html';
                   } else {
                       const result = await response.json();
@@ -331,56 +275,15 @@
     </div>
     <div class="container">
       <div class="section-title">
-        <h2>Connect with Experienced Coders</h2>
+        <h2>Mentee Request</h2>
+      </div>
+      <div class="mentee-description">
+        <h3>Mentee Name: </h3>
+        <p><strong>Description:</strong> </p>
       </div>
       <div class="buttons">
-        <button onclick="location.href='find_mentor.html'">
-          Find A Mentor
-        </button>
-        <button onclick="location.href='become_mentor.html'">
-          Become A Mentor
-        </button>
-        <button onclick="location.href='forum.html'">
-          Your Mentor Messages
-        </button>
-      </div>
-      <div class="section-title">
-        <h2>Featured Mentors</h2>
-      </div>
-      <div class="featured-mentors">
-        <div class="mentor">
-          <img src="Max_Shigeyoshi.jpg" alt="Max" />
-          <p><strong>Max</strong></p>
-        </div>
-        <div class="mentor">
-          <img src="Shez.jpg" alt="Shez" />
-          <p><strong>Shez</strong></p>
-        </div>
-        <div class="mentor">
-          <img src="Phillip.jpg" alt="Phillip" />
-          <p><strong>Phillip</strong></p>
-        </div>
-        <div class="mentor">
-          <img src="aaron.jpg" alt="Aaron" />
-          <p><strong>Aaron</strong></p>
-        </div>
-      </div>
-      <div class="section-title">
-        <h2>Reviews</h2>
-      </div>
-      <div class="reviews">
-        <div class="review-box">
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>"Great experience!" - Noah</p>
-        </div>
-        <div class="review-box">
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>"Very helpful." - William</p>
-        </div>
-        <div class="review-box">
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>"Learned a lot!" - Ghadeer</p>
-        </div>
+        <button onclick="acceptRequest()">Accept</button>
+        <button onclick="denyRequest()">Deny</button>
       </div>
     </div>
     <footer>
@@ -402,23 +305,25 @@
           </ul>
         </div>
         <div class="media-icons">
-          <a href="https://www.instagram.com/codeconnect"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-          <a href="https://www.facebook.com/codeconnect"
-            ><i class="fa-brands fa-facebook"></i
-          ></a>
-          <a href="https://www.google.com/codeconnect"
-            ><i class="fa-brands fa-google-plus"></i
-          ></a>
-          <a href="https://www.youtube.com/codeconnect"
-            ><i class="fa-brands fa-youtube"></i
-          ></a>
+          <a href="https://www.instagram.com/codeconnect"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/codeconnect"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.google.com/codeconnect"><i class="fa-brands fa-google-plus"></i></a>
+          <a href="https://www.youtube.com/codeconnect"><i class="fa-brands fa-youtube"></i></a>
         </div>
         <div class="footer-bott">
           <p>&copy; 2024 CodeConnect. All rights reserved.</p>
         </div>
       </div>
     </footer>
+    <script>
+      function acceptRequest() {
+        // Shez backend
+        alert('Request Accepted');
+      }
+      function denyRequest() {
+        // Shez backend
+        alert('Request Denied');
+      }
+    </script>
   </body>
 </html>

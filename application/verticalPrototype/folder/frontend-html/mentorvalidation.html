@@ -10,6 +10,30 @@
 
 
     <style>
+                .profile-info {
+            margin-bottom: 20px;
+        }
+        .profile-info h2 {
+            color: #333;
+        }
+        .profile-info p {
+            font-size: 16px;
+            color: #666;
+        }
+         .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .accept-button {
+            background-color: #28a745;
+        }
+        .deny-button {
+            background-color: #dc3545;
+        }
         * {
             box-sizing: border-box;
         }
@@ -239,6 +263,15 @@
                 font-size: 36px;
                 margin-left: 50px;
             }
+            .action-buttons button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 10px;
+}
     </style>
     <script>
         async function logoutUser() {
@@ -272,7 +305,7 @@
         <a href="login.html">Sign Out</a>
       </div>
 
-      <h2>Memberships</h2>
+      <h2>Application</h2>
       <a href="homepage.html">Home</a>
       <a href="challenges.html">Challenges</a>
       <a href="mentors.html">Mentors</a>
@@ -337,60 +370,36 @@
         document.getElementById("mySidebar").style.width = "0";
       }
     </script>
+<div class="container">
+    <div class="profile-info">
+        <h2>Applicant Profile</h2>
+        <p><strong>Name:</strong> </p>
+        <p><strong>Email:</strong> </p>
+        <p><strong>Expertise:</strong> </p>
+        <p><strong>Expertise Specification:</strong> </p>
+        <p><strong>Projects:</strong> </p>
+        <p><strong>College:</strong> </p>
+        <p><strong>Degree:</strong> </p>
+        <p><strong>Motive to become Mentor:</strong> </p>
+        <p><strong>Years of Experience:</strong> </p>
+        <p><strong>Experience Description:</strong> </p>
 
-    <div class="storefront">
-      <div class="membership-section">
-        <div class="membership">
-          <h2>Free Membership</h2>
-          <p>
-            Join our community with a free membership to access basic features,
-            including forums, basic challenges, and mentor connections. Start
-            networking and growing your skills today without any cost.
-          </p>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-
-          <a href="homepage.html" class="button">Explore Here!</a>
-        </div>
-        <div class="membership">
-          <h2>Premium Membership</h2>
-          <p>
-            Upgrade to our Premium Service to unlock exclusive features that
-            enhance your networking experience. Enjoy priority support,
-            additional tools, and special access to premium groups and sessions.
-          </p>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-          <li>
-            **
-          </li>
-          <a href="premium.html" class="button">Upgrade Now</a>
-        </div>
-      </div>
     </div>
+    <div class="action-buttons">
+        <button class="accept-button" onclick="handleAccept()">Accept</button>
+        <button class="deny-button" onclick="handleDeny()">Deny</button>
+    </div>
+</div>
+<script>
+    function handleAccept() {
+        // Shez or William can add backend here
+        alert("Application Accepted");
+    }
+    function handleDeny() {
+        // Shez or William can add backend here
+        alert("Application Denied");
+    }
+</script>
 
     <footer>
       <div class="footer-container">

@@ -311,8 +311,13 @@
         text-align: center;
         margin: 30px 0;
       }
+      .mentorship-container input[type="projects"],
+      .mentorship-container input[type="origin"],
+      .mentorship-container input[type="degree"],
+      .mentorship-container input[type="college"],
       .mentorship-container input[type="text"],
       .mentorship-container input[type="email"],
+      .mentorship-container input[type="experience"],
       .mentorship-container select,
       .mentorship-container textarea,
       .mentorship-container button {
@@ -524,7 +529,7 @@
       </div>
     <div class="container mentorship-container">
       <div class="section-title">
-        <h2>Apply here to become a mentor</h2>
+        <h2>Apply here to become a mentor now!</h2>
       </div>
       <input type="text" placeholder="Name" />
       <input type="email" placeholder="Email Address" />
@@ -533,8 +538,15 @@
         <option value="frontend">Frontend Development</option>
         <option value="backend">Backend Development</option>
         <option value="database">Databases</option>
-        <option value="dsa">Data structures and Algorithms</option>
+        <option value="fullstack">Full Stack</option>
+        <option value="fullstack">UX Designer</option>
+        <input type="text" id="expertise-input" name="other-expertise" placeholder="Please specify your expertise">
       </select>
+      <input type="projects" placeholder="Do you have any outstanding projects to display?"/>
+      <input type="college" placeholder="Did you graduate from college and when? If not applicable, type in N/A"/>
+      <input type="degree" placeholder="Do you have a degree or self learned? If not applicable, type in NA"/>
+      <input type="origin" placeholder="Why do you want to become a Mentor for CodeConnect?"/>
+      <input type="experience" placeholder="How many years of experience do you have?"/>
       <textarea
         placeholder="Tell us about your experience and how you can help"
         rows="4"
