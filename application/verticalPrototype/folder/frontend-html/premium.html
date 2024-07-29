@@ -24,9 +24,31 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        margin: 20px auto;
+        width: 20%; 
+        margin: 20px 0;
+        margin-left: 15%;
         flex-grow: 1;
+      }
+      .advert-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 55%; 
+        position: fixed; 
+        top: 50%; 
+        right: 100px;
+        transform: translateY(-50%); 
+      }
+      .advert-container h2 {
+    text-align: center;
+      }
+      .advert-image {
+        width: 100%; 
+        max-width: 800px; /* Adjust to desired max width */
+        height: auto; /* Maintain aspect ratio */
+        display: block;
+        margin: auto; /* Center the image */
       }
       .header {
         background-color: #62b4c9;
@@ -124,8 +146,8 @@
       .payment-container input[type="password"],
       .payment-container button {
         width: calc(100% - 40px);
-        padding: 15px;
-        margin-bottom: 15px;
+        padding: 10px; 
+        margin-bottom: 10px; 
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
@@ -378,7 +400,6 @@ pricingPlans.forEach(plan => {
   plan.addEventListener('click', () => {
     pricingPlans.forEach(p => p.classList.remove('selected'));
     plan.classList.add('selected');
-    // You can handle the plan selection here, e.g., store the selected plan
   });
 });
 </script>
@@ -395,6 +416,17 @@ pricingPlans.forEach(plan => {
         </button>
       </form>
     </div>
+    <div class="advert-container">
+      <h2>JOIN NOW</h2>
+      <img src="premium.jpg" alt="Advert Image" class="advert-image" />
+      <ul>
+        <li>Exclusive Networking Opportunities: Connect with top developers and industry leaders through our premium-only forums and events.</li>
+        <li>Advanced Learning Resources: Access in-depth tutorials, workshops, and courses that are only available to premium members.</li>
+        <li>Enhanced Collaboration Tools: Utilize advanced project management tools and unlimited repositories to streamline your teamwork and productivity.</li>
+        <li>Priority Support: Get faster responses and dedicated assistance from our support team to resolve any issues promptly.</li>
+      </ul>
+    </div>
+  </div>
     <footer>
       <div class="footer-container">
         <div class="footer-nav">
