@@ -16,36 +16,48 @@ const send_mentor_request_email = (email) => {
 exports.mentor_request_email_post = asyncHandler(async (req, res, next) => {
     const email = req.params.email;
 
-    // Find the user by email
     try {
+        // Validate and sanitize email
+        if (!email || typeof email !== 'string') {
+            return next(boom.badRequest('Invalid email address'));
+        }
+
         // Find the user by email
         const user = await User.findOne({
             where: {
                 email: email
             }
          });
-        // If user not found, throw unauthorized error
+
         if (!user) {
             throw boom.unauthorized("User not found or not registered");
         }
 
-        console.log("userID is:"+user.userID);
+        if (user.isMentor) {
+            return next(boom.conflict('You are already a mentor'));
+        }
 
-        // If the user is found, update the pendingMentor field
+        if (user.pendingMentor) {
+            return next(boom.conflict('You have registered, please wait for a reply'));
+        }
+        
+        // Update user status
         user.pendingMentor = true;
         await user.save();
-        
+
         // Send the mentor request email
         send_mentor_request_email(email);
 
-        res.send("Mentor request email sent successfully");
+        res.status(200).json({
+            message: 'Mentor request email has been sent successfully'
+        });
 
     }catch (err) {
-        console.error(err);
+        console.error('Error in mentor requeste mail post', err);
         if (boom.isBoom(err)) {
-            next(err);
+            return next(err);
         } else {
-            next(boom.internal(err.message));
+            return next(boom.internal(err.message));
         }
     }
 });
