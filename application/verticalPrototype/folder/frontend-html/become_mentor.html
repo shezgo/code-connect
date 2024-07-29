@@ -415,14 +415,14 @@
     }
     </style>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const nameInput = document.querySelector('input[type="text"]');
-    const emailInput = document.querySelector('input[type="email"]');
-    const selectInput = document.querySelector("select");
-    const textareaInput = document.querySelector("textarea");
-    const submitButton = document.querySelector("button");
 
     function validateForm() {
+      const nameInput = document.querySelector('input[type="text"]');
+      const emailInput = document.querySelector('input[type="email"]');
+      const selectInput = document.querySelector("select");
+      const textareaInput = document.querySelector("textarea");
+      const submitButton = document.querySelector("button");
+
       const isValid =
         nameInput.value.trim() !== "" &&
         emailInput.value.trim() !== "" &&
@@ -430,25 +430,37 @@
         textareaInput.value.trim() !== "";
       submitButton.disabled = !isValid;
       submitButton.style.cursor = isValid ? "pointer" : "not-allowed";
+      return true; 
     }
 
-    nameInput.addEventListener("input", validateForm);
-    emailInput.addEventListener("input", validateForm);
-    selectInput.addEventListener("change", validateForm);
-    textareaInput.addEventListener("input", validateForm);
 
-    submitButton.addEventListener("click", function (event) {
-      if (!submitButton.disabled) {
-        console.log(nameInput.value);
+    async function registerMentor(){
+      
+      // if form is not completed 
+      if(!validateForm()){
+        return false;
+      }try{
+        const nameInput = document.querySelector('input[type="text"]');
+        const emailInput = document.querySelector('input[type="email"]');
+        const selectInput = document.querySelector("select");
+        const textareaInput = document.querySelector("textarea");
         console.log(emailInput.value);
-        console.log(selectInput.value);
-        console.log(textareaInput.value);
-        // window.location.href = "mentors.html";
-      }
-    });
 
-    validateForm(); // checks if fields are filled
-  });
+        // Send a POST request to the server
+        const response = await fetch(`/api/mentor/requestMentor/${emailInput.value}`, {
+          method: "POST"
+        });
+
+        if (response.ok) {
+          console.log("Mentor request email sent successfully");
+        } else {
+          console.error("Failed to send mentor request email");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    
 </script>
 
   </head>
@@ -490,7 +502,7 @@
         placeholder="Tell us about your experience and how you can help"
         rows="4"
       ></textarea>
-      <button id="submit_button">Test(Submit)</button>
+      <button onclick="return registerMentor();">Test(Submit)</button>
     </div>
     <footer>
         <div class="footer-container">
