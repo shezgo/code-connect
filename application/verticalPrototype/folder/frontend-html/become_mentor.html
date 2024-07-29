@@ -422,42 +422,79 @@
       const selectInput = document.querySelector("select");
       const textareaInput = document.querySelector("textarea");
       const submitButton = document.querySelector("button");
+      var errorMessage = document.getElementById("error-message");
 
-      const isValid =
-        nameInput.value.trim() !== "" &&
-        emailInput.value.trim() !== "" &&
-        selectInput.value !== "" &&
-        textareaInput.value.trim() !== "";
-      submitButton.disabled = !isValid;
-      submitButton.style.cursor = isValid ? "pointer" : "not-allowed";
-      return true; 
+      let isValid = true;
+      let messages = [];
+
+      // Validate name
+      if (nameInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Name is required.");
+      }
+
+      // Validate email
+      if (emailInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Email is required.");
+      }
+
+      // Validate select
+      if (selectInput.value === "") {
+        isValid = false;
+        messages.push("Please select an option.");
+      }
+
+      // Validate textarea
+      if (textareaInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message is required.");
+      }
+
+      // Display error messages
+      if (!isValid) {
+        errorMessage.innerHTML = messages.join("<br>");
+        errorMessage.style.display = "block";
+      } else {
+        errorMessage.style.display = "none";
+      }
+      
+      return isValid;
     }
 
 
     async function registerMentor(){
-      
-      // if form is not completed 
-      if(!validateForm()){
+    
+    var errorMessage = document.getElementById("error-message");
+
+    // Validate form
+    if(!validateForm()){
         return false;
       }try{
-        const nameInput = document.querySelector('input[type="text"]');
         const emailInput = document.querySelector('input[type="email"]');
-        const selectInput = document.querySelector("select");
-        const textareaInput = document.querySelector("textarea");
-        console.log(emailInput.value);
+        const email = emailInput.value;
 
         // Send a POST request to the server
         const response = await fetch(`/api/mentor/requestMentor/${emailInput.value}`, {
           method: "POST"
         });
 
+  
+        let result = await response.json(); // Await the JSON parsing
+    
         if (response.ok) {
-          console.log("Mentor request email sent successfully");
+          console.log(result.message|| "User registered as mentor successfully");
+          errorMessage.textContent = result.message;
+          errorMessage.style.display = "block";
         } else {
-          console.error("Failed to send mentor request email");
+          console.error(result.message||"Failed to register mentor");
+          errorMessage.textContent = result.message;
+          errorMessage.style.display = "block";
         }
       } catch (error) {
-        console.error(error);
+        console.error("An error occurred", error);
+        errorMessage.textContent = result.message;
+        errorMessage.style.display = "block";
       }
     }
     
@@ -502,7 +539,8 @@
         placeholder="Tell us about your experience and how you can help"
         rows="4"
       ></textarea>
-      <button onclick="return registerMentor();">Test(Submit)</button>
+      <div id="error-message"></div>
+      <button onclick="return registerMentor();">Submit</button>
     </div>
     <footer>
         <div class="footer-container">
