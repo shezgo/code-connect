@@ -26,12 +26,18 @@ Post.init(
         },content:{
             field: 'content',
             type:DataTypes.STRING(512),
-        },comments:{
-            field: 'comments',
+        },postTitle:{
+            field: 'postTitle',
+            type:DataTypes.STRING(512),
+        },postContent:{
+            field: 'postContent',
+            type:DataTypes.STRING(1024),
+        },comments:{ //change to attribute table 
+            field: 'comments', //should deleted 
             type:DataTypes.STRING(512),
         },codeBlock:{
             field: 'codeBlock',
-            type:DataTypes.STRING(512),
+            type:DataTypes.STRING(1024),
         },date:{
             field: 'date',
             type:DataTypes.DATEONLY,

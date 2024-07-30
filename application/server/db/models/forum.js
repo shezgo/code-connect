@@ -11,9 +11,12 @@ Forum.init(
             type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement:true,
-        },threadTitle:{
-            field: 'threadTitle',
-            type:DataTypes.STRING,
+        },forumTitle:{
+            field: 'forumTitle',
+            type:DataTypes.STRING(512),
+        },forumContent:{
+            field: 'forumContent',
+            type:DataTypes.STRING(1024),
         },date:{
             field: 'date',
             type:DataTypes.DATEONLY,
@@ -21,11 +24,20 @@ Forum.init(
             field: 'time',
             type:DataTypes.TIME,
         },access:{
-            field: 'access',
+            field: 'access',//should be deleted
             type:DataTypes.STRING(512),//List of members who have access
         },threads:{
             field: 'threads',
             type:DataTypes.STRING,//Array of ForumThread objects
+        },isPublicForum:{
+            field:"isPublicForum",
+            type:DataTypes.BOOLEAN,
+        },isPrivateForum:{
+            field:"isPrivateForum",
+            type:DataTypes.BOOLEAN,
+        },isMentorForum:{
+            field:"isMentorForum",
+            type:DataTypes.BOOLEAN,
         }
     },
     {

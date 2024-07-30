@@ -18,10 +18,13 @@ ForumThread.init(
             type:DataTypes.STRING, //who started the thread
         },threadTitle:{
             field: 'threadTitle',
-            type:DataTypes.STRING,
-        },posts:{
-            field: 'codeBlock',
             type:DataTypes.STRING(512),
+        },threadContent:{
+            field: 'threadContent',
+            type:DataTypes.STRING(1024),
+        },codeBlock:{
+            field: 'codeBlock',
+            type:DataTypes.STRING(1024),
         },date:{
             field: 'date',
             type:DataTypes.DATEONLY,
