@@ -284,8 +284,8 @@ const initialize = async () => {
         db.SubmissionShare = await new SubmissionShareModel(sequelize, DataTypes);
 
         db.SupportForm = await new SupportFormModel(sequelize, DataTypes);
-        
-        db.AllEntities = await new AllEntities(sequelize, DataTypes);
+        //await AllEntities.creatView();
+        //db.AllEntities = await new AllEntities(sequelize, DataTypes);
    
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
