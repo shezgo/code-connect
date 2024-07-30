@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Leaderboard</title>
+  <title>Job Listings</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -19,7 +19,7 @@
 
     /* Style the header */
     .header {
-      background-color: #62b4c9;
+        background-color: #62b4c9;;
       padding: 5px;
       text-align: center;
       font-size: 20px;
@@ -105,42 +105,49 @@
       margin: auto;
     }
 
-    .profile {
+    .job-listing {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
     }
 
-    .profile img {
-      width: 70px;
-      height: 70px;
+    .job-listing img {
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       margin-right: 15px;
     }
 
-    .profile-info {
+    .job-info {
       display: flex;
       flex-direction: column;
     }
 
-    .profile-info a {
-      color: #007bff;
+    .job-info h2 {
+      margin: 0 0 10px 0;
+    }
+
+    .job-info p {
+      margin: 5px 0;
+    }
+
+    .apply-button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      border-radius: 5px;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 1em;
+      margin-top: 10px;
+      align-self: flex-start;
     }
 
-    .profile-info a:hover {
-      text-decoration: underline;
-    }
-
-    .profile-info .achievement {
-      font-size: 16px;
-      color: #555;
-    }
-
-    .award-icon {
-      margin-left: 10px;
-      color: gold;
+    .apply-button:hover {
+      background-color: #0056b3;
     }
 
     /* Style the footer */
@@ -234,8 +241,8 @@
   <div class="login-signup">
     <a href="login.html">Sign Out</a>
   </div>
-
-  <h2>Leaderboard</h2>
+ 
+  <h2>Job Listings</h2>
   <a href="homepage.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
@@ -303,60 +310,36 @@
 </div>
 
 <div class="container">
-  <div class="profile">
-    <img src="gojo.jpg" alt="John">
-    <div class="profile-info">
-      <a href="john.html">John <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Java Pro, completed 20 challenges</div>
+  <div class="job-listing">
+    <img src="company1.png" alt="Company 1">
+    <div class="job-info">
+      <h2>TechNova Solutions</h2>
+      <p><strong>Role:</strong> Java Developer</p>
+      <p><strong>Languages:</strong> Java, Spring Boot</p>
+      <p><strong>About:</strong> TechNova Solutions is a leading tech firm specializing in innovative software solutions for businesses worldwide.</p>
+      <a href="application.html" class="apply-button">Apply Now</a>
     </div>
   </div>
-  <div class="profile">
-    <img src="kanye.jpeg" alt="Alice">
-    <div class="profile-info">
-      <a href="alice.html">Alice <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Python Guru, completed 15 challenges</div>
+
+  <div class="job-listing">
+    <img src="company2.jpg" alt="Company 2">
+    <div class="job-info">
+      <h2>QuantumLeap Systems</h2>
+      <p><strong>Role:</strong> Frontend Developer</p>
+      <p><strong>Languages:</strong> JavaScript, React</p>
+      <p><strong>About:</strong> QuantumLeap Systems is known for creating cutting-edge web applications and providing exceptional user experiences.</p>
+      <a href="application.html" class="apply-button">Apply Now</a>
     </div>
   </div>
-  <div class="profile">
-    <img src="fuji.jpg" alt="Bob">
-    <div class="profile-info">
-      <a href="bob.html">Bob <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">JavaScript Enthusiast, completed 12 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="Elon.jpg" alt="Dave">
-    <div class="profile-info">
-      <a href="dave.html">Dave <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Ruby Programmer, completed 10 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="shaq.jpg" alt="Frank">
-    <div class="profile-info">
-      <a href="frank.html">Frank <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">PHP Specialist, completed 9 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="cat.jpg" alt="Carol">
-    <div class="profile-info">
-      <a href="carol.html">Carol <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">C# Developer, completed 8 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="lebron.jpg" alt="Eve">
-    <div class="profile-info">
-      <a href="eve.html">Eve <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Swift Coder, completed 6 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="geto.jpg" alt="Lenny">
-    <div class="profile-info">
-      <a href="lenny.html">Lenny <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">C++ Apprentice, completed 4 challenges</div>
+
+  <div class="job-listing">
+    <img src="company3.jpg" alt="Company 3">
+    <div class="job-info">
+      <h2>Innovatech Dynamics</h2>
+      <p><strong>Role:</strong> Backend Developer</p>
+      <p><strong>Languages:</strong> Python, Django</p>
+      <p><strong>About:</strong> Innovatech Dynamics focuses on developing robust backend systems and APIs for large-scale applications.</p>
+      <a href="application.html" class="apply-button">Apply Now</a>
     </div>
   </div>
 </div>

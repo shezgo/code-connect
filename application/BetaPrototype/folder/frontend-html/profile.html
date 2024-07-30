@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      text="style\css"
+      href="application\verticalPrototype\folder\frontend-css\style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Body Layout */
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0; /* Remove default margin */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.logo-container {
+    display: inline-block;
+}
+
+  .header .brand {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 20px;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: #62b4c9;
+      padding: 5px;
+      text-align: center;
+      font-size: 20px;
+      color: white;
+      position: relative;
+  }
+
+  .header a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  .header a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Flexbox Container */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  /* Column Styles */
+  .column {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    flex: 1;
+    min-width: 250px; /* Ensure columns stack on small screens */
+  }
+  
+  /* Footer Styles */
+  footer {
+    width: 100%;
+    background-color: #62b4c9;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: auto;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .media-icons {
+    margin: 10px 0;
+  }
+  
+  .media-icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  .footer-nav li {
+    margin: 0 15px;
+  }
+  
+  .footer-nav a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bott {
+    margin-top: 10px;
+  }
+  
+  /* Responsive Layout */
+  @media (max-width: 600px) {
+    .row {
+      flex-direction: column;
+    }
+  }
+  
+  .logo-button {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+
+    background: none; 
+    border: none; 
+    padding: 0; 
+    
+    cursor: pointer; 
+  }
+
+  .mail-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .profile-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+      /* Create three unequal columns that sits next to each other */
+      .column {
+        padding: 10px;
+      }
+
+      /* Left columns stacked */
+      .column.side {
+        flex: 1;
+        margin-bottom: 10px;
+      }
+
+      /* Right column takes the rest of the space */
+      .column.middle {
+        flex: 2;
+        margin-bottom: 10px;
+      }
+
+      /* Style the footer */
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-icons {
+        margin: 10px 0;
+      }
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+
+      /* Welcome box and search bar */
+      .welcome-box {
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background-color: #575757;
+      }
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      .profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .profile-header h1 {
+        margin: 10px 0 5px 0;
+        font-size: 24px;
+      }
+
+      .profile-header p {
+        margin: 5px 0;
+        color: #666;
+      }
+
+      .profile-section {
+        margin-bottom: 20px;
+      }
+
+      .profile-section h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+      }
+
+      .profile-section p {
+        margin: 0;
+      }
+
+      .profile-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .profile-section ul li {
+        padding: 10px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        border-radius: 4px;
+      }
+
+      .empty-message {
+        text-align: center;
+        color: #999;
+        font-style: italic;
+      }
+
+      /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+      @media (max-width: 600px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+      .login-signup {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        font-size: 14px;
+      }
+      .login-signup a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+      .login-signup a:hover {
+        text-decoration: underline;
+      }
+    </style>
+     <script>
+      function previewProfilePic(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          const output = document.getElementById('profile-pic-preview');
+          output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
+  
+      function saveChanges() {
+        const name = document.getElementById('nickname').value;
+        const bio = document.getElementById('bio').value;
+        const about = document.getElementById('about').value;
+  
+        document.getElementById('display-name').innerText = name;
+        document.getElementById('display-bio').innerText = bio || "No bio available.";
+        document.getElementById('display-about').innerText = about || "No information available.";
+  
+        alert('Changes saved successfully!');
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
+      <div class="brand">CodeConnect</div>
+      <h2>Profile</h2>
+      <div class="login-signup">
+        <a href="login.html">Sign Out</a>
+      </div>
+      <a href="homepage.html">Home</a>
+      <a href="challenges.html">Challenges</a>
+      <a href="mentors.html">Mentors</a>
+      <a href="forum.html">Forums</a>
+      <a href="store.html">Memberships</a>
+      <a href="premium.html">Premium</a>
+      <a href="explore.html">Explore</a>
+      <a href="workspace.html">Workspaces</a>
+      <a href="leaderboards.html">Leaderboards</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="inbox.html" class="icon-button">
+        <svg
+          class="mail-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16v16H4z" />
+          <path d="M4 4l8 8 8-8" />
+        </svg>
+      </a>
+
+      <a href="profile.html" class="icon-button">
+        <svg
+          class="profile-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+          />
+        </svg>
+      </a>
+
+      <button class="icon-button" onclick="openSidebar()">Friends</button>
+
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+          >&times;</a
+        >
+        <a href="profile.html">Friend 1</a>
+        <a href="profile.html">Friend 2</a>
+        <a href="profile.html">Friend 3</a>
+        <a href="profile.html">Friend 4</a>
+        <a href="profile.html">Friend 5</a>
+      </div>
+    </div>
+    <script>
+      function openSidebar() {
+        document.getElementById("mySidebar").style.width = "250px";
+      }
+
+      function closeSidebar() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
+
+    <div class="profile-container">
+      <div class="profile-header">
+        <img id="profile-pic-preview" src="blankprofile.jpg" alt="Profile Picture">
+        <h1>John Doe</h1>
+        <p>@johndoe</p>
+      </div>
+
+      <div class="profile-section">
+        <h2>Bio</h2>
+        <p class="empty-message">No bio available.</p>
+      </div>
+
+      <div class="profile-section">
+        <h2>About</h2>
+        <p class="empty-message">No information available.</p>
+      </div>
+
+      <div class="profile-section">
+        <h2>Activity / Forum Posts</h2>
+        <ul>
+          <li class="empty-message">No activity or forum posts yet.</li>
+        </ul>
+      </div>
+
+      <div class="profile-section">
+        <h2>Position / Leaderboard</h2>
+        <p class="empty-message">Not ranked yet.</p>
+      </div>
+    </div>
+
+    <div class="profile-actions">
+                <a href="logout.html">Logout</a>
+                <a href="deleteprofile.html">Delete Profile</a>
+              </div>
+            </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-nav">
+          <ul>
+            <li>
+              <a href="index.html"><strong>Home</strong></a>
+            </li>
+            <li>
+              <a href="about.html"><strong>About</strong></a>
+            </li>
+            <li>
+              <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
+            </li>
+            <li>
+              <a><strong>Phone: 888-888-8888</strong></a>
+            </li>
+          </ul>
+        </div>
+        <div class="media-icons">
+          <a href="https://www.instagram.com/codeconnect"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/codeconnect"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.google.com/codeconnect"><i class="fa-brands fa-google-plus"></i></a>
+          <a href="https://www.youtube.com/codeconnect"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-bott">
+          <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
