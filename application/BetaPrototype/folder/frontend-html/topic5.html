@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>CodeConverse</title>
+  <title>JavaScript</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -128,12 +128,68 @@
     .content {
       flex: 3;
       padding: 0 20px;
-      text-align: center;
     }
 
     .sidebar {
       flex: 1;
       padding: 0 20px;
+    }
+
+    .post {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .post-voting {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 15px;
+    }
+
+    .post-voting button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .post-voting .vote-count {
+      font-size: 16px;
+    }
+
+    .post-content h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .post-content p {
+      margin: 0;
+      color: #555;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-footer {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .post-footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .post-footer a:hover {
+      text-decoration: underline;
     }
 
     section {
@@ -163,22 +219,6 @@
 
     section ul li a:hover {
       text-decoration: underline;
-    }
-
-    .welcome-message {
-      font-size: 36px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .intro-text {
-      font-size: 24px;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .bold-text {
-      font-weight: bold;
     }
 
     /* Style the footer */
@@ -243,7 +283,7 @@
     <a href="profile.html">Profile</a>
     <a href="login.html">Sign Out</a>
   </div>
-  <h2>CodeConverse</h2>
+  <h2>CodeConverse - JavaScript</h2>
   <a href="homepage.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
@@ -302,9 +342,76 @@
 
 <div class="container">
   <div class="content">
-    <h1 class="welcome-message">Welcome to the Forums</h1>
-    <p class="intro-text">This is a space where experienced and novice developers can connect with each other, share knowledge, and collaborate on projects.</p>
-    <p class="intro-text bold-text">Select a topic on the right to connect.</p>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">160</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3><a href="post1.html">Understanding JavaScript Closures</a></h3>
+        <p>Closures are a fundamental concept in JavaScript. This post aims to provide a clear...</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User21</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">145</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3><a href="post2.html">JavaScript ES6 Features</a></h3>
+        <p>ES6 introduced many new features to JavaScript. This post explores some of the most...</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User22</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">130</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3><a href="post3.html">JavaScript Promises Explained</a></h3>
+        <p>Promises are a powerful way to handle asynchronous operations in JavaScript. This...</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User23</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">115</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3><a href="post4.html">Debugging JavaScript Code</a></h3>
+        <p>Debugging is an essential skill for any JavaScript developer. This post covers techniques...</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User24</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">100</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3><a href="post5.html">Async/Await in JavaScript</a></h3>
+        <p>Async/Await makes handling asynchronous code easier in JavaScript. This post explains...</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User25</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="sidebar">
@@ -336,6 +443,14 @@
     </section>
   </div>
 </div>
+
+<script>
+  function vote(element, value) {
+    var voteCountElement = element.parentElement.querySelector('.vote-count');
+    var currentVoteCount = parseInt(voteCountElement.textContent);
+    voteCountElement.textContent = currentVoteCount + value;
+  }
+</script>
 
 <footer>
   <div class="footer-container">
