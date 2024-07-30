@@ -15,7 +15,7 @@ dotenv.config()
 
 
 // Frontend files path
-const static_path = path.join(__dirname, '../verticalPrototype/folder/frontend-html');
+const static_path = path.join(__dirname, '../BetaPrototype/folder/frontend-html');
 const port = parseInt(process.env.PORT);
 const start = async () => {
     await initialize();

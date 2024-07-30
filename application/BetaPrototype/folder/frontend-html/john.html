@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Leaderboard</title>
+  <title>John's Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -19,7 +19,7 @@
 
     /* Style the header */
     .header {
-      background-color: #62b4c9;
+        background-color: #62b4c9;
       padding: 5px;
       text-align: center;
       font-size: 20px;
@@ -105,15 +105,15 @@
       margin: auto;
     }
 
-    .profile {
+    .profile-header {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
     }
 
-    .profile img {
-      width: 70px;
-      height: 70px;
+    .profile-header img {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       margin-right: 15px;
     }
@@ -123,30 +123,40 @@
       flex-direction: column;
     }
 
-    .profile-info a {
-      color: #007bff;
-      text-decoration: none;
-      font-size: 18px;
+    .profile-info h1 {
+      margin: 0;
     }
 
-    .profile-info a:hover {
-      text-decoration: underline;
+    .profile-info p {
+      margin: 5px 0;
     }
 
-    .profile-info .achievement {
-      font-size: 16px;
-      color: #555;
+    .section {
+      margin-bottom: 20px;
     }
 
-    .award-icon {
-      margin-left: 10px;
-      color: gold;
+    .section h2 {
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .challenges ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .challenges li {
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      border-radius: 4px;
     }
 
     /* Style the footer */
     footer {
-      width: 100%;
-      background-color: #62b4c9;
+        background-color: #62b4c9;
       color: white;
       padding: 10px 0;
       text-align: center;
@@ -193,36 +203,6 @@
     .footer-bott {
       margin-top: 10px;
     }
-    .icon-button svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Sidebar styles */
-    .sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      right: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-    }
-
-    .sidebar a {
-      padding: 10px 15px;
-      text-decoration: none;
-      font-size: 25px;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #575757;
-    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -232,10 +212,11 @@
   <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
   <div class="brand">CodeConnect</div>
   <div class="login-signup">
+    <a href="profile.html">Profile</a>
     <a href="login.html">Sign Out</a>
   </div>
 
-  <h2>Leaderboard</h2>
+  <h2>John's Profile</h2>
   <a href="homepage.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
@@ -246,118 +227,51 @@
   <a href="workspace.html">Workspaces</a>
   <a href="leaderboards.html">Leaderboards</a>
   <a href="jobs.html">Jobs</a>
-  <a href="inbox.html" class="icon-button">
-    <svg
-      class="mail-icon"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path d="M4 4h16v16H4z" />
-      <path d="M4 4l8 8 8-8" />
-    </svg>
-  </a>
-
-  <a href="profile.html" class="icon-button">
-    <svg
-      class="profile-icon"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path
-        d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
-      />
-    </svg>
-  </a>
-
-  <button class="icon-button" onclick="openSidebar()">Friends</button>
-
-  <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
-    <a href="profile.html">Friend 1</a>
-    <a href="profile.html">Friend 2</a>
-    <a href="profile.html">Friend 3</a>
-    <a href="profile.html">Friend 4</a>
-    <a href="profile.html">Friend 5</a>
-  </div>
-</div>
-
-<script>
-  function openSidebar() {
-    document.getElementById("mySidebar").style.width = "250px";
-  }
-
-  function closeSidebar() {
-    document.getElementById("mySidebar").style.width = "0";
-  }
-</script>
 </div>
 
 <div class="container">
-  <div class="profile">
+  <div class="profile-header">
     <img src="gojo.jpg" alt="John">
     <div class="profile-info">
-      <a href="john.html">John <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Java Pro, completed 20 challenges</div>
+      <h1>John</h1>
+      <p>Java Pro, completed 20 challenges</p>
     </div>
   </div>
-  <div class="profile">
-    <img src="kanye.jpeg" alt="Alice">
-    <div class="profile-info">
-      <a href="alice.html">Alice <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Python Guru, completed 15 challenges</div>
-    </div>
+
+  <div class="section">
+    <h2>Bio</h2>
+    <p>Experienced Java developer with a passion for building scalable applications.</p>
   </div>
-  <div class="profile">
-    <img src="fuji.jpg" alt="Bob">
-    <div class="profile-info">
-      <a href="bob.html">Bob <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">JavaScript Enthusiast, completed 12 challenges</div>
-    </div>
+
+  <div class="section">
+    <h2>About</h2>
+    <p>I am a seasoned software engineer specializing in Java. I enjoy solving complex problems and contributing to open-source projects.</p>
   </div>
-  <div class="profile">
-    <img src="Elon.jpg" alt="Dave">
-    <div class="profile-info">
-      <a href="dave.html">Dave <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Ruby Programmer, completed 10 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="shaq.jpg" alt="Frank">
-    <div class="profile-info">
-      <a href="frank.html">Frank <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">PHP Specialist, completed 9 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="cat.jpg" alt="Carol">
-    <div class="profile-info">
-      <a href="carol.html">Carol <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">C# Developer, completed 8 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="lebron.jpg" alt="Eve">
-    <div class="profile-info">
-      <a href="eve.html">Eve <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">Swift Coder, completed 6 challenges</div>
-    </div>
-  </div>
-  <div class="profile">
-    <img src="geto.jpg" alt="Lenny">
-    <div class="profile-info">
-      <a href="lenny.html">Lenny <i class="fas fa-award award-icon"></i></a>
-      <div class="achievement">C++ Apprentice, completed 4 challenges</div>
-    </div>
+
+  <div class="section challenges">
+    <h2>Completed Challenges</h2>
+    <ul>
+      <li>Advanced Java Programming - Difficulty: Hard</li>
+      <li>Data Structures in Java - Difficulty: Medium</li>
+      <li>Java Concurrency - Difficulty: Hard</li>
+      <li>Spring Framework Basics - Difficulty: Medium</li>
+      <li>Java Streams and Lambdas - Difficulty: Easy</li>
+      <li>RESTful Services with Spring - Difficulty: Medium</li>
+      <li>Java Design Patterns - Difficulty: Hard</li>
+      <li>Microservices with Spring Boot - Difficulty: Hard</li>
+      <li>Effective Java - Difficulty: Medium</li>
+      <li>Java Performance Tuning - Difficulty: Hard</li>
+      <li>Introduction to JVM - Difficulty: Easy</li>
+      <li>Unit Testing in Java - Difficulty: Medium</li>
+      <li>Building APIs with Java - Difficulty: Medium</li>
+      <li>Java Network Programming - Difficulty: Hard</li>
+      <li>Functional Programming in Java - Difficulty: Medium</li>
+      <li>Java Web Development - Difficulty: Easy</li>
+      <li>Java Security - Difficulty: Hard</li>
+      <li>Reactive Programming in Java - Difficulty: Medium</li>
+      <li>Java Collections Framework - Difficulty: Easy</li>
+      <li>Java Persistence API - Difficulty: Medium</li>
+    </ul>
   </div>
 </div>
 
