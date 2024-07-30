@@ -1,0 +1,200 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+.signup-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px;
+  margin: 20px auto;
+}
+.signup-container img {
+  width: 250px;
+  height: 120px;
+  margin-bottom: 20px;
+  border-radius: 50%; /* Make the image circular */
+}
+.signup-container h1 {
+  margin-bottom: 30px;
+}
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"],
+.signup-container button {
+  width: calc(100% - 40px);
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.signup-container button {
+  background-color: transparent;
+  color: black;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.signup-container button:hover {
+  background-color: transparent;
+}
+.signup-container .links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+.signup-container .links a {
+  color: #007bff;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.signup-container .links a:hover {
+  text-decoration: underline;
+}
+footer {
+  width: 100%;
+  background-color: #62b4c9;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.media-icons {
+  margin: 10px 0;
+}
+.media-icons a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+.footer-nav li {
+  margin: 0 15px;
+}
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+}
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+.footer-bott {
+  margin-top: 10px;
+}
+/* Style the header */
+.header {
+  background-color: #62b4c9;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.header .brand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+}
+
+.login-signup {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  font-size: 14px;
+}
+
+.login-signup a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.login-signup a:hover {
+  text-decoration: underline;
+}
+.header a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.header a:hover {
+  text-decoration: underline;
+}
+.tos-privacy {
+  text-align: left;
+  font-size: 14px;
+  margin: 10px 0;
+}
+.tos-privacy a {
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tos-privacy a:hover {
+  text-decoration: underline;
+}
+
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
