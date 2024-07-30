@@ -2,7 +2,7 @@ const {DataTypes,Model} = require('sequelize');
 
 const sequelize = require("../config.js");
 
-const {User}=require('./user.js')
+const { User }=require('./user.js')
 
 class Leaderboard extends Model {}
 
@@ -39,8 +39,6 @@ Leaderboard.init(
     }
 );
 
-User.hasMany(Leaderboard, { foreignKey: 'userID' });
-Leaderboard.belongsTo(User, { foreignKey: 'userID' });
 
 
 module.exports = Leaderboard;
