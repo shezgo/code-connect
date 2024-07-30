@@ -5,12 +5,12 @@ exports.retrieve_leaderboard_get = asyncHandler(async (req, res) => {
     try {
         const leaderboardData = await Leaderboard.findAll({
             include: [{
-                model: User, as: 'user'
+                model: User, as: 'User'
                 }]
         });
         res.json(leaderboardData);
     } catch (error){
-        console.error(log);
+        console.error(error);
         res.status(500).send("Internal server error.");
     }
 });

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      text="style\css"
+      href="application\verticalPrototype\folder\frontend-css\style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0; /* Remove default margin */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .logo-container {
+        display: inline-block;
+      }
+      .header .brand {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+      }
+      .header {
+        background-color: #62b4c9;
+        padding: 5px;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        position: relative;
+      }
+      .header a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px;
+      }
+      .column {
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        flex: 1;
+        min-width: 250px; 
+      }
+      footer {
+        width: 100%;
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        margin-top: auto;
+      }
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-icons {
+        margin: 10px 0;
+      }
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .footer-nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+      }
+      .footer-nav li {
+        margin: 0 15px;
+      }
+      .footer-nav a {
+        color: white;
+        text-decoration: none;
+      }
+      .footer-nav a:hover {
+        text-decoration: underline;
+      }
+      .footer-bott {
+        margin-top: 10px;
+      }
+      @media (max-width: 600px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+      .logo-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+      .mail-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .profile-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .column {
+        padding: 10px;
+      }
+      .column.side {
+        flex: 1;
+        margin-bottom: 10px;
+      }
+      .column.middle {
+        flex: 2;
+        margin-bottom: 10px;
+      }
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-icons {
+        margin: 10px 0;
+      }
+      .media-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      .welcome-box {
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #ccc;
+      }
+      #search-bar {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .search-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .search-container input[type="text"] {
+        width: 50%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-right: none;
+      }
+      .search-container button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #62b4c9;
+        color: white;
+        cursor: pointer;
+      }
+      .search-container button:hover {
+        background-color: #5393a1;
+      }
+      .suggestions {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        background: #fff;
+        display: none;
+        z-index: 1000;
+      }
+      .suggestions a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        border-bottom: 1px solid #ccc;
+      }
+      .suggestions a:hover {
+        background: #f0f0f0;
+      }
+      .suggestions a:last-child {
+        border-bottom: none;
+      }
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      .sidebar a:hover {
+        background-color: #575757;
+      }
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      @media (max-width: 600px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+      .login-signup {
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        font-size: 14px;
+      }
+      .login-signup a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+      }
+      .login-signup a:hover {
+        text-decoration: underline;
+      }
+      .search-container button {
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        background-color: #62b4c9;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-left: 10px;
+      }
+      .search-container button:hover {
+        background-color: #5393a1;
+      }
+      .highlight {
+        background-color: yellow;
+        color: black;
+      }
+      .tab-container {
+        display: none; 
+        flex-wrap: wrap;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .tab-item {
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        min-width: 100px; 
+      }
+      .tab-item:hover {
+        background-color: #5393a1;
+      }
+      .highlight {
+        background-color: yellow;
+        color: black;
+      }
+      .a-z-filter {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+      .a-z-filter select {
+        padding: 10px;
+        border: 1px solid #62b4c9;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #62b4c9;
+        cursor: pointer;
+      }
+      .a-z-filter select:focus {
+        outline: none;
+        border-color: #5393a1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
+      <div class="brand">CodeConnect</div>
+      <h2>Explore</h2>
+      <div class="login-signup">
+        <a href="login.html">Sign Out</a>
+      </div>
+      <a href="homepage.html">Home</a>
+      <a href="challenges.html">Challenges</a>
+      <a href="mentors.html">Mentors</a>
+      <a href="forum.html">Forums</a>
+      <a href="store.html">Memberships</a>
+      <a href="premium.html">Premium</a>
+      <a href="explore.html">Explore</a>
+      <a href="workspace.html">Workspaces</a>
+      <a href="leaderboards.html">Leaderboards</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="inbox.html" class="icon-button">
+        <svg
+          class="mail-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16v16H4z" />
+          <path d="M4 4l8 8 8-8" />
+        </svg>
+      </a>
+      <a href="profile.html" class="icon-button">
+        <svg
+          class="profile-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+          />
+        </svg>
+      </a>
+      <button class="icon-button" onclick="openSidebar()">Friends</button>
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+          >&times;</a
+        >
+        <a href="profile.html">Friend 1</a>
+        <a href="profile.html">Friend 2</a>
+        <a href="profile.html">Friend 3</a>
+        <a href="profile.html">Friend 4</a>
+        <a href="profile.html">Friend 5</a>
+      </div>
+      <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search..." />
+        <button type="submit">Search</button>
+        <div id="suggestions" class="suggestions"></div>
+      </div>
+      <div class="a-z-filter">
+        <select id="az-filter">
+          <option value="all">All</option>
+          <option value="a">A</option>
+          <option value="b">B</option>
+          <option value="c">C</option>
+          <option value="d">D</option>
+          <option value="e">E</option>
+          <option value="f">F</option>
+          <option value="g">G</option>
+          <option value="h">H</option>
+          <option value="i">I</option>
+          <option value="j">J</option>
+          <option value="k">K</option>
+          <option value="l">L</option>
+          <option value="m">M</option>
+          <option value="n">N</option>
+          <option value="o">O</option>
+          <option value="p">P</option>
+          <option value="q">Q</option>
+          <option value="r">R</option>
+          <option value="s">S</option>
+          <option value="t">T</option>
+          <option value="u">U</option>
+          <option value="v">V</option>
+          <option value="w">W</option>
+          <option value="x">X</option>
+          <option value="y">Y</option>
+          <option value="z">Z</option>
+        </select>
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const searchBar = document.getElementById("search-bar");
+          const searchButton = document.querySelector(
+            ".search-container button"
+          );
+          const suggestions = document.getElementById("suggestions");
+          const azFilter = document.getElementById("az-filter"); //A-Z filter dropdown
+
+          const pages = [
+            { name: "Home", url: "homepage.html" },
+            { name: "About", url: "about.html" },
+            { name: "Inbox", url: "inbox.html" },
+            { name: "Mentors", url: "mentors.html" },
+            { name: "Premium", url: "premium.html" },
+            { name: "Store", url: "store.html" },
+            { name: "Challenges", url: "challenges.html" },
+            { name: "Forum", url: "forum.html" },
+            { name: "Profile", url: "profile.html" },
+            { name: "Splash", url: "index.html" },
+            { name: "Alice", url: "alice.html" },
+            { name: "Application", url: "application.html" },
+            { name: "Become a Mentor", url: "become_mentor.html" },
+            { name: "Bob (Profile)", url: "bob.html" },
+            { name: "Carol (Profile)", url: "carol.html" },
+            { name: "C++ (Challenge)", url: "cpp.html" },
+            { name: "Create a Post", url: "createpost.html" },
+            { name: "Dave (Profile)", url: "dave.html" },
+            { name: "Delete Profile", url: "deleteprofile.html" },
+            { name: "Eve (Profile)", url: "eve.html" },
+            { name: "Find a Mentor", url: "find_mentor.html" },
+            { name: "Frank (Profile)", url: "frank.html" },
+            { name: "Interviews", url: "interview.html" },
+            { name: "Java Best Practices (Challenge)", url: "java_best_practices.html" },
+            { name: "Java (Challenge)", url: "java.html" },
+            { name: "JavaScript (Challenge)", url: "javascript.html" },
+            { name: "Jobs", url: "jobs.html" },
+            { name: "John (Profile)", url: "john.html" },
+            { name: "Leaderboards", url: "leaderboards.html" },
+            { name: "Lenny (Profile)", url: "lenny.html" },
+            { name: "Login", url: "login.html" },
+            { name: "Logout", url: "logout.html" },
+            { name: "Mastering Python (Challenge)", url: "mastering_python.html" },
+            { name: "Mentors", url: "mentors.html" },
+            { name: "Optimize SQL (Challenge)", url: "optimize_sql.html" },
+            { name: "Python (Challenge)", url: "python.html" },
+            { name: "React (Challenge)", url: "react_getting_started.html" },
+            { name: "Reset Password", url: "resetpassword.html" },
+            { name: "Room1", url: "room1.html" },
+            { name: "Room2", url: "room2.html" },
+            { name: "Room3", url: "room3.html" },
+            { name: "Room4", url: "room4.html" },
+            { name: "Room5", url: "room5.html" },
+            { name: "Room6", url: "room6.html" },
+            { name: "Room7", url: "room7.html" },
+            { name: "Room8", url: "room8.html" },
+            { name: "Room9", url: "room9.html" },
+            { name: "Room10", url: "room10.html" },
+            { name: "Room11", url: "room11.html" },
+            { name: "Room12", url: "room12.html" },
+            { name: "Room13", url: "room13.html" },
+            { name: "Room14", url: "room14.html" },
+            { name: "Room15", url: "room15.html" },
+            { name: "Sign Up", url: "signup.html" },
+            { name: "Workspaces", url: "workspace.html" },
+          ];
+
+          function performSearch() {
+            const input = searchBar.value.toLowerCase();
+            const selectedLetter = azFilter.value; // Get the selected letter from the dropdown
+            suggestions.innerHTML = "";
+            if (input || selectedLetter !== "all") {
+              let filteredPages = pages
+                .filter((page) => page.name.toLowerCase().includes(input))
+                .sort((a, b) => a.name.localeCompare(b.name));
+              if (selectedLetter !== "all") {
+                filteredPages = filteredPages.filter((page) =>
+                  page.name.toLowerCase().startsWith(selectedLetter)
+                );
+              }
+              if (filteredPages.length > 0) {
+                filteredPages.forEach((page) => {
+                  const highlightedName = page.name.replace(
+                    new RegExp(input, "gi"),
+                    (match) => `<span class="highlight">${match}</span>`
+                  );
+                  const suggestionItem = document.createElement("a");
+                  suggestionItem.href = page.url;
+                  suggestionItem.innerHTML = highlightedName; // Use innerHTML to render the highlighted text
+                  suggestions.appendChild(suggestionItem);
+                });
+                suggestions.style.display = "block";
+              } else {
+                suggestions.style.display = "none";
+              }
+            } else {
+              suggestions.style.display = "none";
+            }
+          }
+
+          searchBar.addEventListener("input", performSearch);
+          searchButton.addEventListener("click", performSearch);
+          azFilter.addEventListener("change", performSearch); // Add event listener for the A-Z filter dropdown
+
+          document.addEventListener("click", (event) => {
+            if (!event.target.closest(".search-container") && !event.target.closest(".a-z-filter")) {
+              suggestions.style.display = "none";
+            }
+          });
+        });
+
+        function openSidebar() {
+          document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
+      </script>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-nav">
+          <ul>
+            <li>
+              <a href="index.html"><strong>Home</strong></a>
+            </li>
+            <li>
+              <a href="about.html"><strong>About</strong></a>
+            </li>
+            <li>
+              <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
+            </li>
+            <li>
+              <a><strong>Phone: 888-888-8888</strong></a>
+            </li>
+          </ul>
+        </div>
+        <div class="media-icons">
+          <a href="https://www.instagram.com/codeconnect"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="https://www.facebook.com/codeconnect"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://www.google.com/codeconnect"
+            ><i class="fa-brands fa-google-plus"></i
+          ></a>
+          <a href="https://www.youtube.com/codeconnect"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+        <div class="footer-bott">
+          <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

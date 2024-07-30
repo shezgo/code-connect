@@ -11,6 +11,6 @@
     "\\application\\server\\utils",
     "\\application\\verticalPrototype\\folder"
   ],
-  "SelectedNode": "\\application\\server\\db\\models\\message.js",
+  "SelectedNode": "\\application\\server\\db\\models\\leaderboard.js",
   "PreviewInSolutionExplorer": false
 }

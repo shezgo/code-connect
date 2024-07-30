@@ -7,6 +7,6 @@ const app = express();
 
 app.use(express.json());
 
-router.get("/leaderboards", leaderboard_controller.retrieve_leaderboard_get);
+router.get("/leaderboard", leaderboard_controller.retrieve_leaderboard_get);
 
 module.exports = router;
