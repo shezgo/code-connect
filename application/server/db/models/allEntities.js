@@ -2,30 +2,7 @@ const {DataTypes,Model} = require('sequelize');
 
 const sequelize = require("../config.js");
 
-class AllEntities extends Model {
-    static async creatView() {
-        // Create view from all tables for search
-        return await sequelize.query(`
-        CREATE OR REPLACE VIEW vw_AllEntities
-            AS
-            SELECT 
-                postId as entityId, 
-                content as title, 
-                null as description, 
-                'post' as entityType 
-            FROM post
-            UNION ALL
-            SELECT 
-                challengeID as entityId,
-                title as title,
-                description  as description,
-                'codeChallenge' as entityType 
-            FROM codeChallenge;
-    
-        `);
-         
-    }
-}
+class AllEntities extends Model {}
 
 AllEntities.init(
     {   
@@ -52,6 +29,23 @@ AllEntities.init(
         modelName: 'AllEntities',
         tableName: 'vw_AllEntities',
         doNotSync: true,
+        ddl:`
+        CREATE OR REPLACE VIEW vw_AllEntities
+            AS
+            SELECT 
+                postId as entityId, 
+                content as title, 
+                null as description, 
+                'post' as entityType 
+            FROM post
+            UNION ALL
+            SELECT 
+                challengeID as entityId,
+                title as title,
+                description  as description,
+                'codeChallenge' as entityType 
+            FROM codeChallenge;
+        `
         
 }
 );

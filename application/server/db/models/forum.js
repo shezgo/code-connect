@@ -38,6 +38,9 @@ Forum.init(
         },isMentorForum:{
             field:"isMentorForum",
             type:DataTypes.BOOLEAN,
+        },threadContent:{
+            field:'threadContent',
+            type:DataTypes.STRING(1024),
         }
     },
     {
