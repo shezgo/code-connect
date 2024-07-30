@@ -101,11 +101,12 @@
         background-color: #f0f0f0;
         padding: 20px;
         border-radius: 8px;
-        width: 50%;
+        width: 45%; /* Adjusted width to fit two plans side by side */
         text-align: center;
         cursor: default;
         border: 2px solid transparent;
         transition: border-color 0.3s, background-color 0.3s;
+        margin: 0 10px; /* Spacing between plans */
       }
       .pricing-plan.selected {
         border-color: #007bff;
@@ -228,6 +229,10 @@
       font-size: 36px;
       margin-left: 50px;
     }
+    .pricing-plan.selected {
+  border-color: #007bff;
+  background-color: #e0e7ff;
+}
     </style>
     <script>
       //added script that doesnt allow users to click submit unless all fields are filled out
@@ -253,7 +258,6 @@
         cardNumberInput.addEventListener("input", validateForm);
         expiryDateInput.addEventListener("input", validateForm);
         cvvInput.addEventListener("input", validateForm);
-
 
             validateForm(); // Initial checking if fields are filled
         });
@@ -282,13 +286,12 @@
   </head>
   <body>
     <div class="header">
-
-        <a href="homepage.html" class="logo-container">
-            <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
-          </a>
+      <a href="homepage.html" class="logo-container">
+        <img src="Codeconnect Logo.jpg" alt="Logo" class="logo" />
+      </a>
       <div class="brand">CodeConnect</div>
       <div class="login-signup">
-          <button onclick="logoutUser()">Sign Out</button>
+        <button onclick="logoutUser()">Sign Out</button>
       </div>
       <h2>Premium Membership</h2>
       <a href="homepage.html">Home</a>
@@ -353,18 +356,32 @@
       }
     </script>
 
-    </div>
     <div class="container payment-container">
       <div class="section-title">
         <h2>Join Our Premium Membership</h2>
       </div>
       <div class="pricing-table">
-        <div id="premium" class="pricing-plan">
-          <h3>Premium Plan</h3>
+        <div id="premium-monthly" class="pricing-plan">
+          <h3>Premium Plan (Monthly)</h3>
           <p>$10.00/month</p>
           <p>Access to premium content</p>
         </div>
+        <div id="premium-yearly" class="pricing-plan">
+          <h3>Premium Plan (Yearly)</h3>
+          <p>$100.00/year</p>
+          <p>Access to premium content</p>
+        </div>
       </div>
+      <script>
+      const pricingPlans = document.querySelectorAll('.pricing-plan');
+pricingPlans.forEach(plan => {
+  plan.addEventListener('click', () => {
+    pricingPlans.forEach(p => p.classList.remove('selected'));
+    plan.classList.add('selected');
+    // You can handle the plan selection here, e.g., store the selected plan
+  });
+});
+</script>
       <div class="section-title">
         <h2>Payment Information</h2>
       </div>

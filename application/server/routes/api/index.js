@@ -5,6 +5,8 @@ const post = require('./post')
 const challenge = require('./challenge')
 const user = require('./user')
 const inbox = require('./inbox')
+const mentor = require('./mentor')
+
 //const auth = require('./auth')
 const { version } = require('../../package.json')
 
@@ -18,6 +20,7 @@ router.use('/post', post)
 router.use('/challenge', challenge)
 router.use('/user', user)
 router.use('/inbox', inbox)
+router.use('/mentor', mentor)
 
 router.get('/', (req, res) => {
     res.end(`API v.${version}`)
