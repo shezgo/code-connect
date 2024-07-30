@@ -6,11 +6,11 @@
     "\\application\\server\\db",
     "\\application\\server\\db\\models",
     "\\application\\server\\routes",
+    "\\application\\server\\routes\\api",
     "\\application\\server\\utils",
     "\\application\\verticalPrototype",
-    "\\application\\verticalPrototype\\folder",
-    "\\application\\verticalPrototype\\folder\\frontend-html"
+    "\\application\\verticalPrototype\\folder"
   ],
-  "SelectedNode": "\\application\\server\\db\\models\\allEntities.js",
+  "SelectedNode": "\\application\\server\\db\\models\\message.js",
   "PreviewInSolutionExplorer": false
 }

@@ -2,22 +2,22 @@ const asyncHandler = require("express-async-handler");
 const boom = require("@hapi/boom");
 const { User } = require("../db/models/index");
 const { Message } = require("../db/models/index");
-const { MessageThread } = require("../db/models/index");
+const { Op } = require("sequelize");
+
 
 exports.inbox_message_post = asyncHandler(async (req, res) => {
-    const { sendingUserFirstName, sendingUserLastName, receivingUserFirstName, receivingUserLastName, content } = req.body;
+    const { sendingUserID, receivingUserID, content } = req.body;
 
     const sendingUser = await User.findOne({
+        //parse string into first and last name
         where: {
-            firstName: sendingUserFirstName,
-            lastName: sendingUserLastName
+            userID: sendingUserID
         }
     });
 
     const receivingUser = await User.findOne({
         where: {
-            firstName: receivingUserFirstName,
-            lastName: receivingUserLastName
+            userID: receivingUserID
         }
     });
 
@@ -26,12 +26,15 @@ exports.inbox_message_post = asyncHandler(async (req, res) => {
         throw boom.unauthorized("Sending or Receiving User not found");
     }
 
+    console.log('Sending User:', sendingUser);
+    console.log('Receiving User:', receivingUser);
+
     const newMessage = await Message.create({
         userID: sendingUser.userID,
         sendingUser: `${sendingUser.firstName} ${sendingUser.lastName}`,
         receivingUser: `${receivingUser.firstName} ${receivingUser.lastName}`,
-        time: new Date().toLocaleTimeString(),
-        date: new Date().toLocaleDateString(),
+        time: new Date().toISOString().split('T')[1].split('.')[0],
+        date: new Date().toISOString().split('T')[0],
         content: content
     });
 
@@ -39,19 +42,19 @@ exports.inbox_message_post = asyncHandler(async (req, res) => {
 });
 
 exports.inbox_message_get = asyncHandler(async (req, res) => {
-    const { sendingUserFirstName, sendingUserLastName, receivingUserFirstName, receivingUserLastName } = req.body;
+    const { sendingUserID, receivingUserID } = req.query;
 
     const sendingUser = await User.findOne({
+        //parse string into first and last name
         where: {
-            firstName: sendingUserFirstName,
-            lastName: sendingUserLastName
+            userID: sendingUserID
         }
     });
 
     const receivingUser = await User.findOne({
+        //parse string into first and last name
         where: {
-            firstName: receivingUserFirstName,
-            lastName: receivingUserLastName
+            userID: receivingUserID
         }
     });
 
@@ -63,16 +66,12 @@ exports.inbox_message_get = asyncHandler(async (req, res) => {
         where: {
             [Op.or]: [
                 {
-                    [Op.and]: [
-                        { sendingUser: `${sendingUserFirstName} ${sendingUserLastName}` },
-                        { receivingUser: `${receivingUserFirstName} ${receivingUserLastName}` }
-                    ]
+                    sendingUser: `${sendingUser.firstName} ${sendingUser.lastName}`,
+                    receivingUser: `${receivingUser.firstName} ${receivingUser.lastName}`
                 },
                 {
-                    [Op.and]: [
-                        { sendingUser: `${receivingUserFirstName} ${receivingUserLastName}` },
-                        { receivingUser: `${sendingUserFirstName} ${sendingUserLastName}` }
-                    ]
+                    sendingUser: `${receivingUser.firstName} ${receivingUser.lastName}`,
+                    receivingUser: `${sendingUser.firstName} ${sendingUser.lastName}`
                 }
             ]
         },
