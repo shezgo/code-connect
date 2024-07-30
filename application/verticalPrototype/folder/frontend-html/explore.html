@@ -331,6 +331,41 @@
       .search-container button:hover {
         background-color: #5393a1;
       }
+
+      .highlight {
+        background-color: yellow;
+        color: black;
+      }
+
+      .tab-container {
+        display: none; /* Hidden by default, shown when there are tabs */
+        flex-wrap: wrap;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .tab-item {
+        background-color: #62b4c9;
+        color: white;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        min-width: 100px; /* Adjust based on design */
+      }
+
+      .tab-item:hover {
+        background-color: #5393a1;
+      }
+
+      .highlight {
+        background-color: yellow;
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -407,6 +442,9 @@
       <script>
         document.addEventListener("DOMContentLoaded", () => {
           const searchBar = document.getElementById("search-bar");
+          const searchButton = document.querySelector(
+            ".search-container button"
+          );
           const suggestions = document.getElementById("suggestions");
 
           const pages = [
@@ -419,38 +457,86 @@
             { name: "Challenges", url: "challenges.html" },
             { name: "Forum", url: "forum.html" },
             { name: "Profile", url: "profile.html" },
+            { name: "Splash", url: "index.html" },
+            { name: "Alice", url: "alice.html" },
+            { name: "Application", url: "application.html" },
+            { name: "Become a Mentor", url: "become_mentor.html" },
+            { name: "Bob (Profile)", url: "bob.html" },
+            { name: "Carol (Profile)", url: "carol.html" },
+            { name: "C++ (Challenge)", url: "cpp.html" },
+            { name: "Create a Post", url: "createpost.html" },
+            { name: "Dave (Profile)", url: "dave.html" },
+            { name: "Delete Profile", url: "deleteprofile.html" },
+            { name: "Eve (Profile)", url: "eve.html" },
+            { name: "Find a Mentor", url: "find_mentor.html" },
+            { name: "Frank (Profile)", url: "frank.html" },
+            { name: "Interviews", url: "interview.html" },
+            { name: "Java Best Practices (Challenge)", url: "java_best_practices.html" },
+            { name: "Java (Challenge)", url: "java.html" },
+            { name: "JavaScript (Challenge)", url: "javascript.html" },
+            { name: "Jobs", url: "jobs.html" },
+            { name: "John (Profile)", url: "john.html" },
+            { name: "Leaderboards", url: "leaderboards.html" },
+            { name: "Lenny (Profile)", url: "lenny.html" },
+            { name: "Login", url: "login.html" },
+            { name: "Logout", url: "logout.html" },
+            { name: "Mastering Python (Challenge)", url: "mastering_python.html" },
+            { name: "Mentors", url: "mentors.html" },
+            { name: "Optimize SQL (Challenge)", url: "optimize_sql.html" },
+            { name: "Python (Challenge)", url: "python.html" },
+            { name: "React (Challenge)", url: "react_getting_started.html" },
+            { name: "Reset Password", url: "resetpassword.html" },
+            { name: "Room1", url: "room1.html" },
+            { name: "Room2", url: "room2.html" },
+            { name: "Room3", url: "room3.html" },
+            { name: "Room4", url: "room4.html" },
+            { name: "Room5", url: "room5.html" },
+            { name: "Room6", url: "room6.html" },
+            { name: "Room7", url: "room7.html" },
+            { name: "Room8", url: "room8.html" },
+            { name: "Room9", url: "room9.html" },
+            { name: "Room10", url: "room10.html" },
+            { name: "Room11", url: "room11.html" },
+            { name: "Room12", url: "room12.html" },
+            { name: "Room13", url: "room13.html" },
+            { name: "Room14", url: "room14.html" },
+            { name: "Room15", url: "room15.html" },
+            { name: "Sign Up", url: "signup.html" },
+            { name: "Workspaces", url: "workspace.html" },
           ];
 
-          searchBar.addEventListener("input", async () => {
+          function performSearch() {
             const input = searchBar.value.toLowerCase();
             suggestions.innerHTML = "";
 
             if (input) {
-              const requestOptions = { method: "GET" };
-
               const filteredPages = pages.filter((page) =>
                 page.name.toLowerCase().includes(input)
               );
-              const response = await fetch(
-                `/api/search/${input}`,
-                requestOptions
-              );
-              const response_json = await response.json();
-              const filteredRecords = response_json.records.map((record) => {
-                // url:`/${record.entityType}/${record.entityId}` Once pages for resources are implemented
-                return { name: record.title, url: "/explore.html" };
-              });
-              filteredPages.concat(filteredRecords).forEach((page) => {
-                const suggestionItem = document.createElement("a");
-                suggestionItem.href = page.url;
-                suggestionItem.textContent = page.name;
-                suggestions.appendChild(suggestionItem);
-              });
-              suggestions.style.display = "block";
+
+              if (filteredPages.length > 0) {
+                filteredPages.forEach((page) => {
+                  const highlightedName = page.name.replace(
+                    new RegExp(input, "gi"),
+                    (match) => `<span class="highlight">${match}</span>`
+                  );
+
+                  const suggestionItem = document.createElement("a");
+                  suggestionItem.href = page.url;
+                  suggestionItem.innerHTML = highlightedName; // Use innerHTML to render the highlighted text
+                  suggestions.appendChild(suggestionItem);
+                });
+                suggestions.style.display = "block";
+              } else {
+                suggestions.style.display = "none";
+              }
             } else {
               suggestions.style.display = "none";
             }
-          });
+          }
+
+          searchBar.addEventListener("input", performSearch);
+          searchButton.addEventListener("click", performSearch);
 
           document.addEventListener("click", (event) => {
             if (!event.target.closest(".search-container")) {
@@ -458,17 +544,16 @@
             }
           });
         });
+
+        function openSidebar() {
+          document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
       </script>
     </div>
-    <script>
-      function openSidebar() {
-        document.getElementById("mySidebar").style.width = "250px";
-      }
-
-      function closeSidebar() {
-        document.getElementById("mySidebar").style.width = "0";
-      }
-    </script>
 
     <footer>
       <div class="footer-container">
