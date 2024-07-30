@@ -21,7 +21,7 @@
     <a href="login.html">Sign Out</a>
   </div>
 
-  <h2>Java Best Practices</h2>
+  <h2>Javascript Best Practices</h2>
   <a href="homepage.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
@@ -89,22 +89,20 @@
 <div class="room-link-container">
   <h3>Solve this quick java problem!</h3>
   <div class="question-answer-container">
-    <form onsubmit="showGoodJobAlert(); return false;">
+    <form>
       <label for="question">Your Task: Print hello world.</label>
     <br>
     <br>
 
       <label for="answer">Your Answer:</label>
       <textarea id="answer" name="answer" rows="4" cols="50"></textarea><br><br>
-      <button type="submit">Submit</button>
+      <button type="button" onclick="compiler()">Submit</button>
+      <div> Output: <code id="output"></code> </div> <!-- Element to display code output -->
+      <div id="result-message" style="display: none;"></div>
     </form>
+
   </div>
 </div>
-<script>
-  function showGoodJobAlert() {
-    alert("Good job!");
-  }
-</script>
 <footer>
   <div class="footer-container">
     <div class="footer-nav">

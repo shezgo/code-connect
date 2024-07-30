@@ -6,36 +6,131 @@
     <link rel="stylesheet" href="/application/verticalPrototype/folder/frontend-css/become_mentor.css">
     <title>Become a Mentor</title>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const nameInput = document.querySelector('input[type="text"]');
-    const emailInput = document.querySelector('input[type="email"]');
-    const selectInput = document.querySelector("select");
-    const textareaInput = document.querySelector("textarea");
-    const submitButton = document.querySelector("button");
 
     function validateForm() {
-      const isValid =
-        nameInput.value.trim() !== "" &&
-        emailInput.value.trim() !== "" &&
-        selectInput.value !== "" &&
-        textareaInput.value.trim() !== "";
-      submitButton.disabled = !isValid;
-      submitButton.style.cursor = isValid ? "pointer" : "not-allowed";
+      const nameInput = document.querySelector('input[type="text"]');
+      const emailInput = document.querySelector('input[type="email"]');
+      const selectInput = document.querySelector("select");
+      const expertiseInput = document.getElementById("expertise-input");
+      const projectInput = document.getElementById("project-input");
+      const collegeInput = document.getElementById("college-input");
+      const degreeInput = document.getElementById("degree-input");
+      const whyMentorInput = document.getElementById("why-mentor-input");
+      const experienceInput = document.getElementById("experience-input");
+      const messageInput = document.getElementById("message-input");
+
+      const submitButton = document.querySelector("button");
+
+      var errorMessage = document.getElementById("error-message");
+
+      let isValid = true;
+      let messages = [];
+
+      // Validate name
+      if (nameInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Name is required.");
+      }
+
+      // Validate email
+      if (emailInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Email is required.");
+      }
+
+      // Validate select
+      if (selectInput.value === "") {
+        isValid = false;
+        messages.push("Please select an option.");
+      }
+     
+      if (expertiseInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message of your expertise is required.");
+      }
+
+      if (projectInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message of your outstanding project is required.");
+      }
+
+      if (collegeInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message of where you graduated is required.");
+      }
+
+      if (degreeInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message of your degree is required.");
+      }
+     
+     
+      if (whyMentorInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message of why become mentor is required.");
+      }
+
+      if (experienceInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message of year experience is required.");
+      }
+
+      if (messageInput.value.trim() === "") {
+        isValid = false;
+        messages.push("Message of your experience is required.");
+      }
+
+
+
+
+
+      // Display error messages
+      if (!isValid) {
+        errorMessage.innerHTML = messages.join("<br>");
+        errorMessage.style.display = "block";
+      } else {
+        errorMessage.style.display = "none";
+      }
+      
+      return isValid;
     }
 
-    nameInput.addEventListener("input", validateForm);
-    emailInput.addEventListener("input", validateForm);
-    selectInput.addEventListener("change", validateForm);
-    textareaInput.addEventListener("input", validateForm);
 
-    submitButton.addEventListener("click", function (event) {
-      if (!submitButton.disabled) {
-        window.location.href = "mentors.html";
+    async function registerMentor(){
+    
+    var errorMessage = document.getElementById("error-message");
+
+    // Validate form
+    if(!validateForm()){
+        return false;
+      }try{
+        const emailInput = document.querySelector('input[type="email"]');
+        const email = emailInput.value;
+
+        // Send a POST request to the server
+        const response = await fetch(`/api/mentor/requestMentor/${emailInput.value}`, {
+          method: "POST"
+        });
+
+  
+        let result = await response.json(); // Await the JSON parsing
+    
+        if (response.ok) {
+          console.log(result.message|| "User registered as mentor successfully");
+          errorMessage.textContent = result.message;
+          errorMessage.style.display = "block";
+        } else {
+          console.error(result.message||"Failed to register mentor");
+          errorMessage.textContent = result.message;
+          errorMessage.style.display = "block";
+        }
+      } catch (error) {
+        console.error("An error occurred", error);
+        errorMessage.textContent = result.message;
+        errorMessage.style.display = "block";
       }
-    });
-
-    validateForm(); // checks if fields are filled
-  });
+    }
+    
 </script>
 
   </head>
@@ -75,16 +170,18 @@
         <option value="fullstack">UX Designer</option>
         <input type="text" id="expertise-input" name="other-expertise" placeholder="Please specify your expertise">
       </select>
-      <input type="projects" placeholder="Do you have any outstanding projects to display?"/>
-      <input type="college" placeholder="Did you graduate from college and when? If not applicable, type in N/A"/>
-      <input type="degree" placeholder="Do you have a degree or self learned? If not applicable, type in NA"/>
-      <input type="origin" placeholder="Why do you want to become a Mentor for CodeConnect?"/>
-      <input type="experience" placeholder="How many years of experience do you have?"/>
+      <input type="projects" id="project-input" placeholder="Do you have any outstanding projects to display?"/>
+      <input type="college" id="college-input" placeholder="Did you graduate from college and when? If not applicable, type in N/A"/>
+      <input type="degree"id="degree-input"  placeholder="Do you have a degree or self learned? If not applicable, type in NA"/>
+      <input type="origin" id="why-mentor-input" placeholder="Why do you want to become a Mentor for CodeConnect?"/>
+      <input type="experience" id="experience-input" placeholder="How many years of experience do you have?"/>
       <textarea
+        id="message-input"
         placeholder="Tell us about your experience and how you can help"
         rows="4"
       ></textarea>
-      <button disabled>Submit</button>
+      <div id="error-message"></div>
+      <button onclick="return registerMentor();">Submit</button>
     </div>
     <footer>
         <div class="footer-container">
