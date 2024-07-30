@@ -9,6 +9,7 @@ const { sequelize } = require("../../db/index");
 
 const jwt = require('jsonwebtoken');
 const app = express();
+const boom = require('@hapi/boom');
 
 app.use(express.json());
 
@@ -28,48 +29,22 @@ router.use(session({
     cookie: { maxAge: 3600000 } // 1 hour
 }));
 
-// Authentication middleware test
-const authMiddleware = (req, res, next) => {
-    console.log("req.session.userID is: ", req.session.userID);
-    if (req.session.userID) {
-        next();
-    } else {
-        res.status(401).json({ message: "Unauthorized" });
-    }
-};
-
-//JWT middleware test
-const authenticateJWT = (req, res, next) => {
-    const token = req.header('Authorization').split(' ')[1];
-
+//Middleware to authenticate the user's cookie token
+const authCookieTok = (req, res, next) => {
+    const token = req.cookies.token;
     if (!token) {
-        return res.sendStatus(401); // Unauthorized
+        throw boom.unauthorized("Token not found");
     }
 
-    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, detokenized) => {
         if (err) {
-            return res.sendStatus(403); // Forbidden
+            throw boom.unauthorized("Invalid token");
         }
-
-        req.user = user; // Store the user data in the request object
+        req.userID = detokenized.id;
         next();
     });
 };
 
-//Cookie JWT Authentication
-exports.cookieJWTAuth = (req, res, next) => {
-    const token = req.cookies.token;
-    try {
-        const user = jwt.verify(token, process.env.SESSION_SECRET);
-        req.user = user;
-        next();
-    } catch (err) {
-        res.clearCookie("token");
-        //If there's an error, redirect to the about page for now.
-        //Change this to redirect to login page.
-        return res.redirect("/about");
-    }
-}
 
 // Public routes
 router.get("/verify/:token", signup_controller.verify_email_get);
@@ -79,12 +54,9 @@ router.post('/login', login_controller.login_user_post);
 router.post('/logout', login_controller.logout_user_post);
 
 // Protected routes tests
- router.get('/protected-route', authMiddleware, (req, res) => {
-     res.json({ message: "You are authenticated" });
- });
 
-app.get('/protected', authenticateJWT, (req, res) => {
-    res.json({ message: "This is a protected route using JWT", user: req.user });
+router.get('/protected-route', authCookieTok, (req, res) => {
+    res.json({ message: "This is a protected route using authCookieTok", userID: req.userID });
 });
 
 // New routes for password reset
@@ -92,3 +64,4 @@ app.get('/protected', authenticateJWT, (req, res) => {
  router.post('/reset-password', login_controller.reset_password_post);
 
 module.exports = router;
+
