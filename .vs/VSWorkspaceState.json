@@ -4,13 +4,13 @@
     "\\application",
     "\\application\\server",
     "\\application\\server\\controllers",
+    "\\application\\server\\db",
+    "\\application\\server\\db\\models",
     "\\application\\server\\routes",
     "\\application\\server\\routes\\api",
     "\\application\\server\\utils",
-    "\\application\\verticalPrototype",
-    "\\application\\verticalPrototype\\folder",
-    "\\application\\verticalPrototype\\folder\\frontend-html"
+    "\\application\\verticalPrototype\\folder"
   ],
-  "SelectedNode": "\\application\\server\\routes\\api\\auth.js",
+  "SelectedNode": "\\application\\server\\db\\models\\leaderboard.js",
   "PreviewInSolutionExplorer": false
 }
