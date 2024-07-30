@@ -40,7 +40,7 @@ async function signinUser() {
         }
         console.log("login in successful");
         // if login successfull redirect to /about
-        window.location = "/homepage";
+        window.location.href = '/application/BetaPrototype/folder/frontend-html/home/homepage.html';
         return true;
     }
     catch (error) {

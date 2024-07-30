@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submitButton.addEventListener("click", function (event) {
       if (!submitButton.disabled) {
-        window.location.href = "mentors.html";
+        window.location.href = "/application/BetaProtoType/Folder/frontend-html/mentors/mentors.html";
       }
     });
 
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (response.ok) {
             // Redirect to the login page or home page after logout
-            window.location.href = 'login.html';
+            window.location.href = '/application/BetaPrototype/folder/frontend-html/loginorsignup/login.html';
         } else {
             const result = await response.json();
             alert(`Logout failed: ${result.message}`);

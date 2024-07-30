@@ -35,7 +35,7 @@
 
                 if (response.ok) {
                     // Redirect to the login page or home page after logout
-                    window.location.href = 'login.html';
+                    window.location.href = '/application/BetaPrototype/folder/frontend-html/login.html';
                 } else {
                     const result = await response.json();
                     alert(`Logout failed: ${result.message}`);
