@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+    rel="stylesheet"
+    text="style\css"
+    href="/application/BetaPrototype/folder/frontend-css/forum.css"
+  />
+  </head>
+  <body>
+    <div class="header">
+      <a href="homepage.html" class="logo-container">
+        <img src="/application/BetaPrototype/folder/frontend-html/images/CodeConnect Logo.jpg" alt="Logo" class="logo">
+      </a>
+      <div class="brand">CodeConnect</div>
+      <div class="login-signup">
+        <a href="login.html">Sign Out</a>
+      </div>
+      <h2>Forums</h2>
+      <a href="/application/BetaPrototype/folder/frontend-html/home/homepage.html">Home</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/challenges/challenges.html">Challenges</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/mentors/mentors.html">Mentors</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/forums/forum.html">Forums</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/premium/store.html">Memberships</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/premium/premium.html">Premium</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/home/explore.html">Explore</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/workspacerooms/workspace.html">Workspaces</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/leaderboards.html">Leaderboards</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/jobs/jobs.html">Jobs</a>
+      <a href="/application/BetaPrototype/folder/frontend-html/home/inbox.html" class="icon-button">
+        <svg
+          class="mail-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16v16H4z" />
+          <path d="M4 4l8 8 8-8" />
+        </svg>
+      </a>
+    
+      <a href="/application/BetaPrototype/folder/frontend-html/home/profile.html" class="icon-button">
+        <svg
+          class="profile-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+          />
+        </svg>
+      </a>
+
+      <button class="icon-button" onclick="openSidebar()">Friends</button>
+
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()"
+          >&times;</a
+        >
+        <a href="profile.html">Friend 1</a>
+        <a href="profile.html">Friend 2</a>
+        <a href="profile.html">Friend 3</a>
+        <a href="profile.html">Friend 4</a>
+        <a href="profile.html">Friend 5</a>
+      </div>
+    </div>
+    <script src="/application/BetaPrototype/folder/frontend-js/forums.js"></script>
+
+
+
+    <div class="forum-container">
+      <div class="forum-box">
+        <div class="forum-title">Java Best Practices</div>
+        <div class="forum-description">
+          Discuss the best practices for writing clean, efficient, and
+          maintainable Java code.
+        </div>
+      </div>
+      <div class="forum-box">
+        <div class="forum-title">JavaScript Tips and Tricks</div>
+        <div class="forum-description">
+          Share and learn the most useful tips and tricks for mastering
+          JavaScript.
+        </div>
+      </div>
+      <div class="forum-box">
+        <div class="forum-title">C++ Performance Optimization</div>
+        <div class="forum-description">
+          Explore techniques and tools for optimizing C++ code for performance.
+        </div>
+      </div>
+      <div class="forum-box">
+        <div class="forum-title">React Beginners Guide</div>
+        <div class="forum-description">
+          A forum for beginners to discuss and learn about React.js.
+        </div>
+      </div>
+      <div class="forum-box">
+        <div class="forum-title">SQL Query Optimization</div>
+        <div class="forum-description">
+          Tips and tricks for writing efficient and optimized SQL queries.
+        </div>
+      </div>
+    </div>
+    <div class="recent-forums">
+      <h3>Recently Visited Forums</h3>
+      <a href="java_best_practice.html">Java Best Practices</a>
+      <a href="javascript.html">JavaScript Tips and Tricks</a>
+      <a href="cpp.html">C++ Performance Optimization</a>
+      <a href="react_getting_started.html">React Beginners Guide</a>
+      <a href="optimize_sql.html">SQL Query Optimization</a>
+    </div>
+    <a href="createpost.html" class="create-post-button">Create Post</a>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-nav">
+          <ul>
+            <li>
+              <a href="/application/BetaPrototype/folder/frontend-html/home/index.html"><strong>Home</strong></a>
+            </li>
+            <li>
+              <a href="/application/BetaPrototype/folder/frontend-html/home/about.html"><strong>About</strong></a>
+            </li>
+            <li>
+              <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
+            </li>
+            <li>
+              <a><strong>Phone: 888-888-8888</strong></a>
+            </li>
+          </ul>
+        </div>
+        <div class="media-icons">
+          <a href="https://www.instagram.com/codeconnect"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/codeconnect"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.google.com/codeconnect"><i class="fa-brands fa-google-plus"></i></a>
+          <a href="https://www.youtube.com/codeconnect"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-bott">
+          <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
