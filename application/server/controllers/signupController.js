@@ -55,25 +55,24 @@ exports.verify_email_post = asyncHandler(async (req, res, next) => {
 });
 
 exports.signup_user_post = asyncHandler(async (req, res, next) => {
-    //const { email, username, password } = req.body;
-    const { email, password } = req.body;
+    const { userName, email, password } = req.body;
     const existingEmailUser = await User.findOne({
         where: {
             email: email
         }
     });
-    /*
+    
     const existingUsernameUser = await User.findOne({
         where: {
-            username: username
+            userName: userName
         }
     });
-    */
+    
     if (existingEmailUser) {
         throw boom.badData("Email already in use");
-    } /*else if (existingUsernameUser) {
+    }else if (existingUsernameUser) {
         throw boom.badData("Username already in use");
-    }*/ else if (passwordStrength(password).id <= 1) {
+    }else if (passwordStrength(password).id <= 1) {
         throw boom.badData(`Password is ${passwordStrength(password).value}`);
     } else {
         try {
@@ -83,7 +82,7 @@ exports.signup_user_post = asyncHandler(async (req, res, next) => {
             console.log(hashedPassword);
             const user = User.build({
                 email: email,
-                //username: username,
+                userName: userName,
                 password: hashedPassword,
                 emailVerified: false
             });
