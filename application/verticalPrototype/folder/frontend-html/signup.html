@@ -191,6 +191,7 @@
             var email = document.getElementById("email").value;
             var confirmPassword = document.getElementById("confirm-password").value;
             var errorMessage = document.getElementById("error-message");
+            var userName = document.getElementById("userName").value;
 
             // if password is not strong enough or does not match
             if(!validatePassword()){
@@ -203,15 +204,26 @@
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ email: email, password: password })
+                    body: JSON.stringify({ userName: userName, email: email, password: password })
                 };
                 
                 // Catch Server Errors
                 const response = await fetch("/api/auth/signup", requestOptions);
+                
+                // Determine response type
+                const contentType = response.headers.get("Content-Type");
+
+                let result;
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                  result = await response.json(); // Await the JSON parsing
+                } else {
+                  result = await response.text(); // Handle email that may get SyntaxError
+                }
+
 
                 // If fetch response code is not successfull
                 if(!response.ok){
-                    errorMessage.textContent = await response.json().message;
+                    errorMessage.textContent = await result.message;
                     errorMessage.style.display = "block";
                     return false;
                 }
@@ -219,6 +231,8 @@
                 // Show the user that a verification email was sent
                 errorMessage.textContent = "Please check your email inbox and verify it";
                 errorMessage.style.display = "block";
+                 // if signup successfull redirect to /about
+                window.location = "/login";
                 return true;
             }
             catch (error) {
@@ -254,7 +268,7 @@
         <img src="Codeconnect Logo.jpg" alt="Logo">
         <h1>CodeConnect</h1>
         <h3>Start Your Tech Journey With Us.</h3>
-        <input type="text" placeholder="Username">
+        <input type="text" id="userName" placeholder="Username">
         <input type="email" id="email" placeholder="Email Address">
         <input type="password" id="password" placeholder="Password">
         <input type="password" id="confirm-password" placeholder="Confirm Password">
