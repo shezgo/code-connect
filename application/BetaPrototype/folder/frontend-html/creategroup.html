@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>CodeConverse</title>
+  <title>Create Group</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    /* Existing CSS styles */
     * {
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      margin: 0; 
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-
 
     .header {
       background-color: #62b4c9;
@@ -116,69 +120,82 @@
       vertical-align: middle;
     }
 
-
-    .container {
-      display: flex;
-      justify-content: center;
+    .create-post-container {
+      max-width: 800px;
+      margin: 50px auto;
       padding: 20px;
-      max-width: 1200px;
-      margin: auto;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .content {
-      flex: 3;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    .sidebar {
-      flex: 1;
-      padding: 0 20px;
-    }
-
-    section {
+    .create-post-container h2 {
       margin-bottom: 20px;
+      color: #007bff;
     }
 
-    section h3 {
-      margin-bottom: 10px;
-      font-size: 18px;
+    .form-group {
+      margin-bottom: 15px;
     }
 
-    section ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    section ul li {
+    .form-group label {
+      display: block;
       margin-bottom: 5px;
     }
 
-    section ul li a {
-      color: rgb(43, 72, 31);
-      font-size: 16px;
-      font-weight: bold;
+    .form-group input[type="text"],
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 15px;
       text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
     }
 
-    section ul li a:hover {
-      text-decoration: underline;
+    .sidebar a:hover {
+      background-color: #575757;
     }
 
-    .welcome-message {
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
       font-size: 36px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .intro-text {
-      font-size: 24px;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .bold-text {
-      font-weight: bold;
+      margin-left: 50px;
     }
 
     footer {
@@ -194,16 +211,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .media-icons {
-      margin: 10px 0;
-    }
-
-    .media-icons a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
     }
 
     .footer-nav ul {
@@ -242,7 +249,7 @@
     <a href="profile.html">Profile</a>
     <a href="login.html">Sign Out</a>
   </div>
-  <h2>CodeConverse</h2>
+  <h2>CodeConverse - Create a Group</h2>
   <a href="homepage.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
@@ -287,6 +294,15 @@
   </a>
 
   <button class="icon-button" onclick="openSidebar()">Friends</button>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+    <a href="profile.html">Friend 1</a>
+    <a href="profile.html">Friend 2</a>
+    <a href="profile.html">Friend 3</a>
+    <a href="profile.html">Friend 4</a>
+    <a href="profile.html">Friend 5</a>
+  </div>
 </div>
 
 <script>
@@ -297,59 +313,85 @@
   function closeSidebar() {
     document.getElementById("mySidebar").style.width = "0";
   }
+
+  function validateForm(event) {
+    event.preventDefault();
+
+    const titleInput = document.getElementById("group-title");
+    const topicSelect = document.getElementById("group-topic");
+
+    const title = titleInput.value.trim();
+    const topic = topicSelect.value;
+
+    if (title.length > 30) {
+      alert("Title must not exceed 30 characters.");
+      return;
+    }
+
+    if (!topic) {
+      alert("Please select a topic.");
+      return;
+    }
+
+    const groupData = {
+      title: title,
+      topic: topic
+    };
+
+    // Replace 'YOUR_BACKEND_API_ENDPOINT' with the actual backend API endpoint
+    fetch('YOUR_BACKEND_API_ENDPOINT', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(groupData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        const topicPages = {
+          'Java': 'topic1.html',
+          'MySQL': 'topic2.html',
+          'React': 'topic3.html',
+          'C++': 'topic4.html',
+          'JavaScript': 'topic5.html'
+        };
+        window.location.href = topicPages[topicSelect.value];
+      } else {
+        alert("Error creating group. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert("Error creating group. Please try again.");
+    });
+  }
 </script>
 
-<div class="container">
-  <div class="content">
-    <h1 class="welcome-message">Welcome to the Forums</h1>
-    <p class="intro-text">This is a space where experienced and novice developers can connect with each other, share knowledge, and collaborate on projects.</p>
-    <p class="intro-text bold-text">Select a topic on the right to connect.</p>
-  </div>
-
-  <div class="sidebar">
-    <section>
-      <h3>Topics</h3>
-      <ul>
-        <li><a href="topic1.html">Java</a></li>
-        <li><a href="topic2.html">MySQL</a></li>
-        <li><a href="topic3.html">React</a></li>
-        <li><a href="topic4.html">C++</a></li>
-        <li><a href="topic5.html">JavaScript</a></li>
-      </ul>
-    </section>
-    <section id="myGroupsSection" style="display:none;">
-      <h3>My Groups</h3>
-      <ul id="myGroupsList">
-        <!-- Groups will be dynamically added here -->
-      </ul>
-    
-</section>
-  </div>
+<div class="create-post-container">
+  <h2>Create a New Group</h2>
+  <form onsubmit="validateForm(event)">
+    <div class="form-group">
+      <label for="group-title">Group Title</label>
+      <input type="text" id="group-title" name="group-title" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="group-topic">Select a Topic</label>
+      <select id="group-topic" name="group-topic" required>
+        <option value="">Select a Topic</option>
+        <option value="Java">Java</option>
+        <option value="MySQL">MySQL</option>
+        <option value="React">React</option>
+        <option value="C++">C++</option>
+        <option value="JavaScript">JavaScript</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit">Create Group</button>
+    </div>
+  </form>
 </div>
-<script>// Sample data for user groups
-  const userGroups = [
-      { name: "", link: "" },
-      { name: "", link: "" },
-    ];
-  
-    // Populate the My Groups section dynamically
-    document.addEventListener("DOMContentLoaded", () => {
-      const myGroupsSection = document.getElementById("myGroupsSection");
-      const myGroupsList = document.getElementById("myGroupsList");
-  
-      if (userGroups.length > 0) {
-        userGroups.forEach(group => {
-          const li = document.createElement("li");
-          const a = document.createElement("a");
-          a.href = group.link;
-          a.textContent = group.name;
-          li.appendChild(a);
-          myGroupsList.appendChild(li);
-        });
-        myGroupsSection.style.display = "block";
-      }
-      
-    });</script>
+
 <footer>
   <div class="footer-container">
     <div class="footer-nav">
