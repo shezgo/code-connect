@@ -1,24 +1,44 @@
-module.exports = (sequelize, DataTypes) => {
-    const UserForum = sequelize.define('UserForum', {
+
+const {DataTypes,Model} = require('sequelize');
+
+const sequelize = require("../config.js");
+
+//import for reference
+const {User}=require('./user.js')
+const {Forum}=require('./forum.js');
+
+class UserForum extends Model {}
+
+UserForum.init(
+    {
         userForumID: {
+            field: 'userForumID',
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrementv: true
+        },userID: { 
+            field: 'userID',
+            type: DataTypes.INTEGER, 
+            references: { 
+                model: User, 
+                key: 'userID' 
+            }
+        },forumID:{
+            field:'forumID',
+            type:DataTypes.INTEGER,
+            references: { 
+                model: Forum, 
+                key: 'forumID' 
+            }
         },
-        userID: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        forumID: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
-    });
+    },
+    {
+        sequelize,
+        timestamps:false,
+        modelName: 'UserForum',
+        tableName: 'userForum',
+    }
+);
 
-    UserForum.associate = models => {
-        UserForum.belongsTo(models.User, { foreignKey: 'userID' });
-        UserForum.belongsTo(models.Forum, { foreignKey: 'forumID' });
-    };
+module.exports = UserForum;
 
-    return UserForum;
-};
