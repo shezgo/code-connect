@@ -808,11 +808,11 @@
       </ul>
     </section>
     
-    <section>
-      <h3>My Groups</h3>
-      <ul>
-       
-      </ul>
+    <section id="myGroupsSection" style="display:none;">
+        <h3>My Groups</h3>
+        <ul id="myGroupsList">
+          <!-- Groups will be dynamically added here -->
+        </ul>
       <a href="creategroup.html" class="create-group-button">Create Group</a>
   </section>
   <a href="createpost.html" class="create-post-button">Create Post</a>
@@ -830,7 +830,29 @@
     voteCount += value;
     voteCountElement.textContent = voteCount;
   }
+  // Sample data for user groups
+  const userGroups = [
+    { name: "", link: "" },
+    { name: "", link: "" },
+  ];
 
+  // Populate the My Groups section dynamically
+  document.addEventListener("DOMContentLoaded", () => {
+    const myGroupsSection = document.getElementById("myGroupsSection");
+    const myGroupsList = document.getElementById("myGroupsList");
+
+    if (userGroups.length > 0) {
+      userGroups.forEach(group => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = group.link;
+        a.textContent = group.name;
+        li.appendChild(a);
+        myGroupsList.appendChild(li);
+      });
+      myGroupsSection.style.display = "block";
+    }
+  });
   function toggleReplies(button) {
     const replySection = button.nextElementSibling;
     if (replySection.style.display === "none" || replySection.style.display === "") {
