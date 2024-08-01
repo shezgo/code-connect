@@ -1,15 +1,23 @@
-const { Post, ForumThread, Forum, UserForum } = require('../../db/models');
+const { UserForum, Forum, Thread, Reply } = require('../db/models');
 
-// Controller to get selected forums for the user who is logged in
+// Controller to get selected forums for the user who is logged in by checking associative table
 exports.getUserForums = async (req, res, next) => {
     try {
-        // Fetch forums related to the logged-in user
-        const userID = req.userID; // Extract userID from the authenticated request
+       //Grab the user's ID from the request
+        const userID = req.userID; 
 
         // Find the forums associated with the user frm the UserForum table
+        // Find the threads associated with each forum
+        // Find the replies associated with each thread
         const userForums = await UserForum.findAll({
             where: { userID: userID },
-            include: [{ model: Forum }] // Join the Forum model to get forum details
+            include: [{
+                model: Forum,
+                include: [{
+                    model: Thread,
+                    include: [Reply] 
+                }]
+            }]
         });
 
         // Get all the forums only from the associative table
@@ -19,32 +27,22 @@ exports.getUserForums = async (req, res, next) => {
         // and organize depending on flags for isPrivateForum, isMentorForum, isPublicForum.
         res.json({ forums });
     } catch (error) {
-        next(error); // Pass errors to the error handling middleware
+        next(error); // Pass errors to the middleware
     }
 };
 
 exports.addForum = async (req, res, next) => {
     try {
-        const { threadTitle, threadContent, isPublicForum, isPrivateForum, isMentorForum } = req.body;
+        const { title, topic} = req.body;
 
-        if (!threadContent || !threadTitle) {
+        if (!title) {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
-    
-        const currentDate = new Date();
-        const date = currentDate.toLocaleDateString();
-        const time = currentDate.toLocaleTimeString();
-
         // Create a new forum 
         const newForum = await Forum.create({
-            threadTitle,
-            date,
-            time,
-            threadContent,
-            isPublicForum,
-            isPrivateForum,
-            isMentorForum
+            title,
+            topic
         });
 
         res.json({forum: newForum});
@@ -53,67 +51,51 @@ exports.addForum = async (req, res, next) => {
     }
 };
 
-exports.addForumThread = async (req, res, next) => {
-    try {
-        const { threadID, threadTitle, codeBlock, forumID } = req.body;
 
-        if (!threadID || !threadTitle || !codeBlock || !forumID) {
-            return res.status(400).json({ error: 'All fields are required' });
+exports.addThread = async (req, res, next) => {
+    try {
+        const {title, content, topic} = req.body;
+
+        if (!title || !content || !topic) {
+            return res.status(400).json({ error: 'Fill missing fields' });
         }
 
-
-        const currentDate = new Date();
-        const date = currentDate.toLocaleDateString();
-        const time = currentDate.toLocaleTimeString();
-
         // Create a new forum thread
-        const newForumThread = await ForumThread.create({
-            threadID,
-            date,
-            time,
-            threadTitle,
-            codeBlock,
-            forumID
+        const newThread = await Thread.create({
+ 
+            title,
+            content,
+            topic
         });
 
-        res.json({forumThread: newForumThread});
+        res.json({thread: newThread});
     } catch (error) {
         next(error);
     }
 };
 
-exports.addPost = async (req, res, next) => {
+exports.addReply = async (req, res, next) => {
     try {
-        const {threadID, content} = req.body;
+        const {body} = req.body;
 
 
-        if (!post || !threadID) {
-            return res.status(400).json({ error: 'All fields are required' });
+        if (!body) {
+            return res.status(400).json({ error: 'Fill missing fields' });
         }
 
-        // Get current date and time
+/*
         const currentDate = new Date();
         const date = currentDate.toLocaleDateString();
-        const time = currentDate.toLocaleTimeString();
+        const time = currentDate.toLocaleTimeString();*/
 
-        const userID = req.userID;
-        likes = 0;
+        //const userID = req.userID;
 
-
-
-        // Create a new post
-        const newPost = await Post.create({
-            threadID,
-            date,
-            time,
-            threadTitle,
-            codeBlock,
-            forumID,
-            userID,
-            likes
+        // Create a new reply to a thread
+        const newReply = await Reply.create({
+            body
         });
 
-        res.json({post: newPost});
+        res.json({reply: newReply});
     } catch (error) {
         next(error);
     }

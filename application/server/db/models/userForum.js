@@ -1,3 +1,4 @@
+
 const {DataTypes,Model} = require('sequelize');
 
 const sequelize = require("../config.js");
@@ -40,3 +41,4 @@ UserForum.init(
 );
 
 module.exports = UserForum;
+
