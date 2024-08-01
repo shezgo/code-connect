@@ -310,7 +310,6 @@
     <a href="profile.html">Friend 5</a>
   </div>
 </div>
-
 <script>
   function openSidebar() {
     document.getElementById("mySidebar").style.width = "250px";
@@ -320,29 +319,37 @@
     document.getElementById("mySidebar").style.width = "0";
   }
 
-  function validateForm(event) {
+  async function validateForm(event) {
     event.preventDefault();
 
     const titleInput = document.getElementById("post-title");
     const contentTextarea = document.getElementById("post-content");
     const topicSelect = document.getElementById("post-topic");
+    const errorMessage = document.getElementById("error-message");
 
     const title = titleInput.value.trim();
     const content = contentTextarea.value.trim();
     const topic = topicSelect.value;
 
+    // Clear previous error message
+    errorMessage.textContent = '';
+    errorMessage.style.display = 'none';
+
     if (title.length > 30) {
-      alert("Title must not exceed 30 characters.");
+      errorMessage.textContent = "Title must not exceed 30 characters.";
+      errorMessage.style.display = "block";
       return;
     }
 
     if (content.length > 255) {
-      alert("Content must not exceed 255 characters.");
+      errorMessage.textContent = "Content must not exceed 255 characters.";
+      errorMessage.style.display = "block";
       return;
     }
 
     if (!topic) {
-      alert("Please select a topic.");
+      errorMessage.textContent = "Please select a topic.";
+      errorMessage.style.display = "block";
       return;
     }
 
@@ -352,16 +359,18 @@
       topic: topic
     };
 
-    // Replace 'YOUR_BACKEND_API_ENDPOINT' with the actual backend API endpoint
-      fetch('/api/auth/addthread', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(postData)
-    })
-    .then(response => response.json())
-    .then(data => {
+    try {
+      const response = await fetch('/api/auth/addthread', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+      });
+
+      const data = await response.json();
+      console.log('Response data:', data); // Log the response data
+
       if (data.success) {
         const topicPages = {
           'Java': 'topic1.html',
@@ -370,15 +379,28 @@
           'C++': 'topic4.html',
           'JavaScript': 'topic5.html'
         };
-        window.location.href = topicPages[topicSelect.value];
+
+        const redirectUrl = topicPages[topicSelect.value];
+        console.log('Redirecting to:', redirectUrl); // Log the redirection URL
+
+        if (redirectUrl) {
+          window.location.href = redirectUrl;
+        } else {
+          console.error('Invalid topic selected:', topicSelect.value);
+          errorMessage.textContent = "Unable to find the page for the selected topic.";
+          errorMessage.style.display = "block";
+        }
       } else {
-        alert("Error creating post. Please try again.");
+        console.log('Succuss creating post:', data.message || "Succuss creating post.");
+        errorMessage.textContent = data.message || "Succuss creating post.";
+        errorMessage.style.display = "block";
+       window.location = "/topic1.html";
       }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert("Error creating post. Please try again.");
-    });
+    } catch (error) {
+      console.error('An error occurred:', error);
+      errorMessage.textContent = "An unexpected error occurred. Please try again.";
+      errorMessage.style.display = "block";
+    }
   }
 </script>
 
@@ -405,6 +427,7 @@
       </select>
     </div>
     <div class="form-group">
+      <div id="error-message"></div>
       <button type="submit">Submit Post</button>
     </div>
   </form>
