@@ -17,7 +17,6 @@
       min-height: 100vh;
     }
 
-   
     .header {
       background-color: #62b4c9;
       padding: 5px;
@@ -116,7 +115,6 @@
       vertical-align: middle;
     }
 
-  
     .container {
       display: flex;
       justify-content: center;
@@ -136,8 +134,6 @@
     }
 
     .post {
-      display: flex;
-      align-items: center;
       margin-bottom: 20px;
       padding: 10px;
       background: #f9f9f9;
@@ -145,98 +141,215 @@
       border-radius: 4px;
     }
 
-    .post-voting {
+    .post-header {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      margin-right: 15px;
+      margin-bottom: 10px;
     }
 
-    .post-voting button {
+    .post-header h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .post-header .author {
+      margin-left: 10px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .post-header .timestamp {
+      margin-left: auto;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .post-content {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .post-footer {
+      display: flex;
+      align-items: center;
+    }
+
+    .post-footer .vote-count {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+
+    .post-footer button {
       background: none;
       border: none;
       font-size: 18px;
       cursor: pointer;
     }
 
-    .post-voting .vote-count {
-      font-size: 16px;
+    .post-footer .report {
+      margin-left: auto;
+      cursor: pointer;
+      font-size: 18px;
     }
 
-    .post-content h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
+    .reply-section {
+      margin-top: 20px;
+      display: none;
     }
 
-    .post-content p {
-      margin: 0;
-      color: #555;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .reply {
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
     }
 
-    .post-footer {
-      margin-top: 10px;
+    .reply .author {
       font-size: 14px;
       color: #999;
     }
 
-    .post-footer a {
-      color: #007bff;
-      text-decoration: none;
+    .reply .timestamp {
+      font-size: 14px;
+      color: #999;
     }
 
-    .post-footer a:hover {
-      text-decoration: underline;
+    .reply .reply-content {
+      font-size: 16px;
+      line-height: 1.5;
     }
 
-    section {
-      margin-bottom: 20px;
+    .reply-footer {
+      display: flex;
+      align-items: center;
     }
 
-    section h3 {
-      margin-bottom: 10px;
+    .reply-footer .vote-count {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+
+    .reply-footer button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .reply-footer .report {
+      margin-left: auto;
+      cursor: pointer;
       font-size: 18px;
     }
 
-    section ul {
+    .reply-input {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+
+    .reply-input textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .reply-input button {
+      align-self: flex-end;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .reply-input button:hover {
+      background-color: #0056b3;
+    }
+
+    .report-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .report-popup textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .report-popup button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .report-popup button:hover {
+      background-color: #0056b3;
+    }
+
+    .report-popup .close {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .sort-by {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 20px;
+    }
+
+    .sidebar-section h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-section ul {
       list-style: none;
       padding: 0;
     }
 
-    section ul li {
-      margin-bottom: 5px;
+    .sidebar-section ul li {
+      margin-bottom: 10px;
     }
 
-    section ul li a {
-      color: rgb(43, 72, 31);
-      font-size: 16px;
-      font-weight: bold;
+    .sidebar-section ul li a {
       text-decoration: none;
+      color: #007bff;
     }
 
-    section ul li a:hover {
+    .sidebar-section ul li a:hover {
       text-decoration: underline;
     }
-    .create-post-button, .create-group-button {
-      display: block;
-      width: 200px;
-      margin: 20px auto;
-      padding: 10px;
-      background-color: #007bff;
-      color: white;
-      text-align: center;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 1.2em;
-    }
 
-    .create-post-button:hover, .create-group-button:hover {
-      background-color: #0056b3;
-    }
-    
     footer {
       width: 100%;
       background-color: #62b4c9;
@@ -285,6 +398,16 @@
 
     .footer-bott {
       margin-top: 10px;
+    }
+
+    .show-replies {
+      cursor: pointer;
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .show-replies:hover {
+      text-decoration: none;
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -358,79 +481,473 @@
 <div class="container">
   <div class="content">
     <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">150</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
+      <div class="post-header">
+        <h2>Understanding JavaScript Closures</h2>
+        <span class="author">by User21</span>
+        <span class="timestamp">3 days ago</span>
       </div>
       <div class="post-content">
-        <h3><a href="post1.html">React Hooks: A Deep Dive</a></h3>
-        <p>React Hooks provide a way to use state and other React features without writing a...</p>
-        <div class="post-footer">
-          <span>Posted by <a href="profile.html">User11</a> in <a href="react.html">React</a></span>
+        <p>Closures are a fundamental concept in JavaScript. This post aims to provide a clear understanding of closures, how they work, and how to use them effectively in your code.</p>
+      </div>
+      <div class="post-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">160</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <span class="report" onclick="showReportPopup()">Report</span>
+      </div>
+      <button onclick="showReplyInput(event, 'post-reply-input1')">Reply</button>
+      <div id="post-reply-input1" class="reply-input" style="display:none;">
+        <textarea placeholder="Write your reply..."></textarea>
+        <button onclick="submitReply(event, this)">Submit Reply</button>
+      </div>
+      <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+      <div class="reply-section">
+        <div class="sort-by">
+          Sort by:
+          <select onchange="sortReplies(this)">
+            <option value="oldest">Oldest</option>
+            <option value="newest">Newest</option>
+            <option value="most-liked">Most Liked</option>
+          </select>
+        </div>
+        <div class="reply" data-timestamp="2024-07-28T10:00:00">
+          <div class="reply-header">
+            <span class="author">User22</span>
+            <span class="timestamp">2 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>This post was incredibly detailed and helpful. I finally understand how closures work. Thanks!</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">80</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-1-1')">Reply</button>
+          </div>
+          <div id="reply-input-1-1" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-29T08:00:00">
+          <div class="reply-header">
+            <span class="author">User23</span>
+            <span class="timestamp">1 day ago</span>
+          </div>
+          <div class="reply-content">
+            <p>The explanation of closures was very clear. This has been a game changer for my JavaScript coding.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">60</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-1-2')">Reply</button>
+          </div>
+          <div id="reply-input-1-2" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-30T07:00:00">
+          <div class="reply-header">
+            <span class="author">User24</span>
+            <span class="timestamp">12 hours ago</span>
+          </div>
+          <div class="reply-content">
+            <p>Great explanation on closures. I feel more confident in using them now.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">40</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-1-3')">Reply</button>
+          </div>
+          <div id="reply-input-1-3" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">135</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
+      <div class="post-header">
+        <h2>JavaScript ES6 Features</h2>
+        <span class="author">by User25</span>
+        <span class="timestamp">4 days ago</span>
       </div>
       <div class="post-content">
-        <h3><a href="post2.html">Managing State in React</a></h3>
-        <p>State management is a key aspect of React development. This post explores various...</p>
-        <div class="post-footer">
-          <span>Posted by <a href="profile.html">User12</a> in <a href="react.html">React</a></span>
+        <p>ES6 introduced many new features to JavaScript. This post explores some of the most important features, including let, const, arrow functions, template literals, and destructuring.</p>
+      </div>
+      <div class="post-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">145</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <span class="report" onclick="showReportPopup()">Report</span>
+      </div>
+      <button onclick="showReplyInput(event, 'post-reply-input2')">Reply</button>
+      <div id="post-reply-input2" class="reply-input" style="display:none;">
+        <textarea placeholder="Write your reply..."></textarea>
+        <button onclick="submitReply(event, this)">Submit Reply</button>
+      </div>
+      <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+      <div class="reply-section">
+        <div class="sort-by">
+          Sort by:
+          <select onchange="sortReplies(this)">
+            <option value="oldest">Oldest</option>
+            <option value="newest">Newest</option>
+            <option value="most-liked">Most Liked</option>
+          </select>
+        </div>
+        <div class="reply" data-timestamp="2024-07-26T10:00:00">
+          <div class="reply-header">
+            <span class="author">User26</span>
+            <span class="timestamp">3 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>The breakdown of ES6 features was very helpful. I especially liked the examples provided for each feature.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">90</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-2-1')">Reply</button>
+          </div>
+          <div id="reply-input-2-1" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-27T08:00:00">
+          <div class="reply-header">
+            <span class="author">User27</span>
+            <span class="timestamp">2 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>The detailed explanations and code snippets for arrow functions and template literals were excellent. Thanks for the great post!</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">70</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-2-2')">Reply</button>
+          </div>
+          <div id="reply-input-2-2" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-28T07:00:00">
+          <div class="reply-header">
+            <span class="author">User28</span>
+            <span class="timestamp">1 day ago</span>
+          </div>
+          <div class="reply-content">
+            <p>ES6 has so many useful features. This post did a great job of highlighting the most important ones. I learned a lot!</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">50</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-2-3')">Reply</button>
+          </div>
+          <div id="reply-input-2-3" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">120</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
+      <div class="post-header">
+        <h2>JavaScript Promises Explained</h2>
+        <span class="author">by User29</span>
+        <span class="timestamp">5 days ago</span>
       </div>
       <div class="post-content">
-        <h3><a href="post3.html">React Router Basics</a></h3>
-        <p>React Router is a powerful library for handling routing in React applications. This...</p>
-        <div class="post-footer">
-          <span>Posted by <a href="profile.html">User13</a> in <a href="react.html">React</a></span>
+        <p>Promises are a powerful way to handle asynchronous operations in JavaScript. This post explains how promises work, including chaining, error handling, and common pitfalls to avoid.</p>
+      </div>
+      <div class="post-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">130</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <span class="report" onclick="showReportPopup()">Report</span>
+      </div>
+      <button onclick="showReplyInput(event, 'post-reply-input3')">Reply</button>
+      <div id="post-reply-input3" class="reply-input" style="display:none;">
+        <textarea placeholder="Write your reply..."></textarea>
+        <button onclick="submitReply(event, this)">Submit Reply</button>
+      </div>
+      <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+      <div class="reply-section">
+        <div class="sort-by">
+          Sort by:
+          <select onchange="sortReplies(this)">
+            <option value="oldest">Oldest</option>
+            <option value="newest">Newest</option>
+            <option value="most-liked">Most Liked</option>
+          </select>
+        </div>
+        <div class="reply" data-timestamp="2024-07-25T10:00:00">
+          <div class="reply-header">
+            <span class="author">User30</span>
+            <span class="timestamp">4 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>This was a great introduction to JavaScript promises. I feel more confident in using them now.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">85</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-3-1')">Reply</button>
+          </div>
+          <div id="reply-input-3-1" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-26T08:00:00">
+          <div class="reply-header">
+            <span class="author">User31</span>
+            <span class="timestamp">3 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>The examples of chaining and error handling were particularly useful. Thanks for the clear explanations.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">70</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-3-2')">Reply</button>
+          </div>
+          <div id="reply-input-3-2" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-27T07:00:00">
+          <div class="reply-header">
+            <span class="author">User32</span>
+            <span class="timestamp">2 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>Handling asynchronous code with promises is much clearer to me now. This was a very helpful post.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">55</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-3-3')">Reply</button>
+          </div>
+          <div id="reply-input-3-3" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">110</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
+      <div class="post-header">
+        <h2>Debugging JavaScript Code</h2>
+        <span class="author">by User33</span>
+        <span class="timestamp">6 days ago</span>
       </div>
       <div class="post-content">
-        <h3><a href="post4.html">Building Forms in React</a></h3>
-        <p>Forms are a crucial part of many applications. This post covers best practices for...</p>
-        <div class="post-footer">
-          <span>Posted by <a href="profile.html">User14</a> in <a href="react.html">React</a></span>
+        <p>Debugging is an essential skill for any JavaScript developer. This post covers techniques for effective debugging, including using console.log, breakpoints, and the debugger statement.</p>
+      </div>
+      <div class="post-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">115</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <span class="report" onclick="showReportPopup()">Report</span>
+      </div>
+      <button onclick="showReplyInput(event, 'post-reply-input4')">Reply</button>
+      <div id="post-reply-input4" class="reply-input" style="display:none;">
+        <textarea placeholder="Write your reply..."></textarea>
+        <button onclick="submitReply(event, this)">Submit Reply</button>
+      </div>
+      <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+      <div class="reply-section">
+        <div class="sort-by">
+          Sort by:
+          <select onchange="sortReplies(this)">
+            <option value="oldest">Oldest</option>
+            <option value="newest">Newest</option>
+            <option value="most-liked">Most Liked</option>
+          </select>
+        </div>
+        <div class="reply" data-timestamp="2024-07-24T10:00:00">
+          <div class="reply-header">
+            <span class="author">User34</span>
+            <span class="timestamp">5 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>Great tips on debugging. The explanation of breakpoints and the debugger statement was very clear and helpful.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">75</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-4-1')">Reply</button>
+          </div>
+          <div id="reply-input-4-1" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-25T08:00:00">
+          <div class="reply-header">
+            <span class="author">User35</span>
+            <span class="timestamp">4 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>Debugging can be tricky, but this post made it seem much more manageable. Thanks for the great advice!</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">60</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-4-2')">Reply</button>
+          </div>
+          <div id="reply-input-4-2" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-26T07:00:00">
+          <div class="reply-header">
+            <span class="author">User36</span>
+            <span class="timestamp">3 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>The tips on using console.log effectively were very practical. I'll definitely be using these techniques in my own debugging.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">45</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-4-3')">Reply</button>
+          </div>
+          <div id="reply-input-4-3" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">95</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
+      <div class="post-header">
+        <h2>Async/Await in JavaScript</h2>
+        <span class="author">by User37</span>
+        <span class="timestamp">7 days ago</span>
       </div>
       <div class="post-content">
-        <h3><a href="post5.html">React Performance Optimization</a></h3>
-        <p>Optimizing the performance of React applications is essential for a good user...</p>
-        <div class="post-footer">
-          <span>Posted by <a href="profile.html">User15</a> in <a href="react.html">React</a></span>
+        <p>Async/Await makes handling asynchronous code easier in JavaScript. This post explains how to use async and await, and provides examples of common use cases and pitfalls to avoid.</p>
+      </div>
+      <div class="post-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">100</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <span class="report" onclick="showReportPopup()">Report</span>
+      </div>
+      <button onclick="showReplyInput(event, 'post-reply-input5')">Reply</button>
+      <div id="post-reply-input5" class="reply-input" style="display:none;">
+        <textarea placeholder="Write your reply..."></textarea>
+        <button onclick="submitReply(event, this)">Submit Reply</button>
+      </div>
+      <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+      <div class="reply-section">
+        <div class="sort-by">
+          Sort by:
+          <select onchange="sortReplies(this)">
+            <option value="oldest">Oldest</option>
+            <option value="newest">Newest</option>
+            <option value="most-liked">Most Liked</option>
+          </select>
+        </div>
+        <div class="reply" data-timestamp="2024-07-23T10:00:00">
+          <div class="reply-header">
+            <span class="author">User38</span>
+            <span class="timestamp">6 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>Async/Await has made my code so much cleaner. Thanks for the detailed examples and explanations!</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">65</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-5-1')">Reply</button>
+          </div>
+          <div id="reply-input-5-1" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-24T08:00:00">
+          <div class="reply-header">
+            <span class="author">User39</span>
+            <span class="timestamp">5 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>Using Async/Await has simplified my error handling significantly. Great post!</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">50</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-5-2')">Reply</button>
+          </div>
+          <div id="reply-input-5-2" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
+        </div>
+        <div class="reply" data-timestamp="2024-07-25T07:00:00">
+          <div class="reply-header">
+            <span class="author">User40</span>
+            <span class="timestamp">4 days ago</span>
+          </div>
+          <div class="reply-content">
+            <p>The examples of using async and await were very practical. This has been a big help for my project.</p>
+          </div>
+          <div class="reply-footer">
+            <button onclick="vote(this, 1)">&#9650;</button>
+            <div class="vote-count">45</div>
+            <button onclick="vote(this, -1)">&#9660;</button>
+            <span class="report" onclick="showReportPopup()">Report</span>
+            <button onclick="showReplyInput(event, 'reply-input-5-3')">Reply</button>
+          </div>
+          <div id="reply-input-5-3" class="reply-input" style="display:none;">
+            <textarea placeholder="Write your reply..."></textarea>
+            <button onclick="submitReply(event, this)">Submit Reply</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="sidebar">
-    <section>
+    <section class="sidebar-section">
       <h3>Topics</h3>
       <ul>
         <li><a href="topic1.html">Java</a></li>
@@ -440,7 +957,7 @@
         <li><a href="topic5.html">JavaScript</a></li>
       </ul>
     </section>
-    <section>
+    <section class="sidebar-section">
       <h3>My Mentor Groups</h3>
       <ul>
         <li><a href="mentor_group1.html">Mentor Group 1</a></li>
@@ -448,7 +965,7 @@
         <li><a href="mentor_group3.html">Mentor Group 3</a></li>
       </ul>
     </section>
-    <section>
+    <section class="sidebar-section">
       <h3>My Groups</h3>
       <ul>
         <li><a href="group1.html">Group 1</a></li>
@@ -458,17 +975,25 @@
       <a href="creategroup.html" class="create-group-button">Create Group</a>
     </section>
     <a href="createpost.html" class="create-post-button">Create Post</a>
-    </section>
   </div>
 </div>
 
-<script>
-  function vote(element, value) {
-    var voteCountElement = element.parentElement.querySelector('.vote-count');
-    var currentVoteCount = parseInt(voteCountElement.textContent);
-    voteCountElement.textContent = currentVoteCount + value;
-  }
-</script>
+<div id="report-popup" class="report-popup" style="display:none;">
+  <div class="report-content">
+    <h3>Report Content</h3>
+    <form>
+      <label for="reason">Reason:</label>
+      <select id="reason" name="reason">
+        <option value="spam">Spam</option>
+        <option value="offensive">Offensive</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea id="report-details" placeholder="Provide more details..."></textarea>
+      <button type="button" onclick="submitReport()">Submit Report</button>
+      <button type="button" onclick="closeReportPopup()">Cancel</button>
+    </form>
+  </div>
+</div>
 
 <footer>
   <div class="footer-container">
@@ -492,5 +1017,118 @@
   </div>
 </footer>
 
+<script>
+  let votedPosts = {};
+
+  function vote(button, value) {
+    const post = button.closest('.post, .reply');
+    const postId = post.querySelector('.post-header h2') ? post.querySelector('.post-header h2').textContent : post.querySelector('.reply-header .author').textContent + post.querySelector('.reply-content p').textContent;
+    if (!votedPosts[postId]) {
+      votedPosts[postId] = 0;
+    }
+
+    if (votedPosts[postId] === value) {
+      return;
+    }
+
+    const voteCountElement = button.nextElementSibling || button.previousElementSibling;
+    let voteCount = parseInt(voteCountElement.textContent);
+    voteCount += value - votedPosts[postId];
+    voteCountElement.textContent = voteCount;
+    votedPosts[postId] = value;
+  }
+
+  function showReplyInput(event, replyInputId) {
+    event.preventDefault();
+    const replyInput = document.getElementById(replyInputId);
+    if (replyInput.style.display === "none") {
+      replyInput.style.display = "block";
+    } else {
+      replyInput.style.display = "none";
+    }
+  }
+
+  function submitReply(event, button) {
+    event.preventDefault();
+    const replyInput = button.parentElement;
+    const textarea = replyInput.querySelector('textarea');
+    const replyContent = textarea.value;
+
+    if (replyContent.trim() !== "") {
+      const newReply = document.createElement("div");
+      newReply.classList.add("reply");
+      newReply.innerHTML = `
+        <div class="reply-header">
+          <span class="author">You</span>
+          <span class="timestamp">just now</span>
+        </div>
+        <div class="reply-content">
+          <p>${replyContent}</p>
+        </div>
+        <div class="reply-footer">
+          <button onclick="vote(this, 1)">&#9650;</button>
+          <div class="vote-count">0</div>
+          <button onclick="vote(this, -1)">&#9660;</button>
+          <span class="report" onclick="showReportPopup()">Report</span>
+        </div>
+      `;
+
+      const post = replyInput.closest('.post, .reply');
+      const replySection = post.querySelector('.reply-section') || post.nextElementSibling;
+      replySection.appendChild(newReply);
+      textarea.value = '';
+      replyInput.style.display = "none";
+    }
+  }
+
+  function showReportPopup() {
+    document.getElementById("report-popup").style.display = "block";
+  }
+
+  function closeReportPopup() {
+    document.getElementById("report-popup").style.display = "none";
+  }
+
+  function submitReport() {
+    closeReportPopup();
+    alert("Report submitted. Thank you!");
+  }
+
+  function sortReplies(select) {
+    const sortBy = select.value;
+    const replySections = document.querySelectorAll('.reply-section');
+    replySections.forEach((section) => {
+      const replies = Array.from(section.querySelectorAll('.reply')).sort((a, b) => {
+        const timestampA = new Date(a.dataset.timestamp);
+        const timestampB = new Date(b.dataset.timestamp);
+        const voteCountA = parseInt(a.querySelector('.vote-count').textContent);
+        const voteCountB = parseInt(b.querySelector('.vote-count').textContent);
+
+        if (sortBy === "oldest") {
+          return timestampA - timestampB;
+        } else if (sortBy === "newest") {
+          return timestampB - timestampA;
+        } else if (sortBy === "most-liked") {
+          return voteCountB - voteCountA;
+        }
+      });
+
+      replies.forEach((reply) => {
+        section.appendChild(reply);
+      });
+    });
+  }
+
+  function toggleReplies(button) {
+    const replySection = button.nextElementSibling;
+    if (replySection.style.display === "none" || replySection.style.display === "") {
+      replySection.style.display = "block";
+      button.textContent = "Hide Replies";
+    } else {
+      replySection.style.display = "none";
+      button.textContent = "Show Replies";
+    }
+  }
+</script>
 </body>
 </html>
