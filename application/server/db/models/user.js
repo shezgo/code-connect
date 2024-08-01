@@ -126,6 +126,9 @@ User.init(
         },isMentor  : {
             field: 'isMentor',
             type: DataTypes.BOOLEAN,
+        },pendingMentor  : {
+            field: 'pendingMentor',
+            type: DataTypes.BOOLEAN,
         }
     },
     {

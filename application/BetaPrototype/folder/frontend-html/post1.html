@@ -11,13 +11,13 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      margin: 0; /* Remove default margin */
+      margin: 0; 
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* Style the header */
+
     .header {
       background-color: #62b4c9;
       padding: 5px;
@@ -116,7 +116,7 @@
       vertical-align: middle;
     }
 
-    /* Content styling */
+
     .container {
       display: flex;
       justify-content: center;
@@ -324,7 +324,8 @@
       margin-bottom: 10px;
       font-size: 16px;
     }
-    /* Style the footer */
+
+   
     footer {
       width: 100%;
       background-color: #62b4c9;
@@ -469,6 +470,14 @@
     </div>
 
     <div class="reply-section">
+      <div class="sort-by">
+        Sort by: 
+        <select onchange="sortReplies(this)">
+          <option value="oldest">Oldest</option>
+          <option value="newest">Newest</option>
+          <option value="most-liked">Most Liked</option>
+        </select>
+      </div>
       <div class="reply" data-timestamp="2024-07-20T10:00:00">
         <div class="reply-header">
           <span class="author">User2</span>
@@ -489,7 +498,7 @@
           <button onclick="submitReply(event, this)">Submit Reply</button>
         </div>
 
-        <div class="reply" data-timestamp="2024-07-21T08:00:00">
+        <div class="reply reply-reply" data-timestamp="2024-07-21T08:00:00">
           <div class="reply-header">
             <span class="author">User3</span>
             <span class="timestamp">12 hours ago</span>
@@ -508,12 +517,33 @@
             <textarea placeholder="Write your reply..."></textarea>
             <button onclick="submitReply(event, this)">Submit Reply</button>
           </div>
+
+          <div class="reply reply-reply" data-timestamp="2024-07-22T07:00:00">
+            <div class="reply-header">
+              <span class="author">User4</span>
+              <span class="timestamp">12 hours ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Yes, understanding concurrent collections is a game-changer for writing efficient code.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">30</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <span class="report" onclick="showReportPopup()">&#x22EE;</span>
+              <button onclick="showReplyInput(event, 'reply-input-3')">Reply</button>
+            </div>
+            <div id="reply-input-3" class="reply-input" style="display:none;">
+              <textarea placeholder="Write your reply..."></textarea>
+              <button onclick="submitReply(event, this)">Submit Reply</button>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="reply" data-timestamp="2024-07-21T15:00:00">
         <div class="reply-header">
-          <span class="author">User4</span>
+          <span class="author">User5</span>
           <span class="timestamp">5 hours ago</span>
         </div>
         <div class="reply-content">
@@ -524,21 +554,12 @@
           <div class="vote-count">40</div>
           <button onclick="vote(this, -1)">&#9660;</button>
           <span class="report" onclick="showReportPopup()">&#x22EE;</span>
-          <button onclick="showReplyInput(event, 'reply-input-3')">Reply</button>
+          <button onclick="showReplyInput(event, 'reply-input-4')">Reply</button>
         </div>
-        <div id="reply-input-3" class="reply-input" style="display:none;">
+        <div id="reply-input-4" class="reply-input" style="display:none;">
           <textarea placeholder="Write your reply..."></textarea>
           <button onclick="submitReply(event, this)">Submit Reply</button>
         </div>
-      </div>
-
-      <div class="sort-by">
-        Sort by: 
-        <select onchange="sortReplies(this)">
-          <option value="oldest">Oldest</option>
-          <option value="newest">Newest</option>
-          <option value="most-liked">Most Liked</option>
-        </select>
       </div>
     </div>
   </div>
@@ -641,7 +662,9 @@
 
   function sortReplies(select) {
     var option = select.value;
-    var replies = Array.from(document.querySelectorAll('.reply-section > .reply, .reply > .reply'));
+    var replies = Array.from(document.querySelectorAll('.reply-section > .reply'));
+    var replySection = document.querySelector('.reply-section');
+
     replies.sort(function(a, b) {
       var dateA = new Date(a.dataset.timestamp);
       var dateB = new Date(b.dataset.timestamp);
@@ -655,7 +678,7 @@
         return likesB - likesA;
       }
     });
-    var replySection = document.querySelector('.reply-section');
+
     replies.forEach(reply => replySection.appendChild(reply));
   }
 </script>

@@ -13,7 +13,7 @@ Message.init(
             field: 'messageID',
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrementv: true
+            autoIncrement: true
         },userID: { 
             field: 'userID',
             type: DataTypes.INTEGER, 
@@ -24,8 +24,8 @@ Message.init(
         },sendingUser:{
             field: 'sendingUser',
             type:DataTypes.STRING,
-        },recivingUser:{
-            field: 'recivingUser',
+        }, receivingUser:{
+            field: 'receivingUser',
             type:DataTypes.STRING,
         },time:{
             field: 'time',
