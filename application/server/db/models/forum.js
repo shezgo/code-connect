@@ -11,9 +11,6 @@ Forum.init(
             type:DataTypes.INTEGER,
             primaryKey:true,
             autoIncrement:true,
-        },title:{
-            field: 'title',
-            type:DataTypes.STRING(255),
         },link:{
             field:'link',
             type:DataTypes.STRING(1024),
@@ -29,7 +26,12 @@ Forum.init(
         },isPrivateForum:{
             field:"isPrivateForum",
             type:DataTypes.BOOLEAN,
-
+        },title:{
+            field: 'title',
+            type:DataTypes.STRING(1024),
+        },topic:{
+            field: 'topic',
+            type:DataTypes.STRING(1024),
         }
     },
     {
