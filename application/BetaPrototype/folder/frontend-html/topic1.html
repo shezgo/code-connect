@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
-          text="style\css"
           href="application/verticalPrototype/folder/frontend-css/style.css" />
     <style>
         * {
@@ -198,7 +197,6 @@
 
         .reply-section {
             margin-top: 20px;
-            display: none;
         }
 
         .reply {
@@ -413,6 +411,18 @@
         .show-replies:hover {
             text-decoration: none;
         }
+
+        .edit-button, .delete-button {
+            background: none;
+            border: none;
+            font-size: 14px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .edit-button:hover, .delete-button:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -485,6 +495,8 @@
                 <div class="vote-count">98</div>
                 <button onclick="vote(this, -1)">&#9660;</button>
                 <span class="report" onclick="showReportPopup()">Report</span>
+                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
+                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
             </div>
             <button onclick="showReplyInput(event, 'post-reply-input1')">Reply</button>
             <div id="post-reply-input1" class="reply-input" style="display:none;">
@@ -602,6 +614,8 @@
                 <div class="vote-count">88</div>
                 <button onclick="vote(this, -1)">&#9660;</button>
                 <span class="report" onclick="showReportPopup()">Report</span>
+                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
+                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
             </div>
             <button onclick="showReplyInput(event, 'post-reply-input2')">Reply</button>
             <div id="post-reply-input2" class="reply-input" style="display:none;">
@@ -719,6 +733,8 @@
                 <div class="vote-count">102</div>
                 <button onclick="vote(this, -1)">&#9660;</button>
                 <span class="report" onclick="showReportPopup()">Report</span>
+                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
+                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
             </div>
             <button onclick="showReplyInput(event, 'post-reply-input3')">Reply</button>
             <div id="post-reply-input3" class="reply-input" style="display:none;">
@@ -836,6 +852,8 @@
                 <div class="vote-count">120</div>
                 <button onclick="vote(this, -1)">&#9660;</button>
                 <span class="report" onclick="showReportPopup()">Report</span>
+                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
+                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
             </div>
             <button onclick="showReplyInput(event, 'post-reply-input4')">Reply</button>
             <div id="post-reply-input4" class="reply-input" style="display:none;">
@@ -1045,6 +1063,7 @@
         if (replyContent.trim() !== "") {
             const newReply = document.createElement("div");
             newReply.classList.add("reply");
+            newReply.dataset.timestamp = new Date().toISOString();
             newReply.innerHTML = `
                 <div class="reply-header">
                   <span class="author">You</span>
@@ -1058,12 +1077,14 @@
                   <div class="vote-count">0</div>
                   <button onclick="vote(this, -1)">&#9660;</button>
                   <span class="report" onclick="showReportPopup()">Report</span>
+                  <button class="edit-button" onclick="editPost(this)" style="display:block;">Edit</button>
+                  <button class="delete-button" onclick="deletePost(this)" style="display:block;">Delete</button>
                 </div>
             `;
 
             const post = replyInput.closest('.post, .reply');
             const replySection = post.querySelector('.reply-section') || post.nextElementSibling;
-            replySection.insertBefore(newReply, replySection.firstChild);
+            replySection.appendChild(newReply);
             textarea.value = '';
             replyInput.style.display = "none";
         }
@@ -1116,6 +1137,36 @@
             replySection.style.display = "none";
             button.textContent = "Show Replies";
         }
+    }
+
+    function editPost(button) {
+        const post = button.closest('.post, .reply');
+        const postContent = post.querySelector('.post-content, .reply-content');
+        const contentText = postContent.querySelector('p').textContent;
+        postContent.innerHTML = `
+            <textarea>${contentText}</textarea>
+            <button onclick="saveEdit(this)">Save</button>
+            <button onclick="cancelEdit(this)">Cancel</button>
+        `;
+    }
+
+    function saveEdit(button) {
+        const postContent = button.parentElement;
+        const textarea = postContent.querySelector('textarea');
+        const newContent = textarea.value;
+        postContent.innerHTML = `<p>${newContent}</p>`;
+    }
+
+    function cancelEdit(button) {
+        const postContent = button.parentElement;
+        const textarea = postContent.querySelector('textarea');
+        const originalContent = textarea.defaultValue;
+        postContent.innerHTML = `<p>${originalContent}</p>`;
+    }
+
+    function deletePost(button) {
+        const post = button.closest('.post, .reply');
+        post.remove();
     }
 </script>
 </body>
