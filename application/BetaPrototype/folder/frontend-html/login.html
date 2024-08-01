@@ -191,7 +191,8 @@
         async function signinUser() {
             // Get password and email values from their html element
             var password = document.getElementById("password").value;
-            var email = document.getElementById("email").value;
+            var userNameOrEmail = document.getElementById("userNameOrEmail").value;
+            var errorMessage = document.getElementById("error-message");
 
             // Make a post request to backend /api/auth/login with json body email and password
             try {
@@ -201,13 +202,25 @@
                         // Content Type must be application/json so the middleware will parese it
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ email: email, password: password })
+                    body: JSON.stringify({ userNameOrEmail: userNameOrEmail, password: password })
                 };
                 const response = await fetch("/api/auth/login", requestOptions);
+                
+                // Determine response type
+                const contentType = response.headers.get("Content-Type");
+
+                let result;
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                  result = await response.json(); // Await the JSON parsing
+                } else {
+                  result = await response.text(); // Handle email that may get SyntaxError
+                }
+
+                
                 // If fetch response code is not successfull
                 if (!response.ok) {
-                    const error = response.json().error;
-                    console.log(error);
+                    errorMessage.textContent = await result.message;
+                    errorMessage.style.display = "block";
                     return false;
                 }
                 console.log("login in successful");
@@ -217,6 +230,9 @@
             }
             catch (error) {
                 console.error("Failed at signing in user, Error: ", error);
+                errorMessage.textContent = error;
+                errorMessage.style.display = "block";
+                return false;
             }
 
             return true;
@@ -238,8 +254,9 @@
         <img src="Codeconnect Logo.jpg" alt="Logo">
         <h1>CodeConnect</h1>
         <h4>Push your way through!</h4>
-        <input type="text" id="email" placeholder="Username">
+        <input type="text" id="userNameOrEmail" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
+        <div id="error-message">Test</div>
         <button onclick="return signinUser();">Sign In</button>
         <div class="links">
             <a href="./forgotpasswordverification.html">Forgot Password</a>
