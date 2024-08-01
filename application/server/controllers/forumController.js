@@ -35,7 +35,7 @@ exports.addForum = async (req, res, next) => {
     try {
         const { title, topic} = req.body;
 
-        if (!title || !) {
+        if (!title) {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
@@ -76,7 +76,7 @@ exports.addThread = async (req, res, next) => {
 
 exports.addReply = async (req, res, next) => {
     try {
-        const {bodye} = req.body;
+        const {body} = req.body;
 
 
         if (!body) {
