@@ -10,47 +10,58 @@ require('dotenv').config()
 
 
 exports.login_user_post = asyncHandler(async (req, res, next) => {
-    const { email, password } = req.body;
+    const { userNameOrEmail, password } = req.body;
 
-    // Find the user by email
-    const user = await User.findOne({
-        where: {
-            email: email
+    try{
+        // Determine if the input is an email or username
+        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userNameOrEmail);
+
+        // Find the user by email or username
+        const user = await User.findOne({
+            where: isEmail ? { email: userNameOrEmail } : { userName: userNameOrEmail }
+        });
+
+        // If user not found, throw unauthorized error
+        if (!user) {
+            throw boom.unauthorized("User not found");
         }
-    });
 
-    // If user not found, throw unauthorized error
-    if (!user) {
-        throw boom.unauthorized("User not found");
+        // Check if the provided password matches the hashed password in the database
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        // If passwords match, generate a JWT token for authentication
+        if (isPasswordValid) {
+
+            // Create a session
+            req.session.userID = user.userID;
+            req.session.email = user.email;
+
+            const token = jwt.sign({ id: req.session.userID }, process.env.TOKEN_SECRET, {
+                expiresIn: "1h"
+            });
+
+            // Set the token in a cookie
+            res.cookie('token', token, {
+                httpOnly: true,
+                maxAge: 3600000 // 1 hour
+            });
+
+            // Send back the token as a response
+            res.json({ message: "Login successful", token: token });
+
+        } else {
+            // If passwords do not match, throw unauthorized error
+            throw boom.unauthorized("Invalid password");
+        }   
+    }catch (err) {
+        console.error('Error in mentor login controller ', err);
+        if (boom.isBoom(err)) {
+            return next(err);
+        } else {
+            return next(boom.internal(err.message));
+        }
     }
-
-    // Check if the provided password matches the hashed password in the database
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    // If passwords match, generate a JWT token for authentication
-    if (isPasswordValid) {
-
-        // Create a session
-        req.session.userID = user.userID;
-        req.session.email = user.email;
-
-        const token = jwt.sign({ id: req.session.userID }, process.env.TOKEN_SECRET, {
-            expiresIn: "1h"
-        });
-
-        // Set the token in a cookie
-        res.cookie('token', token, {
-            httpOnly: true,
-            maxAge: 3600000 // 1 hour
-        });
-
-        // Send back the token as a response
-        res.json({ message: "Login successful", token: token });
-
-    } else {
-        // If passwords do not match, throw unauthorized error
-        throw boom.unauthorized("Invalid email or password");
-    }
+    
 });
 
 // Logout user and clear the session and token

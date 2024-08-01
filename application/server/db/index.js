@@ -181,25 +181,39 @@ UserModel.hasMany(LeaderboardModel, { foreignKey: 'userID'});
 LeaderboardModel.belongsTo(UserModel, { foreignKey: 'userID'});
 console.log("LeaderboardModel:", LeaderboardModel);
 
-// const SubmissionShareModel = require('./models/submissionShare.js'); 
-// UserModel.hasMany(SubmissionShareModel, { foreignKey: 'userID' });
-// SubmissionShareModel.belongsTo(UserModel, { foreignKey: 'userID' });
-// console.log("SubmissionShareModel:", SubmissionShareModel);
+const SubmissionShareModel = require('./models/submissionShare.js'); 
+UserModel.hasMany(SubmissionShareModel, { foreignKey: 'userID' });
+SubmissionShareModel.belongsTo(UserModel, { foreignKey: 'userID' });
+console.log("SubmissionShareModel:", SubmissionShareModel);
 
-// const SupportFormModel = require('./models/supportForm.js'); 
+const SupportFormModel = require('./models/supportForm.js'); 
 
-// UserModel.hasMany(SupportFormModel, { foreignKey: 'from_userID' });
-// SupportFormModel.belongsTo(UserModel, { foreignKey: 'from_userID' });
+UserModel.hasMany(SupportFormModel, { foreignKey: 'from_userID' });
+SupportFormModel.belongsTo(UserModel, { foreignKey: 'from_userID' });
 
-// UserHiringModel.hasMany(SupportFormModel, { foreignKey: 'to_userID' });
-// SupportFormModel.belongsTo(UserHiringModel, { foreignKey: 'to_userID' });
+UserHiringModel.hasMany(SupportFormModel, { foreignKey: 'to_userID' });
+SupportFormModel.belongsTo(UserHiringModel, { foreignKey: 'to_userID' });
 
-// console.log("SupportFormModel:", SupportFormModel);
+console.log("SupportFormModel:", SupportFormModel);
 
-// const AllEntities = require('./models/allEntities.js'); 
-// console.log("AllEntitiesModel:", AllEntities);
-//
+const AllEntities = require('./models/allEntities.js'); 
+console.log("AllEntitiesModel:", AllEntities);
 
+
+const UserForumModel = require('./models/userForum.js');
+UserModel.belongsToMany(ForumModel, { through:UserForumModel,foreignKey: 'userID' });
+ForumModel.belongsToMany(UserModel, { through:UserForumModel,foreignKey: 'forumID'});
+console.log("UserForumModel:", UserForumModel);
+
+const ThreadModel = require('./models/thread.js'); 
+ForumModel.hasMany(ThreadModel, { foreignKey: 'forumID' });
+ThreadModel.belongsTo(ForumModel, { foreignKey: 'forumID' });
+console.log("ThreadModel:", ThreadModel);
+
+const ReplyModel = require('./models/reply.js'); 
+ThreadModel.hasMany(ReplyModel, { foreignKey: 'threadID' });
+ReplyModel.belongsTo(ThreadModel, { foreignKey: 'threadID' });
+console.log("ReplyModel:", ReplyModel);
 
 const db = {};
 
@@ -281,12 +295,18 @@ const initialize = async () => {
 
         db.leaderboard = await new LeaderboardModel(sequelize, DataTypes);
 
-        // db.SubmissionShare = await new SubmissionShareModel(sequelize, DataTypes);
+        db.SubmissionShare = await new SubmissionShareModel(sequelize, DataTypes);
 
         db.SupportForm = await new SupportFormModel(sequelize, DataTypes);
         
         db.AllEntities = await new AllEntities(sequelize, DataTypes);
    
+        db.UserForum = await new UserForumModel(sequelize, DataTypes);
+
+        db.Thread = await new ThreadModel(sequelize, DataTypes);
+
+        db.Reply = await new ReplyModel(sequelize, DataTypes);
+
         const modelCount = Object.keys(db).length;
         console.log(`Number of models added: ${modelCount}`);
       //Add any additional models here as needed
