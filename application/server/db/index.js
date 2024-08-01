@@ -181,11 +181,8 @@ UserModel.hasMany(LeaderboardModel, { foreignKey: 'userID'});
 LeaderboardModel.belongsTo(UserModel, { foreignKey: 'userID'});
 console.log("LeaderboardModel:", LeaderboardModel);
 
-<<<<<<< HEAD
 /*const SubmissionShareModel = require('./models/submissionShare.js'); 
-=======
-const SubmissionShareModel = require('./models/submissionShare.js'); 
->>>>>>> origin/backend-dev-fix
+
 UserModel.hasMany(SubmissionShareModel, { foreignKey: 'userID' });
 SubmissionShareModel.belongsTo(UserModel, { foreignKey: 'userID' });
 console.log("SubmissionShareModel:", SubmissionShareModel);
@@ -199,16 +196,10 @@ UserHiringModel.hasMany(SupportFormModel, { foreignKey: 'to_userID' });
 SupportFormModel.belongsTo(UserHiringModel, { foreignKey: 'to_userID' });
 
 console.log("SupportFormModel:", SupportFormModel);
-<<<<<<< HEAD
+
 
 const AllEntities = require('./models/allEntities.js'); 
 console.log("AllEntitiesModel:", AllEntities);*/
-
-=======
-
-const AllEntities = require('./models/allEntities.js'); 
-console.log("AllEntitiesModel:", AllEntities);
->>>>>>> origin/backend-dev-fix
 
 
 const UserForumModel = require('./models/userForum.js');
@@ -306,11 +297,8 @@ const initialize = async () => {
 
         db.leaderboard = await new LeaderboardModel(sequelize, DataTypes);
 
-<<<<<<< HEAD
+
        /* db.SubmissionShare = await new SubmissionShareModel(sequelize, DataTypes);
-=======
-        db.SubmissionShare = await new SubmissionShareModel(sequelize, DataTypes);
->>>>>>> origin/backend-dev-fix
 
         db.SupportForm = await new SupportFormModel(sequelize, DataTypes);
         

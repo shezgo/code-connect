@@ -1,4 +1,4 @@
-const { UserForum, Forum, Thread, Reply } = require('../../db/models');
+const { UserForum, Forum, Thread, Reply } = require('../db/models');
 
 // Controller to get selected forums for the user who is logged in by checking associative table
 exports.getUserForums = async (req, res, next) => {
@@ -56,26 +56,24 @@ exports.addForum = async (req, res, next) => {
 
 exports.addThread = async (req, res, next) => {
     try {
-        const {forumID, originalPoster, threadTitle, username } = req.body;
+        const {originalPoster, threadTitle} = req.body;
 
-        if (!forumID || !originalPoster || !threadTitle) {
+        if (!originalPoster || !threadTitle) {
             return res.status(400).json({ error: 'Fill missing fields' });
         }
 
 
-        const currentDate = new Date();
+/*        const currentDate = new Date();
         const date = currentDate.toLocaleDateString();
-        const time = currentDate.toLocaleTimeString();
+        const time = currentDate.toLocaleTimeString();*/
 
         // Create a new forum thread
-        const newThread = await ForumThread.create({
-            threadID,
-            date,
-            time,
+        const newThread = await Thread.create({
+ 
+            /*date,
+            time,*/
             threadTitle,
-            forumID,
             originalPoster,
-            username
         });
 
         res.json({thread: newThread});
@@ -93,18 +91,18 @@ exports.addReply = async (req, res, next) => {
             return res.status(400).json({ error: 'Fill missing fields' });
         }
 
-
+/*
         const currentDate = new Date();
         const date = currentDate.toLocaleDateString();
-        const time = currentDate.toLocaleTimeString();
+        const time = currentDate.toLocaleTimeString();*/
 
         const userID = req.userID;
 
         // Create a new reply to a thread
         const newReply = await Reply.create({
             threadID,
-            date,
-            time,
+   /*         date,
+            time,*/
             body,
             userID
         });
