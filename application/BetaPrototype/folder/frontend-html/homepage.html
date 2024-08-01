@@ -365,6 +365,14 @@
             border-radius: 8px;
             box-shadow: 0 0 10px;
         }
+        .right{
+          padding:20px;
+          
+        }
+        .right-image{
+          width:625px;
+          height:250px;
+        }
   </style>
 </head>
 <body>
@@ -449,11 +457,15 @@
           <div class="left">
             <div class="room-link-container">
               <div class="question-answer-container">
-                  <textarea id="answer" name="answer" rows="10" cols="90"></textarea><br><br>
+                <p>
+                  Test your Javascript here! Print "Hello World" below.
+                </p>
+                  <textarea id="answer" name="answer" rows="20" cols="90"></textarea><br><br>
                   <button type="button" onclick="compiler()">Submit</button>
                   <div> Output: <code id="output"></code> </div> 
                   <div id="result-message" style="display: none;"></div>
               </div>
+              
             </div>
             <script> 
               function compiler() {
@@ -488,7 +500,7 @@
                     // Display the result
                     console.log(result);
                     let isCorrect=false;
-                    let answerText="hello world"
+                    let answerText="Hello World"
             
                     if (result === answerText) {
                       isCorrect = true;
@@ -514,6 +526,7 @@
           </div>
           <div class="right">
               <p>Here at CodeConnect, We thrive on helping young developers get their foot in the door within the tech industry. You can be a beginner to an experienced software engineer, we guarantee that we will have something you will gain from our mission. We offer networking, mentorship, resume help, interview help, workspaces, challenges, and so much more! Sign up now to see what more we have to offer.</p>
+              <img src="network.jpg" alt="network"class = "right-image"/>
           </div>
       </div>
   </div>
@@ -607,6 +620,7 @@
       </div>
       <div class="footer-bott">
         <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+        © <a href='https://www.123rf.com/profile_rawpixel'>rawpixel</a>, <a href='https://www.123rf.com/free-images/'>123RF Free Images</a>
       </div>
     </div>
   </footer>
