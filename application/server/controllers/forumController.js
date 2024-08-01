@@ -33,18 +33,16 @@ exports.getUserForums = async (req, res, next) => {
 
 exports.addForum = async (req, res, next) => {
     try {
-        const { title, link, isPublicForum, isPrivateForum} = req.body;
+        const { title, topic} = req.body;
 
-        if (!title || !link) {
+        if (!title || !) {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
         // Create a new forum 
         const newForum = await Forum.create({
             title,
-            link,
-            isPublicForum,
-            isPrivateForum,
+            topic
         });
 
         res.json({forum: newForum});
@@ -56,24 +54,18 @@ exports.addForum = async (req, res, next) => {
 
 exports.addThread = async (req, res, next) => {
     try {
-        const {originalPoster, threadTitle} = req.body;
+        const {title, content, topic} = req.body;
 
-        if (!originalPoster || !threadTitle) {
+        if (!title || !content || !topic) {
             return res.status(400).json({ error: 'Fill missing fields' });
         }
-
-
-/*        const currentDate = new Date();
-        const date = currentDate.toLocaleDateString();
-        const time = currentDate.toLocaleTimeString();*/
 
         // Create a new forum thread
         const newThread = await Thread.create({
  
-            /*date,
-            time,*/
-            threadTitle,
-            originalPoster,
+            title,
+            content,
+            topic
         });
 
         res.json({thread: newThread});
@@ -84,10 +76,10 @@ exports.addThread = async (req, res, next) => {
 
 exports.addReply = async (req, res, next) => {
     try {
-        const {threadID, body, username} = req.body;
+        const {bodye} = req.body;
 
 
-        if (!threadID || !body) {
+        if (!body) {
             return res.status(400).json({ error: 'Fill missing fields' });
         }
 
@@ -96,15 +88,11 @@ exports.addReply = async (req, res, next) => {
         const date = currentDate.toLocaleDateString();
         const time = currentDate.toLocaleTimeString();*/
 
-        const userID = req.userID;
+        //const userID = req.userID;
 
         // Create a new reply to a thread
         const newReply = await Reply.create({
-            threadID,
-   /*         date,
-            time,*/
-            body,
-            userID
+            body
         });
 
         res.json({reply: newReply});
