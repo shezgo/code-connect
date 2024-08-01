@@ -35,6 +35,18 @@ Thread.init(
         },userName:{
             field: 'userName',
             type:DataTypes.STRING(255),
+        },title:{
+            field: 'title',
+            type:DataTypes.STRING(255),
+        },content:{
+            field: 'content',
+            type:DataTypes.TEXT,
+        },topic:{
+            field: 'topic',
+            type:DataTypes.STRING(255),
+        },likes:{
+            field: 'likes',
+            type:DataTypes.INTEGER,
         }
     },
     {
