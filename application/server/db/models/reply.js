@@ -20,9 +20,6 @@ Reply.init(
                 model: Thread, 
                 key: 'threadID' 
             }
-        },body:{
-            field:'body',
-            type:DataTypes.TEXT,
         },date:{
             field: 'date',
             type:DataTypes.DATEONLY,
@@ -32,6 +29,12 @@ Reply.init(
         },userName:{
             field: 'userName',
             type:DataTypes.STRING(255),
+        },likes:{
+            field: 'likes',
+            type:DataTypes.INTEGER,
+        },body:{
+            field: 'body',
+            type:DataTypes.TEXT,
         }
     },
     {

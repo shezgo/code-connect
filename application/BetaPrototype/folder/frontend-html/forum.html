@@ -236,7 +236,7 @@
 <body>
 
 <div class="header">
-  <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
+  <img src="Logo.jpg" alt="Logo" class="logo">
   <div class="brand">CodeConnect</div>
   <div class="login-signup">
     <a href="profile.html">Profile</a>
@@ -316,25 +316,39 @@
         <li><a href="topic5.html">JavaScript</a></li>
       </ul>
     </section>
-    <section>
-      <h3>My Mentor Groups</h3>
-      <ul>
-        <li><a href="mentor_group1.html">Mentor Group 1</a></li>
-        <li><a href="mentor_group2.html">Mentor Group 2</a></li>
-        <li><a href="mentor_group3.html">Mentor Group 3</a></li>
-      </ul>
-    </section>
-    <section>
+    <section id="myGroupsSection" style="display:none;">
       <h3>My Groups</h3>
-      <ul>
-        <li><a href="group1.html">Group 1</a></li>
-        <li><a href="group2.html">Group 2</a></li>
-        <li><a href="group3.html">Group 3</a></li>
+      <ul id="myGroupsList">
+        <!-- Groups will be dynamically added here -->
       </ul>
-    </section>
+    
+</section>
   </div>
 </div>
-
+<script>// Sample data for user groups
+  const userGroups = [
+      { name: "", link: "" },
+      { name: "", link: "" },
+    ];
+  
+    // Populate the My Groups section dynamically
+    document.addEventListener("DOMContentLoaded", () => {
+      const myGroupsSection = document.getElementById("myGroupsSection");
+      const myGroupsList = document.getElementById("myGroupsList");
+  
+      if (userGroups.length > 0) {
+        userGroups.forEach(group => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = group.link;
+          a.textContent = group.name;
+          li.appendChild(a);
+          myGroupsList.appendChild(li);
+        });
+        myGroupsSection.style.display = "block";
+      }
+      
+    });</script>
 <footer>
   <div class="footer-container">
     <div class="footer-nav">
