@@ -100,3 +100,17 @@ exports.addReply = async (req, res, next) => {
         next(error);
     }
 };
+
+exports.listThread= async (req, res, next) => {
+    const topic = req.query.topic;
+    let filter = null;
+    // if there is no filter, keep it as null
+    if(topic){
+       filter = {topic:topic};
+    } 
+    const threads = await Thread.findAll({
+        where:filter,
+        raw:true
+    })
+    res.json({ records: threads });
+}
