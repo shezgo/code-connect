@@ -1,1173 +1,1000 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CodeConverse - Java</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-          href="application/verticalPrototype/folder/frontend-css/style.css" />
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0; /* Remove default margin */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .header {
-            background-color: #62b4c9;
-            padding: 5px;
-            text-align: center;
-            font-size: 20px;
-            color: white;
-            position: relative;
-        }
-
-        .logo {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .header .brand {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 18px;
-        }
-
-        .login-signup {
-            position: absolute;
-            top: 40px;
-            right: 10px;
-            font-size: 14px;
-        }
-
-        .login-signup a {
-            color: white;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-
-        .login-signup a:hover {
-            text-decoration: underline;
-        }
-
-        .search-container {
-            position: absolute;
-            top: 70px;
-            right: 10px;
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .search-container input[type="text"] {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-right: none;
-            border-radius: 4px 0 0 4px;
-        }
-
-        .search-container button {
-            padding: 5px;
-            border: 1px solid #ccc;
-            color: white;
-            cursor: pointer;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .search-container button:hover {
-            background-color: #000000;
-        }
-
-        .header a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        .header a:hover {
-            text-decoration: underline;
-        }
-
-        .icon-button {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 0;
-            margin: 0 10px;
-            font-size: 18px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .icon-button svg {
-            width: 24px;
-            height: 24px;
-            vertical-align: middle;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .content {
-            flex: 3;
-            padding: 0 20px;
-        }
-
-        .sidebar {
-            flex: 1;
-            padding: 0 20px;
-        }
-
-        .post {
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .post-header h2 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        .post-header .author {
-            margin-left: 10px;
-            font-size: 14px;
-            color: #999;
-        }
-
-        .post-header .timestamp {
-            margin-left: auto;
-            font-size: 14px;
-            color: #999;
-        }
-
-        .post-content {
-            margin-bottom: 10px;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .post-footer {
-            display: flex;
-            align-items: center;
-        }
-
-        .post-footer .vote-count {
-            margin-left: 10px;
-            font-size: 16px;
-        }
-
-        .post-footer button {
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .post-footer .report {
-            margin-left: auto;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .reply-section {
-            margin-top: 20px;
-        }
-
-        .reply {
-            margin-left: 20px;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .reply .author {
-            font-size: 14px;
-            color: #999;
-        }
-
-        .reply .timestamp {
-            font-size: 14px;
-            color: #999;
-        }
-
-        .reply .reply-content {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .reply-footer {
-            display: flex;
-            align-items: center;
-        }
-
-        .reply-footer .vote-count {
-            margin-left: 10px;
-            font-size: 16px;
-        }
-
-        .reply-footer button {
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        .reply-footer .report {
-            margin-left: auto;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .reply-input {
-            display: flex;
-            flex-direction: column;
-            margin-top: 10px;
-        }
-
-        .reply-input textarea {
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            resize: vertical;
-        }
-
-        .reply-input button {
-            align-self: flex-end;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .reply-input button:hover {
-            background-color: #0056b3;
-        }
-
-        .report-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-
-        .report-popup textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            resize: vertical;
-        }
-
-        .report-popup button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .report-popup button:hover {
-            background-color: #0056b3;
-        }
-
-        .report-popup .close {
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            margin-left: auto;
-        }
-
-        .sort-by {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .sidebar-section {
-            margin-bottom: 20px;
-        }
-
-        .sidebar-section h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .sidebar-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .sidebar-section ul li a {
-            text-decoration: none;
-            color: #007bff;
-        }
-
-        .sidebar-section ul li a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            width: 100%;
-            background-color: #62b4c9;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .media-icons {
-            margin: 10px 0;
-        }
-
-        .media-icons a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-
-        .footer-nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-        }
-
-        .footer-nav li {
-            margin: 0 15px;
-        }
-
-        .footer-nav a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .footer-nav a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-bott {
-            margin-top: 10px;
-        }
-
-        .show-replies {
-            cursor: pointer;
-            color: #007bff;
-            text-decoration: underline;
-        }
-
-        .show-replies:hover {
-            text-decoration: none;
-        }
-
-        .edit-button, .delete-button {
-            background: none;
-            border: none;
-            font-size: 14px;
-            color: #007bff;
-            cursor: pointer;
-        }
-
-        .edit-button:hover, .delete-button:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <title>Java</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: #62b4c9;
+      padding: 5px;
+      text-align: center;
+      font-size: 20px;
+      color: white;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .header .brand {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+    }
+
+    .login-signup {
+      position: absolute;
+      top: 40px;
+      right: 10px;
+      font-size: 14px;
+    }
+
+    .login-signup a {
+      color: white;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .login-signup a:hover {
+      text-decoration: underline;
+    }
+
+    .search-container {
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .search-container input[type="text"] {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .search-container button {
+      padding: 5px;
+      border: 1px solid #ccc;
+      color: white;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .search-container button:hover {
+      background-color: #000000;
+    }
+
+    .header a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .header a:hover {
+      text-decoration: underline;
+    }
+
+    .icon-button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 0;
+      margin: 0 10px;
+      font-size: 18px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .icon-button svg {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .content {
+      flex: 3;
+      padding: 0 20px;
+    }
+
+    .sidebar {
+      flex: 1;
+      padding: 0 20px;
+    }
+
+    .post {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .post-voting {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 15px;
+    }
+
+    .post-voting button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .post-voting .vote-count {
+      font-size: 16px;
+    }
+
+    .post-content h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .post-content p {
+      margin: 0;
+      color: #555;
+    }
+
+    .post-footer {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .post-footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .post-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .post-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .post-actions button {
+      background: none;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    section h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    section ul li {
+      margin-bottom: 5px;
+    }
+
+    section ul li a {
+      color: rgb(43, 72, 31);
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    section ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .create-post-button, .create-group-button {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+
+    .create-post-button:hover, .create-group-button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      width: 100%;
+      background-color: #62b4c9;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .media-icons {
+      margin: 10px 0;
+    }
+
+    .media-icons a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .footer-nav li {
+      margin: 0 15px;
+    }
+
+    .footer-nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bott {
+      margin-top: 10px;
+    }
+
+    .reply-section {
+      margin-top: 20px;
+    }
+
+    .reply {
+      margin-left: 20px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .reply .author {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .reply .timestamp {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .reply .reply-content {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .reply-footer {
+      display: flex;
+      align-items: center;
+    }
+
+    .reply-footer .vote-count {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+
+    .reply-footer button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .reply-footer .reply-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .reply-footer .reply-actions button {
+      background: none;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    .reply-input {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+
+    .reply-input textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .reply-input button {
+      align-self: flex-end;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .reply-input button:hover {
+      background-color: #0056b3;
+    }
+
+    .show-replies {
+      cursor: pointer;
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .show-replies:hover {
+      text-decoration: none;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
 <div class="header">
-    <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
-    <div class="brand">CodeConnect</div>
-    <div class="login-signup">
-        <a href="login.html">Sign Out</a>
-    </div>
-    <h2>CodeConverse - Java</h2>
-    <a href="homepage.html">Home</a>
-    <a href="challenges.html">Challenges</a>
-    <a href="mentors.html">Mentors</a>
-    <a href="forum.html">Forums</a>
-    <a href="store.html">Memberships</a>
-    <a href="premium.html">Premium</a>
-    <a href="explore.html">Explore</a>
-    <a href="workspace.html">Workspaces</a>
-    <a href="leaderboards.html">Leaderboards</a>
-    <a href="jobs.html">Jobs</a>
-    <a href="inbox.html" class="icon-button">
-        <svg
-            class="mail-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        >
-            <path d="M4 4h16v16H4z"/>
-            <path d="M4 4l8 8 8-8"/>
-        </svg>
-    </a>
+  <img src="Codeconnect Logo.jpg" alt="Logo" class="logo">
+  <div class="brand">CodeConnect</div>
+  <div class="login-signup">
+    <a href="profile.html">Profile</a>
+    <a href="login.html">Sign Out</a>
+  </div>
+  <h2>CodeConverse - Java</h2>
+  <a href="homepage.html">Home</a>
+  <a href="challenges.html">Challenges</a>
+  <a href="mentors.html">Mentors</a>
+  <a href="forum.html">Forums</a>
+  <a href="store.html">Memberships</a>
+  <a href="premium.html">Premium</a>
+  <a href="explore.html">Explore</a>
+  <a href="workspace.html">Workspaces</a>
+  <a href="leaderboards.html">Leaderboards</a>
+  <a href="jobs.html">Jobs</a>
+  <a href="inbox.html" class="icon-button">
+    <svg
+      class="mail-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M4 4h16v16H4z" />
+      <path d="M4 4l8 8 8-8" />
+    </svg>
+  </a>
 
-    <a href="profile.html" class="icon-button">
-        <svg
-            class="profile-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        >
-            <path
-                d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
-            />
-        </svg>
-    </a>
+  <a href="profile.html" class="icon-button">
+    <svg
+      class="profile-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path
+        d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+      />
+    </svg>
+  </a>
+
+  <button class="icon-button" onclick="openSidebar()">Friends</button>
 </div>
-
-<div class="container">
-    <div class="content">
-        <!-- Post 1 -->
-        <div class="post">
-            <div class="post-header">
-                <h2>Exploring Java's New Features</h2>
-                <span class="author">by User1</span>
-                <span class="timestamp">3 days ago</span>
-            </div>
-            <div class="post-content">
-                <p>Java has introduced a number of new features in its latest release. This post covers some of the most exciting ones, including pattern matching for instance-of, records, and the new garbage collector. These features not only make Java code more concise but also improve performance and readability.</p>
-                <p>Understanding these new features can significantly enhance your Java development skills and help you write more efficient and maintainable code.</p>
-            </div>
-            <div class="post-footer">
-                <button onclick="vote(this, 1)">&#9650;</button>
-                <div class="vote-count">98</div>
-                <button onclick="vote(this, -1)">&#9660;</button>
-                <span class="report" onclick="showReportPopup()">Report</span>
-                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
-                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
-            </div>
-            <button onclick="showReplyInput(event, 'post-reply-input1')">Reply</button>
-            <div id="post-reply-input1" class="reply-input" style="display:none;">
-                <textarea placeholder="Write your reply..."></textarea>
-                <button onclick="submitReply(event, this)">Submit Reply</button>
-            </div>
-            <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-            <div class="reply-section">
-                <div class="sort-by">
-                    Sort by:
-                    <select onchange="sortReplies(this)">
-                        <option value="oldest">Oldest</option>
-                        <option value="newest">Newest</option>
-                        <option value="most-liked">Most Liked</option>
-                    </select>
-                </div>
-                <div class="reply" data-timestamp="2024-07-19T10:00:00">
-                    <div class="reply-header">
-                        <span class="author">User2</span>
-                        <span class="timestamp">2 days ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>This post was really helpful! I never understood how to properly use the new pattern matching until now. The examples provided were clear and easy to follow.</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">85</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-1-1')">Reply</button>
-                    </div>
-                    <div id="reply-input-1-1" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-
-                    <div class="reply reply-reply" data-timestamp="2024-07-20T08:00:00">
-                        <div class="reply-header">
-                            <span class="author">User3</span>
-                            <span class="timestamp">1 day ago</span>
-                        </div>
-                        <div class="reply-content">
-                            <p>I agree! The examples were really helpful. I especially liked the part about records.</p>
-                        </div>
-                        <div class="reply-footer">
-                            <button onclick="vote(this, 1)">&#9650;</button>
-                            <div class="vote-count">50</div>
-                            <button onclick="vote(this, -1)">&#9660;</button>
-                            <span class="report" onclick="showReportPopup()">Report</span>
-                            <button onclick="showReplyInput(event, 'reply-input-1-2')">Reply</button>
-                        </div>
-                        <div id="reply-input-1-2" class="reply-input" style="display:none;">
-                            <textarea placeholder="Write your reply..."></textarea>
-                            <button onclick="submitReply(event, this)">Submit Reply</button>
-                        </div>
-
-                        <div class="reply reply-reply" data-timestamp="2024-07-21T07:00:00">
-                            <div class="reply-header">
-                                <span class="author">User4</span>
-                                <span class="timestamp">12 hours ago</span>
-                            </div>
-                            <div class="reply-content">
-                                <p>Yes, understanding records is key to using the new features effectively. Great post!</p>
-                            </div>
-                            <div class="reply-footer">
-                                <button onclick="vote(this, 1)">&#9650;</button>
-                                <div class="vote-count">30</div>
-                                <button onclick="vote(this, -1)">&#9660;</button>
-                                <span class="report" onclick="showReportPopup()">Report</span>
-                                <button onclick="showReplyInput(event, 'reply-input-1-3')">Reply</button>
-                            </div>
-                            <div id="reply-input-1-3" class="reply-input" style="display:none;">
-                                <textarea placeholder="Write your reply..."></textarea>
-                                <button onclick="submitReply(event, this)">Submit Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="reply" data-timestamp="2024-07-20T15:00:00">
-                    <div class="reply-header">
-                        <span class="author">User5</span>
-                        <span class="timestamp">5 hours ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>I have always struggled with the new features, but this post made it much clearer. Thanks for sharing!</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">40</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-1-4')">Reply</button>
-                    </div>
-                    <div id="reply-input-1-4" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Post 2 -->
-        <div class="post">
-            <div class="post-header">
-                <h2>Java Concurrency Basics</h2>
-                <span class="author">by User2</span>
-                <span class="timestamp">4 days ago</span>
-            </div>
-            <div class="post-content">
-                <p>Concurrency is essential for modern applications. This post covers the basics of Java concurrency, including threads, synchronization, and the Java concurrency utilities. Learn how to write safe and efficient concurrent code.</p>
-                <p>Understanding concurrency helps in building responsive and scalable applications. We'll discuss common issues like race conditions and deadlocks and how to avoid them.</p>
-            </div>
-            <div class="post-footer">
-                <button onclick="vote(this, 1)">&#9650;</button>
-                <div class="vote-count">88</div>
-                <button onclick="vote(this, -1)">&#9660;</button>
-                <span class="report" onclick="showReportPopup()">Report</span>
-                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
-                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
-            </div>
-            <button onclick="showReplyInput(event, 'post-reply-input2')">Reply</button>
-            <div id="post-reply-input2" class="reply-input" style="display:none;">
-                <textarea placeholder="Write your reply..."></textarea>
-                <button onclick="submitReply(event, this)">Submit Reply</button>
-            </div>
-            <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-            <div class="reply-section">
-                <div class="sort-by">
-                    Sort by:
-                    <select onchange="sortReplies(this)">
-                        <option value="oldest">Oldest</option>
-                        <option value="newest">Newest</option>
-                        <option value="most-liked">Most Liked</option>
-                    </select>
-                </div>
-                <div class="reply" data-timestamp="2024-07-18T10:00:00">
-                    <div class="reply-header">
-                        <span class="author">User3</span>
-                        <span class="timestamp">3 days ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>Concurrency has always been a challenging topic for me. This post helped clarify some of the concepts, especially synchronization.</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">75</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-2-1')">Reply</button>
-                    </div>
-                    <div id="reply-input-2-1" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-
-                    <div class="reply reply-reply" data-timestamp="2024-07-19T08:00:00">
-                        <div class="reply-header">
-                            <span class="author">User4</span>
-                            <span class="timestamp">1 day ago</span>
-                        </div>
-                        <div class="reply-content">
-                            <p>Indeed, synchronization is crucial. I also learned a lot about using concurrent collections effectively.</p>
-                        </div>
-                        <div class="reply-footer">
-                            <button onclick="vote(this, 1)">&#9650;</button>
-                            <div class="vote-count">50</div>
-                            <button onclick="vote(this, -1)">&#9660;</button>
-                            <span class="report" onclick="showReportPopup()">Report</span>
-                            <button onclick="showReplyInput(event, 'reply-input-2-2')">Reply</button>
-                        </div>
-                        <div id="reply-input-2-2" class="reply-input" style="display:none;">
-                            <textarea placeholder="Write your reply..."></textarea>
-                            <button onclick="submitReply(event, this)">Submit Reply</button>
-                        </div>
-
-                        <div class="reply reply-reply" data-timestamp="2024-07-20T07:00:00">
-                            <div class="reply-header">
-                                <span class="author">User5</span>
-                                <span class="timestamp">12 hours ago</span>
-                            </div>
-                            <div class="reply-content">
-                                <p>Yes, understanding concurrent collections is a game-changer for writing efficient code.</p>
-                            </div>
-                            <div class="reply-footer">
-                                <button onclick="vote(this, 1)">&#9650;</button>
-                                <div class="vote-count">30</div>
-                                <button onclick="vote(this, -1)">&#9660;</button>
-                                <span class="report" onclick="showReportPopup()">Report</span>
-                                <button onclick="showReplyInput(event, 'reply-input-2-3')">Reply</button>
-                            </div>
-                            <div id="reply-input-2-3" class="reply-input" style="display:none;">
-                                <textarea placeholder="Write your reply..."></textarea>
-                                <button onclick="submitReply(event, this)">Submit Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="reply" data-timestamp="2024-07-19T15:00:00">
-                    <div class="reply-header">
-                        <span class="author">User6</span>
-                        <span class="timestamp">5 hours ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>This post cleared up a lot of confusion I had about threading and concurrency in Java. Thank you!</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">40</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-2-4')">Reply</button>
-                    </div>
-                    <div id="reply-input-2-4" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Post 3 -->
-        <div class="post">
-            <div class="post-header">
-                <h2>Advanced Java Networking</h2>
-                <span class="author">by User3</span>
-                <span class="timestamp">5 days ago</span>
-            </div>
-            <div class="post-content">
-                <p>Java networking provides the tools for developing networked applications. In this post, we will delve into advanced networking topics such as non-blocking I/O, WebSocket communication, and asynchronous processing. These techniques are crucial for building high-performance networked systems.</p>
-                <p>Understanding these advanced concepts allows you to create robust and efficient network applications that can handle high loads and maintain responsiveness.</p>
-            </div>
-            <div class="post-footer">
-                <button onclick="vote(this, 1)">&#9650;</button>
-                <div class="vote-count">102</div>
-                <button onclick="vote(this, -1)">&#9660;</button>
-                <span class="report" onclick="showReportPopup()">Report</span>
-                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
-                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
-            </div>
-            <button onclick="showReplyInput(event, 'post-reply-input3')">Reply</button>
-            <div id="post-reply-input3" class="reply-input" style="display:none;">
-                <textarea placeholder="Write your reply..."></textarea>
-                <button onclick="submitReply(event, this)">Submit Reply</button>
-            </div>
-            <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-            <div class="reply-section">
-                <div class="sort-by">
-                    Sort by:
-                    <select onchange="sortReplies(this)">
-                        <option value="oldest">Oldest</option>
-                        <option value="newest">Newest</option>
-                        <option value="most-liked">Most Liked</option>
-                    </select>
-                </div>
-                <div class="reply" data-timestamp="2024-07-17T10:00:00">
-                    <div class="reply-header">
-                        <span class="author">User4</span>
-                        <span class="timestamp">4 days ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>Advanced networking topics can be quite daunting. This post breaks them down into manageable parts and explains them clearly. The section on non-blocking I/O was particularly useful.</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">78</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-3-1')">Reply</button>
-                    </div>
-                    <div id="reply-input-3-1" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-
-                    <div class="reply reply-reply" data-timestamp="2024-07-18T08:00:00">
-                        <div class="reply-header">
-                            <span class="author">User5</span>
-                            <span class="timestamp">1 day ago</span>
-                        </div>
-                        <div class="reply-content">
-                            <p>I agree, the non-blocking I/O section was very informative. I'm planning to use it in my next project.</p>
-                        </div>
-                        <div class="reply-footer">
-                            <button onclick="vote(this, 1)">&#9650;</button>
-                            <div class="vote-count">60</div>
-                            <button onclick="vote(this, -1)">&#9660;</button>
-                            <span class="report" onclick="showReportPopup()">Report</span>
-                            <button onclick="showReplyInput(event, 'reply-input-3-2')">Reply</button>
-                        </div>
-                        <div id="reply-input-3-2" class="reply-input" style="display:none;">
-                            <textarea placeholder="Write your reply..."></textarea>
-                            <button onclick="submitReply(event, this)">Submit Reply</button>
-                        </div>
-
-                        <div class="reply reply-reply" data-timestamp="2024-07-19T07:00:00">
-                            <div class="reply-header">
-                                <span class="author">User6</span>
-                                <span class="timestamp">12 hours ago</span>
-                            </div>
-                            <div class="reply-content">
-                                <p>Non-blocking I/O is indeed a powerful concept. The explanations here make it much more approachable.</p>
-                            </div>
-                            <div class="reply-footer">
-                                <button onclick="vote(this, 1)">&#9650;</button>
-                                <div class="vote-count">45</div>
-                                <button onclick="vote(this, -1)">&#9660;</button>
-                                <span class="report" onclick="showReportPopup()">Report</span>
-                                <button onclick="showReplyInput(event, 'reply-input-3-3')">Reply</button>
-                            </div>
-                            <div id="reply-input-3-3" class="reply-input" style="display:none;">
-                                <textarea placeholder="Write your reply..."></textarea>
-                                <button onclick="submitReply(event, this)">Submit Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="reply" data-timestamp="2024-07-18T15:00:00">
-                    <div class="reply-header">
-                        <span class="author">User7</span>
-                        <span class="timestamp">5 hours ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>This post is a great resource for anyone looking to dive deeper into Java networking. Thank you for sharing!</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">55</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-3-4')">Reply</button>
-                    </div>
-                    <div id="reply-input-3-4" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Post 4 -->
-        <div class="post">
-            <div class="post-header">
-                <h2>Java Memory Management</h2>
-                <span class="author">by User4</span>
-                <span class="timestamp">6 days ago</span>
-            </div>
-            <div class="post-content">
-                <p>Memory management is crucial for performance and stability. This post covers Java memory management, including the heap, stack, and garbage collection. Learn how to optimize memory usage and troubleshoot memory-related issues.</p>
-                <p>Understanding how Java handles memory is essential for developing efficient applications. We'll also look at tools and techniques for monitoring and improving memory usage.</p>
-            </div>
-            <div class="post-footer">
-                <button onclick="vote(this, 1)">&#9650;</button>
-                <div class="vote-count">120</div>
-                <button onclick="vote(this, -1)">&#9660;</button>
-                <span class="report" onclick="showReportPopup()">Report</span>
-                <button class="edit-button" onclick="editPost(this)" style="display:none;">Edit</button>
-                <button class="delete-button" onclick="deletePost(this)" style="display:none;">Delete</button>
-            </div>
-            <button onclick="showReplyInput(event, 'post-reply-input4')">Reply</button>
-            <div id="post-reply-input4" class="reply-input" style="display:none;">
-                <textarea placeholder="Write your reply..."></textarea>
-                <button onclick="submitReply(event, this)">Submit Reply</button>
-            </div>
-            <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-            <div class="reply-section">
-                <div class="sort-by">
-                    Sort by:
-                    <select onchange="sortReplies(this)">
-                        <option value="oldest">Oldest</option>
-                        <option value="newest">Newest</option>
-                        <option value="most-liked">Most Liked</option>
-                    </select>
-                </div>
-                <div class="reply" data-timestamp="2024-07-16T10:00:00">
-                    <div class="reply-header">
-                        <span class="author">User5</span>
-                        <span class="timestamp">5 days ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>Memory management is often overlooked, but it's so important. This post does a great job explaining the key concepts and providing practical advice.</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">80</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-4-1')">Reply</button>
-                    </div>
-                    <div id="reply-input-4-1" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-
-                    <div class="reply reply-reply" data-timestamp="2024-07-17T08:00:00">
-                        <div class="reply-header">
-                            <span class="author">User6</span>
-                            <span class="timestamp">1 day ago</span>
-                        </div>
-                        <div class="reply-content">
-                            <p>Agreed, memory management is crucial. The section on garbage collection was particularly enlightening.</p>
-                        </div>
-                        <div class="reply-footer">
-                            <button onclick="vote(this, 1)">&#9650;</button>
-                            <div class="vote-count">60</div>
-                            <button onclick="vote(this, -1)">&#9660;</button>
-                            <span class="report" onclick="showReportPopup()">Report</span>
-                            <button onclick="showReplyInput(event, 'reply-input-4-2')">Reply</button>
-                        </div>
-                        <div id="reply-input-4-2" class="reply-input" style="display:none;">
-                            <textarea placeholder="Write your reply..."></textarea>
-                            <button onclick="submitReply(event, this)">Submit Reply</button>
-                        </div>
-
-                        <div class="reply reply-reply" data-timestamp="2024-07-18T07:00:00">
-                            <div class="reply-header">
-                                <span class="author">User7</span>
-                                <span class="timestamp">12 hours ago</span>
-                            </div>
-                            <div class="reply-content">
-                                <p>The explanation of garbage collection algorithms was very detailed and helpful.</p>
-                            </div>
-                            <div class="reply-footer">
-                                <button onclick="vote(this, 1)">&#9650;</button>
-                                <div class="vote-count">45</div>
-                                <button onclick="vote(this, -1)">&#9660;</button>
-                                <span class="report" onclick="showReportPopup()">Report</span>
-                                <button onclick="showReplyInput(event, 'reply-input-4-3')">Reply</button>
-                            </div>
-                            <div id="reply-input-4-3" class="reply-input" style="display:none;">
-                                <textarea placeholder="Write your reply..."></textarea>
-                                <button onclick="submitReply(event, this)">Submit Reply</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="reply" data-timestamp="2024-07-17T15:00:00">
-                    <div class="reply-header">
-                        <span class="author">User8</span>
-                        <span class="timestamp">5 hours ago</span>
-                    </div>
-                    <div class="reply-content">
-                        <p>Great post on memory management. I learned a lot about how to optimize my applications.</p>
-                    </div>
-                    <div class="reply-footer">
-                        <button onclick="vote(this, 1)">&#9650;</button>
-                        <div class="vote-count">55</div>
-                        <button onclick="vote(this, -1)">&#9660;</button>
-                        <span class="report" onclick="showReportPopup()">Report</span>
-                        <button onclick="showReplyInput(event, 'reply-input-4-4')">Reply</button>
-                    </div>
-                    <div id="reply-input-4-4" class="reply-input" style="display:none;">
-                        <textarea placeholder="Write your reply..."></textarea>
-                        <button onclick="submitReply(event, this)">Submit Reply</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sidebar">
-        <div class="sidebar-section">
-            <h3>Topics</h3>
-            <ul>
-                <li><a href="#">Java</a></li>
-                <li><a href="#">Python</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
-        </div>
-        <div class="sidebar-section">
-            <h3>My Groups</h3>
-            <ul>
-                <li><a href="#">Group 1</a></li>
-                <li><a href="#">Group 2</a></li>
-            </ul>
-        </div>
-        <button onclick="window.location.href='createpost.html'">Create Post</button>
-        <button onclick="window.location.href='creategroup.html'">Create Group</button>
-    </div>
-</div>
-
-<div id="report-popup" class="report-popup" style="display:none;">
-    <div class="report-content">
-        <h3>Report Content</h3>
-        <form>
-            <label for="reason">Reason:</label>
-            <select id="reason" name="reason">
-                <option value="spam">Spam</option>
-                <option value="offensive">Offensive</option>
-                <option value="other">Other</option>
-            </select>
-            <textarea id="report-details" placeholder="Provide more details..."></textarea>
-            <button type="button" onclick="submitReport()">Submit Report</button>
-            <button type="button" onclick="closeReportPopup()">Cancel</button>
-        </form>
-    </div>
-</div>
-
-<footer>
-    <div class="footer-container">
-        <div class="footer-nav">
-            <ul>
-                <li>
-                    <a href="index.html"><strong>Home</strong></a>
-                </li>
-                <li>
-                    <a href="about.html"><strong>About</strong></a>
-                </li>
-                <li>
-                    <a><strong>Email: CodeConnectSupport@gmail.com</strong></a>
-                </li>
-                <li>
-                    <a><strong>Phone: 888-888-8888</strong></a>
-                </li>
-            </ul>
-        </div>
-        <div class="media-icons">
-            <a href="#" class="icon-button"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="icon-button"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="icon-button"><i class="fa fa-instagram"></i></a>
-        </div>
-        <div class="footer-bott">
-            <p>© 2024 CodeConnect. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
 
 <script>
-    let votedPosts = {};
+  function openSidebar() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
 
-    function vote(button, value) {
-        const post = button.closest('.post, .reply');
-        const postId = post.querySelector('.post-header h2') ? post.querySelector('.post-header h2').textContent : post.querySelector('.reply-header .author').textContent + post.querySelector('.reply-content p').textContent;
-        if (!votedPosts[postId]) {
-            votedPosts[postId] = 0;
-        }
-
-        if (votedPosts[postId] === value) {
-            return;
-        }
-
-        const voteCountElement = button.nextElementSibling || button.previousElementSibling;
-        let voteCount = parseInt(voteCountElement.textContent);
-        voteCount += value - votedPosts[postId];
-        voteCountElement.textContent = voteCount;
-        votedPosts[postId] = value;
-    }
-
-    function showReplyInput(event, replyInputId) {
-        event.preventDefault();
-        const replyInput = document.getElementById(replyInputId);
-        if (replyInput.style.display === "none") {
-            replyInput.style.display = "block";
-        } else {
-            replyInput.style.display = "none";
-        }
-    }
-
-    function submitReply(event, button) {
-        event.preventDefault();
-        const replyInput = button.parentElement;
-        const textarea = replyInput.querySelector('textarea');
-        const replyContent = textarea.value;
-
-        if (replyContent.trim() !== "") {
-            const newReply = document.createElement("div");
-            newReply.classList.add("reply");
-            newReply.dataset.timestamp = new Date().toISOString();
-            newReply.innerHTML = `
-                <div class="reply-header">
-                  <span class="author">You</span>
-                  <span class="timestamp">just now</span>
-                </div>
-                <div class="reply-content">
-                  <p>${replyContent}</p>
-                </div>
-                <div class="reply-footer">
-                  <button onclick="vote(this, 1)">&#9650;</button>
-                  <div class="vote-count">0</div>
-                  <button onclick="vote(this, -1)">&#9660;</button>
-                  <span class="report" onclick="showReportPopup()">Report</span>
-                  <button class="edit-button" onclick="editPost(this)" style="display:block;">Edit</button>
-                  <button class="delete-button" onclick="deletePost(this)" style="display:block;">Delete</button>
-                </div>
-            `;
-
-            const post = replyInput.closest('.post, .reply');
-            const replySection = post.querySelector('.reply-section') || post.nextElementSibling;
-            replySection.appendChild(newReply);
-            textarea.value = '';
-            replyInput.style.display = "none";
-        }
-    }
-
-    function showReportPopup() {
-        document.getElementById("report-popup").style.display = "block";
-    }
-
-    function closeReportPopup() {
-        document.getElementById("report-popup").style.display = "none";
-    }
-
-    function submitReport() {
-        closeReportPopup();
-        alert("Report submitted. Thank you!");
-    }
-
-    function sortReplies(select) {
-        const sortBy = select.value;
-        const replySections = document.querySelectorAll('.reply-section');
-        replySections.forEach((section) => {
-            const replies = Array.from(section.querySelectorAll('.reply')).sort((a, b) => {
-                const timestampA = new Date(a.dataset.timestamp);
-                const timestampB = new Date(b.dataset.timestamp);
-                const voteCountA = parseInt(a.querySelector('.vote-count').textContent);
-                const voteCountB = parseInt(b.querySelector('.vote-count').textContent);
-
-                if (sortBy === "oldest") {
-                    return timestampA - timestampB;
-                } else if (sortBy === "newest") {
-                    return timestampB - timestampA;
-                } else if (sortBy === "most-liked") {
-                    return voteCountB - voteCountA;
-                }
-            });
-
-            replies.forEach((reply) => {
-                section.appendChild(reply);
-            });
-        });
-    }
-
-    function toggleReplies(button) {
-        const replySection = button.nextElementSibling;
-        if (replySection.style.display === "none" || replySection.style.display === "") {
-            replySection.style.display = "block";
-            button.textContent = "Hide Replies";
-        } else {
-            replySection.style.display = "none";
-            button.textContent = "Show Replies";
-        }
-    }
-
-    function editPost(button) {
-        const post = button.closest('.post, .reply');
-        const postContent = post.querySelector('.post-content, .reply-content');
-        const contentText = postContent.querySelector('p').textContent;
-        postContent.innerHTML = `
-            <textarea>${contentText}</textarea>
-            <button onclick="saveEdit(this)">Save</button>
-            <button onclick="cancelEdit(this)">Cancel</button>
-        `;
-    }
-
-    function saveEdit(button) {
-        const postContent = button.parentElement;
-        const textarea = postContent.querySelector('textarea');
-        const newContent = textarea.value;
-        postContent.innerHTML = `<p>${newContent}</p>`;
-    }
-
-    function cancelEdit(button) {
-        const postContent = button.parentElement;
-        const textarea = postContent.querySelector('textarea');
-        const originalContent = textarea.defaultValue;
-        postContent.innerHTML = `<p>${originalContent}</p>`;
-    }
-
-    function deletePost(button) {
-        const post = button.closest('.post, .reply');
-        post.remove();
-    }
+  function closeSidebar() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
 </script>
+
+<div class="container">
+  <div class="content">
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">130</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>Java Memory Management</h3>
+        <p>Memory management is a crucial aspect of Java programming. This post will discuss various techniques and best practices for managing memory in Java, including the use of garbage collection, manual memory allocation, and the importance of avoiding memory leaks. Understanding these concepts is essential for writing efficient and reliable Java programs.</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User1</a> in <a href="java.html">Java</a></span>
+        </div>
+       
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User2</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>This post was really helpful! I never understood how to properly manage memory in Java until now. The examples provided were clear and easy to follow.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User3</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>I had a lot of issues with memory leaks before. This post helped me understand how to use memory management techniques more effectively.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">115</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>Understanding Java Templates</h3>
+        <p>Templates are a powerful feature of Java. This post aims to provide a clear understanding of how templates work and how to use them effectively. Topics covered include template functions, template classes, and template specialization. By mastering templates, you can write more flexible and reusable code.</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User2</a> in <a href="java.html">Java</a></span>
+        </div>
+       
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User3</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>This post was really helpful! I never understood how to properly use templates until now. The examples provided were clear and easy to follow.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User4</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Templates always seemed complicated to me, but this post broke it down nicely. Thanks!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">105</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>Java STL Containers</h3>
+        <p>The Standard Template Library (STL) provides a set of common classes and interfaces that greatly simplify Java programming. This post explores various STL containers such as vectors, lists, maps, and sets, and discusses their use cases and performance characteristics. Understanding STL containers is essential for writing efficient and maintainable Java code.</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User3</a> in <a href="java.html">Java</a></span>
+        </div>
+     
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User4</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>The explanations and examples for each STL container were really useful. I now have a better understanding of when to use each container.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User5</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Great post! It helped me understand the trade-offs between different STL containers.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">90</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>Effective Java Error Handling</h3>
+        <p>Error handling is essential for robust applications. This post covers best practices for error handling in Java, including the use of exceptions, error codes, and assertions. By following these best practices, you can write more reliable and maintainable Java code.</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User4</a> in <a href="java.html">Java</a></span>
+        </div>
+       
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User5</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>This post provided some excellent tips for handling errors in Java. I've already started implementing some of these practices in my projects.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User1</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Error handling was always a tricky part of Java for me. This post clarified a lot of doubts I had. Thanks!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">85</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>Introduction to Java Multithreading</h3>
+        <p>Multithreading is a key feature of modern Java programming. This post introduces the basics of multithreading, including thread creation, synchronization, and common pitfalls to avoid. By understanding these concepts, you can write more efficient and concurrent Java programs.</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User5</a> in <a href="java.html">Java</a></span>
+        </div>
+        
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User1</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Multithreading has always been a challenge for me, but this post made it much more approachable. Thanks for the detailed explanations!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User2</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Great introduction to multithreading in Java. The examples were very helpful!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <section>
+      <h3>Topics</h3>
+      <ul>
+        <li><a href="topic1.html">Java</a></li>
+        <li><a href="topic2.html">MySQL</a></li>
+        <li><a href="topic3.html">React</a></li>
+        <li><a href="topic4.html">C++</a></li>
+        <li><a href="topic5.html">JavaScript</a></li>
+      </ul>
+    </section>
+   
+    <section>
+      <h3>My Groups</h3>
+      <ul>
+        
+      </ul>
+      <a href="creategroup.html" class="create-group-button">Create Group</a>
+  </section>
+  <a href="createpost.html" class="create-post-button">Create Post</a>
+    </section>
+  </div>
+</div>
+
+<script>
+  let votedPosts = {};
+
+  function vote(button, value) {
+    const post = button.closest('.post, .reply');
+    const voteCountElement = button.nextElementSibling || button.previousElementSibling;
+    let voteCount = parseInt(voteCountElement.textContent);
+    voteCount += value;
+    voteCountElement.textContent = voteCount;
+  }
+
+  function toggleReplies(button) {
+    const replySection = button.nextElementSibling;
+    if (replySection.style.display === "none" || replySection.style.display === "") {
+      replySection.style.display = "block";
+      button.textContent = "Hide Replies";
+    } else {
+      replySection.style.display = "none";
+      button.textContent = "Show Replies";
+    }
+  }
+
+  function sortReplies(select) {
+    const sortBy = select.value;
+    const replySections = document.querySelectorAll('.reply-section');
+    replySections.forEach((section) => {
+      const replies = Array.from(section.querySelectorAll('.reply')).sort((a, b) => {
+        const timestampA = new Date(a.dataset.timestamp);
+        const timestampB = new Date(b.dataset.timestamp);
+        const voteCountA = parseInt(a.querySelector('.vote-count').textContent);
+        const voteCountB = parseInt(b.querySelector('.vote-count').textContent);
+
+        if (sortBy === "oldest") {
+          return timestampA - timestampB;
+        } else if (sortBy === "newest") {
+          return timestampB - timestampA;
+        } else if (sortBy === "most-liked") {
+          return voteCountB - voteCountA;
+        }
+      });
+
+      replies.forEach((reply) => {
+        section.appendChild(reply);
+      });
+    });
+  }
+
+  function showReportPopup(button) {
+    const reportPopup = document.createElement('div');
+    reportPopup.innerHTML = `
+      <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ddd; border-radius: 4px; z-index: 1000;">
+        <h3>Report Post</h3>
+        <p>Are you sure you want to report this post?</p>
+        <button onclick="submitReport()">Yes, Report</button>
+        <button onclick="closeReportPopup()">Cancel</button>
+      </div>
+    `;
+    document.body.appendChild(reportPopup);
+  }
+
+  function closeReportPopup() {
+    const reportPopup = document.querySelector('body > div');
+    if (reportPopup) {
+      document.body.removeChild(reportPopup);
+    }
+  }
+
+  function submitReport() {
+    closeReportPopup();
+    alert("Report submitted. Thank you!");
+  }
+
+  function addReply(button) {
+    const replyInput = button.previousElementSibling;
+    const replyContent = replyInput.value.trim();
+    if (replyContent === "") return;
+
+    const replySection = button.closest('.reply-section');
+    const newReply = document.createElement('div');
+    newReply.className = 'reply';
+    newReply.dataset.timestamp = new Date().toISOString();
+    newReply.innerHTML = `
+      <div class="reply-header">
+        <span class="author">You</span>
+        <span class="timestamp">Just now</span>
+      </div>
+      <div class="reply-content">
+        <p>${replyContent}</p>
+      </div>
+      <div class="reply-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">0</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <div class="reply-actions">
+          <button onclick="editReply(this)">Edit</button>
+          <button onclick="deleteReply(this)">Delete</button>
+          <button onclick="showReportPopup(this)">...</button>
+        </div>
+      </div>
+    `;
+
+    replySection.insertBefore(newReply, replySection.querySelector('.reply-input'));
+    replyInput.value = "";
+  }
+
+  function editPost(button) {
+    const postContent = button.closest('.post-content');
+    const postText = postContent.querySelector('p');
+    const editTextarea = document.createElement('textarea');
+    editTextarea.rows = '3';
+    editTextarea.value = postText.textContent;
+    postContent.replaceChild(editTextarea, postText);
+    button.textContent = "Save";
+    button.onclick = () => savePost(button, editTextarea);
+  }
+
+  function savePost(button, editTextarea) {
+    const postContent = button.closest('.post-content');
+    const postText = document.createElement('p');
+    postText.textContent = editTextarea.value;
+    postContent.replaceChild(postText, editTextarea);
+    button.textContent = "Edit";
+    button.onclick = () => editPost(button);
+  }
+
+  function deletePost(button) {
+    const post = button.closest('.post');
+    post.parentNode.removeChild(post);
+  }
+
+  function editReply(button) {
+    const replyContent = button.closest('.reply').querySelector('.reply-content p');
+    const editTextarea = document.createElement('textarea');
+    editTextarea.rows = '3';
+    editTextarea.value = replyContent.textContent;
+    const replyDiv = button.closest('.reply');
+    replyDiv.replaceChild(editTextarea, replyContent);
+    button.textContent = "Save";
+    button.onclick = () => saveReply(button, editTextarea);
+  }
+
+  function saveReply(button, editTextarea) {
+    const replyContent = document.createElement('p');
+    replyContent.textContent = editTextarea.value;
+    const replyDiv = button.closest('.reply');
+    replyDiv.replaceChild(replyContent, editTextarea);
+    button.textContent = "Edit";
+    button.onclick = () => editReply(button);
+  }
+
+  function deleteReply(button) {
+    const reply = button.closest('.reply');
+    reply.parentNode.removeChild(reply);
+  }
+</script>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-nav">
+      <ul>
+        <li><a href="index.html"><strong>Home</strong></a></li>
+        <li><a href="about.html"><strong>About</strong></a></li>
+        <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
+        <li><a><strong>Phone: 888-888-8888</strong></a></li>
+      </ul>
+    </div>
+    <div class="media-icons">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="footer-bott">
+      <p>&copy; 2024 CodeConnect. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

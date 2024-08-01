@@ -5,18 +5,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    /* Existing CSS styles */
     * {
       box-sizing: border-box;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      margin: 0; 
+      margin: 0;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-
 
     .header {
       background-color: #62b4c9;
@@ -116,7 +116,6 @@
       vertical-align: middle;
     }
 
-
     .container {
       display: flex;
       justify-content: center;
@@ -171,10 +170,6 @@
     .post-content p {
       margin: 0;
       color: #555;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
     .post-footer {
@@ -190,6 +185,19 @@
 
     .post-footer a:hover {
       text-decoration: underline;
+    }
+
+    .post-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .post-actions button {
+      background: none;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
     }
 
     section {
@@ -220,6 +228,7 @@
     section ul li a:hover {
       text-decoration: underline;
     }
+
     .create-post-button, .create-group-button {
       display: block;
       width: 200px;
@@ -236,7 +245,7 @@
     .create-post-button:hover, .create-group-button:hover {
       background-color: #0056b3;
     }
-    
+
     footer {
       width: 100%;
       background-color: #62b4c9;
@@ -285,6 +294,104 @@
 
     .footer-bott {
       margin-top: 10px;
+    }
+
+    /* New CSS styles */
+    .reply-section {
+      margin-top: 20px;
+    }
+
+    .reply {
+      margin-left: 20px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .reply .author {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .reply .timestamp {
+      font-size: 14px;
+      color: #999;
+    }
+
+    .reply .reply-content {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .reply-footer {
+      display: flex;
+      align-items: center;
+    }
+
+    .reply-footer .vote-count {
+      margin-left: 10px;
+      font-size: 16px;
+    }
+
+    .reply-footer button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .reply-footer .reply-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .reply-footer .reply-actions button {
+      background: none;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
+    }
+
+    .reply-input {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+
+    .reply-input textarea {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .reply-input button {
+      align-self: flex-end;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .reply-input button:hover {
+      background-color: #0056b3;
+    }
+
+    .show-replies {
+      cursor: pointer;
+      color: #007bff;
+      text-decoration: underline;
+    }
+
+    .show-replies:hover {
+      text-decoration: none;
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -360,42 +467,66 @@
     <div class="post">
       <div class="post-voting">
         <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">160</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
-      </div>
-      <div class="post-content">
-        <h3><a href="post1.html">Understanding JavaScript Closures</a></h3>
-        <p>Closures are a fundamental concept in JavaScript. This post aims to provide a clear...</p>
-        <div class="post-footer">
-          <span>Posted by <a href="profile.html">User21</a> in <a href="javascript.html">JavaScript</a></span>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">145</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
-      </div>
-      <div class="post-content">
-        <h3><a href="post2.html">JavaScript ES6 Features</a></h3>
-        <p>ES6 introduced many new features to JavaScript. This post explores some of the most...</p>
-        <div class="post-footer">
-          <span>Posted by <a href="profile.html">User22</a> in <a href="javascript.html">JavaScript</a></span>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
         <div class="vote-count">130</div>
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3><a href="post3.html">JavaScript Promises Explained</a></h3>
-        <p>Promises are a powerful way to handle asynchronous operations in JavaScript. This...</p>
+        <h3>JavaScript ES6 Features</h3>
+        <p>ES6 introduced many new features to JavaScript, making it more powerful and easier to write. This post will cover some of the most important ES6 features, including arrow functions, template literals, destructuring, and promises. Understanding these features is essential for writing modern JavaScript code.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User23</a> in <a href="javascript.html">JavaScript</a></span>
+          <span>Posted by <a href="profile.html">User1</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+       
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User2</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>This post was really helpful! I never understood how to properly use ES6 features until now. The examples provided were clear and easy to follow.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User3</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Arrow functions and template literals have made my code so much cleaner. Thanks for the detailed explanations!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
         </div>
       </div>
     </div>
@@ -406,24 +537,260 @@
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3><a href="post4.html">Debugging JavaScript Code</a></h3>
-        <p>Debugging is an essential skill for any JavaScript developer. This post covers techniques...</p>
+        <h3>Understanding JavaScript Promises</h3>
+        <p>Promises are an essential feature of modern JavaScript, providing a way to handle asynchronous operations. This post explains how promises work and how to use them effectively, including chaining and error handling. Mastering promises is crucial for writing clean and efficient JavaScript code.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User24</a> in <a href="javascript.html">JavaScript</a></span>
+          <span>Posted by <a href="profile.html">User2</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+       
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User3</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>This post was really helpful! I never understood how to properly use promises until now. The examples provided were clear and easy to follow.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User4</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Promises always seemed complicated to me, but this post broke it down nicely. Thanks!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="post">
       <div class="post-voting">
         <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">100</div>
+        <div class="vote-count">105</div>
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3><a href="post5.html">Async/Await in JavaScript</a></h3>
-        <p>Async/Await makes handling asynchronous code easier in JavaScript. This post explains...</p>
+        <h3>JavaScript Event Loop Explained</h3>
+        <p>The event loop is a fundamental concept in JavaScript, allowing for asynchronous operations. This post provides a detailed explanation of the event loop, including how it works and how it affects the execution of code. Understanding the event loop is essential for writing efficient and performant JavaScript applications.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User25</a> in <a href="javascript.html">JavaScript</a></span>
+          <span>Posted by <a href="profile.html">User3</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+     
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User4</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>The explanations and examples for the event loop were really useful. I now have a better understanding of how asynchronous operations work in JavaScript.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User5</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Understanding the event loop is crucial for JavaScript developers, and this post explained it perfectly. Thanks for sharing!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">90</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>Effective JavaScript Error Handling</h3>
+        <p>Error handling is essential for robust applications. This post covers best practices for error handling in JavaScript, including the use of try-catch blocks, custom error classes, and asynchronous error handling. By following these best practices, you can write more reliable and maintainable JavaScript code.</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User4</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+       
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User5</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>This post provided some excellent tips for handling errors in JavaScript. I've already started implementing some of these practices in my projects.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User1</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Error handling was always a tricky part of JavaScript for me. This post clarified a lot of doubts I had. Thanks!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+               
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">85</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>JavaScript Async/Await</h3>
+        <p>Async/await is a syntactic sugar built on top of promises, making asynchronous code easier to write and understand. This post explains how async/await works, how to use it effectively, and common pitfalls to avoid. By mastering async/await, you can write cleaner and more maintainable asynchronous JavaScript code.</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">User5</a> in <a href="javascript.html">JavaScript</a></span>
+        </div>
+        
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          <div class="reply" data-timestamp="2024-07-19T10:00:00">
+            <div class="reply-header">
+              <span class="author">User1</span>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Async/await has greatly improved the readability of my code. This post did a great job explaining how to use it effectively.</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">85</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply" data-timestamp="2024-07-20T12:30:00">
+            <div class="reply-header">
+              <span class="author">User2</span>
+              <span class="timestamp">1 day ago</span>
+            </div>
+            <div class="reply-content">
+              <p>Great introduction to async/await in JavaScript. The examples were very helpful!</p>
+            </div>
+            <div class="reply-footer">
+              <button onclick="vote(this, 1)">&#9650;</button>
+              <div class="vote-count">60</div>
+              <button onclick="vote(this, -1)">&#9660;</button>
+              <div class="reply-actions">
+                
+                <button onclick="showReportPopup(this)">...</button>
+              </div>
+            </div>
+          </div>
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
         </div>
       </div>
     </div>
@@ -440,20 +807,11 @@
         <li><a href="topic5.html">JavaScript</a></li>
       </ul>
     </section>
-    <section>
-      <h3>My Mentor Groups</h3>
-      <ul>
-        <li><a href="mentor_group1.html">Mentor Group 1</a></li>
-        <li><a href="mentor_group2.html">Mentor Group 2</a></li>
-        <li><a href="mentor_group3.html">Mentor Group 3</a></li>
-      </ul>
-    </section>
+    
     <section>
       <h3>My Groups</h3>
       <ul>
-        <li><a href="group1.html">Group 1</a></li>
-        <li><a href="group2.html">Group 2</a></li>
-        <li><a href="group3.html">Group 3</a></li>
+       
       </ul>
       <a href="creategroup.html" class="create-group-button">Create Group</a>
   </section>
@@ -463,10 +821,158 @@
 </div>
 
 <script>
-  function vote(element, value) {
-    var voteCountElement = element.parentElement.querySelector('.vote-count');
-    var currentVoteCount = parseInt(voteCountElement.textContent);
-    voteCountElement.textContent = currentVoteCount + value;
+  let votedPosts = {};
+
+  function vote(button, value) {
+    const post = button.closest('.post, .reply');
+    const voteCountElement = button.nextElementSibling || button.previousElementSibling;
+    let voteCount = parseInt(voteCountElement.textContent);
+    voteCount += value;
+    voteCountElement.textContent = voteCount;
+  }
+
+  function toggleReplies(button) {
+    const replySection = button.nextElementSibling;
+    if (replySection.style.display === "none" || replySection.style.display === "") {
+      replySection.style.display = "block";
+      button.textContent = "Hide Replies";
+    } else {
+      replySection.style.display = "none";
+      button.textContent = "Show Replies";
+    }
+  }
+
+  function sortReplies(select) {
+    const sortBy = select.value;
+    const replySections = document.querySelectorAll('.reply-section');
+    replySections.forEach((section) => {
+      const replies = Array.from(section.querySelectorAll('.reply')).sort((a, b) => {
+        const timestampA = new Date(a.dataset.timestamp);
+        const timestampB = new Date(b.dataset.timestamp);
+        const voteCountA = parseInt(a.querySelector('.vote-count').textContent);
+        const voteCountB = parseInt(b.querySelector('.vote-count').textContent);
+
+        if (sortBy === "oldest") {
+          return timestampA - timestampB;
+        } else if (sortBy === "newest") {
+          return timestampB - timestampA;
+        } else if (sortBy === "most-liked") {
+          return voteCountB - voteCountA;
+        }
+      });
+
+      replies.forEach((reply) => {
+        section.appendChild(reply);
+      });
+    });
+  }
+
+  function showReportPopup(button) {
+    const reportPopup = document.createElement('div');
+    reportPopup.innerHTML = `
+      <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ddd; border-radius: 4px; z-index: 1000;">
+        <h3>Report Post</h3>
+        <p>Are you sure you want to report this post?</p>
+        <button onclick="submitReport()">Yes, Report</button>
+        <button onclick="closeReportPopup()">Cancel</button>
+      </div>
+    `;
+    document.body.appendChild(reportPopup);
+  }
+
+  function closeReportPopup() {
+    const reportPopup = document.querySelector('body > div');
+    if (reportPopup) {
+      document.body.removeChild(reportPopup);
+    }
+  }
+
+  function submitReport() {
+    closeReportPopup();
+    alert("Report submitted. Thank you!");
+  }
+
+  function addReply(button) {
+    const replyInput = button.previousElementSibling;
+    const replyContent = replyInput.value.trim();
+    if (replyContent === "") return;
+
+    const replySection = button.closest('.reply-section');
+    const newReply = document.createElement('div');
+    newReply.className = 'reply';
+    newReply.dataset.timestamp = new Date().toISOString();
+    newReply.innerHTML = `
+      <div class="reply-header">
+        <span class="author">You</span>
+        <span class="timestamp">Just now</span>
+      </div>
+      <div class="reply-content">
+        <p>${replyContent}</p>
+      </div>
+      <div class="reply-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">0</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <div class="reply-actions">
+          <button onclick="editReply(this)">Edit</button>
+          <button onclick="deleteReply(this)">Delete</button>
+          <button onclick="showReportPopup(this)">...</button>
+        </div>
+      </div>
+    `;
+
+    replySection.insertBefore(newReply, replySection.querySelector('.reply-input'));
+    replyInput.value = "";
+  }
+
+  function editPost(button) {
+    const postContent = button.closest('.post-content');
+    const postText = postContent.querySelector('p');
+    const editTextarea = document.createElement('textarea');
+    editTextarea.rows = '3';
+    editTextarea.value = postText.textContent;
+    postContent.replaceChild(editTextarea, postText);
+    button.textContent = "Save";
+    button.onclick = () => savePost(button, editTextarea);
+  }
+
+  function savePost(button, editTextarea) {
+    const postContent = button.closest('.post-content');
+    const postText = document.createElement('p');
+    postText.textContent = editTextarea.value;
+    postContent.replaceChild(postText, editTextarea);
+    button.textContent = "Edit";
+    button.onclick = () => editPost(button);
+  }
+
+  function deletePost(button) {
+    const post = button.closest('.post');
+    post.parentNode.removeChild(post);
+  }
+
+  function editReply(button) {
+    const replyContent = button.closest('.reply').querySelector('.reply-content p');
+    const editTextarea = document.createElement('textarea');
+    editTextarea.rows = '3';
+    editTextarea.value = replyContent.textContent;
+    const replyDiv = button.closest('.reply');
+    replyDiv.replaceChild(editTextarea, replyContent);
+    button.textContent = "Save";
+    button.onclick = () => saveReply(button, editTextarea);
+  }
+
+  function saveReply(button, editTextarea) {
+    const replyContent = document.createElement('p');
+    replyContent.textContent = editTextarea.value;
+    const replyDiv = button.closest('.reply');
+    replyDiv.replaceChild(replyContent, editTextarea);
+    button.textContent = "Edit";
+    button.onclick = () => editReply(button);
+  }
+
+  function deleteReply(button) {
+    const reply = button.closest('.reply');
+    reply.parentNode.removeChild(reply);
   }
 </script>
 
