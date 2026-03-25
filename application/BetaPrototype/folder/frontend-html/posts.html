@@ -587,12 +587,13 @@ const userGroups = [
     alert("Report submitted. Thank you!");
   }
 
-  function addReply(button) {
+  async function addReply(button) {
     const replyInput = button.previousElementSibling;
     const replyContent = replyInput.value.trim();
     if (replyContent === "") return;
 
     const replySection = button.closest('.reply-section');
+    const threadID = button.closest('.post').dataset.threadId;
     const newReply = document.createElement('div');
     newReply.className = 'reply';
     newReply.dataset.timestamp = new Date().toISOString();
@@ -618,22 +619,53 @@ const userGroups = [
 
     replySection.insertBefore(newReply, replySection.querySelector('.reply-input'));
     replyInput.value = "";
+
+    if (threadID) {
+      const response = await fetch('/api/auth/addreply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ body: replyContent, threadID: parseInt(threadID) }),
+      });
+      if (!response.ok) {
+        alert('Failed to add reply. Please try again.');
+        replySection.removeChild(newReply);
+      }
+    }
   }
   function makePost(post){
+    const repliesHtml = (post.Replies || []).map(reply => `
+      <div class="reply" data-timestamp="${reply.date || ''}">
+        <div class="reply-header">
+          <span class="author">${reply.userName || 'Anonymous'}</span>
+          <span class="timestamp">${reply.date || ''}</span>
+        </div>
+        <div class="reply-content">
+          <p>${reply.body}</p>
+        </div>
+        <div class="reply-footer">
+          <button onclick="vote(this, 1)">&#9650;</button>
+          <div class="vote-count">${reply.likes || 0}</div>
+          <button onclick="vote(this, -1)">&#9660;</button>
+          <div class="reply-actions">
+            <button onclick="showReportPopup(this)">...</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
     return `
-    <div class="post">
+    <div class="post" data-thread-id="${post.threadID}">
       <div class="post-voting">
         <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">130</div>
+        <div class="vote-count">${post.likes || 0}</div>
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
         <h3>${post.title}</h3>
-        <p>${post.contet}</p>
+        <p>${post.content}</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User1</a> in <a href="java.html">Java</a></span>
+          <span>Posted by <a href="profile.html">${post.userName || 'Anonymous'}</a> in <a href="posts.html?topic=${post.topic}">${post.topic || ''}</a></span>
         </div>
-       
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
         <div class="reply-section" style="display:none;">
           <div class="sort-by">
@@ -644,42 +676,7 @@ const userGroups = [
               <option value="most-liked">Most Liked</option>
             </select>
           </div>
-          <div class="reply" data-timestamp="2024-07-19T10:00:00">
-            <div class="reply-header">
-              <span class="author">User2</span>
-              <span class="timestamp">2 days ago</span>
-            </div>
-            <div class="reply-content">
-              <p>This post was really helpful! I never understood how to properly manage memory in Java until now. The examples provided were clear and easy to follow.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">85</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-               
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply" data-timestamp="2024-07-20T12:30:00">
-            <div class="reply-header">
-              <span class="author">User3</span>
-              <span class="timestamp">1 day ago</span>
-            </div>
-            <div class="reply-content">
-              <p>I had a lot of issues with memory leaks before. This post helped me understand how to use memory management techniques more effectively.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">60</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
+          ${repliesHtml}
           <div class="reply-input">
             <textarea rows="3" placeholder="Add a reply..."></textarea>
             <button onclick="addReply(this)">Reply</button>
@@ -702,10 +699,10 @@ const userGroups = [
         };
                 
     var url = '/api/auth/listThreads';
-    var query = window.location.href.slice(window.location.href.indexOf('?')+1, 0);
+    var query = window.location.search.slice(1);
     if(query.length>0){
       url += "?" + query
-    } 
+    }
     console.log(url);
     const response = await fetch(url, requestOptions);
     const responseJson = await response.json();
