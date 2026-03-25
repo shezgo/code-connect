@@ -508,7 +508,7 @@
 </script>
 
 <div class="container">
-  <div class="content">
+  <div class="content" id="postsSection">
     <div class="post">
       <div class="post-voting">
         <button onclick="vote(this, 1)">&#9650;</button>
@@ -960,6 +960,7 @@ const userGroups = [
     if (replyContent === "") return;
 
     const replySection = button.closest('.reply-section');
+    const threadID = button.closest('.post').dataset.threadId;
     const newReply = document.createElement('div');
     newReply.className = 'reply';
     newReply.dataset.timestamp = new Date().toISOString();
@@ -985,20 +986,88 @@ const userGroups = [
     replySection.insertBefore(newReply, replySection.querySelector('.reply-input'));
     replyInput.value = "";
 
-    // Backend hookup for reply button
-    const response = await fetch('/api/auth/addreply', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ content: replyContent }),
-    });
-
-    if (!response.ok) {
-      alert('Failed to add reply. Please try again.');
-      replySection.removeChild(newReply);
+    if (threadID) {
+      const response = await fetch('/api/auth/addreply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ body: replyContent, threadID: parseInt(threadID) }),
+      });
+      if (!response.ok) {
+        alert('Failed to add reply. Please try again.');
+        replySection.removeChild(newReply);
+      }
     }
   }
+
+  function makePost(post) {
+    const repliesHtml = (post.Replies || []).map(reply => `
+      <div class="reply" data-timestamp="${reply.date || ''}">
+        <div class="reply-header">
+          <span class="author">${reply.userName || 'Anonymous'}</span>
+          <span class="timestamp">${reply.date || ''}</span>
+        </div>
+        <div class="reply-content">
+          <p>${reply.body}</p>
+        </div>
+        <div class="reply-footer">
+          <button onclick="vote(this, 1)">&#9650;</button>
+          <div class="vote-count">${reply.likes || 0}</div>
+          <button onclick="vote(this, -1)">&#9660;</button>
+          <div class="reply-actions">
+            <button onclick="showReportPopup(this)">...</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    return `
+    <div class="post" data-thread-id="${post.threadID}">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">${post.likes || 0}</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+        <div class="post-footer">
+          <span>Posted by <a href="profile.html">${post.userName || 'Anonymous'}</a> in <a href="java.html">Java</a></span>
+        </div>
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          ${repliesHtml}
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+  }
+
+  async function getPosts() {
+    const postsSection = document.getElementById('postsSection');
+    const response = await fetch('/api/auth/listThreads?topic=Java', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    const responseJson = await response.json();
+    const posts = responseJson['records'];
+    posts.forEach(post => {
+      postsSection.innerHTML += makePost(post);
+    });
+  }
+
+  window.addEventListener('load', getPosts);
 
   function deletePost(button) {
     const post = button.closest('.post');
