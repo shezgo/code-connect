@@ -76,23 +76,15 @@ exports.addThread = async (req, res, next) => {
 
 exports.addReply = async (req, res, next) => {
     try {
-        const {body} = req.body;
-
+        const { body, threadID } = req.body;
 
         if (!body) {
             return res.status(400).json({ error: 'Fill missing fields' });
         }
 
-/*
-        const currentDate = new Date();
-        const date = currentDate.toLocaleDateString();
-        const time = currentDate.toLocaleTimeString();*/
-
-        //const userID = req.userID;
-
-        // Create a new reply to a thread
         const newReply = await Reply.create({
-            body
+            body,
+            threadID
         });
 
         res.json({reply: newReply});
@@ -101,16 +93,15 @@ exports.addReply = async (req, res, next) => {
     }
 };
 
-exports.listThread= async (req, res, next) => {
+exports.listThread = async (req, res, next) => {
     const topic = req.query.topic;
     let filter = null;
-    // if there is no filter, keep it as null
     if(topic){
        filter = {topic:topic};
-    } 
+    }
     const threads = await Thread.findAll({
-        where:filter,
-        raw:true
-    })
+        where: filter,
+        include: [Reply]
+    });
     res.json({ records: threads });
 }
