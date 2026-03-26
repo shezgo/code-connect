@@ -90,9 +90,12 @@ exports.addReply = async (req, res, next) => {
             return res.status(400).json({ error: 'Fill missing fields' });
         }
 
+        const user = await User.findByPk(req.userID);
+
         const newReply = await Reply.create({
             body,
-            threadID
+            threadID,
+            userName: user ? user.userName : 'Anonymous'
         });
 
         res.json({reply: newReply});
@@ -133,6 +136,38 @@ exports.getMe = async (req, res, next) => {
         const user = await User.findByPk(req.userID);
         if (!user) return res.status(404).json({ error: 'User not found' });
         res.json({ userName: user.userName });
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.updateReplyVote = async (req, res, next) => {
+    try {
+        const { replyID } = req.params;
+        const { delta } = req.body;
+        const reply = await Reply.findByPk(replyID);
+        if (!reply) return res.status(404).json({ error: 'Reply not found' });
+        reply.likes = (reply.likes || 0) + delta;
+        await reply.save();
+        res.json({ likes: reply.likes });
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.deleteReply = async (req, res, next) => {
+    try {
+        const { replyID } = req.params;
+        const reply = await Reply.findByPk(replyID);
+        if (!reply) return res.status(404).json({ error: 'Reply not found' });
+
+        const user = await User.findByPk(req.userID);
+        if (!user || reply.userName !== user.userName) {
+            return res.status(403).json({ error: 'Unauthorized' });
+        }
+
+        await reply.destroy();
+        res.json({ message: 'Reply deleted' });
     } catch (error) {
         next(error);
     }
