@@ -296,11 +296,14 @@
             width: 45%;
             text-align: left;
         }
+        .main-box .left textarea {
+            width: 100%;
+            resize: vertical;
+        }
         .main-box .left button {
-            width: 5%;
-            padding: 5px;
-            right: 51%;
-            position:absolute;
+            display: block;
+            margin: 10px auto 0;
+            padding: 8px 20px;
             border: none;
             border-radius: 4px;
             background-color: #27b47ec2;
@@ -310,6 +313,10 @@
         }
         .main-box .left button:hover {
             background-color: #2a583a;
+        }
+        .main-box .left #output,
+        .main-box .left #result-message {
+            text-align: left;
         }
         .bottom-container {
             display: flex;
@@ -370,8 +377,8 @@
           
         }
         .right-image{
-          width:625px;
-          height:250px;
+          width: 100%;
+          height: auto;
         }
   </style>
 </head>
@@ -458,11 +465,11 @@
             <div class="room-link-container">
               <div class="question-answer-container">
                 <p>
-                  Test your Javascript here! Print "Hello World" below.
+                  Test your Javascript here! Print "Hello World!" below.
                 </p>
-                  <textarea id="answer" name="answer" rows="20" cols="90"></textarea><br><br>
+                  <textarea id="answer" name="answer" rows="20"></textarea>
                   <button type="button" onclick="compiler()">Submit</button>
-                  <div> Output: <code id="output"></code> </div> 
+                  <div style="margin-top: 10px;"> Output: <code id="output"></code> </div>
                   <div id="result-message" style="display: none;"></div>
               </div>
               
@@ -500,7 +507,7 @@
                     // Display the result
                     console.log(result);
                     let isCorrect=false;
-                    let answerText="Hello World"
+                    let answerText="Hello World!"
             
                     if (result === answerText) {
                       isCorrect = true;
@@ -510,7 +517,6 @@
             
                     if (!isCorrect) {
                       messages.push("Incorrect output. Please try again");
-                      messages.push("Hint: plain text without any symbol");
                     } 
             
                     resultMessage.innerHTML = messages.join("<br>");
