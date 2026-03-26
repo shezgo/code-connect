@@ -441,6 +441,26 @@
 
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+.delete-thread-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #e53e3e;
+  color: white;
+  border: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 7px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete-thread-btn:hover { background: #c53030; }
+</style>
 </head>
 <body>
 
@@ -508,327 +528,8 @@
 </script>
 
 <div class="container">
-  <div class="content" id="postsSection">
-    <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">130</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
-      </div>
-      <div class="post-content">
-        <h3>C++ Memory Management</h3>
-        <p>Memory management is a crucial aspect of C++ programming. This post will discuss various techniques and best practices for managing memory in C++, including the use of smart pointers, manual memory allocation, and the importance of avoiding memory leaks. Understanding these concepts is essential for writing efficient and reliable C++ programs.</p>
-        <div class="post-footer">
-          <span>Posted by <a href="../profile.html">User1</a> in <a href="../cpp.html">C++</a></span>
-        </div>
-       
-        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-        <div class="reply-section" style="display:none;">
-          <div class="sort-by">
-            Sort by:
-            <select onchange="sortReplies(this)">
-              <option value="oldest">Oldest</option>
-              <option value="newest">Newest</option>
-              <option value="most-liked">Most Liked</option>
-            </select>
-          </div>
-          <div class="reply" data-timestamp="2024-07-19T10:00:00">
-            <div class="reply-header">
-              <span class="author">User2</span>
-              <span class="timestamp">2 days ago</span>
-            </div>
-            <div class="reply-content">
-              <p>This post was really helpful! I never understood how to properly manage memory in C++ until now. The examples provided were clear and easy to follow.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">85</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply" data-timestamp="2024-07-20T12:30:00">
-            <div class="reply-header">
-              <span class="author">User3</span>
-              <span class="timestamp">1 day ago</span>
-            </div>
-            <div class="reply-content">
-              <p>I had a lot of issues with memory leaks before. This post helped me understand how to use smart pointers more effectively.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">60</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply-input">
-            <textarea rows="3" placeholder="Add a reply..."></textarea>
-            <button onclick="addReply(this)">Reply</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">115</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
-      </div>
-      <div class="post-content">
-        <h3>Understanding C++ Templates</h3>
-        <p>Templates are a powerful feature of C++. This post aims to provide a clear understanding of how templates work and how to use them effectively. Topics covered include template functions, template classes, and template specialization. By mastering templates, you can write more flexible and reusable code.</p>
-        <div class="post-footer">
-          <span>Posted by <a href="../profile.html">User2</a> in <a href="../cpp.html">C++</a></span>
-        </div>
-       
-        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-        <div class="reply-section" style="display:none;">
-          <div class="sort-by">
-            Sort by:
-            <select onchange="sortReplies(this)">
-              <option value="oldest">Oldest</option>
-              <option value="newest">Newest</option>
-              <option value="most-liked">Most Liked</option>
-            </select>
-          </div>
-          <div class="reply" data-timestamp="2024-07-19T10:00:00">
-            <div class="reply-header">
-              <span class="author">User3</span>
-              <span class="timestamp">2 days ago</span>
-            </div>
-            <div class="reply-content">
-              <p>This post was really helpful! I never understood how to properly use templates until now. The examples provided were clear and easy to follow.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">85</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply" data-timestamp="2024-07-20T12:30:00">
-            <div class="reply-header">
-              <span class="author">User4</span>
-              <span class="timestamp">1 day ago</span>
-            </div>
-            <div class="reply-content">
-              <p>Templates always seemed complicated to me, but this post broke it down nicely. Thanks!</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">60</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply-input">
-            <textarea rows="3" placeholder="Add a reply..."></textarea>
-            <button onclick="addReply(this)">Reply</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">105</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
-      </div>
-      <div class="post-content">
-        <h3>C++ STL Containers</h3>
-        <p>The Standard Template Library (STL) provides a set of common classes and interfaces that greatly simplify C++ programming. This post explores various STL containers such as vectors, lists, maps, and sets, and discusses their use cases and performance characteristics. Understanding STL containers is essential for writing efficient and maintainable C++ code.</p>
-        <div class="post-footer">
-          <span>Posted by <a href="../profile.html">User3</a> in <a href="../cpp.html">C++</a></span>
-        </div>
-     
-        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-        <div class="reply-section" style="display:none;">
-          <div class="sort-by">
-            Sort by:
-            <select onchange="sortReplies(this)">
-              <option value="oldest">Oldest</option>
-              <option value="newest">Newest</option>
-              <option value="most-liked">Most Liked</option>
-            </select>
-          </div>
-          <div class="reply" data-timestamp="2024-07-19T10:00:00">
-            <div class="reply-header">
-              <span class="author">User4</span>
-              <span class="timestamp">2 days ago</span>
-            </div>
-            <div class="reply-content">
-              <p>The explanations and examples for each STL container were really useful. I now have a better understanding of when to use each container.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">85</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply" data-timestamp="2024-07-20T12:30:00">
-            <div class="reply-header">
-              <span class="author">User5</span>
-              <span class="timestamp">1 day ago</span>
-            </div>
-            <div class="reply-content">
-              <p>Great post! It helped me understand the trade-offs between different STL containers.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">60</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply-input">
-            <textarea rows="3" placeholder="Add a reply..."></textarea>
-            <button onclick="addReply(this)">Reply</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">90</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
-      </div>
-      <div class="post-content">
-        <h3>Effective C++ Error Handling</h3>
-        <p>Error handling is essential for robust applications. This post covers best practices for error handling in C++, including the use of exceptions, error codes, and assertions. By following these best practices, you can write more reliable and maintainable C++ code.</p>
-        <div class="post-footer">
-          <span>Posted by <a href="../profile.html">User4</a> in <a href="../cpp.html">C++</a></span>
-        </div>
-       
-        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-        <div class="reply-section" style="display:none;">
-          <div class="sort-by">
-            Sort by:
-            <select onchange="sortReplies(this)">
-              <option value="oldest">Oldest</option>
-              <option value="newest">Newest</option>
-              <option value="most-liked">Most Liked</option>
-            </select>
-          </div>
-          <div class="reply" data-timestamp="2024-07-19T10:00:00">
-            <div class="reply-header">
-              <span class="author">User5</span>
-              <span class="timestamp">2 days ago</span>
-            </div>
-            <div class="reply-content">
-              <p>This post provided some excellent tips for handling errors in C++. I've already started implementing some of these practices in my projects.</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">85</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply" data-timestamp="2024-07-20T12:30:00">
-            <div class="reply-header">
-              <span class="author">User1</span>
-              <span class="timestamp">1 day ago</span>
-            </div>
-            <div class="reply-content">
-              <p>Error handling was always a tricky part of C++ for me. This post clarified a lot of doubts I had. Thanks!</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">60</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply-input">
-            <textarea rows="3" placeholder="Add a reply..."></textarea>
-            <button onclick="addReply(this)">Reply</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="post">
-      <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">85</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
-      </div>
-      <div class="post-content">
-        <h3>Introduction to C++ Multithreading</h3>
-        <p>Multithreading is a key feature of modern C++ programming. This post introduces the basics of multithreading, including thread creation, synchronization, and common pitfalls to avoid. By understanding these concepts, you can write more efficient and concurrent C++ programs.</p>
-        <div class="post-footer">
-          <span>Posted by <a href="../profile.html">User5</a> in <a href="../cpp.html">C++</a></span>
-        </div>
-        
-        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
-        <div class="reply-section" style="display:none;">
-          <div class="sort-by">
-            Sort by:
-            <select onchange="sortReplies(this)">
-              <option value="oldest">Oldest</option>
-              <option value="newest">Newest</option>
-              <option value="most-liked">Most Liked</option>
-            </select>
-          </div>
-          <div class="reply" data-timestamp="2024-07-19T10:00:00">
-            <div class="reply-header">
-              <span class="author">User1</span>
-              <span class="timestamp">2 days ago</span>
-            </div>
-            <div class="reply-content">
-              <p>Multithreading has always been a challenge for me, but this post made it much more approachable. Thanks for the detailed explanations!</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">85</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply" data-timestamp="2024-07-20T12:30:00">
-            <div class="reply-header">
-              <span class="author">User2</span>
-              <span class="timestamp">1 day ago</span>
-            </div>
-            <div class="reply-content">
-              <p>Great introduction to multithreading in C++. The examples were very helpful!</p>
-            </div>
-            <div class="reply-footer">
-              <button onclick="vote(this, 1)">&#9650;</button>
-              <div class="vote-count">60</div>
-              <button onclick="vote(this, -1)">&#9660;</button>
-              <div class="reply-actions">
-                <button onclick="showReportPopup(this)">...</button>
-              </div>
-            </div>
-          </div>
-          <div class="reply-input">
-            <textarea rows="3" placeholder="Add a reply..."></textarea>
-            <button onclick="addReply(this)">Reply</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="content" id="postsSection" style="overflow-y: auto; max-height: calc(100vh - 150px);">
+  <a href="../create-thread.html" class="create-post-button" style="display: block; position: sticky; top: 0; z-index: 10; margin-bottom: 10px;">Create Thread</a>
   </div>
 
   <div class="sidebar">
@@ -850,7 +551,6 @@
         </ul>
       <a href="../creategroup.html" class="create-group-button">Create Group</a>
   </section>
-    <a href="../create-thread.html" class="create-post-button">Create Thread</a>
   </div>
 </div>
 
@@ -1032,7 +732,7 @@ const userGroups = [
     }
   }
 
-  function makeThread(post) {
+  function makeThread(post, currentUser) {
     const repliesHtml = (post.Replies || []).map(reply => `
       <div class="reply" data-timestamp="${reply.date || ''}">
         <div class="reply-header">
@@ -1053,18 +753,22 @@ const userGroups = [
       </div>
     `).join('');
 
+    const deleteBtn = (currentUser && post.userName === currentUser)
+      ? `<button class="delete-thread-btn" onclick="confirmDeleteThread(${post.threadID})">&#x2715;</button>`
+      : '';
     return `
-    <div class="post" data-thread-id="${post.threadID}">
+    <div class="post" data-thread-id="${post.threadID}" style="position: relative;">
+      ${deleteBtn}
       <div class="post-voting">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">${post.likes || 0}</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
+        <button style="${localStorage.getItem('vote_' + post.threadID) === 'up' ? 'color: red;' : ''}" onclick="castVote(${post.threadID}, 'up', this)">&#9650;</button>
+        <div class="vote-count" id="likes-${post.threadID}">${post.likes || 0}</div>
+        <button style="${localStorage.getItem('vote_' + post.threadID) === 'down' ? 'color: red;' : ''}" onclick="castVote(${post.threadID}, 'down', this)">&#9660;</button>
       </div>
       <div class="post-content">
         <h3>${post.title}</h3>
         <p>${post.content}</p>
         <div class="post-footer">
-          <span>Posted by <a href="../profile.html">${post.userName || 'Anonymous'}</a> in C++</span>
+          <span>Posted by <a href="../profile.html">${post.userName || 'Anonymous'}</a> in C++ | ${post.date ? formatDate(post.date) : '01/01/2024'}${post.time ? ' ' + post.time.slice(0,5) : ''}</span>
         </div>
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
         <div class="reply-section" style="display:none;">
@@ -1089,14 +793,28 @@ const userGroups = [
 
   async function getThreads() {
     const postsSection = document.getElementById('postsSection');
+    postsSection.querySelectorAll('.post').forEach(el => el.remove());
+    let currentUser = null;
+    try {
+      const meRes = await fetch('/api/auth/me');
+      if (meRes.ok) { const meData = await meRes.json(); currentUser = meData.userName; }
+    } catch (e) {}
     const response = await fetch('/api/auth/listThreads?topic=CPP', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });
     const responseJson = await response.json();
     const posts = responseJson['records'];
+    posts.sort((a, b) => {
+      if (!a.date && !b.date) return 0;
+      if (!a.date) return 1;
+      if (!b.date) return -1;
+      const dateA = new Date(a.date + 'T' + (a.time || '00:00:00'));
+      const dateB = new Date(b.date + 'T' + (b.time || '00:00:00'));
+      return dateB - dateA;
+    });
     posts.forEach(post => {
-      postsSection.innerHTML += makeThread(post);
+      postsSection.innerHTML += makeThread(post, currentUser);
     });
   }
 
@@ -1111,6 +829,68 @@ const userGroups = [
     const reply = button.closest('.reply');
     reply.parentNode.removeChild(reply);
   }
+
+  let pendingDeleteThreadID = null;
+
+  function confirmDeleteThread(threadID) {
+    pendingDeleteThreadID = threadID;
+    document.getElementById('deleteThreadPopup').style.display = 'flex';
+  }
+
+  function closeDeletePopup() {
+    pendingDeleteThreadID = null;
+    document.getElementById('deleteThreadPopup').style.display = 'none';
+  }
+
+  async function executeDeleteThread() {
+    if (!pendingDeleteThreadID) return;
+    const response = await fetch('/api/auth/deletethread/' + pendingDeleteThreadID, {
+      method: 'DELETE'
+    });
+    if (response.ok) {
+      closeDeletePopup();
+      location.reload();
+    } else {
+      alert('Failed to delete thread.');
+    }
+  }
+
+
+  function formatDate(dateStr) {
+    const p = dateStr.split('-');
+    return p[1] + '/' + p[2] + '/' + p[0];
+  }
+
+  async function castVote(threadID, voteType, button) {
+    const storageKey = 'vote_' + threadID;
+    const currentVote = localStorage.getItem(storageKey);
+    let delta = 0, newVote = null;
+    if (!currentVote) {
+      delta = voteType === 'up' ? 1 : -1;
+      newVote = voteType;
+    } else if (currentVote === voteType) {
+      delta = voteType === 'up' ? -1 : 1;
+    } else {
+      delta = voteType === 'up' ? 2 : -2;
+      newVote = voteType;
+    }
+    const response = await fetch('/api/auth/vote/' + threadID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ delta })
+    });
+    if (!response.ok) return;
+    const data = await response.json();
+    if (newVote) localStorage.setItem(storageKey, newVote);
+    else localStorage.removeItem(storageKey);
+    const likesEl = document.getElementById('likes-' + threadID);
+    if (likesEl) likesEl.textContent = data.likes;
+    const voting = button.closest('.post-voting');
+    const btns = voting.querySelectorAll('button');
+    btns[0].style.color = newVote === 'up' ? 'red' : '';
+    btns[1].style.color = newVote === 'down' ? 'red' : '';
+  }
+
 </script>
 
 <footer>
@@ -1134,5 +914,12 @@ const userGroups = [
   </div>
 </footer>
 
+<div id="deleteThreadPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:32px; border-radius:8px; text-align:center; min-width:280px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+    <p style="font-size:18px; margin-bottom:20px;">Delete this thread?</p>
+    <button onclick="executeDeleteThread()" style="background:#e53e3e; color:#fff; border:none; padding:10px 24px; border-radius:4px; cursor:pointer; margin-right:12px; font-size:14px;">Delete</button>
+    <button onclick="closeDeletePopup()" style="background:#e2e8f0; border:none; padding:10px 24px; border-radius:4px; cursor:pointer; font-size:14px;">Cancel</button>
+  </div>
+</div>
 </body>
 </html>

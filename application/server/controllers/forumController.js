@@ -62,12 +62,18 @@ exports.addThread = async (req, res, next) => {
 
         const user = await User.findByPk(req.userID);
 
+        const now = new Date();
+        const date = now.toISOString().split('T')[0];
+        const time = now.toTimeString().split(' ')[0];
+
         // Create a new forum thread
         const newThread = await Thread.create({
             title,
             content,
             topic,
-            userName: user ? user.userName : 'Anonymous'
+            userName: user ? user.userName : 'Anonymous',
+            date,
+            time
         });
 
         res.json({thread: newThread});
@@ -103,7 +109,50 @@ exports.listThread = async (req, res, next) => {
     }
     const threads = await Thread.findAll({
         where: filter,
-        include: [Reply]
+        include: [{ model: Reply, separate: true, order: [['replyID', 'ASC']] }]
     });
     res.json({ records: threads });
 }
+
+exports.updateVote = async (req, res, next) => {
+    try {
+        const { threadID } = req.params;
+        const { delta } = req.body;
+        const thread = await Thread.findByPk(threadID);
+        if (!thread) return res.status(404).json({ error: 'Thread not found' });
+        thread.likes = (thread.likes || 0) + delta;
+        await thread.save();
+        res.json({ likes: thread.likes });
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.getMe = async (req, res, next) => {
+    try {
+        const user = await User.findByPk(req.userID);
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        res.json({ userName: user.userName });
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.deleteThread = async (req, res, next) => {
+    try {
+        const { threadID } = req.params;
+        const thread = await Thread.findByPk(threadID);
+        if (!thread) return res.status(404).json({ error: 'Thread not found' });
+
+        const user = await User.findByPk(req.userID);
+        if (!user || thread.userName !== user.userName) {
+            return res.status(403).json({ error: 'Unauthorized' });
+        }
+
+        await Reply.destroy({ where: { threadID } });
+        await thread.destroy();
+        res.json({ message: 'Thread deleted' });
+    } catch (error) {
+        next(error);
+    }
+};

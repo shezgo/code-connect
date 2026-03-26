@@ -1,7 +1,7 @@
 const express = require("express");
 const signup_controller = require("../../controllers/signupController");
 const login_controller = require('../../controllers/loginController');
-const { getUserForums, addForum, addThread, addReply, listThread } = require('../../controllers/forumController');
+const { getUserForums, addForum, addThread, addReply, listThread, getMe, deleteThread, updateVote } = require('../../controllers/forumController');
 const router = express.Router();
 const session = require("express-session");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -58,6 +58,9 @@ router.post('/addforum', authCookieTok, addForum);
 router.post('/addthread', authCookieTok, addThread);
 router.post('/addreply', authCookieTok, addReply);
 router.get('/listThreads', listThread);
+router.get('/me', authCookieTok, getMe);
+router.delete('/deletethread/:threadID', authCookieTok, deleteThread);
+router.post('/vote/:threadID', authCookieTok, updateVote);
 
 // Protected routes tests
 
