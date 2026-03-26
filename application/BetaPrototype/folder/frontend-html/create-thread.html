@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Create Post</title>
+  <title>Create Thread</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -267,7 +267,7 @@
   <a href="homepage.html">Home</a>
   <a href="challenges.html">Challenges</a>
   <a href="mentors.html">Mentors</a>
-  <a href="forum.html">Forums</a>
+  <a href="forum/forum.html">Forums</a>
   <a href="store.html">Memberships</a>
   <a href="premium.html">Premium</a>
   <a href="explore.html">Explore</a>
@@ -381,11 +381,11 @@
 
       if (data.thread) {
         const topicPages = {
-          'Java': 'topic1.html',
-          'MySQL': 'topic2.html',
-          'React': 'topic3.html',
-          'C++': 'topic4.html',
-          'JavaScript': 'topic5.html'
+          'Java': 'forum/java-topic.html',
+          'MySQL': 'forum/mysql-topic.html',
+          'React': 'forum/react-topic.html',
+          'CPP': 'forum/cpp-topic.html',
+          'JavaScript': 'forum/javascript-topic.html'
         };
 
         const redirectUrl = topicPages[topicSelect.value];
@@ -402,7 +402,7 @@
         console.log('Succuss creating post:', data.message || "Succuss creating post.");
         errorMessage.textContent = data.message || "Succuss creating post.";
         errorMessage.style.display = "block";
-       window.location = "/topic1.html";
+       window.location = "/forum/java-topic.html";
       }
     } catch (error) {
       console.error('An error occurred:', error);
@@ -413,7 +413,7 @@
 </script>
 
 <div class="create-post-container">
-  <h2>New Forum Post</h2>
+  <h2>New Forum Thread</h2>
   <form onsubmit="validateForm(event)">
     <div class="form-group">
       <label for="post-title">Post Title</label>
@@ -430,7 +430,7 @@
         <option value="Java">Java</option>
         <option value="MySQL">MySQL</option>
         <option value="React">React</option>
-        <option value="C++">C++</option>
+        <option value="CPP">C++</option>
         <option value="JavaScript">JavaScript</option>
       </select>
     </div>

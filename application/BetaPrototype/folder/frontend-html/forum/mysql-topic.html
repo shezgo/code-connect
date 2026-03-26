@@ -444,23 +444,23 @@
 <body>
 
 <div class="header">
-  <img src="Logo.jpg" alt="Logo" class="logo">
+  <img src="../Logo.jpg" alt="Logo" class="logo">
   <div class="brand">CodeConnect</div>
   <div class="login-signup">
-    <a href="profile.html">Profile</a>
-    <a href="login.html">Sign Out</a>
+    <a href="../profile.html">Profile</a>
+    <a href="../login.html">Sign Out</a>
   </div>
   <h2>CodeConverse - MySQL</h2>
-  <a href="homepage.html">Home</a>
-  <a href="challenges.html">Challenges</a>
-  <a href="mentors.html">Mentors</a>
+  <a href="../homepage.html">Home</a>
+  <a href="../challenges.html">Challenges</a>
+  <a href="../mentors.html">Mentors</a>
   <a href="forum.html">Forums</a>
-  <a href="store.html">Memberships</a>
-  <a href="explore.html">Explore</a>
-  <a href="workspace.html">Workspaces</a>
-  <a href="leaderboards.html">Leaderboards</a>
-  <a href="jobs.html">Jobs</a>
-  <a href="inbox.html" class="icon-button">
+  <a href="../store.html">Memberships</a>
+  <a href="../explore.html">Explore</a>
+  <a href="../workspace.html">Workspaces</a>
+  <a href="../leaderboards.html">Leaderboards</a>
+  <a href="../jobs.html">Jobs</a>
+  <a href="../inbox.html" class="icon-button">
     <svg
       class="mail-icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -476,7 +476,7 @@
     </svg>
   </a>
 
-  <a href="profile.html" class="icon-button">
+  <a href="../profile.html" class="icon-button">
     <svg
       class="profile-icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -507,7 +507,7 @@
 </script>
 
 <div class="container">
-  <div class="content">
+  <div class="content" id="postsSection">
     <div class="post">
       <div class="post-voting">
         <button onclick="vote(this, 1)">&#9650;</button>
@@ -518,7 +518,7 @@
         <h3>Optimizing MySQL Queries</h3>
         <p>Optimizing queries is essential for improving MySQL performance. This post covers various techniques such as indexing, query rewriting, and using the EXPLAIN command to analyze query performance. By mastering these techniques, you can ensure your MySQL databases run efficiently.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User1</a> in <a href="mysql.html">MySQL</a></span>
+          <span>Posted by <a href="../profile.html">User1</a> in <a href="../mysql.html">MySQL</a></span>
         </div>
        
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -584,7 +584,7 @@
         <h3>Understanding MySQL Joins</h3>
         <p>Joins are a fundamental concept in relational databases. This post explains different types of MySQL joins, including INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN, with examples. Mastering joins is crucial for retrieving related data from multiple tables.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User2</a> in <a href="mysql.html">MySQL</a></span>
+          <span>Posted by <a href="../profile.html">User2</a> in <a href="../mysql.html">MySQL</a></span>
         </div>
        
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -650,7 +650,7 @@
         <h3>Advanced MySQL Indexing Techniques</h3>
         <p>Indexing is a powerful tool for improving database performance. This post explores advanced indexing techniques, including composite indexes, covering indexes, and full-text indexes. By understanding these techniques, you can significantly enhance the performance of your MySQL queries.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User3</a> in <a href="mysql.html">MySQL</a></span>
+          <span>Posted by <a href="../profile.html">User3</a> in <a href="../mysql.html">MySQL</a></span>
         </div>
      
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -716,7 +716,7 @@
         <h3>MySQL Stored Procedures</h3>
         <p>Stored procedures are a powerful feature of MySQL that allow you to encapsulate complex queries and logic within the database. This post covers the basics of creating and using stored procedures, along with best practices for maintaining and optimizing them.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User4</a> in <a href="mysql.html">MySQL</a></span>
+          <span>Posted by <a href="../profile.html">User4</a> in <a href="../mysql.html">MySQL</a></span>
         </div>
        
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -782,7 +782,7 @@
         <h3>Introduction to MySQL Replication</h3>
         <p>Replication is a key feature of MySQL that allows you to maintain copies of your database across multiple servers. This post introduces the basics of MySQL replication, including setting up master-slave replication and handling common replication issues.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User5</a> in <a href="mysql.html">MySQL</a></span>
+          <span>Posted by <a href="../profile.html">User5</a> in <a href="../mysql.html">MySQL</a></span>
         </div>
         
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -844,11 +844,11 @@
     <section>
       <h3>Topics</h3>
       <ul>
-        <li><a href="topic1.html">Java</a></li>
-        <li><a href="topic2.html">MySQL</a></li>
-        <li><a href="topic3.html">React</a></li>
-        <li><a href="topic4.html">C++</a></li>
-        <li><a href="topic5.html">JavaScript</a></li>
+        <li><a href="java-topic.html">Java</a></li>
+        <li><a href="mysql-topic.html">MySQL</a></li>
+        <li><a href="react-topic.html">React</a></li>
+        <li><a href="cpp-topic.html">C++</a></li>
+        <li><a href="javascript-topic.html">JavaScript</a></li>
       </ul>
     </section>
    
@@ -857,9 +857,9 @@
         <ul id="myGroupsList">
           <!-- Groups will be dynamically added here -->
         </ul>
-      <a href="creategroup.html" class="create-group-button">Create Group</a>
+      <a href="../creategroup.html" class="create-group-button">Create Group</a>
   </section>
-  <a href="createpost.html" class="create-post-button">Create Post</a>
+  <a href="../create-thread.html" class="create-post-button">Create Thread</a>
     </section>
   </div>
 </div>
@@ -1008,6 +1008,122 @@ const userGroups = [
     button.onclick = () => editPost(button);
   }
 
+
+  async function addReply(button) {
+    const replyInput = button.previousElementSibling;
+    const replyContent = replyInput.value.trim();
+    if (replyContent === "") return;
+
+    const replySection = button.closest('.reply-section');
+    const threadID = button.closest('.post').dataset.threadId;
+    const newReply = document.createElement('div');
+    newReply.className = 'reply';
+    newReply.dataset.timestamp = new Date().toISOString();
+    newReply.innerHTML = `
+      <div class="reply-header">
+        <span class="author">You</span>
+        <span class="timestamp">Just now</span>
+      </div>
+      <div class="reply-content">
+        <p>${replyContent}</p>
+      </div>
+      <div class="reply-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">0</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <div class="reply-actions">
+          <button onclick="showReportPopup(this)">...</button>
+          <button onclick="deleteReply(this)">Delete</button>
+        </div>
+      </div>
+    `;
+
+    replySection.insertBefore(newReply, replySection.querySelector('.reply-input'));
+    replyInput.value = "";
+
+    if (threadID) {
+      const response = await fetch('/api/auth/addreply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ body: replyContent, threadID: parseInt(threadID) }),
+      });
+      if (!response.ok) {
+        alert('Failed to add reply. Please try again.');
+        replySection.removeChild(newReply);
+      }
+    }
+  }
+
+  function makeThread(post) {
+    const repliesHtml = (post.Replies || []).map(reply => `
+      <div class="reply" data-timestamp="${reply.date || ''}">
+        <div class="reply-header">
+          <span class="author">${reply.userName || 'Anonymous'}</span>
+          <span class="timestamp">${reply.date || ''}</span>
+        </div>
+        <div class="reply-content">
+          <p>${reply.body}</p>
+        </div>
+        <div class="reply-footer">
+          <button onclick="vote(this, 1)">&#9650;</button>
+          <div class="vote-count">${reply.likes || 0}</div>
+          <button onclick="vote(this, -1)">&#9660;</button>
+          <div class="reply-actions">
+            <button onclick="showReportPopup(this)">...</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    return `
+    <div class="post" data-thread-id="${post.threadID}">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">${post.likes || 0}</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+        <div class="post-footer">
+          <span>Posted by <a href="../profile.html">${post.userName || 'Anonymous'}</a> in MySQL</span>
+        </div>
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          ${repliesHtml}
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+  }
+
+  async function getThreads() {
+    const postsSection = document.getElementById('postsSection');
+    const response = await fetch('/api/auth/listThreads?topic=MySQL', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    const responseJson = await response.json();
+    const posts = responseJson['records'];
+    posts.forEach(post => {
+      postsSection.innerHTML += makeThread(post);
+    });
+  }
+
+  window.addEventListener('load', getThreads);
+
   function deletePost(button) {
     const post = button.closest('.post');
     post.parentNode.removeChild(post);
@@ -1044,7 +1160,7 @@ const userGroups = [
     <div class="footer-nav">
       <ul>
         
-        <li><a href="about.html"><strong>About</strong></a></li>
+        <li><a href="../about.html"><strong>About</strong></a></li>
         <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
         <li><a><strong>Phone: 888-888-8888</strong></a></li>
       </ul>

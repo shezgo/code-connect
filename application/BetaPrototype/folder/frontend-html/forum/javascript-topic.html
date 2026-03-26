@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>React</title>
+  <title>JavaScript</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -444,23 +444,23 @@
 <body>
 
 <div class="header">
-  <img src="Logo.jpg" alt="Logo" class="logo">
+  <img src="../Logo.jpg" alt="Logo" class="logo">
   <div class="brand">CodeConnect</div>
   <div class="login-signup">
-    <a href="profile.html">Profile</a>
-    <a href="login.html">Sign Out</a>
+    <a href="../profile.html">Profile</a>
+    <a href="../login.html">Sign Out</a>
   </div>
-  <h2>CodeConverse - React</h2>
-  <a href="homepage.html">Home</a>
-  <a href="challenges.html">Challenges</a>
-  <a href="mentors.html">Mentors</a>
+  <h2>CodeConverse - JavaScript</h2>
+  <a href="../homepage.html">Home</a>
+  <a href="../challenges.html">Challenges</a>
+  <a href="../mentors.html">Mentors</a>
   <a href="forum.html">Forums</a>
-  <a href="store.html">Memberships</a>
-  <a href="explore.html">Explore</a>
-  <a href="workspace.html">Workspaces</a>
-  <a href="leaderboards.html">Leaderboards</a>
-  <a href="jobs.html">Jobs</a>
-  <a href="inbox.html" class="icon-button">
+  <a href="../store.html">Memberships</a>
+  <a href="../explore.html">Explore</a>
+  <a href="../workspace.html">Workspaces</a>
+  <a href="../leaderboards.html">Leaderboards</a>
+  <a href="../jobs.html">Jobs</a>
+  <a href="../inbox.html" class="icon-button">
     <svg
       class="mail-icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -476,7 +476,7 @@
     </svg>
   </a>
 
-  <a href="profile.html" class="icon-button">
+  <a href="../profile.html" class="icon-button">
     <svg
       class="profile-icon"
       xmlns="http://www.w3.org/2000/svg"
@@ -507,7 +507,7 @@
 </script>
 
 <div class="container">
-  <div class="content">
+  <div class="content" id="postsSection">
     <div class="post">
       <div class="post-voting">
         <button onclick="vote(this, 1)">&#9650;</button>
@@ -515,10 +515,10 @@
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3>React State Management</h3>
-        <p>State management is a crucial aspect of React development. This post will discuss various techniques and best practices for managing state in React, including the use of hooks, context API, and state management libraries like Redux. Understanding these concepts is essential for writing efficient and maintainable React applications.</p>
+        <h3>JavaScript ES6 Features</h3>
+        <p>ES6 introduced many new features to JavaScript, making it more powerful and easier to write. This post will cover some of the most important ES6 features, including arrow functions, template literals, destructuring, and promises. Understanding these features is essential for writing modern JavaScript code.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User1</a> in <a href="react.html">React</a></span>
+          <span>Posted by <a href="../profile.html">User1</a> in <a href="../javascript.html">JavaScript</a></span>
         </div>
        
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -537,7 +537,7 @@
               <span class="timestamp">2 days ago</span>
             </div>
             <div class="reply-content">
-              <p>This post was really helpful! I never understood how to properly manage state in React until now. The examples provided were clear and easy to follow.</p>
+              <p>This post was really helpful! I never understood how to properly use ES6 features until now. The examples provided were clear and easy to follow.</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -554,7 +554,7 @@
               <span class="timestamp">1 day ago</span>
             </div>
             <div class="reply-content">
-              <p>I had a lot of issues with state management before. This post helped me understand how to use hooks and context API more effectively.</p>
+              <p>Arrow functions and template literals have made my code so much cleaner. Thanks for the detailed explanations!</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -579,10 +579,10 @@
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3>React Performance Optimization</h3>
-        <p>Optimizing the performance of React applications is essential for providing a smooth user experience. This post covers various techniques for improving the performance of React apps, including code splitting, lazy loading, memoization, and using the React Profiler. By mastering these techniques, you can ensure that your React applications run efficiently.</p>
+        <h3>Understanding JavaScript Promises</h3>
+        <p>Promises are an essential feature of modern JavaScript, providing a way to handle asynchronous operations. This post explains how promises work and how to use them effectively, including chaining and error handling. Mastering promises is crucial for writing clean and efficient JavaScript code.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User2</a> in <a href="react.html">React</a></span>
+          <span>Posted by <a href="../profile.html">User2</a> in <a href="../javascript.html">JavaScript</a></span>
         </div>
        
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -601,7 +601,7 @@
               <span class="timestamp">2 days ago</span>
             </div>
             <div class="reply-content">
-              <p>This post was really helpful! I never understood how to optimize the performance of my React applications until now. The examples provided were clear and easy to follow.</p>
+              <p>This post was really helpful! I never understood how to properly use promises until now. The examples provided were clear and easy to follow.</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -618,7 +618,7 @@
               <span class="timestamp">1 day ago</span>
             </div>
             <div class="reply-content">
-              <p>Performance optimization always seemed complicated to me, but this post broke it down nicely. Thanks!</p>
+              <p>Promises always seemed complicated to me, but this post broke it down nicely. Thanks!</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -643,10 +643,10 @@
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3>React Component Lifecycle</h3>
-        <p>Understanding the component lifecycle is crucial for developing React applications. This post explores the different phases of the React component lifecycle, including mounting, updating, and unmounting. It also covers the various lifecycle methods and hooks that you can use to control and enhance the behavior of your components.</p>
+        <h3>JavaScript Event Loop Explained</h3>
+        <p>The event loop is a fundamental concept in JavaScript, allowing for asynchronous operations. This post provides a detailed explanation of the event loop, including how it works and how it affects the execution of code. Understanding the event loop is essential for writing efficient and performant JavaScript applications.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User3</a> in <a href="react.html">React</a></span>
+          <span>Posted by <a href="../profile.html">User3</a> in <a href="../javascript.html">JavaScript</a></span>
         </div>
      
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -665,7 +665,7 @@
               <span class="timestamp">2 days ago</span>
             </div>
             <div class="reply-content">
-              <p>The explanations and examples for each lifecycle phase were really useful. I now have a better understanding of when to use each lifecycle method and hook.</p>
+              <p>The explanations and examples for the event loop were really useful. I now have a better understanding of how asynchronous operations work in JavaScript.</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -682,7 +682,7 @@
               <span class="timestamp">1 day ago</span>
             </div>
             <div class="reply-content">
-              <p>The React component lifecycle was always a bit of a mystery to me, but this post broke it down nicely. Thanks for the detailed explanations!</p>
+              <p>Understanding the event loop is crucial for JavaScript developers, and this post explained it perfectly. Thanks for sharing!</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -707,10 +707,10 @@
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3>React Router</h3>
-        <p>React Router is a powerful library for managing navigation and routing in React applications. This post covers the basics of React Router, including how to set up routes, navigate between pages, and handle dynamic routing. Understanding React Router is essential for building single-page applications with React.</p>
+        <h3>Effective JavaScript Error Handling</h3>
+        <p>Error handling is essential for robust applications. This post covers best practices for error handling in JavaScript, including the use of try-catch blocks, custom error classes, and asynchronous error handling. By following these best practices, you can write more reliable and maintainable JavaScript code.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User4</a> in <a href="react.html">React</a></span>
+          <span>Posted by <a href="../profile.html">User4</a> in <a href="../javascript.html">JavaScript</a></span>
         </div>
        
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -729,7 +729,7 @@
               <span class="timestamp">2 days ago</span>
             </div>
             <div class="reply-content">
-              <p>This post provided some excellent tips for using React Router. I've already started implementing some of these techniques in my projects.</p>
+              <p>This post provided some excellent tips for handling errors in JavaScript. I've already started implementing some of these practices in my projects.</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -746,7 +746,7 @@
               <span class="timestamp">1 day ago</span>
             </div>
             <div class="reply-content">
-              <p>React Router was always a tricky part of React for me. This post clarified a lot of doubts I had. Thanks!</p>
+              <p>Error handling was always a tricky part of JavaScript for me. This post clarified a lot of doubts I had. Thanks!</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -771,10 +771,10 @@
         <button onclick="vote(this, -1)">&#9660;</button>
       </div>
       <div class="post-content">
-        <h3>React and TypeScript</h3>
-        <p>TypeScript is becoming increasingly popular for developing large-scale React applications. This post introduces the basics of using TypeScript with React, including how to set up a TypeScript project, define types for props and state, and leverage TypeScript's features to catch errors early and improve code quality.</p>
+        <h3>JavaScript Async/Await</h3>
+        <p>Async/await is a syntactic sugar built on top of promises, making asynchronous code easier to write and understand. This post explains how async/await works, how to use it effectively, and common pitfalls to avoid. By mastering async/await, you can write cleaner and more maintainable asynchronous JavaScript code.</p>
         <div class="post-footer">
-          <span>Posted by <a href="profile.html">User5</a> in <a href="react.html">React</a></span>
+          <span>Posted by <a href="../profile.html">User5</a> in <a href="../javascript.html">JavaScript</a></span>
         </div>
         
         <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
@@ -793,7 +793,7 @@
               <span class="timestamp">2 days ago</span>
             </div>
             <div class="reply-content">
-              <p>Using TypeScript with React has always been a challenge for me, but this post made it much more approachable. Thanks for the detailed explanations!</p>
+              <p>Async/await has greatly improved the readability of my code. This post did a great job explaining how to use it effectively.</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -810,7 +810,7 @@
               <span class="timestamp">1 day ago</span>
             </div>
             <div class="reply-content">
-              <p>Great introduction to using TypeScript with React. The examples were very helpful!</p>
+              <p>Great introduction to async/await in JavaScript. The examples were very helpful!</p>
             </div>
             <div class="reply-footer">
               <button onclick="vote(this, 1)">&#9650;</button>
@@ -834,11 +834,11 @@
     <section>
       <h3>Topics</h3>
       <ul>
-        <li><a href="topic1.html">Java</a></li>
-        <li><a href="topic2.html">MySQL</a></li>
-        <li><a href="topic3.html">React</a></li>
-        <li><a href="topic4.html">C++</a></li>
-        <li><a href="topic5.html">JavaScript</a></li>
+        <li><a href="java-topic.html">Java</a></li>
+        <li><a href="mysql-topic.html">MySQL</a></li>
+        <li><a href="react-topic.html">React</a></li>
+        <li><a href="cpp-topic.html">C++</a></li>
+        <li><a href="javascript-topic.html">JavaScript</a></li>
       </ul>
     </section>
    
@@ -847,9 +847,9 @@
         <ul id="myGroupsList">
           <!-- Groups will be dynamically added here -->
         </ul>
-      <a href="creategroup.html" class="create-group-button">Create Group</a>
+      <a href="../creategroup.html" class="create-group-button">Create Group</a>
   </section>
-  <a href="createpost.html" class="create-post-button">Create Post</a>
+  <a href="../create-thread.html" class="create-post-button">Create Thread</a>
     </section>
   </div>
 </div>
@@ -998,6 +998,122 @@ const userGroups = [
     button.onclick = () => editPost(button);
   }
 
+
+  async function addReply(button) {
+    const replyInput = button.previousElementSibling;
+    const replyContent = replyInput.value.trim();
+    if (replyContent === "") return;
+
+    const replySection = button.closest('.reply-section');
+    const threadID = button.closest('.post').dataset.threadId;
+    const newReply = document.createElement('div');
+    newReply.className = 'reply';
+    newReply.dataset.timestamp = new Date().toISOString();
+    newReply.innerHTML = `
+      <div class="reply-header">
+        <span class="author">You</span>
+        <span class="timestamp">Just now</span>
+      </div>
+      <div class="reply-content">
+        <p>${replyContent}</p>
+      </div>
+      <div class="reply-footer">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">0</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+        <div class="reply-actions">
+          <button onclick="showReportPopup(this)">...</button>
+          <button onclick="deleteReply(this)">Delete</button>
+        </div>
+      </div>
+    `;
+
+    replySection.insertBefore(newReply, replySection.querySelector('.reply-input'));
+    replyInput.value = "";
+
+    if (threadID) {
+      const response = await fetch('/api/auth/addreply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ body: replyContent, threadID: parseInt(threadID) }),
+      });
+      if (!response.ok) {
+        alert('Failed to add reply. Please try again.');
+        replySection.removeChild(newReply);
+      }
+    }
+  }
+
+  function makeThread(post) {
+    const repliesHtml = (post.Replies || []).map(reply => `
+      <div class="reply" data-timestamp="${reply.date || ''}">
+        <div class="reply-header">
+          <span class="author">${reply.userName || 'Anonymous'}</span>
+          <span class="timestamp">${reply.date || ''}</span>
+        </div>
+        <div class="reply-content">
+          <p>${reply.body}</p>
+        </div>
+        <div class="reply-footer">
+          <button onclick="vote(this, 1)">&#9650;</button>
+          <div class="vote-count">${reply.likes || 0}</div>
+          <button onclick="vote(this, -1)">&#9660;</button>
+          <div class="reply-actions">
+            <button onclick="showReportPopup(this)">...</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    return `
+    <div class="post" data-thread-id="${post.threadID}">
+      <div class="post-voting">
+        <button onclick="vote(this, 1)">&#9650;</button>
+        <div class="vote-count">${post.likes || 0}</div>
+        <button onclick="vote(this, -1)">&#9660;</button>
+      </div>
+      <div class="post-content">
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+        <div class="post-footer">
+          <span>Posted by <a href="../profile.html">${post.userName || 'Anonymous'}</a> in JavaScript</span>
+        </div>
+        <button class="show-replies" onclick="toggleReplies(this)">Show Replies</button>
+        <div class="reply-section" style="display:none;">
+          <div class="sort-by">
+            Sort by:
+            <select onchange="sortReplies(this)">
+              <option value="oldest">Oldest</option>
+              <option value="newest">Newest</option>
+              <option value="most-liked">Most Liked</option>
+            </select>
+          </div>
+          ${repliesHtml}
+          <div class="reply-input">
+            <textarea rows="3" placeholder="Add a reply..."></textarea>
+            <button onclick="addReply(this)">Reply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+  }
+
+  async function getThreads() {
+    const postsSection = document.getElementById('postsSection');
+    const response = await fetch('/api/auth/listThreads?topic=JavaScript', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    const responseJson = await response.json();
+    const posts = responseJson['records'];
+    posts.forEach(post => {
+      postsSection.innerHTML += makeThread(post);
+    });
+  }
+
+  window.addEventListener('load', getThreads);
+
   function deletePost(button) {
     const post = button.closest('.post');
     post.parentNode.removeChild(post);
@@ -1033,7 +1149,7 @@ const userGroups = [
   <div class="footer-container">
     <div class="footer-nav">
       <ul>
-        <li><a href="about.html"><strong>About</strong></a></li>
+        <li><a href="../about.html"><strong>About</strong></a></li>
         <li><a><strong>Email: CodeConnectSupport@gmail.com</strong></a></li>
         <li><a><strong>Phone: 888-888-8888</strong></a></li>
       </ul>
