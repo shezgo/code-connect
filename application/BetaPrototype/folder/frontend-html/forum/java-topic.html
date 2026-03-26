@@ -460,6 +460,24 @@
   justify-content: center;
 }
 .delete-thread-btn:hover { background: #c53030; }
+.delete-reply-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #e53e3e;
+  color: white;
+  border: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 5px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete-reply-btn:hover { background: #c53030; }
 </style>
 </head>
 <body>
@@ -618,27 +636,24 @@ const userGroups = [
 
   function sortReplies(select) {
     const sortBy = select.value;
-    const replySections = document.querySelectorAll('.reply-section');
-    replySections.forEach((section) => {
-      const replies = Array.from(section.querySelectorAll('.reply')).sort((a, b) => {
-        const timestampA = new Date(a.dataset.timestamp);
-        const timestampB = new Date(b.dataset.timestamp);
-        const voteCountA = parseInt(a.querySelector('.vote-count').textContent);
-        const voteCountB = parseInt(b.querySelector('.vote-count').textContent);
+    const section = select.closest('.reply-section');
+    const replyInput = section.querySelector('.reply-input');
+    const replies = Array.from(section.querySelectorAll('.reply')).sort((a, b) => {
+      const timestampA = new Date(a.dataset.timestamp);
+      const timestampB = new Date(b.dataset.timestamp);
+      const voteCountA = parseInt(a.querySelector('.vote-count').textContent) || 0;
+      const voteCountB = parseInt(b.querySelector('.vote-count').textContent) || 0;
 
-        if (sortBy === "oldest") {
-          return timestampA - timestampB;
-        } else if (sortBy === "newest") {
-          return timestampB - timestampA;
-        } else if (sortBy === "most-liked") {
-          return voteCountB - voteCountA;
-        }
-      });
-
-      replies.forEach((reply) => {
-        section.appendChild(reply);
-      });
+      if (sortBy === "oldest") {
+        return timestampA - timestampB;
+      } else if (sortBy === "newest") {
+        return timestampB - timestampA;
+      } else if (sortBy === "most-liked") {
+        return voteCountB - voteCountA;
+      }
     });
+
+    replies.forEach(reply => section.insertBefore(reply, replyInput));
   }
 
   function showReportPopup() {
@@ -661,64 +676,77 @@ const userGroups = [
 
     const replySection = button.closest('.reply-section');
     const threadID = button.closest('.post').dataset.threadId;
+    if (!threadID) return;
+
+    const response = await fetch('/api/auth/addreply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ body: replyContent, threadID: parseInt(threadID) }),
+    });
+    if (!response.ok) {
+      alert('Failed to add reply. Please try again.');
+      return;
+    }
+    const data = await response.json();
+    const reply = data.reply;
+
+    const replyDeleteBtn = (currentUser && reply.userName === currentUser)
+      ? `<button class="delete-reply-btn" onclick="confirmDeleteReply(${reply.replyID})">&#x2715;</button>`
+      : '';
+
     const newReply = document.createElement('div');
     newReply.className = 'reply';
-    newReply.dataset.timestamp = new Date().toISOString();
+    newReply.dataset.timestamp = reply.date && reply.time ? reply.date + 'T' + reply.time : (reply.date || '');
+    newReply.style.position = 'relative';
     newReply.innerHTML = `
+      ${replyDeleteBtn}
       <div class="reply-header">
-        <span class="author">You</span>
-        <span class="timestamp">Just now</span>
+        <span class="author">${reply.userName || 'Anonymous'}</span>
+        <span class="timestamp">${reply.date ? formatDate(reply.date) + (reply.time ? ' ' + reply.time.slice(0,5) : '') : 'Just now'}</span>
       </div>
       <div class="reply-content">
-        <p>${replyContent}</p>
+        <p>${reply.body}</p>
       </div>
       <div class="reply-footer">
-        <button onclick="vote(this, 1)">&#9650;</button>
-        <div class="vote-count">0</div>
-        <button onclick="vote(this, -1)">&#9660;</button>
+        <button style="" onclick="castReplyVote(${reply.replyID}, 'up', this)">&#9650;</button>
+        <div class="vote-count" id="reply-likes-${reply.replyID}">0</div>
+        <button style="" onclick="castReplyVote(${reply.replyID}, 'down', this)">&#9660;</button>
         <div class="reply-actions">
           <button onclick="showReportPopup(this)">...</button>
-          <button onclick="deleteReply(this)">Delete</button>
         </div>
       </div>
     `;
 
     replySection.insertBefore(newReply, replySection.querySelector('.reply-input'));
     replyInput.value = "";
-
-    if (threadID) {
-      const response = await fetch('/api/auth/addreply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ body: replyContent, threadID: parseInt(threadID) }),
-      });
-      if (!response.ok) {
-        alert('Failed to add reply. Please try again.');
-        replySection.removeChild(newReply);
-      }
-    }
   }
 
   function makeThread(post, currentUser) {
-    const repliesHtml = (post.Replies || []).map(reply => `
-      <div class="reply" data-timestamp="${reply.date || ''}">
+    const repliesHtml = (post.Replies || []).map(reply => {
+    const replyDeleteBtn = (currentUser && reply.userName === currentUser)
+      ? `<button class="delete-reply-btn" onclick="confirmDeleteReply(${reply.replyID})">&#x2715;</button>`
+      : '';
+    return `
+      <div class="reply" data-timestamp="${reply.date && reply.time ? reply.date + 'T' + reply.time : (reply.date || '')}" style="position: relative;">
+        ${replyDeleteBtn}
         <div class="reply-header">
           <span class="author">${reply.userName || 'Anonymous'}</span>
-          <span class="timestamp">${reply.date || ''}</span>
+          <span class="timestamp">${reply.date ? formatDate(reply.date) + (reply.time ? ' ' + reply.time.slice(0,5) : '') : 'Unknown date'}</span>
         </div>
         <div class="reply-content">
           <p>${reply.body}</p>
         </div>
         <div class="reply-footer">
-          <button onclick="vote(this, 1)">&#9650;</button>
-          <div class="vote-count">${reply.likes || 0}</div>
-          <button onclick="vote(this, -1)">&#9660;</button>
+          <button style="${localStorage.getItem('vote_reply_' + reply.replyID) === 'up' ? 'color: red;' : ''}" onclick="castReplyVote(${reply.replyID}, 'up', this)">&#9650;</button>
+          <div class="vote-count" id="reply-likes-${reply.replyID}">${reply.likes || 0}</div>
+          <button style="${localStorage.getItem('vote_reply_' + reply.replyID) === 'down' ? 'color: red;' : ''}" onclick="castReplyVote(${reply.replyID}, 'down', this)">&#9660;</button>
           <div class="reply-actions">
             <button onclick="showReportPopup(this)">...</button>
           </div>
         </div>
       </div>
-    `).join('');
+    `;
+  }).join('');
 
     const deleteBtn = (currentUser && post.userName === currentUser)
       ? `<button class="delete-thread-btn" onclick="confirmDeleteThread(${post.threadID})">&#x2715;</button>`
@@ -758,10 +786,12 @@ const userGroups = [
     `;
   }
 
+  let currentUser = null;
+
   async function getThreads() {
     const postsSection = document.getElementById('postsSection');
     postsSection.querySelectorAll('.post').forEach(el => el.remove());
-    let currentUser = null;
+    currentUser = null;
     try {
       const meRes = await fetch('/api/auth/me');
       if (meRes.ok) { const meData = await meRes.json(); currentUser = meData.userName; }
@@ -858,6 +888,62 @@ const userGroups = [
     btns[1].style.color = newVote === 'down' ? 'red' : '';
   }
 
+
+  let pendingDeleteReplyID = null;
+
+  function confirmDeleteReply(replyID) {
+    pendingDeleteReplyID = replyID;
+    document.getElementById('deleteReplyPopup').style.display = 'flex';
+  }
+
+  function closeDeleteReplyPopup() {
+    pendingDeleteReplyID = null;
+    document.getElementById('deleteReplyPopup').style.display = 'none';
+  }
+
+  async function executeDeleteReply() {
+    if (!pendingDeleteReplyID) return;
+    const response = await fetch('/api/auth/deletereply/' + pendingDeleteReplyID, {
+      method: 'DELETE'
+    });
+    if (response.ok) {
+      closeDeleteReplyPopup();
+      location.reload();
+    } else {
+      alert('Failed to delete reply.');
+    }
+  }
+
+  async function castReplyVote(replyID, voteType, button) {
+    const storageKey = 'vote_reply_' + replyID;
+    const currentVote = localStorage.getItem(storageKey);
+    let delta = 0, newVote = null;
+    if (!currentVote) {
+      delta = voteType === 'up' ? 1 : -1;
+      newVote = voteType;
+    } else if (currentVote === voteType) {
+      delta = voteType === 'up' ? -1 : 1;
+    } else {
+      delta = voteType === 'up' ? 2 : -2;
+      newVote = voteType;
+    }
+    const response = await fetch('/api/auth/vote/reply/' + replyID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ delta })
+    });
+    if (!response.ok) return;
+    const data = await response.json();
+    if (newVote) localStorage.setItem(storageKey, newVote);
+    else localStorage.removeItem(storageKey);
+    const likesEl = document.getElementById('reply-likes-' + replyID);
+    if (likesEl) likesEl.textContent = data.likes;
+    const voting = button.closest('.reply-footer');
+    const btns = voting.querySelectorAll('button');
+    btns[0].style.color = newVote === 'up' ? 'red' : '';
+    btns[1].style.color = newVote === 'down' ? 'red' : '';
+  }
+
 </script>
 
 <footer>
@@ -887,6 +973,13 @@ const userGroups = [
     <p style="font-size:18px; margin-bottom:20px;">Delete this thread?</p>
     <button onclick="executeDeleteThread()" style="background:#e53e3e; color:#fff; border:none; padding:10px 24px; border-radius:4px; cursor:pointer; margin-right:12px; font-size:14px;">Delete</button>
     <button onclick="closeDeletePopup()" style="background:#e2e8f0; border:none; padding:10px 24px; border-radius:4px; cursor:pointer; font-size:14px;">Cancel</button>
+  </div>
+</div>
+<div id="deleteReplyPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:32px; border-radius:8px; text-align:center; min-width:280px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+    <p style="font-size:18px; margin-bottom:20px;">Delete this reply?</p>
+    <button onclick="executeDeleteReply()" style="background:#e53e3e; color:#fff; border:none; padding:10px 24px; border-radius:4px; cursor:pointer; margin-right:12px; font-size:14px;">Delete</button>
+    <button onclick="closeDeleteReplyPopup()" style="background:#e2e8f0; border:none; padding:10px 24px; border-radius:4px; cursor:pointer; font-size:14px;">Cancel</button>
   </div>
 </div>
 </body>
