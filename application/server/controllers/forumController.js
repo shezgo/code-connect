@@ -1,4 +1,4 @@
-const { UserForum, Forum, Thread, Reply } = require('../db/models');
+const { UserForum, Forum, Thread, Reply, User } = require('../db/models');
 
 // Controller to get selected forums for the user who is logged in by checking associative table
 exports.getUserForums = async (req, res, next) => {
@@ -60,12 +60,14 @@ exports.addThread = async (req, res, next) => {
             return res.status(400).json({ error: 'Fill missing fields' });
         }
 
+        const user = await User.findByPk(req.userID);
+
         // Create a new forum thread
         const newThread = await Thread.create({
- 
             title,
             content,
-            topic
+            topic,
+            userName: user ? user.userName : 'Anonymous'
         });
 
         res.json({thread: newThread});
