@@ -1,0 +1,324 @@
+/* ==============================================
+   CodeConnect - Black & Midnight Blue Theme
+   ============================================== */
+
+:root {
+  --bg-page:       #050c1a;
+  --bg-card:       #0d1b2a;
+  --bg-card-alt:   #0f2040;
+  --bg-header:     #030912;
+  --bg-input:      #0a1628;
+  --bg-sidebar:    #020710;
+  --text-primary:  #e2e8f0;
+  --text-secondary:#94a3b8;
+  --text-muted:    #4e6a8a;
+  --accent:        #1d4ed8;
+  --accent-hover:  #1e40af;
+  --accent-light:  #3b82f6;
+  --link:          #60a5fa;
+  --link-hover:    #93c5fd;
+  --border:        #1a3356;
+  --border-light:  #254a78;
+  --danger:        #dc2626;
+  --danger-hover:  #b91c1c;
+}
+
+/* ── PAGE ─────────────────────────────────────── */
+body {
+  background-color: var(--bg-page) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── HEADER & FOOTER ─────────────────────────── */
+.header, header, footer,
+.header *, footer * {
+  background-color: var(--bg-header) !important;
+  color: #ffffff !important;
+}
+/* keep header/footer links white */
+.header a, footer a, .footer-nav a,
+.header h1, .header h2, .header h3,
+.nav a {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+.header a:hover, footer a:hover, .nav a:hover {
+  color: var(--link-hover) !important;
+  background-color: rgba(255,255,255,0.07) !important;
+}
+.footer-bott, .footer-bott p {
+  background-color: var(--bg-header) !important;
+  color: #94a3b8 !important;
+}
+
+/* ── SIDEBAR (flyout friends) ────────────────── */
+.sidebar, #mySidebar {
+  background-color: var(--bg-sidebar) !important;
+}
+.sidebar a {
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+}
+.sidebar a:hover {
+  background-color: var(--bg-card-alt) !important;
+  color: var(--link-hover) !important;
+}
+.sidebar .closebtn {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+/* ── CARDS / CONTAINERS / BOXES ─────────────── */
+.container, .main-box, .main-row,
+.membership-section, .membership,
+.create-post-container, .create-thread-container,
+.profile-container, .welcome-box,
+.login-container, .signup-container,
+.payment-container, .advert-container,
+.section, .bottom-container .section,
+.forum-container, .group-card,
+.challenge-container, .workspace-card,
+.pricing-plan, .report-content,
+.modal-content {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6) !important;
+}
+.storefront {
+  background-color: var(--bg-page) !important;
+}
+
+/* ── FORUM POSTS & REPLIES ───────────────────── */
+.post {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+}
+.reply {
+  background-color: var(--bg-card-alt) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-primary) !important;
+}
+.post-footer, .reply-footer {
+  border-top: 1px solid var(--border) !important;
+}
+.reply-section {
+  background-color: var(--bg-page) !important;
+}
+.sort-by {
+  color: var(--text-secondary) !important;
+}
+
+/* ── FORUM LEFT SIDEBAR ──────────────────────── */
+.left-sidebar, .nav-sidebar {
+  background-color: var(--bg-card) !important;
+}
+.left-sidebar a, .nav-sidebar a {
+  color: var(--link) !important;
+  background-color: transparent !important;
+}
+.left-sidebar section, .left-sidebar h3,
+.left-sidebar ul li a {
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+}
+
+/* ── ALL TEXT ─────────────────────────────────── */
+p, h1, h2, h3, h4, h5, h6,
+span, label, li, td, th, dt, dd, caption,
+.author, .timestamp, .vote-count,
+.post-content, .reply-content {
+  color: var(--text-primary) !important;
+}
+.text-muted, .timestamp, .post-footer span,
+.reply-footer span {
+  color: var(--text-secondary) !important;
+}
+
+/* ── LINKS ────────────────────────────────────── */
+a {
+  color: var(--link) !important;
+}
+a:hover {
+  color: var(--link-hover) !important;
+}
+
+/* ── INPUTS, TEXTAREAS, SELECTS ──────────────── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea, select {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 4px;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--accent-light) !important;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.25) !important;
+}
+select option {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── BUTTONS (general) ───────────────────────── */
+button:not(.delete-thread-btn):not(.delete-reply-btn):not(.closebtn):not(.icon-button),
+.button,
+input[type="submit"],
+input[type="button"],
+a.button,
+a.create-post-button,
+a.create-group-button {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+button:not(.delete-thread-btn):not(.delete-reply-btn):not(.closebtn):not(.icon-button):hover,
+.button:hover,
+input[type="submit"]:hover,
+a.button:hover,
+a.create-post-button:hover,
+a.create-group-button:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+/* ── ICON BUTTONS (header svg icons, Friends) ─ */
+.icon-button, button.icon-button {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+.icon-button svg {
+  stroke: #ffffff !important;
+}
+
+/* ── DANGER BUTTONS ──────────────────────────── */
+.delete-thread-btn {
+  background-color: var(--danger) !important;
+  color: #ffffff !important;
+}
+.delete-thread-btn:hover {
+  background-color: var(--danger-hover) !important;
+}
+.delete-reply-btn {
+  background-color: var(--danger) !important;
+  color: #ffffff !important;
+}
+.delete-reply-btn:hover {
+  background-color: var(--danger-hover) !important;
+}
+
+/* ── DELETE / REPORT POPUPS ──────────────────── */
+#deleteThreadPopup > div,
+#deleteReplyPopup > div,
+#report-popup .report-content {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── SHOW REPLIES BUTTON ─────────────────────── */
+.show-replies {
+  background-color: var(--bg-card-alt) !important;
+  color: var(--link) !important;
+  border: 1px solid var(--border) !important;
+}
+.show-replies:hover {
+  background-color: var(--border) !important;
+  color: var(--link-hover) !important;
+}
+
+/* ── VOTE BUTTONS ────────────────────────────── */
+.post-voting button,
+.reply-footer > button {
+  background-color: transparent !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border) !important;
+}
+.post-voting button:hover,
+.reply-footer > button:hover {
+  background-color: var(--bg-card-alt) !important;
+  color: var(--link) !important;
+  border-color: var(--accent) !important;
+}
+
+/* ── NAV BAR (.nav) ──────────────────────────── */
+.nav {
+  background-color: var(--bg-header) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* ── TABLES ───────────────────────────────────── */
+table {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+th {
+  background-color: var(--bg-card-alt) !important;
+  color: var(--text-primary) !important;
+}
+tr:nth-child(even) {
+  background-color: var(--bg-input) !important;
+}
+td, th {
+  border-color: var(--border) !important;
+}
+
+/* ── CODE ─────────────────────────────────────── */
+code, pre {
+  background-color: #020b18 !important;
+  color: #93c5fd !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+}
+
+/* ── PROFILE SECTION ITEMS ───────────────────── */
+.profile-section-list li, .profile-list li {
+  background-color: var(--bg-card-alt) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── MEMBERSHIP SECTION ──────────────────────── */
+.membership-section {
+  background-color: var(--bg-card) !important;
+}
+.pricing-plan.selected {
+  border-color: var(--accent-light) !important;
+  background-color: #0f2a50 !important;
+}
+
+/* ── SEARCH BAR ──────────────────────────────── */
+.search-container input[type="text"] {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-light) !important;
+}
+.search-container button {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+  border-color: var(--accent) !important;
+}
+.search-container button:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+/* ── MISC ─────────────────────────────────────── */
+hr {
+  border-color: var(--border) !important;
+}
+.reply-input textarea {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-light) !important;
+}
