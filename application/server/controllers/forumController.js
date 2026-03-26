@@ -92,10 +92,16 @@ exports.addReply = async (req, res, next) => {
 
         const user = await User.findByPk(req.userID);
 
+        const now = new Date();
+        const date = now.toISOString().split('T')[0];
+        const time = now.toTimeString().split(' ')[0];
+
         const newReply = await Reply.create({
             body,
             threadID,
-            userName: user ? user.userName : 'Anonymous'
+            userName: user ? user.userName : 'Anonymous',
+            date,
+            time
         });
 
         res.json({reply: newReply});
